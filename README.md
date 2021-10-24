@@ -1,3 +1,0 @@
-# wallet
-
-A wallet
