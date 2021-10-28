@@ -476,3 +476,6 @@ gradle-app.setting
 .classpath
 
 # End of https://www.toptal.com/developers/gitignore/api/java,gradle,vim,intellij,latex
+
+#Visual paradigm
+*.vpp.bak*
