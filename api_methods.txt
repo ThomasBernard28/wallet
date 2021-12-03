@@ -1,0 +1,7 @@
+- récupérer tous les wallet d'un user
+- ajouter un wallet à un user
+- supprimer un wallet d'un user
+
+- récupérer tous les produits financiers d'un user
+- ajouter un prdoduit financier à un user
+- supprimer un produit financier d'un user
