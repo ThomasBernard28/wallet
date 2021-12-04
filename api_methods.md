@@ -6,27 +6,52 @@
 - nom et prénom
 - addresse mail
 - langue
-- portefeuille financier
+- liste des portefeuilles financiers
 
 ### Institution
+- nom
 - code SWIFT/BIC
 
 ### Portefeuille financier
-- nom
 - institution
 - produits financiers
 
 ### Produit fianancier : compte courant
 - IBAN
-- montant
+- solde
 - titulaire ou cotitulaire
-- institution
+- historique des transactions
+- frais
+
+### Produit financier : compte jeune
+- IBAN
+- solde
+- titulaire ou cotitulaire
+- historique des transactions
 
 ### Produit financier : compte épargne
 - IBAN
-- montant
+- solde
 - titulaire ou cotitulaire
-- institution
+- historique des transactions
+- rendement
+
+### Produit financier : compte à terme
+- IBAN
+- solde
+- titulaire ou cotitulaire
+- hitorique des transactions
+- rendement
+- durée du placement
+
+### Transaction bancaire
+- uuid
+- date
+- montant
+- status (en attente, refusé, validé)
+- compte d'origine
+- compte d'arrivée
+- communication
 
 ## Méthodes nécessaires
 - récupérer tous les wallet d'un user
