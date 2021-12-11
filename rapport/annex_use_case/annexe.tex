@@ -1,55 +1,81 @@
-\documentclass[french, a4paper, 12pt]{article}
-
+\documentclass{article}
+\usepackage{svg}
+\usepackage{amsmath}
 \usepackage[utf8]{inputenc}
-\usepackage[T1]{fontenc}
-\usepackage{babel}
-\usepackage[pdftex]{graphicx}
-\usepackage[a4paper,left=3cm,right=3cm,top=3cm,bottom=3cm]{geometry}
-\usepackage[french]{minitoc}
+\usepackage[french]{babel}
 \usepackage{graphicx}
-\graphicspath{{./ressources/}}
-\usepackage{appendix}
-\usepackage{float}
-\usepackage{wrapfig}
-\usepackage{url}
+\usepackage[T1]{fontenc}
 \usepackage{hyperref}
-\usepackage{biblatex}
-\usepackage{csquotes}
-\usepackage[nottoc]{tocbibind}
-\usepackage{subfiles}
+\hypersetup{
+    colorlinks,
+    citecolor=black,
+    filecolor=black,
+    linkcolor=black,
+    urlcolor=black
+}
+\graphicspath{ressources/}
+\usepackage{tikz}
+\usetikzlibrary{shapes,positioning}
 
-\frenchbsetup{StandardLists=true}
-\selectlanguage{french}
+\usepackage{blindtext}
 
-\pagenumbering{roman}
+\usepackage{subfiles} % Best loaded last in the preamble
 
+\title{Titre}
+\author{ }
+\date{ }
 
 \begin{document}
-\nocite{*}
-
 \begin{titlepage}
-\begin{center}
-
-Université de Mons\\Faculté des Sciences \\ \vspace{5mm}
-\textbf{Projet de Modélisation Logicielle} \\ \vspace{5mm}
-Titulaire du cours : Tom \bsc{Mens} \\        \vspace{25mm}
-\LARGE{\textbf{Descriptions semi-structurées des cas d'utilisations }\\            \vspace{2mm}
-}
-\small{\today}\\
-\rule{10cm}{3pt}\\                           \vspace{10mm}
-\LARGE{AGBENDA Christian, BERNARD Thomas, GODIN Theo et PROIETTI Ugo  \bsc{}  \bsc{} } \\
-\vspace{50mm}
-\includegraphics[scale=0.25]{UMons.png}\\
-\vspace{20pt}
-Année académique 2021 - 2022\\
-Bachelier 2 en Sciences informatiques\\
-\end{center}
-
+    \begin{center}
+        
+        {\Large Université de Mons}\\[1ex]
+        {\Large Faculté Des Sciences}\\[1ex]
+        {\Large Département d'Informatique}\\[1ex]
+        
+        \newcommand{\HRule}{\rule{\linewidth}{0.3mm}}
+        % Title
+        \HRule \\[0.3cm]
+        { \LARGE \bfseries Projet de modélisation logicielle \\[0.3cm]}
+        { \LARGE \bfseries Description semi-structurée des use-cases \\[0.1cm]} % Commenter si pas besoin
+        \HRule \\[1.5cm]
+        
+        % Author and supervisor
+        \begin{minipage}[t]{0.45\textwidth}
+            \begin{flushleft} \large
+                \emph{Professeur:}\\
+                Tom \textsc{Mens}\\
+                \emph{Assistants:}\\
+                Jeremy \textsc{Dubrulle}\\
+                Gauvin \textsc{Devillez}\\
+                Sébastien \textsc{Bonte}\\
+            \end{flushleft}
+        \end{minipage}
+        \begin{minipage}[t]{0.45\textwidth}
+            \begin{flushright} \large
+                \emph{Auteurs:} \\
+                Pignozi \textsc{Agbenda} \\
+                Thomas \textsc{Bernard} \\
+                Théo \textsc{Godin} \\
+                Ugo \textsc{Proietti}\\
+            \end{flushright}
+        \end{minipage}\\[2ex]
+        
+        \vfill
+        
+        % Bottom of the page
+        \begin{center}
+            \begin{tabular}[t]{c c c}
+                \includegraphics[height=1.5cm]{ressources/logoumons.jpg} &
+                \includegraphics[height=1.5cm]{ressources/logofs.jpg} &
+            \end{tabular}
+        \end{center}~\\
+        
+        {\large Année académique 2021-2022}
+        
+    \end{center}
 \end{titlepage}
 
-\title{Projet de Modélisation logicielle}
-\author{AGBENDA Christian, BERNARD Thomas, GODIN Theo, PROIETTI Ugo}
-\maketitle
 \tableofcontents
 \newpage
 
@@ -63,7 +89,13 @@ Bachelier 2 en Sciences informatiques\\
 	
 	\subsection{Use-cases Applications 2}
 	
+\newpage
+	
 \section{Extension 1 : Bernard Thomas}
+
+	\subfile{sections/extensionThomas}
+
+	
 
 	
 		

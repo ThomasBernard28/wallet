@@ -1,0 +1,227 @@
+\documentclass[../annexe.tex]{subfiles}
+\graphicspath{{\subfix{ressources}}}
+
+\begin{document}
+
+\subsection{Demander un devis pour un type d'assurance}
+
+\paragraph{Acteurs :} Le client et le serveur 
+
+
+\paragraph{Descrition :} Permet au client de demander un devis pour un certain type d'assurance.
+
+
+\paragraph{Préconditions :} Le client se trouve sur l'écran lié à la demande de devis.
+
+
+\paragraph{Fréquence :} De temps en temps (lorsque le client désire un devis).
+
+
+
+\paragraph{Parcours de base :}
+
+	\begin{enumerate}
+	
+		\item Le client clique sur l'option de demande d'un devis pour une assurance.
+		\item Le client choisit l'assurance propre à l'institution pour laquelle il désire avoir un devis.
+		\item L'application envoie les informations au serveur.
+		\item Le serveur renvoie le devis.
+		\item Le client consulte le devis.
+	\end{enumerate}
+	
+\paragraph{Postconditions :} La GUI affiche le devis que le client a demandé.
+
+\newpage
+
+\subsection{Obtenir des informations sur les différents types 
+d'assurances}
+
+\paragraph{Acteurs :} Le client et le serveur 
+
+\paragraph{Description :} Permet au client d'obtenir des informations sur toutes les assurances que propose l'insitution financière à laquelle est lié le portefeuille sélectionné.
+
+\paragraph{Préconditions :} Le client doit être connecté, avoir sélectionné un  de ses portefeuilles être entré dans la gestion des produits financiers.
+
+\paragraph{Fréquence :} De temps en temps.
+
+\paragraph{Parcours de base :}
+
+	\begin{enumerate}
+		\item Le client clique sur la fenêtre liée aux informations concernant les assurances.
+		\item L'application envoie la demande d'informations au serveur avec l'institution pour laquelle elles sont demandées.
+		\item Le serveur renvoie la liste des assurances de l'institution ainsi que tous les détails les concernants.
+		\item Le client consulte les informations.
+	\end{enumerate}
+	
+\paragraph{Postconditions :} La GUI affiche la liste des assurances pour l'institution sélectionnée ainsi que toutes les informations qui en découlent.
+
+\newpage
+
+\subsection{Accéder à la liste des assurances :}
+
+\paragraph{Acteurs :} Le client et le serveur.
+
+\paragraph{Description :} Un client accède à la liste des assurances auxquelles il a soucrit dans l'institution qui correspond au portefeuille sélectionné.
+
+\paragraph{Préconditions :} Le client doit avoir choisi un de ses portefeuille auquel il voulait accéder et doit avoir choisi de gérer ses produits financiers.
+
+\paragraph{Fréquence :} Assez souvent
+
+\paragraph{Parcours de base :} 
+
+	\begin{enumerate}
+		\item Le client clique sur l'accès à ses assurances.
+		\item L'application envoie au serveur une demande de récupération des assurances pour le client en particulier.
+		\item Le serveur renvoie les diverses assurances auxquelles le client a soucrit s'il en a. 
+		Si pas le serveur ne renvoie rien.
+		\item Le client consulte ses assurances.
+	\end{enumerate}
+
+\paragraph{Postconditions :} La GUI affiche la liste des assurances du client et la possibilité d'en rajouter.
+
+\paragraph{Points d'extensions :} 
+\begin{enumerate}
+	\item Résilier une assurance
+	\item Souscrire à une assurance
+\end{enumerate}
+
+\newpage
+
+\subsection{Gérer les paramètres :}
+
+\paragraph{Acteurs :} Le client et le serveur.
+
+\paragraph{Description :} Le client accède aux paramètres d'une des assurances auxquelles il a souscrit. 
+
+\paragraph{Préconditions :} Le client doit avoir sélectionné une des assurances présentes dans sa liste d'assurances.
+
+\paragraph{Fréquence :} Peu souvent
+
+\paragraph{Parcours de base :}
+
+	\begin{enumerate}
+		\item Le client sélectionne une de ses assurances.
+		\item L'application envoie une demande au serveur pour recevoir les informations liées à cette assurance.
+		\item Le serveur renvoie les informations de cette assurance.
+		\item Le client clique sur le bouton des paramètres pour cette assurance.
+		\item L'application affiche l'onglet des paramètres pour assurance.
+		\item Le client effectue des modifications.
+		\item L'application envoie les modifications au serveur.
+		\item Le serveur effectue les modifications dans la base de donnée.
+		\item Le serveur envoie les nouvelles informations à l'application.
+		\item L'application affiche les nouvelles informations.
+		\item Le client quitte les paramètres.
+	\end{enumerate}
+
+\paragraph{Postconditions :} La GUI affiche l'assurance avec les nouveaux paramètres qui lui ont été appliqués.
+
+\paragraph{Parcours alternatif :} Le client n'effectue pas de modifications et quitte la fenêtre.
+
+\newpage
+
+\subsection{Visualiser l'historique :}
+
+\paragraph{Acteurs :} Le client et le serveur 
+
+\paragraph{Description :} Le client accède à l'historique concernant ses assurances. Il peut y voir ses souscriptions, ses résiliations, ses paiements et ses retraits.
+
+\paragraph{Préconditions :} Le client doit se trouver dans la liste des assurances.
+
+\paragraph{Fréquence :} Peu souvent 
+
+\paragraph{Parcours de base :} 
+
+	\begin{enumerate}
+		\item Le client clique sur le bouton d'affichage de l'historique dans la fenêtre des assurances.
+		\item L'application envoie la demande d'historique spécifique au client au serveur.
+		\item Le serveur renvoie les informations liées à l'historique.
+		\item L'application affiche l'historique des assurances du client
+		\item Le client consulte son historique 
+	\end{enumerate}
+
+\paragraph{Postconditions :} La GUI affiche l'historique des assurances du client.
+
+\newpage
+
+\subsection{Souscrire à une assurance :}
+
+\paragraph{Acteurs :}
+
+\paragraph{Description :}
+
+\paragraph{Préconditions :}
+
+\paragraph{Fréquence :}
+
+\paragraph{Parcours de base :}
+
+\paragraph{Postconditions :}
+
+\newpage
+
+\subsection{Résiliez une assurance :}
+
+\paragraph{Acteurs :}
+
+\paragraph{Description :}
+
+\paragraph{Préconditions :}
+
+\paragraph{Fréquence :}
+
+\paragraph{Parcours de base :}
+
+\paragraph{Postconditions :}
+
+\newpage
+
+\subsection{Effectuer une transaction :}
+
+\paragraph{Acteurs :}
+
+\paragraph{Description :}
+
+\paragraph{Préconditions :}
+
+\paragraph{Fréquence :}
+
+\paragraph{Parcours de base :}
+
+\paragraph{Postconditions :}
+
+\newpage
+
+\subsection{Payer la primer :}
+
+\paragraph{Acteurs :}
+
+\paragraph{Description :}
+
+\paragraph{Préconditions :}
+
+\paragraph{Fréquence :}
+
+\paragraph{Parcours de base :}
+
+\paragraph{Postconditions :}
+
+\newpage
+
+\subsection{Verser/retirer de l'argent d'une assurance :}
+
+\paragraph{Acteurs :}
+
+\paragraph{Description :}
+
+\paragraph{Préconditions :}
+
+\paragraph{Fréquence :}
+
+\paragraph{Parcours de base :}
+
+\paragraph{Postconditions :}
+
+
+
+
+\end{document}
