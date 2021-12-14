@@ -1,3 +1,3 @@
 # wallet
 
-A wallet
+A wallet project
