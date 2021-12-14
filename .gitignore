@@ -479,3 +479,4 @@ gradle-app.setting
 
 #Visual paradigm
 *.vpp.bak*
+*.vpp.lck*
