@@ -3,7 +3,9 @@
 
 \begin{document}
 
-\subsection{Demander un devis pour un type d'assurance}
+\subsection{Use-cases de l'application 1}
+
+\subsubsection{Demander un devis pour un type d'assurance}
 
 \paragraph{Acteurs :} Le client et le serveur 
 
@@ -33,7 +35,7 @@
 
 \newpage
 
-\subsection{Obtenir des informations sur les différents types 
+\subsubsection{Obtenir des informations sur les différents types 
 d'assurances}
 
 \paragraph{Acteurs :} Le client et le serveur 
@@ -57,7 +59,7 @@ d'assurances}
 
 \newpage
 
-\subsection{Accéder à la liste des assurances :}
+\subsubsection{Accéder à la liste des assurances :}
 
 \paragraph{Acteurs :} Le client et le serveur.
 
@@ -85,9 +87,12 @@ d'assurances}
 	\item Souscrire à une assurance
 \end{enumerate}
 
+\paragraph{Parcours alternatif :}
+		Le client coche la case permettant d'afficher également les assurances qu'il a résilié. Et le serveur renvoie également les assurances qui sont désactivées 
+		afin de les afficher.
 \newpage
 
-\subsection{Gérer les paramètres :}
+\subsubsection{Gérer les paramètres :}
 
 \paragraph{Acteurs :} Le client et le serveur.
 
@@ -119,11 +124,11 @@ d'assurances}
 
 \newpage
 
-\subsection{Visualiser l'historique :}
+\subsubsection{Visualiser l'historique :}
 
 \paragraph{Acteurs :} Le client et le serveur 
 
-\paragraph{Description :} Le client accède à l'historique concernant ses assurances. Il peut y voir ses souscriptions, ses résiliations, ses paiements et ses retraits.
+\paragraph{Description :} Le client accède à l'historique concernant ses assurances. Il peut y voir ses paiements et ses retraits.
 
 \paragraph{Préconditions :} Le client doit se trouver dans la liste des assurances.
 
@@ -132,18 +137,114 @@ d'assurances}
 \paragraph{Parcours de base :} 
 
 	\begin{enumerate}
-		\item Le client clique sur le bouton d'affichage de l'historique dans la fenêtre des assurances.
+		\item Le client clique sur le bouton d'affichage de l'historique dans la fenêtre d'une assurance.
 		\item L'application envoie la demande d'historique spécifique au client au serveur.
 		\item Le serveur renvoie les informations liées à l'historique.
-		\item L'application affiche l'historique des assurances du client
+		\item L'application affiche l'historique de l'assurance du client
 		\item Le client consulte son historique 
 	\end{enumerate}
 
-\paragraph{Postconditions :} La GUI affiche l'historique des assurances du client.
+\paragraph{Postconditions :} La GUI affiche l'historique de l'assurance du client.
 
 \newpage
 
-\subsection{Souscrire à une assurance :}
+\subsubsection{Souscrire à une assurance :}
+
+\paragraph{Acteurs :}
+
+		Le cleint et le serveur.
+
+\paragraph{Description :}
+		
+		Le client décide depuis la liste de ses assurances de sopuscrire à une nouvelle assurance dans l'insitution à laquelle sont portefeuille est lié.
+
+\paragraph{Préconditions :}
+		Le client doit posséder un portefeuille dans l'institution en question et se trouver dans la liste de ses assurances.
+\paragraph{Fréquence :}
+		Quelques fois ( lorsque le client n'a pas encore d'assurances ) et peu souvent lorsqu'il en a déjà.
+\paragraph{Parcours de base :}
+		\begin{enumerate}
+				\item Le client clique sur le bouton d'ajouter d'une assurance.
+				\item Le client est rediriger dans la fenêtre de souscription à une assurance.
+				\item Le client est amené à choisir l'assurance à laquelle il souhaite souscrire. 
+				\item Le client sélectionne le compte avec lequel il souhaite effectuer le paiement de la prime.
+				\item L'application envoie les informations de la souscription et du paiement au serveur.
+				\item Le serveur vérifie que le client possède suffisamment de liquidités sur le compte sélectionné.
+				\item Le serveur effectue le débit du compte et met à jour la prochaine date de paiement de l'assurance.
+				\item Le serveur ajoute l'inscription à la liste des assurances du client en question.
+				\item Le serveur envoie la confirmation à l'application ainsi que les informations liées à l'assurance.
+				\item L'application renvoie le client sur la scène de la liste des assurances et affiche la nouvelle assurance dans la liste.
+		\end{enumerate}
+\paragraph{Postconditions :}
+		La GUI affiche la nouvelle assurance dans la liste des paiements ainsi que la prochaine date de paiement. La GUI met également à jour l'affichage du compte qui a
+		été débité dans la liste des comptes du client.
+
+\paragraph{Parcours alternatif :} A partir de la vérification serveur.
+\begin{enumerate}
+		\item Le serveur détecte qu'il n'y a pas assez d'argent sur le compte sélectionné par le client.
+		\item Le serveur annule l'ajout de l'assurance.
+		\item Le serveur renvoie un message d'erreur à l'application stipulant que le solde du compte est insuffisant.
+		\item L'application affiche l'erreur et demande au client de sélectionner un nouveau compte ou d'annuler se requête.
+		\item retour au parcours de base où le client choisit un compte.
+\end{enumerate}
+\newpage
+
+\subsubsection{Résiliez une assurance :}
+
+\paragraph{Acteurs :}
+		Le client et le serveur.
+\paragraph{Description :}
+		Le client souhaite résiliez une assurance à laquelle il avait souscrit.
+\paragraph{Préconditions :}
+		Le client doit est à au minimum 3 mois de la prochaine date de paiement de l'assurance sans quoi il devra payer la prime de celle-ci avant de pouvoir la résiliez.
+\paragraph{Fréquence :}
+		Peu souvent.
+\paragraph{Parcours de base :}
+		\begin{enumerate}
+				\item Le client sélectionne l'assurance et dans le menu de celle-ci clique sur le bouton de suppression.
+				\item L'application demande une confirmation au client.
+				\item Le client effectue son choix, s'il annule il a ramené sur la visualisation de son assurance
+				\item L'application envoie au serveur la requête de suppression de l'assurance en question.
+				\item Le serveur contrôle la date de paiement de l'assurance.
+				\item Le serveur envoie la confirmation que la date est conforme aux critères de résiliation et désactive l'assurance dans la base de donnée.
+				\item Le serveur envoie la confirmation de suppression à l'application.
+				\item L'application renvoie le client sur la liste des assurances et lui confirme la résiliation.
+				\item Le client peut à présent consulter ses assurances et voir que son assurance est bien désactivée.
+		\end{enumerate}
+\paragraph{Postconditions :}
+		La GUI affiche bien que l'assurance est désactivée si le client affiche les assurance désactivées et n'affiche plus son assurance sans cette option.
+
+\paragraph{Parcours alternatif :}
+\begin{enumerate}
+		\item Le serveur contrôle le temps restant avant le paiement restant de l'assurance.
+		\item Le serveur envoie une erreur à l'application stipulant que le client doit payer la prime de cette dernière car il est trop tard pour la résilier.
+		\item L'application affiche le message d'erreur et renvoie l'utilisateur sur le menu de l'assurance.
+\end{enumerate}
+\newpage
+
+\subsubsection{Payer la prime :}
+		
+\paragraph{Acteurs :}
+		Le client et le serveur.
+\paragraph{Description :}
+		Le client effectuer le paiement de sa prime que celui-ci soit de manière automatique ou bien manuelle.
+\paragraph{Préconditions :}
+		Il doit se trouver dans le menu de l'assurance en question.
+\paragraph{Fréquence :}
+		A chaque renouvèlement de l'assurance.
+\paragraph{Parcours de base :}
+		\begin{enumerate}
+				\item Le client clique sur la bouton pay dans le menu de l'assurance ou a sélectionné au préalable le paiement automatique.
+				\item Le client sélectionne le compte avec lequel il souhaite effectuer le paiement ou dans le cas d'un paiement automatique l'avait sélectionné
+						lors de l'activation de la feature.
+				\item L'application envoie les informations de paiement au serveur.
+				\item Le serveur 
+		\end{enumerate
+\paragraph{Postconditions :}
+
+\newpage
+
+\subsubsection{Payer la primer :}
 
 \paragraph{Acteurs :}
 
@@ -159,7 +260,7 @@ d'assurances}
 
 \newpage
 
-\subsection{Résiliez une assurance :}
+\subsubsection{Verser/retirer de l'argent d'une assurance :}
 
 \paragraph{Acteurs :}
 
@@ -173,55 +274,7 @@ d'assurances}
 
 \paragraph{Postconditions :}
 
-\newpage
-
-\subsection{Effectuer une transaction :}
-
-\paragraph{Acteurs :}
-
-\paragraph{Description :}
-
-\paragraph{Préconditions :}
-
-\paragraph{Fréquence :}
-
-\paragraph{Parcours de base :}
-
-\paragraph{Postconditions :}
-
-\newpage
-
-\subsection{Payer la primer :}
-
-\paragraph{Acteurs :}
-
-\paragraph{Description :}
-
-\paragraph{Préconditions :}
-
-\paragraph{Fréquence :}
-
-\paragraph{Parcours de base :}
-
-\paragraph{Postconditions :}
-
-\newpage
-
-\subsection{Verser/retirer de l'argent d'une assurance :}
-
-\paragraph{Acteurs :}
-
-\paragraph{Description :}
-
-\paragraph{Préconditions :}
-
-\paragraph{Fréquence :}
-
-\paragraph{Parcours de base :}
-
-\paragraph{Postconditions :}
-
-
+\subsection{Use-case Application 2}
 
 
 \end{document}
