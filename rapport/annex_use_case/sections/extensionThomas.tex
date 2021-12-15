@@ -7,10 +7,10 @@
 
 \subsubsection{Demander un devis pour un type d'assurance}
 
-\paragraph{Acteurs :} Le client et le serveur 
+\paragraph{Acteurs :} Le client, l'institution et le serveur 
 
 
-\paragraph{Descrition :} Permet au client de demander un devis pour un certain type d'assurance.
+\paragraph{Descrition :} Permet au client de demander un devis pour un certain type d'assurance ou plusieurs types d'assurance.
 
 
 \paragraph{Préconditions :} Le client se trouve sur l'écran lié à la demande de devis.
@@ -83,7 +83,6 @@ d'assurances}
 
 \paragraph{Points d'extensions :} 
 \begin{enumerate}
-	\item Résilier une assurance
 	\item Souscrire à une assurance
 \end{enumerate}
 
@@ -92,11 +91,11 @@ d'assurances}
 		afin de les afficher.
 \newpage
 
-\subsubsection{Gérer les paramètres :}
+\subsubsection{Gérer une assurance :}
 
 \paragraph{Acteurs :} Le client et le serveur.
 
-\paragraph{Description :} Le client accède aux paramètres d'une des assurances auxquelles il a souscrit. 
+\paragraph{Description :} Le client accède à la gestion d'une des assurances auxquelles il a souscrit. 
 
 \paragraph{Préconditions :} Le client doit avoir sélectionné une des assurances présentes dans sa liste d'assurances.
 
@@ -108,20 +107,16 @@ d'assurances}
 		\item Le client sélectionne une de ses assurances.
 		\item L'application envoie une demande au serveur pour recevoir les informations liées à cette assurance.
 		\item Le serveur renvoie les informations de cette assurance.
-		\item Le client clique sur le bouton des paramètres pour cette assurance.
-		\item L'application affiche l'onglet des paramètres pour assurance.
-		\item Le client effectue des modifications.
-		\item L'application envoie les modifications au serveur.
-		\item Le serveur effectue les modifications dans la base de donnée.
-		\item Le serveur envoie les nouvelles informations à l'application.
-		\item L'application affiche les nouvelles informations.
-		\item Le client quitte les paramètres.
+		\item Le client se trouve dans la gestion de son assurance.
 	\end{enumerate}
 
-\paragraph{Postconditions :} La GUI affiche l'assurance avec les nouveaux paramètres qui lui ont été appliqués.
+\paragraph{Postconditions :} La GUI affiche l'assurance sélectionnée ainsi que toutes les options qui sont liées à celle-ci.
 
-\paragraph{Parcours alternatif :} Le client n'effectue pas de modifications et quitte la fenêtre.
-
+\paragraph{Points d'extension :}
+		\begin{enumerate}
+				\item Résiliez l'assurance.
+				\item Verser/retirer de l'argent d'une assurance.
+		\end{enumerate}
 \newpage
 
 \subsubsection{Visualiser l'historique :}
@@ -238,43 +233,85 @@ d'assurances}
 				\item Le client sélectionne le compte avec lequel il souhaite effectuer le paiement ou dans le cas d'un paiement automatique l'avait sélectionné
 						lors de l'activation de la feature.
 				\item L'application envoie les informations de paiement au serveur.
-				\item Le serveur 
-		\end{enumerate
+				\item Le serveur vérifie que le solde du compte sélectionné est suffisant.
+				\item Le serveur débite le compte, modifie la date de paiement en la mettant à une nouvelle échéance.
+				\item Le serveur envoie la confirmation à l'application avec les nouvelles informations.
+				\item L'application reçoit les informations met la date depaiement ainsi que le solde du compte à jour dans l'affichage.
+				\item Le client reçoit la confirmation du paiement.
+		\end{enumerate}
 \paragraph{Postconditions :}
+		La GUI affiche l'assurance comme payée et renouvèle la date de paiement. La GUI affiche le compte comme débité.
 
-\newpage
-
-\subsubsection{Payer la primer :}
-
-\paragraph{Acteurs :}
-
-\paragraph{Description :}
-
-\paragraph{Préconditions :}
-
-\paragraph{Fréquence :}
-
-\paragraph{Parcours de base :}
-
-\paragraph{Postconditions :}
+\paragraph{Parcours alternatif :}
+		\begin{enumerate}
+				\item Le serveur vérifie le solde et celui-ci est insuffisant.
+				\item Le serveur envoie une erreur à l'application stipulant que le solde du compte sélectionné est insuffisant.
+				\item Si le client est connecté l'application lui affiche une erreur lui demande de sélectionner un autre compte de provisionner celui sélectionné.
+						Si le client n'est pas connecté il sera immédiatement rediriger vers le paiement lors de sa prochaine connexion au portefeuil lié à 
+						l'assurance. Les mêmes options lui seront proposées.
+				\item On revient au point de vérification du solde dans le parcours de base.		
+		\end{enumerate}
 
 \newpage
 
 \subsubsection{Verser/retirer de l'argent d'une assurance :}
 
 \paragraph{Acteurs :}
-
+		Le client et le serveur.
 \paragraph{Description :}
-
+		Dans le cas d'une assurance qui fonctionne avec des fonds déposés par le client(vie, pension). Le client peut décider d'ajouter de l'argent ou 'en retirer de son
+		assurance.
 \paragraph{Préconditions :}
-
+		Il doit s'agir d'une assurance qui fonctionne avec un principe de cottisation (Assurance vie, assurance pension, etc).
 \paragraph{Fréquence :}
-
+		De temps en temps.
 \paragraph{Parcours de base :}
-
+		\begin{enumerate}
+				\item Le client se trouve dans la gestion de son assurance et décide d'ajouter ou bien de retirer des fonds en cliquant sur les boutons correspondant à ces actions.
+				\item L'application change de scène sur la scène de dépôt ou de retrait.
+				\item Dans le cas du dépôt le client choisit le montant ainsi que le compte qui doit être crédité. Dans le cas d'un retrait, le montant du retrait ainsi que le compte
+						qui doit être provisionné.
+				\item L'application envoie les données récoltées au serveur.
+				\item Dans le cas d'un dépôt le serveur vérifie que le compte qui doit être crédité possède bien au minimum le montant. Dans le cas d'un retrait il vérifie que le montant
+						de l'assurance est au minimum celui fournit.
+				\item Le serveur crédite/provisionne les comptes et assurances et met à jour les montants dans la base de données. Et ensuite renvoie les nouvelles informations à l'application
+						ainsi qu'une confirmation.
+				\item L'application reçoit la confirmation et met à jour l'affichage en fonction des informations renvoyées.
+		\end{enumerate}
 \paragraph{Postconditions :}
+		La GUI affiche les modifications qui ont été effectuées et notifie l'utilisateur que l'opération a bien été effectuée.
+\paragraph{Parcours alternatif :}
+\begin{enumerate}
+		\item Après vérification le serveur détecte qu'un solde n'est pas suffisant.
+		\item Le serveur envoie l'erreur à l'application et annule l'opération.
+		\item L'application affiche l'erreur à l'utilisateur et lui demande dans le cas d'un dépôt de slectionner un autre compte ou bien de l'approvisionner et dans le cas d'un retrait informe le
+				client que le montant demandé n'est pas disponnible.
+		\item Le client sélectionne un autre compte/provisionne le compte ou annule l'opération.
+\end{enumerate}
+\newpage
+\subsection{Use-case Application 2}	
 
-\subsection{Use-case Application 2}
-
-
+		\subsubsection{Répondre à une demande de devis}
+		\paragraph{Acteurs :}
+		L'institution, le serveur, le client.
+		\paragraph{Description :}
+		L'institution génère un devis concernant un ou plusieurs types d'assurances afin de répondre à la demande du client.
+		\paragraph{Préconditions :}
+		Le client doit avoir effectué une demande de devis qui a été envoyée au serveur et que le serveur a envoyé à l'institution.
+		\paragraph{Fréquence :}
+		Rarement
+		\paragraph{Parcours de base :}
+		\begin{enumerate}
+				\item L'insitution sélectionne l'onglet de demandes de devis faites par des clients.
+				\item L'insitution sélectionne une demande de devis en récupère les informations et lance la génération d'un devis avec les informations demandées par l'utilisateur.
+				\item L'application envoie la demande au serveur.
+				\item Le serveur analyses les informations dont il a besoin et retourne à l'applications toutes les assurances correspondant aux critères.
+				\item L'application affiche le devis généré à l'institution.
+				\item L'institution envoie le devis au client l'ayant demandé.
+				\item L'application envoie le devis au serveur.
+				\item Le serveur envoie le devis à l'application client.
+				\item L'application client traite la demande en l'envoyant au client.
+		\end{enumerate}
+		\paragraph{Postconditions :}
+		Dans l'application instituion la demande de devis apparaît comme traitée au niveau de la GUI et dans l'application client le client recevra une réponse à celle-ci.
 \end{document}
