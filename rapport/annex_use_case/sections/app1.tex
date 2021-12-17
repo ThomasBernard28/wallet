@@ -1,7 +1,362 @@
 \documentclass[../rapport.tex]{subfiles}
 
 \begin{document}
-123
+
+
+
+\subsubsection{Créer un compte}
+
+\textbf{Acteurs :} \\
+Créer un compte. \\
+
+\textbf{Description :} \\
+Permet au client de créer un compte avec un mail et un mot de passe pour pouvoir utiliser l’application. \\
+
+\textbf{Précondition :} \\
+L’application est lancée et aucun compte n’est connecté. \\
+
+\textbf{Fréquence :} \\
+Chaque première fois qu’un nouveaux client lance l’application. \\
+
+\textbf{Parcours de base :} \\
+\begin{enumerate}
+    \item Le client clique sur l'option "créer un compte"
+    \item Le client entre le mail et le mot de passe qui ser associé au compte
+    \item L'application emvoie les identifiants au serveur pour vérification
+    \item Le serveur confirme que le mail n'est pas déjà pris
+    \item Le srveur crée le compte dans la base de données
+    \item Le serveur connecte automatiquement le nouveau client
+    \item Le client accède au reste de l'application avec le compte fraichement créé
+\end{enumerate}
+\bigskip
+
+\textbf{Parcours alternatif :}
+\begin{enumerate}
+    \item Le serveur retourne que le mail est déjà associé à un compte existant. L'application le signale au client et le renvoie à l'étape 2
+\end{enumerate}
+
+\textbf{Postconditions :} \\
+Le client est connecté à l'application. \\
+
+
+
+\subsubsection{Se connecter}
+
+\textbf{Acteurs :} \\
+Le client et le serveur. \\
+
+\textbf{Description :} \\
+Permet aux clients de s'identifier et d'accéder à l'application ainsi que toutes ses fonctionnalités. \\
+
+\textbf{Précondition :} \\
+L'application est lancée et le client n'est pas déjà connecté à l'pplication. \\
+
+\textbf{Fréquence :} \\
+A chaque lancement de l'application. \\
+
+\textbf{Parcours de base :} \\
+\begin{enumerate}
+    \item Le client entre ses données d'utilisateur (numéro registre national + mot de passe)
+    \item L'applicaton envoie les données au serveur pour la vérification
+    \item Le serveur confirme que les données sont correctes
+    \item Le client peut accéder aux autres parties de l'application
+\end{enumerate}
+\bigskip
+
+\textbf{Parcours alternatif :}
+\begin{enumerate}
+    \item Les données sont incorrectes, on retourne à l'étape 1
+\end{enumerate}
+
+\textbf{Postconditions :} \\
+Le GUI affiche désormais les différents portefeuilles de l'utilisateur stockés dans la base de donnée. \\
+
+
+
+\subsubsection{Créer un portefeuilles}
+
+\textbf{Acteurs :} \\
+ Le client et le serveur. \\
+
+\textbf{Description :} \\
+Création d'un nouveau portefeuille vide avec le créateur comme gestionnaire et le seul membre du nouveau portefeuille. \\
+
+\textbf{Précondition :} \\
+Pas de préconditions. \\
+
+\textbf{Fréquence :} \\
+Utilisation peur fréquente. \\
+
+\textbf{Parcours de base :} \\
+\begin{enumerate}
+    \item Le client sélectionne l'option de créer un nouveau portefeuille
+\end{enumerate}
+\bigskip
+
+\textbf{Parcours alternatif :}
+\begin{enumerate}
+    \item 
+    \item 
+\end{enumerate}
+
+\textbf{Postconditions :} \\
+. \\
+
+
+
+\subsubsection{}
+
+\textbf{Acteurs :} \\
+. \\
+
+\textbf{Description :} \\
+. \\
+
+\textbf{Précondition :} \\
+. \\
+
+\textbf{Fréquence :} \\
+. \\
+
+\textbf{Parcours de base :} \\
+\begin{enumerate}
+    \item 
+    \item 
+\end{enumerate}
+\bigskip
+
+\textbf{Parcours alternatif :}
+\begin{enumerate}
+    \item 
+    \item 
+\end{enumerate}
+
+\textbf{Postconditions :} \\
+. \\
+
+
+
+\subsubsection{}
+
+\textbf{Acteurs :} \\
+. \\
+
+\textbf{Description :} \\
+. \\
+
+\textbf{Précondition :} \\
+. \\
+
+\textbf{Fréquence :} \\
+. \\
+
+\textbf{Parcours de base :} \\
+\begin{enumerate}
+    \item 
+    \item 
+\end{enumerate}
+\bigskip
+
+\textbf{Parcours alternatif :}
+\begin{enumerate}
+    \item 
+    \item 
+\end{enumerate}
+
+\textbf{Postconditions :} \\
+. \\
+
+
+
+\subsubsection{}
+
+\textbf{Acteurs :} \\
+. \\
+
+\textbf{Description :} \\
+. \\
+
+\textbf{Précondition :} \\
+. \\
+
+\textbf{Fréquence :} \\
+. \\
+
+\textbf{Parcours de base :} \\
+\begin{enumerate}
+    \item 
+    \item 
+\end{enumerate}
+\bigskip
+
+\textbf{Parcours alternatif :}
+\begin{enumerate}
+    \item 
+    \item 
+\end{enumerate}
+
+\textbf{Postconditions :} \\
+. \\
+
+
+
+\subsubsection{}
+
+\textbf{Acteurs :} \\
+. \\
+
+\textbf{Description :} \\
+. \\
+
+\textbf{Précondition :} \\
+. \\
+
+\textbf{Fréquence :} \\
+. \\
+
+\textbf{Parcours de base :} \\
+\begin{enumerate}
+    \item 
+    \item 
+\end{enumerate}
+\bigskip
+
+\textbf{Parcours alternatif :}
+\begin{enumerate}
+    \item 
+    \item 
+\end{enumerate}
+
+\textbf{Postconditions :} \\
+. \\
+
+
+
+\subsubsection{}
+
+\textbf{Acteurs :} \\
+. \\
+
+\textbf{Description :} \\
+. \\
+
+\textbf{Précondition :} \\
+. \\
+
+\textbf{Fréquence :} \\
+. \\
+
+\textbf{Parcours de base :} \\
+\begin{enumerate}
+    \item 
+    \item 
+\end{enumerate}
+\bigskip
+
+\textbf{Parcours alternatif :}
+\begin{enumerate}
+    \item 
+    \item 
+\end{enumerate}
+
+\textbf{Postconditions :} \\
+. \\
+
+
+
+\subsubsection{}
+
+\textbf{Acteurs :} \\
+. \\
+
+\textbf{Description :} \\
+. \\
+
+\textbf{Précondition :} \\
+. \\
+
+\textbf{Fréquence :} \\
+. \\
+
+\textbf{Parcours de base :} \\
+\begin{enumerate}
+    \item 
+    \item 
+\end{enumerate}
+\bigskip
+
+\textbf{Parcours alternatif :}
+\begin{enumerate}
+    \item 
+    \item 
+\end{enumerate}
+
+\textbf{Postconditions :} \\
+. \\
+
+
+
+\subsubsection{}
+
+\textbf{Acteurs :} \\
+. \\
+
+\textbf{Description :} \\
+. \\
+
+\textbf{Précondition :} \\
+. \\
+
+\textbf{Fréquence :} \\
+. \\
+
+\textbf{Parcours de base :} \\
+\begin{enumerate}
+    \item 
+    \item 
+\end{enumerate}
+\bigskip
+
+\textbf{Parcours alternatif :}
+\begin{enumerate}
+    \item 
+    \item 
+\end{enumerate}
+
+\textbf{Postconditions :} \\
+. \\
+
+
+
+\subsubsection{}
+
+\textbf{Acteurs :} \\
+. \\
+
+\textbf{Description :} \\
+. \\
+
+\textbf{Précondition :} \\
+. \\
+
+\textbf{Fréquence :} \\
+. \\
+
+\textbf{Parcours de base :} \\
+\begin{enumerate}
+    \item 
+    \item 
+\end{enumerate}
+\bigskip
+
+\textbf{Parcours alternatif :}
+\begin{enumerate}
+    \item 
+    \item 
+\end{enumerate}
+
+\textbf{Postconditions :} \\
+. \\
 
 \newpage
 \end{document}
