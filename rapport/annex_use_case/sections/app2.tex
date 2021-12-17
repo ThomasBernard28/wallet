@@ -106,123 +106,137 @@ Les virements sont autorisés pour le client. \\
 
 
 
-\subsubsection{}
+\subsubsection{Supprimer un client}
 
 \textbf{Acteurs :} \\
-. \\
+Employé d'une institution et serveur. \\
 
 \textbf{Description :} \\
-. \\
+Supprime définitivement un client de l'institution. \\
 
 \textbf{Précondition :} \\
-. \\
+L’employé d’une institution est connecté, le client est client chez l’institution de l’employé. \\
 
 \textbf{Fréquence :} \\
-. \\
+Occassionel. \\
 
 \textbf{Parcours de base :} \\
 \begin{enumerate}
-    \item 
+    \item L’employé d’une institution  appuie sur le bouton de suppression
+    \item L’employé d’une institution  entre les données du client à supprimer
+    \item L’application affiche un message de confirmation 
+    \item L’employé d’une institution accepte
+    \item L’application envoie la requête de suppression au serveur
 \end{enumerate}
 \bigskip
 
 \textbf{Parcours alternatif :}
 \begin{enumerate}
-    \item 
+    \item L’employé d’une institution effectue un clique droit sur un client puis l’application affiche des options supplémentaires, l’employé d’une institution sectionne la suppression du client, l’application affiche un message de confirmation, l’employé d’une institution confirme, la requête est envoyé au serveur
+    \item L’employé d’une institution refuse, la fenêtre se ferme et aucune opération n’est effectué
+    \item Une erreur de connexion a lieu et la requête a échoué, l’employé d’une institution et averti et retourne la liste des clients
 \end{enumerate}
 
 \textbf{Postconditions :} \\
-. \\
+Le client est supprimé et ne figure plus dans la liste des clients. \\
 
 
 
-\subsubsection{}
+\subsubsection{Supprimer un produit financier}
 
 \textbf{Acteurs :} \\
-. \\
+Employé d'une institution et serveur. \\
 
 \textbf{Description :} \\
-. \\
+Supprime définitivement un prodiut financier d'un client. \\
 
 \textbf{Précondition :} \\
-. \\
+L'employé d'une institution est connecté, le client est client chez l'institution de l'employé. \\
 
 \textbf{Fréquence :} \\
-. \\
+Occassionel. \\
 
 \textbf{Parcours de base :} \\
 \begin{enumerate}
-    \item 
+    \item L’employé d’une institution appuie sur le bouton de suppression
+    \item L’employé d’une institution  entre les données du client et du produit à supprimer
+    \item L’application affiche un message de confirmation
+    \item L’employé d’une institution accepte
+    \item L’application envoie la requête de suppression au serveur
 \end{enumerate}
 \bigskip
 
 \textbf{Parcours alternatif :}
 \begin{enumerate}
-    \item 
+    \item L’employé d’une institution effectue un clique droit sur un client puis l’application affiche des options supplémentaires, l’employé d’une institution sectionne la suppression du produit, l’ employé sélectionne le produit à supprimer l’application affiche un message de confirmation, l’employé d’une institution confirme, la requête est envoyé au serveur 
+    \item L’employé d’une institution refuse, la fenêtre se ferme et aucune opération n’est effectué
+    \item Une erreur de connexion a lieu et la requête a échoué, l’employé d’une institution  est averti et retourne la liste des clients
 \end{enumerate}
 
 \textbf{Postconditions :} \\
-. \\
+le produit financier est supprimé et ne figure plus dans la liste du client qui le possédait. \\
 
 
 
-\subsubsection{}
+\subsubsection{Ajouter un produit financier}
 
 \textbf{Acteurs :} \\
-. \\
+Employé d'une institution et serveur. \\
 
 \textbf{Description :} \\
-. \\
+Ajoute un produit financier à un client. \\
 
 \textbf{Précondition :} \\
-. \\
+L’employé d’une institution est connecté le client possède un compte chez l’institution. \\
 
 \textbf{Fréquence :} \\
-. \\
+Souvent. \\
 
 \textbf{Parcours de base :} \\
 \begin{enumerate}
-    \item 
+    \item L’employé d’une institution appuie sur le bouton d’ajout
+    \item L’employé d’une institution entre les données du client et du produit à ajouter
+    \item L’application affiche un message de confirmation
+    \item L’employé d’une institution accepte
+    \item L’application envoie la requête de suppression au serveur
 \end{enumerate}
 \bigskip
 
 \textbf{Parcours alternatif :}
 \begin{enumerate}
-    \item 
+    \item L’employé d’une institution effectue un clique droit sur un client puis l’application affiche des options supplémentaires, l’employé d’une institution sectionne l’ajout d’un produit, l’ employé entre les données du produit à ajouter l’application affiche un message de confirmation, l’employé d’une institution confirme, la requête est envoyé au serveur
+    \item L’employé d’une institution refuse, la fenêtre se ferme et aucune opération n’est effectué
+    \item Une erreur de connexion a lieu et la requête a échoué, l’employé d’une institution est averti et retourne la liste des clients
 \end{enumerate}
 
 \textbf{Postconditions :} \\
-. \\
+Le produit financier est ajouté et figure dans la liste du client qui le possède. \\
 
 
 
-\subsubsection{}
+\subsubsection{Trier les produits financiers}
 
 \textbf{Acteurs :} \\
-. \\
+Employé d'une institution. \\
 
 \textbf{Description :} \\
-. \\
+L'employé d'une institution trie la liste des produits financiers. \\
 
 \textbf{Précondition :} \\
-. \\
+L'employé d'une institution est connecté. \\
 
 \textbf{Fréquence :} \\
-. \\
+Souvent. \\
 
 \textbf{Parcours de base :} \\
 \begin{enumerate}
-    \item 
+    \item L’ employé d’une institution sélectionne en fonction de quoi il souhaite trier les produis financier
+    \item L’application trie les produits financier
 \end{enumerate}
 \bigskip
 
-\textbf{Parcours alternatif :}
-\begin{enumerate}
-    \item 
-\end{enumerate}
-
 \textbf{Postconditions :} \\
-. \\
+La liste est triée. \\
 
 \newpage
 \end{document}
