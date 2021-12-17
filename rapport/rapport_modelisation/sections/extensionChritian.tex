@@ -66,9 +66,9 @@
 					Si la transaction n'a pas été effectué le client est notifié avec un message.
                     La procédure est identique pour le payment sans contact hormis le fait qu'en cas de faible suspicion , le mot de passe de l'utilisateur est demandé.
 \newpage
-			\paragraph{Generer un QRcode}:}
+			\paragraph{Generer un QRcode :}
 						\begin{figure}[h!]
-								\centering\includegraphics[scale=0.3]{ressources/photos_diagrammes/extensionChristian/interactionapp1/Generer_un_code_QR.jpg.}
+								\centering\includegraphics[scale=0.3]{ressources/photos_diagrammes/extensionChristian/interactionapp1/Generer_un_code_QR.jpg}
 								\caption{ Geénère un QRcode}
 						\end{figure}
 					Le client peut générer un QRcode et elle se stocke localement. Il a pour ça beosin de rentrer le compte sur le quel il souhaite recevoir l'argent,
@@ -93,11 +93,11 @@
 						\centering\includegraphics[scale=0.15]{ressources/photos_diagrammes/extensionChristian/classapp2/ClassDiagram.jpg}
 				\end{figure}
 		Dans le package App j'ai rajouté des attributs référant au diffèrent types de limites qui peuvent être mise sur les virement avec ou sans contact.
-        L'objet \textit{Institution} possède désormais une méthode permettant de définir les limites des virment avec ou sans contact nomée \textit{set_limits}.
+        L'objet \textit{Institution} possède désormais une méthode permettant de définir les limites des virment avec ou sans contact nomée \textit{set\_limits}.
 
 		\bigskip
 
-		L'API contiens maintenant des méthodes permetant d'envoyer \textit{set_limts} et de recevoir \textit{get_limits}
+		L'API contiens maintenant des méthodes permetant d'envoyer \textit{set\_limts} et de recevoir \textit{get\_limits}
         du serveur.
 
 		\bigskip
@@ -114,7 +114,7 @@
 
 				Si l'employé d'une institution a besoin de définir des plafonds sur les virement avec ou sans contact il peux le faire en effectuant un clique droit sur le menu des clients.
                 Grace à ça il a maintenant accès à différentes options parmis lesquelles se trouve la définitions de limits. En cliquant dessus , il poura entrer les différentes valeurs
-                des limites souhaitées et confirmer celles-ci. Après confirmation, la GUI au travers de la méthode \textit{et_limits()} d'Institution va envoyer ces limites à l'API.
+                des limites souhaitées et confirmer celles-ci. Après confirmation, la GUI au travers de la méthode \textit{et\_limits()} d'Institution va envoyer ces limites à l'API.
                 
 \newpage
 		\subsubsection{Serveur}
