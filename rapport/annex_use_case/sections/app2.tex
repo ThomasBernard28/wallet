@@ -1,7 +1,228 @@
 \documentclass[../rapport.tex]{subfiles}
 
 \begin{document}
-123
+
+
+
+\subsubsection{Ajouter un client}
+
+\textbf{Acteurs :} \\
+Employé d'une institution et serveur. \\
+
+\textbf{Description :} \\
+Ajoute un nouvau client. \\
+
+\textbf{Précondition :} \\
+L'employé de l;institution est connecté. \\
+
+\textbf{Fréquence :} \\
+Souvent. \\
+
+\textbf{Parcours de base :} \\
+\begin{enumerate}
+    \item L’employé de l’institution appuie sur le bouton d’ajout de client
+    \item L’employé de l’institution entre les donnée du client (nom, prénom, numéro	de registre national)
+    \item L’employé de l’institution entre les donnée du produit financier auquel le client souhaite souscrire
+    \item L’application envoie un message de confirmation
+    \item L’employé de l’institution accepte
+    \item L’application envoie la requête d’ajout au serveur
+\end{enumerate}
+\bigskip
+
+\textbf{Parcours alternatif :}
+\begin{enumerate}
+    \item L'employé de l'institution refuse, le message se ferme et aucune opération n'est effectuée et l'employé de l'institution est renvoyé sur la fenêtre d'ajout de client
+    \item Une erreur de connexion a lieu et la requête a échoué, l'employé de l'institution est averti et est renvoyé sur la fenêtre d'ajout de client
+\end{enumerate}
+
+\textbf{Postconditions :} \\
+Le client est ajouté comme clinet de l'institution financière. \\
+
+
+
+\subsubsection{Consulter la liste des clients et leurs produits financiers}
+
+\textbf{Acteurs :} \\
+L'employé de l'instiution et le serveur. \\
+
+\textbf{Description :} \\
+Permet a  l’employé de l’institution de pouvoir consulter la liste des clients de l’institution financière chez qui l’employé travail ainsi que leurs produits financier. \\
+
+\textbf{Précondition :} \\
+L’employé de l’institution est connecté. \\
+
+\textbf{Parcours de base :} \\
+\begin{enumerate}
+    \item L’employé de l’institution appuie sur le bouton pour consulter la liste de clients ainsi que leurs produits financier
+    \item L’application envoie une requête au serveur 
+    \item Le serveur reçoit la requête
+    \item Le serveur envoie les données nécessaire
+\end{enumerate}
+\bigskip
+
+\textbf{Parcours alternatif :}
+\begin{enumerate}
+    \item Il y a un problème de connexion, l'employé de l'institution est averti et est renvoyé sur le menu de base
+\end{enumerate}
+
+\textbf{Postconditions :} \\
+L'application affiche la liste de client et leurs produits financiers. \\
+
+
+
+\subsubsection{Activer les virements}
+
+\textbf{Acteurs :} \\
+Employé d'une institution et serveur. \\
+
+\textbf{Description :} \\
+. \\
+
+\textbf{Précondition :} \\
+L'employé d'une institution est connecté et le client de l'institution a effectué la demande d'activation de virement bancaire. \\
+
+\textbf{Fréquence :} \\
+. \\
+
+\textbf{Parcours de base :} \\
+\begin{enumerate}
+    \item L'employé d'une institution appuie sur le bouton pour consulter les demandes d'activation de virement
+    \item L'employé d'une institution accepte la demande du client
+    \item L'application envoie un message de confirmation
+    \item L'empployé d'une institution confirme
+    \item Les informations sont envoyées au serveur
+    \item Le serveur reçoit les informations
+\end{enumerate}
+\bigskip
+
+\textbf{Parcours alternatif :}
+\begin{enumerate}
+    \item L'employé d'une institution refuse et il est renvoyé sur la fenêtre contenant les demandes d'activation de virement.
+    \item Il y a une problème de connexion, l'employé de l'institution est averti et est renvoyé sur la fenêtre contenant les demandes d'activation de virement
+\end{enumerate}
+
+\textbf{Postconditions :} \\
+Les virements sont autorisés pour le client. \\
+
+
+
+\subsubsection{}
+
+\textbf{Acteurs :} \\
+. \\
+
+\textbf{Description :} \\
+. \\
+
+\textbf{Précondition :} \\
+. \\
+
+\textbf{Fréquence :} \\
+. \\
+
+\textbf{Parcours de base :} \\
+\begin{enumerate}
+    \item 
+\end{enumerate}
+\bigskip
+
+\textbf{Parcours alternatif :}
+\begin{enumerate}
+    \item 
+\end{enumerate}
+
+\textbf{Postconditions :} \\
+. \\
+
+
+
+\subsubsection{}
+
+\textbf{Acteurs :} \\
+. \\
+
+\textbf{Description :} \\
+. \\
+
+\textbf{Précondition :} \\
+. \\
+
+\textbf{Fréquence :} \\
+. \\
+
+\textbf{Parcours de base :} \\
+\begin{enumerate}
+    \item 
+\end{enumerate}
+\bigskip
+
+\textbf{Parcours alternatif :}
+\begin{enumerate}
+    \item 
+\end{enumerate}
+
+\textbf{Postconditions :} \\
+. \\
+
+
+
+\subsubsection{}
+
+\textbf{Acteurs :} \\
+. \\
+
+\textbf{Description :} \\
+. \\
+
+\textbf{Précondition :} \\
+. \\
+
+\textbf{Fréquence :} \\
+. \\
+
+\textbf{Parcours de base :} \\
+\begin{enumerate}
+    \item 
+\end{enumerate}
+\bigskip
+
+\textbf{Parcours alternatif :}
+\begin{enumerate}
+    \item 
+\end{enumerate}
+
+\textbf{Postconditions :} \\
+. \\
+
+
+
+\subsubsection{}
+
+\textbf{Acteurs :} \\
+. \\
+
+\textbf{Description :} \\
+. \\
+
+\textbf{Précondition :} \\
+. \\
+
+\textbf{Fréquence :} \\
+. \\
+
+\textbf{Parcours de base :} \\
+\begin{enumerate}
+    \item 
+\end{enumerate}
+\bigskip
+
+\textbf{Parcours alternatif :}
+\begin{enumerate}
+    \item 
+\end{enumerate}
+
+\textbf{Postconditions :} \\
+. \\
 
 \newpage
 \end{document}

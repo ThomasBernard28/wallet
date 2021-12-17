@@ -212,163 +212,146 @@ Le portefeuille ne contient plus le produit financier supprimé. \\
 
 
 
-\subsubsection{}
+\subsubsection{Souscrire un produit financier}
 
 \textbf{Acteurs :} \\
-. \\
+Client et serveur. \\
 
 \textbf{Description :} \\
-. \\
+Ajoute un produit financier. \\
 
 \textbf{Précondition :} \\
-. \\
+Le client est connecté et possède au moins un portefeuille. \\
 
 \textbf{Fréquence :} \\
-. \\
+Occasionnel. \\
 
 \textbf{Parcours de base :} \\
 \begin{enumerate}
-    \item 
-    \item 
+    \item L'utilisateur appuie sur le bouton d'ajout
+    \item Le client choisit le type de produit financier
+    \item L'application affiche un message de confirmation
+    \item L'utilisateur accepte
+    \item L'application envoie la requête d'ajout au serveur
 \end{enumerate}
 \bigskip
 
 \textbf{Parcours alternatif :}
 \begin{enumerate}
-    \item 
-    \item 
+    \item L'utilisateur refuse, la fenêtre se ferme et aucune opération n'est effectuée
+    \item Une erreur de connexion a lieu et la requête a échoué, l'utilisateur est averti
 \end{enumerate}
 
 \textbf{Postconditions :} \\
-. \\
+Le portefeuille contient le produit financier ajouté. \\
 
 
 
-\subsubsection{}
+\subsubsection{Afficher l'historique de transaction}
 
 \textbf{Acteurs :} \\
-. \\
+Client et serveur. \\
 
 \textbf{Description :} \\
-. \\
-
-\textbf{Précondition :} \\
-. \\
+Affiche la liste de toutes les transactions effectuées. \\
 
 \textbf{Fréquence :} \\
-. \\
+Souvent. \\
 
 \textbf{Parcours de base :} \\
 \begin{enumerate}
-    \item 
-    \item 
+    \item L’utilisateur sélectionne l’option d’affichage de l’historique
+    \item L’application envoie une requête au serveur pour accéder a l’historique
 \end{enumerate}
 \bigskip
 
 \textbf{Parcours alternatif :}
 \begin{enumerate}
-    \item 
-    \item 
+    \item Une erreur de connexion a lieu et la requête échoue, l’utilisateur est averti
 \end{enumerate}
 
 \textbf{Postconditions :} \\
-. \\
+L’application affiche l’historique de transaction. \\
 
 
 
-\subsubsection{}
+\subsubsection{Effectuer une transaction}
 
 \textbf{Acteurs :} \\
-. \\
+Client et serveur. \\
 
 \textbf{Description :} \\
-. \\
+Le client peut effectuer une transaction. \\
 
 \textbf{Précondition :} \\
-. \\
+L'utilisateur est connecté. \\
 
 \textbf{Fréquence :} \\
-. \\
+Souvent. \\
 
 \textbf{Parcours de base :} \\
 \begin{enumerate}
-    \item 
-    \item 
+    \item L’utilisateur sélectionne l’option de transaction
+    \item L’utilisateur choisit le compte du quel effectuer la transaction
+    \item L’utilisateur entre le compte du receveur
+    \item L’utilisateur entre le montant de la transactions
+    \item L’utilisateur entre une communication ( structurée ou non )
+    \item L’application affiche un message de résumé de la transaction
+    \item L’utilisateur confirme en entrant son code
+    \item L’application envoie une requête au serveur pour la transactions
+    \item Le serveur retire l’argent sur le compte du client
+    \item Le serveur ajoute l’argent sur le compte du receveur
 \end{enumerate}
 \bigskip
 
 \textbf{Parcours alternatif :}
 \begin{enumerate}
-    \item 
-    \item 
+    \item L’utilisateur se trompe de code, un message d’avertissement est affiché et il est invité a réessayer
+    \item Une erreur de connexion a lieu et la requête échoue, l’utilisateur est avertis et la transaction est annulée
+    \item Une erreur de connexion a lieu et la requête échoue, l’utilisateur est avertis la transaction est annulée
 \end{enumerate}
 
 \textbf{Postconditions :} \\
-. \\
+La transaction est effectuée et le montant est débité. \\
 
 
 
-\subsubsection{}
+\subsubsection{Ajouter un co-titulaire}
 
 \textbf{Acteurs :} \\
-. \\
+Client 1, client 2 et le serveur. \\
 
 \textbf{Description :} \\
-. \\
+Le client 1 ajoute le client 2 comme co-titulaire sur un produit financiers. \\
 
 \textbf{Précondition :} \\
-. \\
+Le client 1 est connecté , le client 2 possède un compte dans la même institution financière que le client 1. \\
 
 \textbf{Fréquence :} \\
-. \\
+Occasionnel. \\
 
 \textbf{Parcours de base :} \\
 \begin{enumerate}
-    \item 
-    \item 
+    \item Le client 1 sélectionne le produit financier pour le quelle il souhaite ajouter un co-titulaire
+    \item Le client 1 entre les identifiants du client 2 ( nom prénom et numéro de registre nationale)
+    \item L’application affiche un message de confirmation
+    \item Le client 1 confirme
+    \item Le client 2 est avertie de la procédure
+    \item L’application affiche un message de confirmation au client 2
+    \item Le client 2 confirme
+    \item L’application envoie la requête au serveur
 \end{enumerate}
 \bigskip
 
 \textbf{Parcours alternatif :}
 \begin{enumerate}
-    \item 
-    \item 
+    \item Le client 1 refuse et il est renvoyé le GUI d’ajout de co-titulaire
+    \item Le client 2 refuse, la procédure est annulée 
+    \item Une erreur de connexion a lieu et la requête échoue, l’utilisateur est averti et l’ajour du co-titulaire est annulée
 \end{enumerate}
 
 \textbf{Postconditions :} \\
-. \\
-
-
-
-\subsubsection{}
-
-\textbf{Acteurs :} \\
-. \\
-
-\textbf{Description :} \\
-. \\
-
-\textbf{Précondition :} \\
-. \\
-
-\textbf{Fréquence :} \\
-. \\
-
-\textbf{Parcours de base :} \\
-\begin{enumerate}
-    \item 
-    \item 
-\end{enumerate}
-\bigskip
-
-\textbf{Parcours alternatif :}
-\begin{enumerate}
-    \item 
-    \item 
-\end{enumerate}
-
-\textbf{Postconditions :} \\
-. \\
+Le client 2 est ajouté en tant que co-titulaire du produit financier et peux maintenant le consulter et le modifer. \\
 
 \newpage
 \end{document}
