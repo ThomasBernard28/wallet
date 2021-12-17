@@ -1,0 +1,105 @@
+\documentclass[../annexe.tex]{subfiles}
+\graphicspath{{\subfix{ressources}}}
+
+\begin{document}
+
+
+\subsection{Use-case Application 1}
+
+
+    \subsubsection{Demande de paiement par code QR} 
+
+        \paragraph{Acteurs: Client d’une institution}
+        \paragraph{Description: Le client génère un code QR qui, une fois scanné, permettra d’effectuer une transaction}
+        \paragraph{Précondition: Le clien est connecté à l’application}
+        \paragraph{Fréquence: Occasionnelle}
+        \paragraph{Parcours de base:} 
+        \begin{enumerate}
+        \item  Le client clique sur le bouton QR code.
+        \item  Le client choisit l’option «  create payment request ».
+        \item  Le client entre le numéro du compte bancaire sur le quel sera versé l’argent.
+        \item  Le client entre le montant de la transaction.
+        \item  Le client entre un message qui sera affiché quand la transaction sera effectuée.
+        \item  Le client clique sur bouton « generate ».
+        \item  L’application génère un code QR et le stock localement. 
+        \end{enumerate}
+            \paragraph{Parcours alternatif:\  } 
+        \paragraph{Postcondition: Le code QR est généré. }
+
+\newpage    
+
+
+    \subsubsection{Payement par code QR }
+
+        \paragraph{Acteurs: Client d’une institution et le serveur}
+        \paragraph{Description: Le client effectue une transaction en scannant un code QR.}
+        \paragraph{Précondition: Le clien est connecté à l’application.}
+        \paragraph{Fréquence: Occasionnelle}
+        \paragraph{Parcours de base:}
+        \begin{enumerate}
+            \item  Le client clique sur le bouton QR code.
+            \item  Le client choisit l’option « load payment request ».
+            \item  Le client entre le numéro du compte bancaire sur le quel l’argent sera débité.
+            \item  Le client clique sur le bouton «load».
+            \item  Le client choisit le code QR à scanner.
+            \item  Le client confirme le scan.
+            \item  Le l’application envoie la requête au serveur.
+            \item  Le serveur effectue la requête. 
+        \end{enumerate}
+            \paragraph{Parcours alternatif:} 
+        \begin{itemize}
+            \item[7.b] Une erreur de connexion a lieu et la requête a échoué, le client est averti,
+            il est redirigé vers le menu de payement par code QR
+        \end{itemize} 
+        \paragraph{Postcondition: La transaction est effectuée.}
+\newpage
+  
+        \subsubsection{Effecteur un payement avec/sans contact }
+  
+        \paragraph{Acteurs: Client d’une institution et le serveur}
+        \paragraph{Description: Le client effectue un virement rapide avec/sans contact}
+        \paragraph{Précondition: Le client est connecté à l’application}
+        \paragraph{Fréquence: Souvent}
+        \paragraph{Parcours de base: }
+        \begin{enumerate}
+            \item  Le client sélectionne l’option de payement rapide.
+            \item  Le client entre le compte qui sera débité.
+            \item  Le client sélectionne la transaction qu’il souhaite effectuer.
+            \item  Le client choisit le payement avec contact.
+            \item  Le client entre le code PIN du compte bancaire.
+            \item  Le client confirme la transaction.
+            \item  Le l’application envoie la requête au serveur.
+            \item  Le serveur effectue la requête.
+        \end{enumerate}
+            \paragraph{Parcours alternatif:} 
+        \begin{itemize}
+            \item[4.b] Le client choisit le payement sans contacte, la transaction est effectué
+            \item[5.b] Le client se trompe de code PIN, il ne lui reste plus que 2 chances pour entrer le bon code PIN
+            \item[8.b] Une erreur de connexion a lieu et la requête a échoué, le client est averti, il est redirigé vers le menu de payement rapide
+        \end{itemize} 
+        \paragraph{Postcondition: Le virement est effectué.}
+\newpage
+  
+        \subsubsection{Gérer les limites des payement avec/sans contact}
+  
+        \paragraph{Acteurs: Employé d’une institution financière et le serveur}
+        \paragraph{Description: L’employé de l’institution financière peux changer le plafond limite (quotidien, hebdomadaire, mensuel) pour les payements avec ou sans contact}
+        \paragraph{Précondition: L’em­ployé est connecté} 
+        \paragraph{Fréquence: Occasionnelle}
+        \paragraph{Parcours: de base} 
+        \begin{enumerate}
+            \item  L’employé clique sur le bouton pour définir les plafonds.
+            \item  L’employé entre les différents plafonds.
+            \item  L’employé confirme les plafonds.
+            \item  L’application envoie la requête au serveur.
+            \item  Le serveur effectue la requête.
+        \end{enumerate}
+        \paragraph{Parcours alternatif:} 
+        \begin{itemize}
+            \item[2.b] L’employé coche l’option pour ne pas mettre de plafonds, aucun plafond n'est appliqué.
+            \item[5.b] Une erreur de connexion a lieu et la requête a échoué, l’employé est averti, il est redirigé vers le menu de définition de plafonds.
+        \end{itemize} 
+            \paragraph{Postcondition: Les plafonds sont définis.}
+    
+
+\end{document}
