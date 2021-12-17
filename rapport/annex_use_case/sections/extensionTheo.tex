@@ -1,0 +1,25 @@
+\documentclass[../annexe.tex]{subfiles}
+\graphicspath{{\subfix{ressources}}}
+
+\begin{document}
+
+\subsection{Use-case Application 1}	
+
+\subsubsection{Se connecter via une carte}
+\paragraph{Acteurs : Le client et le serveur}
+\paragraph{Description : Le client s'autentifie au moyen d'une de ses cartes de paiement.}
+\paragraph{Préconditions : Le client possède au moins une carte liée à une instituion.}
+\paragraph{Fréquence :rarement}
+\paragraph{Parcours de base :}
+\begin{enumerate}
+	\item{L'application génère un code unique.}
+	\item{Le client insère sa carte dans le lecteur de carte.}
+	\item{Le client clique sur le bouton login du lecteur de carte et entre le code généré par l'application.}
+	\item{Le client entre son code pin.}
+	\item{Le lecteur de carte génère un code d'autentification.}
+	\item{Le client entre le code d'autentification dans l'application.}
+\end{enumerate}
+\paragraph{Parcours alternatif :}
+\paragraph{Postconditions :Le client est connecté.}
+
+\end{document}
