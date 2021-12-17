@@ -90,113 +90,125 @@ Utilisation peur fréquente. \\
 \textbf{Parcours de base :} \\
 \begin{enumerate}
     \item Le client sélectionne l'option de créer un nouveau portefeuille
+    \item Le client choisit une institution financière (où il possède déjà un produit financier)
+    \item L'application envoie la demande au serveur
+    \item Le serveur confirme la demande
+    \item L'utilisateur est renvoyé sur le GUI "Wallet list"
+    \item Le serveur renvoie la demande sur l'application 2 de l'institution financière
+    \item L'institution financière confirme la demande de création de portefeuille
+    \item L'application 2 renvoie la confirmation au serveur
 \end{enumerate}
 \bigskip
 
 \textbf{Parcours alternatif :}
 \begin{enumerate}
-    \item 
-    \item 
+    \item Une erreur de connexion à lieu, la requête échoue, l'utilisateur est averti, la créaton de portefeuille est annulée, l'utilisateur est renvoyé sur le GUI "Wallet list"
+    \item Le serveur refuse la demande, la création de portefeuille est annulée, le client est averti, l’utilisateur est renvoyé sur la GUI "Wallets list"
+    \item Une erreur de connexion à lieu , la requête échoue, l’utilisateur est averti, la création de portefeuille est annulée
+    \item L’institution financière refuse, l’utilisateur est notifié, la création de portfeuille est annulée
+    \item Une erreur de connexion à lieu, la requête échoue, l’utilisateur est averti, la création de portefeuille est annulée
 \end{enumerate}
 
 \textbf{Postconditions :} \\
-. \\
+Un nouveau portefeuille a été créé / un nouveau portefeuille n'a pas été créé. \\
 
 
 
-\subsubsection{}
+\subsubsection{Supprimer le portefeuille}
 
 \textbf{Acteurs :} \\
-. \\
+Le client et le serveur. \\
 
 \textbf{Description :} \\
-. \\
+Supprime le portefeuille sélectionné. \\
 
 \textbf{Précondition :} \\
-. \\
+Le consommateur est un gestionnaire du portefeuille. \\
 
 \textbf{Fréquence :} \\
-. \\
+Utilisation peur fréquente. \\
 
 \textbf{Parcours de base :} \\
 \begin{enumerate}
-    \item 
-    \item 
+    \item Le gestionnaire du portefeuille sélectionne l’option de suppression du portefeuille en question
+    \item L’application affiche un avertissement et demande une confirmation
+    \item Le gestionnaire confirme la suppression
+    \item L’application envoie une requête au serveur de supprimer le portefeuille en question de la base de données et l’enlève de la liste de portefeuilles de tous les membres du portefeuille supprimé
+    \item L’application renvoi l’ancien gestionnaire vers sa liste de portefeuilles
 \end{enumerate}
 \bigskip
 
 \textbf{Parcours alternatif :}
 \begin{enumerate}
-    \item 
-    \item 
+    \item L'utilisateur annule la suppression, l'application le renvoie vers la fenêtre du portefeuille en question
+    \item Une erreur de connexion a eu lieu et la requête a échoué, pas de suppression du portefeuille en question
 \end{enumerate}
 
-\textbf{Postconditions :} \\
-. \\
 
 
-
-\subsubsection{}
+\subsubsection{Consulter portefeuille}
 
 \textbf{Acteurs :} \\
-. \\
+Le client et le serveur. \\
 
 \textbf{Description :} \\
-. \\
+Le client accède au portefeuille et y retrouve tout ses produits financiers. \\
 
 \textbf{Précondition :} \\
-. \\
+Le client est connecté à son compte et possède au moins un portefeuille. \\
 
 \textbf{Fréquence :} \\
-. \\
+Très souvent. \\
 
 \textbf{Parcours de base :} \\
 \begin{enumerate}
-    \item 
-    \item 
+    \item Le client sélectionne le portefeuille à consulter
+    \item L'application fait une requête au serveur pour avoir les produits financiers dans le portefeuille
+    \item L'application affiche les produits financiers qui sont dans le portefeuille
 \end{enumerate}
 \bigskip
 
 \textbf{Parcours alternatif :}
 \begin{enumerate}
-    \item 
-    \item 
+    \item Une erreur de connexion a eu lieu et la requête a échoué, l'utilisateur est averti et retourne sur le GUI "Home page"
 \end{enumerate}
 
 \textbf{Postconditions :} \\
-. \\
+L'application affiche désormais le portefeuille que l'utilisateur veux consulter. \\
 
 
 
-\subsubsection{}
+\subsubsection{Supprimer un produit financier}
 
 \textbf{Acteurs :} \\
-. \\
+Client et serveur. \\
 
 \textbf{Description :} \\
-. \\
+Supprime le dit produit financier. \\
 
 \textbf{Précondition :} \\
-. \\
+Le client est connecté, un portefeuille contenant au moins un produit financier existe. \\
 
 \textbf{Fréquence :} \\
-. \\
+Occasionnel. \\
 
 \textbf{Parcours de base :} \\
 \begin{enumerate}
-    \item 
-    \item 
+    \item L’utilisateur appuie sur le bouton de suppression correspondant au produit financier qu’il souhaite supprimer
+    \item L’application affiche un message de confirmation
+    \item L’utilisateur accepte
+    \item L’application envoie la requête de suppression au serveur
 \end{enumerate}
 \bigskip
 
 \textbf{Parcours alternatif :}
 \begin{enumerate}
-    \item 
-    \item 
+    \item L'utilisateur refuse, la fenêtre se ferme et aucune opération n'est effectuée
+    \item Une erreur de connexion a eu lieu et la requête a échoué, l'utilisateur est averti et retourne la liste des produits financiers
 \end{enumerate}
 
 \textbf{Postconditions :} \\
-. \\
+Le portefeuille ne contient plus le produit financier supprimé. \\
 
 
 
