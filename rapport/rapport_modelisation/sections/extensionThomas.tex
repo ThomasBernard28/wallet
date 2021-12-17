@@ -36,7 +36,7 @@
 \newpage
 		\subsubsection{Diagrammes de classe}
 				\begin{figure}[h]
-						\centering\includegraphics[scale=0.15]{ressources/photos_diagrammes/extensionThomas/class1ExtensionThomas.jpg}
+						\centering\includegraphics[scale=0.15]{ressources/photos_diagrammes/extensionThomas/classes1Thomas.jpg}
 						\caption{Diagramme de classes de l'app 1 avec extension}
 				\end{figure}
 		Dans la partie logique de l'application (package APP) deux classes ont été rajoutées :
@@ -69,7 +69,14 @@
 		Dans la partie interface graphique (package GUI) il s'agit principalement de nouvelles 
 		scènes rajoutées à la manière des scènes de l'application de base. Il n'y a pas de 
 		point particulier à expliquer ici.
-
+		
+		\subsubsection{Diagrammes de séquence}
+				\paragraph{Souscrire à une assurance :}
+						\begin{figure}[h]
+								\centering\includegraphics[scale=0.4]{ressources/photos_diagrammes/extensionThomas/souscrireAssurance.jpg}
+								\caption{Souscrire à une assurance}
+						\end{figure}
+					Lorsque le client souhaite souscrire à une assurance 			
 		\subsubsection{Application 2}
 
 		\subsubsection{Diagramme des cas d'utilisitation}
@@ -94,7 +101,7 @@
 		\subsubsection{Diagramme de classes}
 
 				\begin{figure}[h]
-						\centering\includegraphics[scale=0.15]{ressources/photos_diagrammes/extensionThomas/class2ExtensionThomas.jpg}
+						\centering\includegraphics[scale=0.15]{ressources/photos_diagrammes/extensionThomas/classes2Thomas.jpg}
 				\end{figure}
 		Au niveau de la logique de l'application (package APP) mise à part le fait que la classe 
 		\textbf{Insurance} est maintenant reliée à la classe \textbf{Client} du fait que les 
@@ -127,7 +134,18 @@
 						un client en particulier
 		\end{enumerate} 
 \newpage
+		\subsubsection{Diagrammes de séquences}
+				\begin{figure}[h]
+						\centering\includegraphics[scale=0.3]{ressources/photos_diagrammes/extensionThomas/reponseDevis.jpg}
+						\caption{Réponse à une demande de devis}
+				\end{figure}
 
+				L'insitution lorsque décide d'accèder à la scène des demande devis envoie une
+				reqûete à l'API qui va rechercher la liste des demandes de devis qui sont propres
+				à l'institution dans la base de données. Ainsi quand la scène est affichée la 
+				liste l'est également. Lorsque que l'insitution appuie sur answer une requête est
+				envoyée à l'API qui va chercher les informations liées au type d'assurance demandé
+				par le client et le stocke dans la base de données.
 		\subsubsection{Serveur}
 		\subsubsection{Diagramme d'entité relation}
 
