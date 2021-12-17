@@ -87,7 +87,20 @@
 \pagenumbering{arabic}
 
 \section{Introduction}
+		Ce rapport recense tous les diagrammes UML composant nos applications de base ainsi que les 4 extensions de notre groupe. Ce rapport contient également le 
+		diagramme d'API ainsi que les diagrammes d'entité-relation général et ses versions étendues pour chacune de nos extensions.  
+		Le projet est composé de 2 applications : L'application 1 qui est une application de gestions de portfeuilles d'un point de vue client et l'application 2 qui 
+		est l'application de gestion du point de vue institutionnel. Ces deux applications ont une modélisation assez semblable en terme d'achitecture mais diffèrent
+		l'une de l'autre du point de vue de leurs fonctionnalités.
+		\bigskip
 
+		Notre phase de modélisation a parfois été semée d'embuches. Tantôt dans la compréhension des consignes tantôt dans la découverte de certains concepts informatiques
+		qui nous étaient encore inconnus jusque là. Nous avons toutefois su faire nos recherche afin d'amener notre compréhension à un niveau suffisant pour nous permettre
+		de manipuler non sans difficulté et maladresse ces nouveaux concepts.
+
+		\bigskip
+
+		Cette modélisation nous a permis de mieux nous projeter dans ce que sera l'implémentation du projet.
 \section{Applications de bases}
 
 	\subsection{Application1 : Gestion de portefeuilles financiers}
@@ -101,13 +114,12 @@
 		\subsubsection{Diagramme de cas d'utilisation}
 				
 				\subfile{sections/usecase1}
-		\newpage
 		\subsubsection{Interaction Overview Diagram}
 		
 				\subfile{sections/rapportInteractionOverviewApp1}
 		
 		\subsubsection{Diagramme de classes}
-
+				\subfile{sections/class1}
 		\subsubsection{Diagrammes de séquences}
 
                 \subfile{sections/sequences1}
@@ -128,9 +140,9 @@
 				\subfile{sections/rapportInteractionOverviewApp2}
 
 		\subsubsection{Diagramme de classes}
-
+				\subfile{sections/class2}
 		\subsubsection{Diagramme de séquences}
-	
+				\subfile{sections/sequences2}
 	\subsection{Serveur}
 		\subsubsection{Vue d'ensemble}
 		
@@ -145,7 +157,11 @@
 		\subfile{sections/API}
    
     \subsection{Interface Graphique}
-	    \subfile{sections/rapportGui}		
+		\subsubsection{Application 1}
+	    \subfile{sections/rapportGui}
+
+		\subsubsection{Application 2}
+		\subfile{sections/rapportGui2}
 
 \section{Extensions}
 	
