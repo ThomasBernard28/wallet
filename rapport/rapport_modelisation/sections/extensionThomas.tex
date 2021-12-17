@@ -72,17 +72,28 @@
 		
 		\subsubsection{Diagrammes de séquence}
 				\paragraph{Souscrire à une assurance :}
-						\begin{figure}[h]
-								\centering\includegraphics[scale=0.4]{ressources/photos_diagrammes/extensionThomas/souscrireAssurance.jpg}
+						\begin{figure}[h!]
+								\centering\includegraphics[scale=0.3]{ressources/photos_diagrammes/extensionThomas/souscrireAssurance.jpg}
 								\caption{Souscrire à une assurance}
 						\end{figure}
-					Lorsque le client souhaite souscrire à une assurance 			
+					Lorsque le client souhaite souscrire à une assurance l'application envoie à l'API une reqûete coontenant les informations du demandeur ainsi que les informations de l'assurance
+					demandée. L'API ajoute l'assurance à la base de données. Si l'ajout a bien eu lieu alors la scène change sur celle de la liste des assurances qui lors de sa création récupère
+					les assurances du client. L'application affiche le message qui dit que l'assurance a bien été ajoutée.
+					\medskip
+					Si l'ajout n'a pas lieu le client est redirigé sur la scène de la liste des assurances et un message l'informe de l'erreur.
+\newpage
+				\paragraph{Afficher la liste des assurances :}
+						\begin{figure}[h!]
+								\centering\includegraphics[scale=0.3]{ressources/photos_diagrammes/extensionThomas/afficherListeAssurances.jpg}
+								\caption{Afficher la liste des assurances}
+						\end{figure}		
+\newpage		
 		\subsubsection{Application 2}
 
 		\subsubsection{Diagramme des cas d'utilisitation}
 
 				\begin{figure}[h]
-						\center\includegraphics[scale = 0.27]{ressources/photos_diagrammes/extensionThomas/useCase2Thomas.jpg}
+						\center\includegraphics[scale=0.27]{ressources/photos_diagrammes/extensionThomas/useCase2Thomas.jpg}
 						\caption{Diagramme des cas d'utilisation de l'app 2 avec extension}
 				\end{figure}
 
