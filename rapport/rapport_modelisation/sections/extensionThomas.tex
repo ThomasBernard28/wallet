@@ -76,7 +76,7 @@
 								\centering\includegraphics[scale=0.3]{ressources/photos_diagrammes/extensionThomas/souscrireAssurance.jpg}
 								\caption{Souscrire à une assurance}
 						\end{figure}
-					Lorsque le client souhaite souscrire à une assurance l'application envoie à l'API une reqûete coontenant les informations du demandeur ainsi que les informations de l'assurance
+					Lorsque le client souhaite souscrire à une assurance l'application envoie à l'API une reqûete contenant les informations du demandeur ainsi que les informations de l'assurance
 					demandée. L'API ajoute l'assurance à la base de données. Si l'ajout a bien eu lieu alors la scène change sur celle de la liste des assurances qui lors de sa création récupère
 					les assurances du client. L'application affiche le message qui dit que l'assurance a bien été ajoutée.
 					\medskip
@@ -86,8 +86,61 @@
 						\begin{figure}[h!]
 								\centering\includegraphics[scale=0.3]{ressources/photos_diagrammes/extensionThomas/afficherListeAssurances.jpg}
 								\caption{Afficher la liste des assurances}
-						\end{figure}		
+						\end{figure}
+						
+					Lorsque le client souhaite accéder à la liste de ses assurance une requête contenant le wallet et le userID du client est envoyée à l'API afin 
+					que celle-ci renvoie la liste des assurances. Il ya 2 réponses possible. Soit l'API trouve des assurances, met à jour la liste dans l'application
+					Lorsque l'application change la scène pour afficher la InsuranceListScene la scène est instanciée et la liste est mise à jour à l'aide du fichier 
+					Json renvoyé par l'API. 
+					Sinon l'API renvoie une erreur. L'application change la scène sur la ProductListScene et informe le client qu'aucune assurance n'a été trouvée.
 \newpage		
+
+				\paragraph{Ajouter/retirer de l'argent d'une assurance}
+
+						\begin{figure}[h]
+								\centering\includegraphics[scale=0.25]{ressources/photos_diagrammes/extensionThomas/ajoutRetraitAssurance.jpg}
+								\caption{Ajouter/retirer de l'argent d'une assurance} 
+						\end{figure}
+
+						Lorsque le client souhaite ajouter/retirer de l'argent d'une assurance une requête est envpoyée à l'API contenant le compte sur lequel il faut 
+						ajouter/retirer de l'argent ainsi que l'assurance courrante. Il y a 2 types de réponses possibles. Soit tout se passe bien et l'API renvoie un
+						message success à l'application. Dans ce cas l'application renvoie le client sur la InsuranceTransactionScene et met à jour les comptes ainsi 
+						que l'assurance. 
+						\medskip
+
+						Soit l'API renvoie un message d'erreur à l'application. Dans ce cas l'application renvoie le client sur la InsuranceTransactionScene et l'informe
+						que le compte/assurance sélectionné pour l'ajout/retrait ne possède pas un solde suffisament élevé et lui dit changer de compte ou de 
+						l'approvisionner avant de réitérer l'opération.
+
+\newpage 
+				\paragraph{Payer la prime d'une assurance}
+
+						\begin{figure}[h]
+								\centering\includegraphics[scale=0.3]{ressources/photos_diagrammes/extensionThomas/payerLaPrime.jpg}
+								\caption{Payer la prime de l'assurance}
+						\end{figure}
+
+						Lorsque le client souhaite payer la prime une requête contenant l'assurance en question ainsi que le montant et le compte à débiter est envoyée
+						à l'API. Deux résulats sont possibles. Soit le solde du compte est suffisant et l'API renvoie un message de succès qui est affiché par
+						l'application lorsqu'elle renvoie l'utilisateur dans la InsuranceListScene. Soit le solde est insuffisant et un message d'erreur est envoyé 
+						sur cette même scène à l'utilisateur lui demande de sélectionner un autre compte ou bien de l'approvisionner.
+
+\newpage
+
+				\paragraph{Effectuer une demande de devis}
+
+						\begin{figure}[h]
+								\centering\includegraphics[scale=0.3]{ressources/photos_diagrammes/extensionThomas/demanderDevis.jpg}
+								\caption{Effectuer une demande de devis}
+						\end{figure}
+						Lorsque le client effectue une demande de devis une requête contenant un type d'assurance est envoyée à l'API cette reqûete est traduite en un ajout
+						dans la base de données par l'API qui ajoute la demande dans une table dédiée à cette utilisation. Ensuite l'API renvoie un message qui est affiché
+						par l'application et qui informe l'utilisateur que sa demande a bien été envoyée à l'institution. 
+
+						L'utilisateur peut également contrôler s'il a reçu une réponse dans ce cas on appelle une méthode dans l'API afin de contrôler s'il y a une réponse.
+						L'API renvoie le devis au travers d'un fichier Json qui est interprété par l'application et affiché à l'utilisateur.
+\newpage
+
 		\subsubsection{Application 2}
 
 		\subsubsection{Diagramme des cas d'utilisitation}
@@ -181,4 +234,83 @@
 		\subsubsection{Interface graphique de l'extension}
 
 		Plusieurs scène ont été rajoutées contenant les fonctionnalités de l'extension et des scènes de l'application de base ont été modifiées afin de donner accès à ces nouvelles scènes. 
+		\subsubsection{Application 1}
+		\newpage
+		\begin{enumerate}
+				\item{NewInsuranceScene} \\
+						\begin{figure}[h!]
+								\centering\includegraphics[scale=0.3]{ressources/photos_diagrammes/extensionThomas/gui1/addInsurance.jpg}
+								\caption{Scène d'ajout d'une assurance}
+						\end{figure} 
+						Cette scène est la scène où l'on souscrit à une assurance elle est accessible depuis la ProductListScene en cliquant
+						sur le bouton "My Insurances" Cette scène est composée d'une combo box permettant à l'utilisateur de choisir l'assurance
+						à laquelle il veut sourscrire ainsi qu'un boouton subscribe.
+				\newpage
+				\item{InsuranceMenuScene} 
+						\begin{figure}[h!]
+								\centering\includegraphics[scale=0.3]{ressources/photos_diagrammes/extensionThomas/gui1/insuranceMenu.jpg}
+								\caption{Scène du menu d'une assurance}
+						\end{figure}
+
+						Cette correspond au menu d'une assurance. Toutes les informations pratiques de l'assurance y sont affichées ainsi que 
+						les actions que l'on peut effectuer sur celle-ci. Ell est accessible depuis l'InsuranceListScene en cliquant sur un bouton 
+						lié à une assurance. 
+
+						\medskip
+
+						Dans cette scène on retrouve 5 boutons. 3 permettant d'effectuer des transactions (PAY, TOP UP et REDEEM) ainsi qu'un bouton
+						pour accéder à l'historique des transactions "HISTORY" et un bouton permettant de supprimer l'assurance "DELETE". 
+				\newpage
+				\item{InsuranceListScene} 
+						\begin{figure}[h!]
+								\centering\includegraphics[scale=0.3]{ressources/photos_diagrammes/extensionThomas/gui1/insurancesList.jpg}
+								\caption{Scène de la liste des assurances}
+						\end{figure}
+
+						Cette scène affiche la liste des assurances d'un client avec une check box "View closed insurances" permettant au client de voir 
+						les assurances qu'il a supprimé. Elle contient également les différentes assurances qui sont cliquable et redirige vers la 
+						InsuranceMenuScene. 
+						Il y a également un bouton "+" permettant de rajouter une nouvelle assurance et envoyant sur la NewInsuranceScene.
+						Il y un bouton "Ask for a quote" permettant de demander un devis et un bouton information "I" permettant d'obtenir des informations
+						sur les assurances.
+						\newpage
+				\item{RedeemScene} 
+						\begin{figure}[h!]
+								\centering\includegraphics[scale=0.3]{ressources/photos_diagrammes/extensionThomas/gui1/redeemInsurance.jpg}
+								\caption{Scène du retrait d'argent d'une assurance}
+						\end{figure}
+						Cette scène affiche la demande de retrait d'argent il y a 1 textfield permettant d'entrer le montant à retirer et une combo box 
+						permettant de choisir le compte sur lequel on veut retier l'argent. Il y a un bouton "Redeem" permettant d'effectuer l'opération
+						et un label affichant le solde actuel de l'assurance
+						\newpage
+				\item{TopUp Scene} 
+						\begin{figure}[h!]
+								\centering\includegraphics[scale=0.3]{ressources/photos_diagrammes/extensionThomas/gui1/topUpInsurance.jpg}
+								\caption{Scène d'ajout d'argent d'une assurance}
+
+								Cette scène fonctionne à peu de choses près comme la précédente. La scène PayScene n'a pas été représentée car jugée 
+								trop similaires à ces deux-ci.
+						\end{figure}
+		\end{enumerate}
+		\newpage
+
+		\subsubsection{Application 2}
+		\begin{enumerate}
+		\item{ClientsMenuScene} 
+						\begin{figure}[h!]
+								\centering\includegraphics[scale=0.2]{ressources/photos_diagrammes/extensionThomas/gui2/clientsMenuScene.jpg}
+								\caption{Scène du menu des clients}
+						\end{figure}
+
+						Cette rajoute uniquement un bouton "Answer to a quote demand" permettant d'accéder à la scène de réponse aux devis.
+		\newpage
+		\item{QuoteAnswerScene}
+						\begin{figure}[h!]
+								\centering\includegraphics[scale=0.4]{ressources/photos_diagrammes/extensionThomas/gui2/quoteAnswerScene.jpg}
+								\caption{Scène de réponse de demande à un devis}
+						\end{figure}
+
+						Cette affiche un tableau contenant les demandes des clients et un bouton "Answer" à coté de chaque afin d'envoyer la réponse au client.
+		\end{enumerate}
+\newpage
 \end{document}
