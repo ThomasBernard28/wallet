@@ -1,0 +1,42 @@
+\documentclass[../rapport.tex]{subfiles}
+\graphicspath{{\subfix{ressources/photos_diagrammes/extensionThomas/}}}
+
+\begin{document}
+		\subsubsection{Vue d'ensemble}
+		Le but de cette extension est de rajouter la gestion de contrats d'assurances divers
+		à la fois pour les client smais égalemet pour les insitutions. L'extension se base tout
+		de même sur la structure de l'application 1 car c'est dans celle-ci qu'elle la plus 
+		utilisée. En effet, dans l'appliction 2 elle est gére comme les autres produits 
+		financiers. Il n'y a réellement que la réponse à une demande de devis qui diffère.
+		Afin de rendre les diagrammes plus visibles j'ai changé les couleurs des éléments rajoutés. 
+		Rose pour le diagramme d'entité relation et jaune pour les autres diagrammes.
+
+		\subsubsection{Application 1}
+
+		\subsubsection{Diagramme des cas d'utilisation}
+
+		J'ai rajouté un ensemble de divers cas d'utilisations qui sont propres aux assurances
+		mais toutefois semblables aux cas d'utilisation relatifs aux produits financiers
+		classiques. Il n'y a aucune remarque particulière à faire concernant les cas
+		d'utilisation car le modèle est calqué sur le diagramme de base.
+
+		%\begin{figure}[h]
+				
+		%\end{figure}
+
+		\subsubsection{Interaction Overview Diagram}
+
+		Encore une fois ce diagramme se base sur celui de l'application 1. Notons qu'il est
+		maintenant possible de demander un devis depuis le menu principal. Il y a également une 
+		différenciation entre les produits financiers classiques et les assurances afin de les 
+		séparer en deux scènes différentes plus tard dans la GUI.
+
+
+		\subsubsection{Diagrammes de classe}
+
+		Dans la partie logique de l'application (package APP) deux classes ont été rajoutées :
+		\textbf{Insurance} et \textbf{InsuranceData}. La première contioent le constructeur et 
+		un attribut \textit{data} qui est une objet de type \textit{InsuranceData}. La classe 
+		contient également les méthodes liées aux assurances. La classe \textbf{Insurance} est
+		liée à la classe wallet à la manière de classe \textbf{FinancialProduct}
+\end{document}
