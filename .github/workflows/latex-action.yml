@@ -12,7 +12,7 @@
 
 # To compile multiple papers, duplicate the job called "paper" with different FILE/DIR names and add the "needs" line in the "deploy" job accordingly  
 
-name: compile_deploy_latex
+name: Compile and deploy Latex
 on: [push]
 jobs:
   paper:
