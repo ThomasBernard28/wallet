@@ -6,5 +6,23 @@
 \usepackage{amsmath, amsfonts, amssymb, amsthm}
 
 \begin{document}
-test
+\begin{enumerate}
+	\item{Accéder à la liste des portefeuilles}\\
+Ce diagrammes de séquences décrit comment l'application va récupérer la liste des portefeuilles de l'utilisateur et la stocker au seins de l'application.
+L'application va ensuite changer de scène pour passer sur l'écran d'affichage des portefeuilles. Cette scène pourra alors accéder facilement à la liste des portefeuilles afin de les afficher à l'utilisateur.
+	\item{Accéder à la liste des portefeuilles}\\
+Lorsque l'utilisateur sélectionne un de ses portefeuilles, les produits financiers de ce portefeuilles doivent être récupérés depuis le serveur. Ils sont ensuite stockés dans une liste de l'objet Wallet. Une fois les produits récupérés, la scène des détails d'un portefeuille est affichée.
+	\item{Créer un compte}\\
+Afin de créer un compte, l'utilisateur va entrer ses données qui seront ensuite utilisées afin de créer un objet UserData. Cet objet va ensuite être envoyé vers le serveur sous forme d'un fichier json.
+	\item{Créer un portefeuille}\\
+La création d'un portefeuille demande peu d'informations à l'utilisateur. Une fois qu'il a selectionné l'institution pour laquelle il veut créer un portefeuille, l'application va vérifier si il a déjà un portefeuille pour cette institution. Si c'est le cas, une notification d'erreur lui sera affichée. Sinon le portefeuille sera créé et l'information sera envoyée vers le serveur.
+	\item{Effectuer une transaction}\\
+Une fois que l'utilisateur a entré les informations de la transaction et accepté la confirmation, un objet Transaction est créé et envoyé vers le serveur.
+	\item{Se connecter}\\
+La procédure de connexion à l'app est initiée lorque l'utilisateur entre ses identifiants et clique sur se connecter. Ses identifiants seront alors envoyés à l'api qui verfiera ceux-ci. Si ils sont corrects alors l'utilisateur est envoyé vers le menu principal de l'application. Si le nom d'utilisateur et incorrect un message ``user not found'' lui est affiché et si le mot de passe est incorrect alors un message ``wrong password'' est affiché.
+	\item{Souscrire à un produit financier}\\
+Lorqu'un produit financié est créé par l'utilisateur, cela envoie un objet FinancialProduct à l'api qui se chargera de l'envoyer vers le serveur.
+Un message est ensuite envoyé à l'utilisateur afin de l'informer de la réussite (ou échec) de l'opération.
+\end{enumerate}
 \end{document}
+
