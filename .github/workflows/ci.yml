@@ -1,0 +1,30 @@
+name: Build and deploy LaTeX document
+
+on:
+  push:
+    branches:
+      - main
+  workflow_dispatch:
+
+jobs:
+  build_latex:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Set up Git repository
+        uses: actions/checkout@v2
+      - name: Compile LaTeX document
+        uses: xu-cheng/latex-action@v2
+        with:
+          root_file: rapport_modelisation/rapport/rapport.tex
+      - name: Copy to public folder for deployment
+        shell: bash
+        run: |
+          mkdir -p public
+          cp rapport.pdf public/
+      - name: Deploy
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./public
+          publish_branch: build-latex
+          force_orphan: true # Ensures that not all previous PDFs are kept around forever
