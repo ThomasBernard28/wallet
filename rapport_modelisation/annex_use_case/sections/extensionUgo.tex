@@ -1,0 +1,97 @@
+\documentclass[../annexe.tex]{subfiles}
+\graphicspath{{\subfix{ressources}}}
+
+\begin{document}
+
+
+
+\subsection{Application 1}
+
+
+
+\subsubsection{Afficher l'historique des taux de change}
+
+\textbf{Acteurs :} \\
+Le client et le serveur. \\
+
+\textbf{Description :} \\
+Permet au client de consulter l'historique des taux de change pour chaque monnaie. \\
+
+\textbf{Précondition :} \\
+La monnaie est supportée par l'application. \\
+
+\textbf{Fréquence :} \\
+Souvent pour les utilisateurs internationaux. \\
+
+\textbf{Parcours de base :} \\
+\begin{enumerate}
+    \item Le client se dirige sur la bonne fenêtre
+    \item Il entre une monnaie de base et une monnaie destination
+    \item L'application communique au serveur via l'API afin de récuperer dans la base de donnée les informations nécessaires
+    \item L'application trace le graphique
+\end{enumerate}
+\bigskip
+
+\textbf{Postconditions :} \\
+L'application affiche l'historique du taux de change. \\
+
+
+
+\subsubsection{Caluler un taux de change}
+
+\textbf{Acteurs :} \\
+Le client et le serveur. \\
+
+\textbf{Description :} \\
+Permet au client d'afficher et calculer un taux de change. \\
+
+\textbf{Précondition :} \\
+La monnaie est supportée par l'application. \\
+
+\textbf{Fréquence :} \\
+Souvent pour les utilisateurs internationaux. \\
+
+\textbf{Parcours de base :} \\
+\begin{enumerate}
+    \item Le client se dirige sur la bonne fenêtre
+    \item Il entre une monnaie de base, un montant de base et une monnaie destination
+    \item L'application communique au serveur via l'API afin de récuperer dans la base de donnée les informations nécessaires
+    \item L'application affiche le taux utilisé et calcule la valeur finale dans la monnaie destination
+\end{enumerate}
+\bigskip
+
+\textbf{Postconditions :} \\
+L'application affiche la valeur finale et le taux utilisé. \\
+
+
+
+\subsection{Application 2}
+
+
+
+\subsubsection{Définir des frais de transaction}
+
+\textbf{Acteurs :} \\
+L'institution et le serveur. \\
+
+\textbf{Description :} \\
+Permet à une institution de définir ses frais de transactions internationaux. \\
+
+\textbf{Fréquence :} \\
+Une fois lorsque l'intitution configure son système. \\
+
+\textbf{Parcours de base :} \\
+\begin{enumerate}
+    \item L'institution se dirige sur la bonne fenêtre
+    \item Elle entre un pays destination et un taux
+    \item L'application communique au serveur via l'API afin d'écrire dans la base de données le taux
+    \item L'application affiche dans un tableau les taux déjà définis
+\end{enumerate}
+\bigskip
+
+\textbf{Postconditions :} \\
+L'application affiche le taux fraichement défini dans le tableau. \\
+
+
+
+\end{document}
