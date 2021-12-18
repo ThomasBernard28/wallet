@@ -1,0 +1,357 @@
+\documentclass[../rapport.tex]{subfiles}
+
+\begin{document}
+
+
+
+\subsubsection{Créer un compte}
+
+\textbf{Acteurs :} \\
+Créer un compte. \\
+
+\textbf{Description :} \\
+Permet au client de créer un compte avec un mail et un mot de passe pour pouvoir utiliser l’application. \\
+
+\textbf{Précondition :} \\
+L’application est lancée et aucun compte n’est connecté. \\
+
+\textbf{Fréquence :} \\
+Chaque première fois qu’un nouveaux client lance l’application. \\
+
+\textbf{Parcours de base :} \\
+\begin{enumerate}
+    \item Le client clique sur l'option "créer un compte"
+    \item Le client entre le mail et le mot de passe qui ser associé au compte
+    \item L'application emvoie les identifiants au serveur pour vérification
+    \item Le serveur confirme que le mail n'est pas déjà pris
+    \item Le srveur crée le compte dans la base de données
+    \item Le serveur connecte automatiquement le nouveau client
+    \item Le client accède au reste de l'application avec le compte fraichement créé
+\end{enumerate}
+\bigskip
+
+\textbf{Parcours alternatif :}
+\begin{enumerate}
+    \item Le serveur retourne que le mail est déjà associé à un compte existant. L'application le signale au client et le renvoie à l'étape 2
+\end{enumerate}
+
+\textbf{Postconditions :} \\
+Le client est connecté à l'application. \\
+
+
+
+\subsubsection{Se connecter}
+
+\textbf{Acteurs :} \\
+Le client et le serveur. \\
+
+\textbf{Description :} \\
+Permet aux clients de s'identifier et d'accéder à l'application ainsi que toutes ses fonctionnalités. \\
+
+\textbf{Précondition :} \\
+L'application est lancée et le client n'est pas déjà connecté à l'pplication. \\
+
+\textbf{Fréquence :} \\
+A chaque lancement de l'application. \\
+
+\textbf{Parcours de base :} \\
+\begin{enumerate}
+    \item Le client entre ses données d'utilisateur (numéro registre national + mot de passe)
+    \item L'applicaton envoie les données au serveur pour la vérification
+    \item Le serveur confirme que les données sont correctes
+    \item Le client peut accéder aux autres parties de l'application
+\end{enumerate}
+\bigskip
+
+\textbf{Parcours alternatif :}
+\begin{enumerate}
+    \item Les données sont incorrectes, on retourne à l'étape 1
+\end{enumerate}
+
+\textbf{Postconditions :} \\
+Le GUI affiche désormais les différents portefeuilles de l'utilisateur stockés dans la base de donnée. \\
+
+
+
+\subsubsection{Créer un portefeuilles}
+
+\textbf{Acteurs :} \\
+ Le client et le serveur. \\
+
+\textbf{Description :} \\
+Création d'un nouveau portefeuille vide avec le créateur comme gestionnaire et le seul membre du nouveau portefeuille. \\
+
+\textbf{Précondition :} \\
+Pas de préconditions. \\
+
+\textbf{Fréquence :} \\
+Utilisation peur fréquente. \\
+
+\textbf{Parcours de base :} \\
+\begin{enumerate}
+    \item Le client sélectionne l'option de créer un nouveau portefeuille
+    \item Le client choisit une institution financière (où il possède déjà un produit financier)
+    \item L'application envoie la demande au serveur
+    \item Le serveur confirme la demande
+    \item L'utilisateur est renvoyé sur le GUI "Wallet list"
+    \item Le serveur renvoie la demande sur l'application 2 de l'institution financière
+    \item L'institution financière confirme la demande de création de portefeuille
+    \item L'application 2 renvoie la confirmation au serveur
+\end{enumerate}
+\bigskip
+
+\textbf{Parcours alternatif :}
+\begin{enumerate}
+    \item Une erreur de connexion à lieu, la requête échoue, l'utilisateur est averti, la créaton de portefeuille est annulée, l'utilisateur est renvoyé sur le GUI "Wallet list"
+    \item Le serveur refuse la demande, la création de portefeuille est annulée, le client est averti, l’utilisateur est renvoyé sur la GUI "Wallets list"
+    \item Une erreur de connexion à lieu , la requête échoue, l’utilisateur est averti, la création de portefeuille est annulée
+    \item L’institution financière refuse, l’utilisateur est notifié, la création de portfeuille est annulée
+    \item Une erreur de connexion à lieu, la requête échoue, l’utilisateur est averti, la création de portefeuille est annulée
+\end{enumerate}
+
+\textbf{Postconditions :} \\
+Un nouveau portefeuille a été créé / un nouveau portefeuille n'a pas été créé. \\
+
+
+
+\subsubsection{Supprimer le portefeuille}
+
+\textbf{Acteurs :} \\
+Le client et le serveur. \\
+
+\textbf{Description :} \\
+Supprime le portefeuille sélectionné. \\
+
+\textbf{Précondition :} \\
+Le consommateur est un gestionnaire du portefeuille. \\
+
+\textbf{Fréquence :} \\
+Utilisation peur fréquente. \\
+
+\textbf{Parcours de base :} \\
+\begin{enumerate}
+    \item Le gestionnaire du portefeuille sélectionne l’option de suppression du portefeuille en question
+    \item L’application affiche un avertissement et demande une confirmation
+    \item Le gestionnaire confirme la suppression
+    \item L’application envoie une requête au serveur de supprimer le portefeuille en question de la base de données et l’enlève de la liste de portefeuilles de tous les membres du portefeuille supprimé
+    \item L’application renvoi l’ancien gestionnaire vers sa liste de portefeuilles
+\end{enumerate}
+\bigskip
+
+\textbf{Parcours alternatif :}
+\begin{enumerate}
+    \item L'utilisateur annule la suppression, l'application le renvoie vers la fenêtre du portefeuille en question
+    \item Une erreur de connexion a eu lieu et la requête a échoué, pas de suppression du portefeuille en question
+\end{enumerate}
+
+
+
+\subsubsection{Consulter portefeuille}
+
+\textbf{Acteurs :} \\
+Le client et le serveur. \\
+
+\textbf{Description :} \\
+Le client accède au portefeuille et y retrouve tout ses produits financiers. \\
+
+\textbf{Précondition :} \\
+Le client est connecté à son compte et possède au moins un portefeuille. \\
+
+\textbf{Fréquence :} \\
+Très souvent. \\
+
+\textbf{Parcours de base :} \\
+\begin{enumerate}
+    \item Le client sélectionne le portefeuille à consulter
+    \item L'application fait une requête au serveur pour avoir les produits financiers dans le portefeuille
+    \item L'application affiche les produits financiers qui sont dans le portefeuille
+\end{enumerate}
+\bigskip
+
+\textbf{Parcours alternatif :}
+\begin{enumerate}
+    \item Une erreur de connexion a eu lieu et la requête a échoué, l'utilisateur est averti et retourne sur le GUI "Home page"
+\end{enumerate}
+
+\textbf{Postconditions :} \\
+L'application affiche désormais le portefeuille que l'utilisateur veux consulter. \\
+
+
+
+\subsubsection{Supprimer un produit financier}
+
+\textbf{Acteurs :} \\
+Client et serveur. \\
+
+\textbf{Description :} \\
+Supprime le dit produit financier. \\
+
+\textbf{Précondition :} \\
+Le client est connecté, un portefeuille contenant au moins un produit financier existe. \\
+
+\textbf{Fréquence :} \\
+Occasionnel. \\
+
+\textbf{Parcours de base :} \\
+\begin{enumerate}
+    \item L’utilisateur appuie sur le bouton de suppression correspondant au produit financier qu’il souhaite supprimer
+    \item L’application affiche un message de confirmation
+    \item L’utilisateur accepte
+    \item L’application envoie la requête de suppression au serveur
+\end{enumerate}
+\bigskip
+
+\textbf{Parcours alternatif :}
+\begin{enumerate}
+    \item L'utilisateur refuse, la fenêtre se ferme et aucune opération n'est effectuée
+    \item Une erreur de connexion a eu lieu et la requête a échoué, l'utilisateur est averti et retourne la liste des produits financiers
+\end{enumerate}
+
+\textbf{Postconditions :} \\
+Le portefeuille ne contient plus le produit financier supprimé. \\
+
+
+
+\subsubsection{Souscrire un produit financier}
+
+\textbf{Acteurs :} \\
+Client et serveur. \\
+
+\textbf{Description :} \\
+Ajoute un produit financier. \\
+
+\textbf{Précondition :} \\
+Le client est connecté et possède au moins un portefeuille. \\
+
+\textbf{Fréquence :} \\
+Occasionnel. \\
+
+\textbf{Parcours de base :} \\
+\begin{enumerate}
+    \item L'utilisateur appuie sur le bouton d'ajout
+    \item Le client choisit le type de produit financier
+    \item L'application affiche un message de confirmation
+    \item L'utilisateur accepte
+    \item L'application envoie la requête d'ajout au serveur
+\end{enumerate}
+\bigskip
+
+\textbf{Parcours alternatif :}
+\begin{enumerate}
+    \item L'utilisateur refuse, la fenêtre se ferme et aucune opération n'est effectuée
+    \item Une erreur de connexion a lieu et la requête a échoué, l'utilisateur est averti
+\end{enumerate}
+
+\textbf{Postconditions :} \\
+Le portefeuille contient le produit financier ajouté. \\
+
+
+
+\subsubsection{Afficher l'historique de transaction}
+
+\textbf{Acteurs :} \\
+Client et serveur. \\
+
+\textbf{Description :} \\
+Affiche la liste de toutes les transactions effectuées. \\
+
+\textbf{Fréquence :} \\
+Souvent. \\
+
+\textbf{Parcours de base :} \\
+\begin{enumerate}
+    \item L’utilisateur sélectionne l’option d’affichage de l’historique
+    \item L’application envoie une requête au serveur pour accéder a l’historique
+\end{enumerate}
+\bigskip
+
+\textbf{Parcours alternatif :}
+\begin{enumerate}
+    \item Une erreur de connexion a lieu et la requête échoue, l’utilisateur est averti
+\end{enumerate}
+
+\textbf{Postconditions :} \\
+L’application affiche l’historique de transaction. \\
+
+
+
+\subsubsection{Effectuer une transaction}
+
+\textbf{Acteurs :} \\
+Client et serveur. \\
+
+\textbf{Description :} \\
+Le client peut effectuer une transaction. \\
+
+\textbf{Précondition :} \\
+L'utilisateur est connecté. \\
+
+\textbf{Fréquence :} \\
+Souvent. \\
+
+\textbf{Parcours de base :} \\
+\begin{enumerate}
+    \item L’utilisateur sélectionne l’option de transaction
+    \item L’utilisateur choisit le compte du quel effectuer la transaction
+    \item L’utilisateur entre le compte du receveur
+    \item L’utilisateur entre le montant de la transactions
+    \item L’utilisateur entre une communication ( structurée ou non )
+    \item L’application affiche un message de résumé de la transaction
+    \item L’utilisateur confirme en entrant son code
+    \item L’application envoie une requête au serveur pour la transactions
+    \item Le serveur retire l’argent sur le compte du client
+    \item Le serveur ajoute l’argent sur le compte du receveur
+\end{enumerate}
+\bigskip
+
+\textbf{Parcours alternatif :}
+\begin{enumerate}
+    \item L’utilisateur se trompe de code, un message d’avertissement est affiché et il est invité a réessayer
+    \item Une erreur de connexion a lieu et la requête échoue, l’utilisateur est avertis et la transaction est annulée
+    \item Une erreur de connexion a lieu et la requête échoue, l’utilisateur est avertis la transaction est annulée
+\end{enumerate}
+
+\textbf{Postconditions :} \\
+La transaction est effectuée et le montant est débité. \\
+
+
+
+\subsubsection{Ajouter un co-titulaire}
+
+\textbf{Acteurs :} \\
+Client 1, client 2 et le serveur. \\
+
+\textbf{Description :} \\
+Le client 1 ajoute le client 2 comme co-titulaire sur un produit financiers. \\
+
+\textbf{Précondition :} \\
+Le client 1 est connecté , le client 2 possède un compte dans la même institution financière que le client 1. \\
+
+\textbf{Fréquence :} \\
+Occasionnel. \\
+
+\textbf{Parcours de base :} \\
+\begin{enumerate}
+    \item Le client 1 sélectionne le produit financier pour le quelle il souhaite ajouter un co-titulaire
+    \item Le client 1 entre les identifiants du client 2 ( nom prénom et numéro de registre nationale)
+    \item L’application affiche un message de confirmation
+    \item Le client 1 confirme
+    \item Le client 2 est avertie de la procédure
+    \item L’application affiche un message de confirmation au client 2
+    \item Le client 2 confirme
+    \item L’application envoie la requête au serveur
+\end{enumerate}
+\bigskip
+
+\textbf{Parcours alternatif :}
+\begin{enumerate}
+    \item Le client 1 refuse et il est renvoyé le GUI d’ajout de co-titulaire
+    \item Le client 2 refuse, la procédure est annulée 
+    \item Une erreur de connexion a lieu et la requête échoue, l’utilisateur est averti et l’ajour du co-titulaire est annulée
+\end{enumerate}
+
+\textbf{Postconditions :} \\
+Le client 2 est ajouté en tant que co-titulaire du produit financier et peux maintenant le consulter et le modifer. \\
+
+\newpage
+\end{document}

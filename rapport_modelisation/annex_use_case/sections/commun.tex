@@ -1,0 +1,104 @@
+\documentclass[../rapport.tex]{subfiles}
+
+\begin{document}
+
+\subsubsection{Ré-initialiser le mot de passe}
+
+\textbf{Acteurs :} \\
+Le client ou l'utilisateur et le serveur. \\
+
+\textbf{Description :} \\
+Permet à une personne qui a oublié son mot de passe ou qui souhaite le changer de le réinitialiser. \\
+
+\textbf{Précondition :} \\
+La personne (client ou institution) est dans l’écran de connection ou dans ses paramètres du compte. \\
+
+\textbf{Fréquence :} \\
+Assez rare \\
+
+\textbf{Parcours de base :} \\
+\begin{enumerate}
+    \item La personne clique sur l’option de ré-initialisation de mot de passe
+    \item La personne entre le mail du compte dont elle veut changer le mot de passe
+    \item L’application envoie le mail au serveur pour vérifier s’il existe un compte associé à l’adresse mail
+    \item Le compte est trouvé et un mail est envoyé avec un lien pour entrer un nouveau mot de passe
+    \item La personne entre 2 fois son nouveau mot de passe
+    \item Le serveur change le mot de passe du compte dans la base de données
+\end{enumerate}
+\bigskip
+
+\textbf{Parcours alternatif :} \\
+\begin{enumerate}
+    \item Aucun compte avec ce mail n'est trouvé, message d'erreur et retour à l'étape 2.
+    \item La personne n'entre pas 2 fois le même mot de passe, retour à l'étape 5.
+\end{enumerate}
+\bigskip
+
+\textbf{Postconditions :} \\
+Le mot de passe pour le compte associé au mail donné est changé par le nouveaux mot de passe entré par la personne.
+
+
+
+\subsubsection{Se déconnecter}
+
+\textbf{Acteurs :} \\
+Le client et le serveur. \\
+
+\textbf{Description :} \\
+Permet au client de se déconnecter de l'application. \\
+
+\textbf{Précondition :} \\
+Le client est connecté à un compte. \\
+
+\textbf{Fréquence :} \\
+De temps en temps. \\
+
+\textbf{Parcours de base :} \\
+\begin{enumerate}
+    \item Le client demande à l'application de le déconnecter
+    \item L'application détruit l'objet utilisateur représentant le client authentifié
+    \item L'application ramène le client sur l'écran de connexion
+\end{enumerate}
+\bigskip
+
+\textbf{Postconditions :} \\
+Le client est déconnecté et de retour à l'écran de connexion. Il n'a plus accès à ses données ni au reste de l'application.
+
+
+
+\subsubsection{Changer de langue}
+
+\textbf{Acteurs :} \\
+Le client et le serveur. \\
+
+\textbf{Description :} \\
+Change la langue d'affichage et l'application. \\
+
+\textbf{Précondition :} \\
+L'application est lancée. \\
+
+\textbf{Fréquence :} \\
+Peu fréquent. \\
+
+\textbf{Parcours de base :} \\
+\begin{enumerate}
+    \item Le client sélectionne l'option de changement de langue
+    \item L'application affiche les langues disponibles
+    \item Le client sélectionne la langue désirée
+    \item L'application affiche un avertissement et demande une confirmation
+    \item Le client confirme le changement de la langue
+    \item L'application envoie une requête au serveur pour chnager la langue d'affichnage du client
+\end{enumerate}
+\bigskip
+
+\textbf{Parcours alternatif :}
+\begin{enumerate}
+    \item Le client annule le changement de la langue, l'application renvoie sur le GUI les paramètres
+    \item Une erreur de connexion a eu lieu et la requête a échoué, pas de changement de la langue, l'utilisateur est averti.
+\end{enumerate}
+
+\textbf{Postconditions :} \\
+La langue d'affichage de l'application est changée.
+
+\newpage
+\end{document}

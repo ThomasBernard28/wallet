@@ -1,0 +1,114 @@
+\documentclass[../annexe.tex]{subfiles}
+\graphicspath{{\subfix{ressources}}}
+
+\begin{document}
+
+\subsection{Use-case Application 1}	
+
+\subsubsection{Se connecter via une carte}
+\paragraph{Acteurs : Le client et le serveur}
+\paragraph{Description : Le client s'autentifie au moyen d'une de ses cartes de paiement.}
+\paragraph{Préconditions : Le client possède au moins une carte liée à une instituion.}
+\paragraph{Fréquence :rarement}
+\paragraph{Parcours de base :}
+\begin{enumerate}
+	\item{L'application génère un code unique.}
+	\item{Le client insère sa carte dans le lecteur de carte.}
+	\item{Le client clique sur le bouton login du lecteur de carte et entre le code généré par l'application.}
+	\item{Le client entre son code pin.}
+	\item{Le lecteur de carte génère un code d'autentification.}
+	\item{Le client entre le code d'autentification dans l'application.}
+\end{enumerate}
+\paragraph{Parcours alternatif :}
+\begin{itemize}
+	\item[4.b]{L'utilisateur entre le mauvais code pin. Il est invité à entrer son code de nouveau.}
+	\item[6.b]{L'utilisateur entre le mauvais code d'autentification. Il est invité à entrer son code d'autentification}
+\end{itemize}
+\paragraph{Postconditions :Le client est connecté.}
+
+\subsubsection{Demander une carte}
+\paragraph{Acteurs : Le client, le serveur et un employé de l'institution financière}
+\paragraph{Description : Le client fait une damande de carte et un employé de l'institution va valider cette demande.} 
+\paragraph{Préconditions : L'utilisateur est client de l'institution dans laquelle il fait sa demande et est connecté à l'application.}
+\paragraph{Fréquence :très rarement}
+\paragraph{Parcours de base :}
+\begin{enumerate}
+	\item{Le client choisit le compte de paiement pour lequel il veut recevoir une carte.}
+	\item{Le client choisit le type de carte qu'il veut recevoir.}
+	\item{La demande est envoyé au serveur.}
+	\item{Un employé de l'institution valide la demande.}
+\end{enumerate}
+\paragraph{Parcours alternatif :}
+\begin{itemize}
+	\item[1.b]{Le client crée le compte pour lequel il veut recevoir une carte.}
+	\item[4.b]{L'employée refuse la demande du client.}
+\end{itemize}
+\paragraph{Postconditions : Le client recoit sa carte de paiement.}
+
+\subsubsection{Bloquer une carte}
+\paragraph{Acteurs : Le client et le serveur}
+\paragraph{Description : Le client choisit de bloquer une de ses cartes.} 
+\paragraph{Préconditions : L'utilisateur est connecté à l'application et posède une carte.}
+\paragraph{Fréquence : très rarement}
+\paragraph{Parcours de base :}
+\begin{enumerate}
+	\item{L'utilisateur sélèctionne une de ses cartes.}
+	\item{L'utilisateur choisit de bloquer la carte sélectionnée}
+	\item{L'application demande à l'utilisateur de confirmer son choix}
+	\item{L'utilisateur confirme}
+	\item{L'application envoie la demande au serveur}
+\end{enumerate}
+\paragraph{Parcours alternatif :}
+\begin{itemize}
+	\item[3.b]{L'utilisateur annule sa décision et revient sur le menu de la carte}
+\end{itemize}
+\paragraph{Postconditions : La carte de l'utilisateur est bloquée, il ne peut plus l'utiliser}
+
+\subsubsection{Modifier les paramètres d'une carte}
+\paragraph{Acteurs : Client et serveur}
+\paragraph{Description :Le client fait des modifications sur sa carte qui seront envoyées au serveur.} 
+\paragraph{Préconditions : Le client possède une carte et est connecté à l'application}
+\paragraph{Fréquence :régulièrement}
+\paragraph{Parcours de base :}
+\begin{enumerate}
+	\item{Le client entre dans les menu des paramètres de sa carte}
+	\item{Le client choisit les paramètres qu'il veut modifier}
+	\item{À la confirmation, les nouvelles valeurs des paramètres sont envoyées au serveur}
+\end{enumerate}
+\paragraph{Postconditions : Les changements ont été appliqués}
+
+\subsubsection{confirmer le renouvellement}
+\paragraph{Acteurs : Client et serveur}
+\paragraph{Description :Le client active le renouvellement automatique de sa carte lorsque celle-ci dépasse sa date limite d'utilisation} 
+\paragraph{Préconditions : Le client possède une carte et est connecté à l'application}
+\paragraph{Fréquence :très rarement}
+\paragraph{Parcours de base :}
+\begin{enumerate}
+	\item{L'utilisateur active l'option de renouvellement}
+	\item{L'utilisateur confirme}
+	\item{L'application envoie au serveur la modification de l'option de renouvellment}
+\end{enumerate}
+\paragraph{Parcours alternatif :}
+\begin{itemize}
+	\item[2.b]{L'utilisateur annule l'activation du renouvellement automatique}
+\end{itemize}
+\paragraph{Postconditions : Le renouvellement automatique de la carte est activé}
+
+\subsubsection{Consulter/ exporter l'historique d'utilisation d'une carte}
+\paragraph{Acteurs : Client et serveur}
+\paragraph{Description : Le client affiche ou exporte l'historique d'utilisation de sa carte} 
+\paragraph{Préconditions : L'utilisateur possède une carte et est connecté à l'application}
+\paragraph{Fréquence : souvent}
+\paragraph{Parcours de base :}
+\begin{enumerate}
+	\item{L'utilisateur entre dans le menu historique de sa carte}
+	\item{L'application récupère les données depuis le serveur}
+	\item{L'utilisateur choisit d'exporter ses données}
+	\item{L'application génère un fichier json contenant les données de l'historique de la carte}
+\end{enumerate}
+\paragraph{Parcours alternatif :}
+\begin{itemize}
+	\item[2.b]{L'utilisateur n'a pas de données pour la carte sélectionnée}
+\end{itemize}
+\paragraph{Postconditions :}
+\end{document}
