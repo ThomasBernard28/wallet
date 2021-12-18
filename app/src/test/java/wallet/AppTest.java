@@ -3,12 +3,12 @@
  */
 package wallet;
 
-import org.junit.Test;
-import static org.junit.Assert.*;
+import org.junit.jupiter.api.Test;
+import static org.junit.jupiter.api.Assertions.*;
 
-public class AppTest {
-    @Test public void testAppHasAGreeting() {
+class AppTest {
+    @Test void appHasAGreeting() {
         App classUnderTest = new App();
-        assertNotNull("app should have a greeting", classUnderTest.getGreeting());
+        assertNotNull(classUnderTest.getGreeting(), "app should have a greeting");
     }
 }

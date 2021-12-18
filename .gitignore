@@ -479,3 +479,6 @@ gradle-app.setting
 
 #Visual paradigm
 *.vpp.bak*
+
+# Ignore Gradle build output directory
+build
