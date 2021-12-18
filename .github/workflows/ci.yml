@@ -3,7 +3,7 @@ name: Build and deploy LaTeX document
 on:
   push:
     branches:
-      - main
+      - rapport
   workflow_dispatch:
 
 jobs:
