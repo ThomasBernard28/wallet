@@ -17,11 +17,17 @@ jobs:
         with:
           root_file: rapport.tex
           working_directory : rapport_modelisation/rapport
+      - name: Compile LaTeX document
+        uses: xu-cheng/latex-action@v2
+        with:
+          root_file: annexe.tex
+          working_directory : rapport_modelisation/annex_use_case/
       - name: Copy to public folder for deployment
         shell: bash
         run: |
           mkdir -p public
           cp rapport_modelisation/rapport/rapport.pdf public/rapport_modelisation.pdf
+          cp rapport_modelisation/annex_use_case/annexe.pdf public/annexe.pdf
       - name: Deploy
         uses: peaceiris/actions-gh-pages@v3
         with:
