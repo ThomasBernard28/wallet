@@ -3,7 +3,7 @@ name: Build and deploy LaTeX document
 on:
   push:
     branches:
-      - rapport
+      - rapport-src
   workflow_dispatch:
 
 jobs:
@@ -33,5 +33,5 @@ jobs:
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           publish_dir: ./public
-          publish_branch: build-latex
+          publish_branch: rapport-out
           force_orphan: true # Ensures that not all previous PDFs are kept around forever
