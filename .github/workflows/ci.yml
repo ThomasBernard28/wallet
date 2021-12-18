@@ -21,7 +21,7 @@ jobs:
         shell: bash
         run: |
           mkdir -p public
-          cp rapport_modelisation/rapport/rapport.pdf public/
+          cp rapport_modelisation/rapport/rapport.pdf public/rapport_modelisation.pdf
       - name: Deploy
         uses: peaceiris/actions-gh-pages@v3
         with:
