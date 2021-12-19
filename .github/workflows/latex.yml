@@ -12,17 +12,17 @@ jobs:
     steps:
       - name: Set up Git repository
         uses: actions/checkout@v2
-      - name: Compile _rapport Modelisation_
+      - name: Compile "rapport modelisation"
         uses: xu-cheng/latex-action@v2
         with:
           root_file: rapport.tex
           working_directory : rapport_modelisation/rapport
-      - name: Compile _annexe modelisation_
+      - name: Compile "annexe modelisation"
         uses: xu-cheng/latex-action@v2
         with:
           root_file: annexe.tex
-          working_directory : rapport_modelisation/annex_use_case/
-      - name: Compile _rapport implementation_
+          working_directory : rapport_modelisation/annex_use_case
+      - name: Compile "rapport implementation_"
         uses: xu-cheng/latex-action@v2
         with:
           root_file: rapport.tex
@@ -33,7 +33,7 @@ jobs:
           mkdir -p public
           cp rapport_modelisation/rapport/rapport.pdf public/rapport_modelisation.pdf
           cp rapport_modelisation/annex_use_case/annexe.pdf public/annexe_modelisation.pdf
-          cp rapport_implementation/rapport/rapport.pdf public/rapport_implementationpdf
+          cp rapport_implementation/rapport/rapport.pdf public/rapport_implementation.pdf
       - name: Deploy
         uses: peaceiris/actions-gh-pages@v3
         with:
