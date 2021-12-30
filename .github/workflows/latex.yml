@@ -35,7 +35,7 @@ jobs:
         uses: "marvinpinto/action-automatic-releases@latest"
         with:
           repo_token: "${{ secrets.GITHUB_TOKEN }}"
-          automatic_release_tag: "rapport"
+          automatic_release_tag: "rapport-implementation"
           prerelease: false
           title: "Rapport implémentation"
           files: |
@@ -45,7 +45,7 @@ jobs:
         uses: "marvinpinto/action-automatic-releases@latest"
         with:
           repo_token: "${{ secrets.GITHUB_TOKEN }}"
-          automatic_release_tag: "rapport"
+          automatic_release_tag: "rapport-modelisation"
           prerelease: false
           title: "Rapport modélisation"
           files: |
