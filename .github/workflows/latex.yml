@@ -21,23 +21,28 @@ jobs:
         uses: xu-cheng/latex-action@v2
         with:
           root_file: annexe.tex
-          working_directory : rapport_modelisation/annex_use_case
-      - name: Compile "rapport implementation_"
+          working_directory : rapport_modelisation/annexe_use_case
+      - name: Compile "rapport implementation"
         uses: xu-cheng/latex-action@v2
         with:
           root_file: rapport.tex
           working_directory : rapport_implementation/rapport
-      - name: Copy to public folder for deployment
-        shell: bash
-        run: |
-          mkdir -p public
-          cp rapport_modelisation/rapport/rapport.pdf public/rapport_modelisation.pdf
-          cp rapport_modelisation/annex_use_case/annexe.pdf public/annexe_modelisation.pdf
-          cp rapport_implementation/rapport/rapport.pdf public/rapport_implementation.pdf
-      - name: Deploy
-        uses: peaceiris/actions-gh-pages@v3
+      - name: Release PDF files
+        uses: "marvinpinto/action-automatic-releases@latest"
         with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: ./public
-          publish_branch: rapport-out
-          force_orphan: true # Ensures that not all previous PDFs are kept around forever
+          repo_token: "${{ secrets.GITHUB_TOKEN }}"
+          automatic_release_tag: "rapport"
+          prerelease: false
+          title: "Rapport modélisation"
+          files: |
+            rapport_modelistion/rapport/rapport.pdf
+            rapport_modelisation/annexe_use_case/annexe.pdf
+      - name: Release PDF files
+        uses: "marvinpinto/action-automatic-releases@latest"
+        with:
+          repo_token: "${{ secrets.GITHUB_TOKEN }}"
+          automatic_release_tag: "rapport"
+          prerelease: false
+          title: "Rapport implémentation"
+          files: |
+            rapport_implemenatation/rapport/rapport.pdf
