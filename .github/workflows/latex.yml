@@ -12,21 +12,25 @@ jobs:
     steps:
       - name: Set up Git repository
         uses: actions/checkout@v2
+        
       - name: Compile "rapport modelisation"
         uses: xu-cheng/latex-action@v2
         with:
           root_file: rapport.tex
           working_directory : rapport_modelisation/rapport
+          
       - name: Compile "annexe modelisation"
         uses: xu-cheng/latex-action@v2
         with:
           root_file: annexe.tex
           working_directory : rapport_modelisation/annex_use_case
+          
       - name: Compile "rapport implementation"
         uses: xu-cheng/latex-action@v2
         with:
           root_file: rapport.tex
           working_directory : rapport_implementation/rapport
+          
       - name: Release PDF files
         uses: "marvinpinto/action-automatic-releases@latest"
         with:
@@ -35,8 +39,9 @@ jobs:
           prerelease: false
           title: "Rapport modélisation"
           files: |
-            rapport_modelistion/rapport/rapport.pdf
+            rapport_modelisation/rapport/rapport.pdf
             rapport_modelisation/annex_use_case/annexe.pdf
+            
       - name: Release PDF files
         uses: "marvinpinto/action-automatic-releases@latest"
         with:
