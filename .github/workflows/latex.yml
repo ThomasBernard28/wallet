@@ -50,4 +50,4 @@ jobs:
           prerelease: false
           title: "Rapport implémentation"
           files: |
-            rapport_implemenatation/rapport/rapport.pdf
+            rapport_implementation/rapport/rapport.pdf
