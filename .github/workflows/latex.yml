@@ -30,6 +30,16 @@ jobs:
         with:
           root_file: rapport.tex
           working_directory : rapport_implementation/rapport
+            
+      - name: Release PDF files
+        uses: "marvinpinto/action-automatic-releases@latest"
+        with:
+          repo_token: "${{ secrets.GITHUB_TOKEN }}"
+          automatic_release_tag: "rapport"
+          prerelease: false
+          title: "Rapport implémentation"
+          files: |
+            rapport_implementation/rapport/rapport.pdf
           
       - name: Release PDF files
         uses: "marvinpinto/action-automatic-releases@latest"
@@ -41,13 +51,3 @@ jobs:
           files: |
             rapport_modelisation/rapport/rapport.pdf
             rapport_modelisation/annex_use_case/annexe.pdf
-            
-      - name: Release PDF files
-        uses: "marvinpinto/action-automatic-releases@latest"
-        with:
-          repo_token: "${{ secrets.GITHUB_TOKEN }}"
-          automatic_release_tag: "rapport"
-          prerelease: false
-          title: "Rapport implémentation"
-          files: |
-            rapport_implementation/rapport/rapport.pdf
