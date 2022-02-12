@@ -40,11 +40,9 @@ jobs:
         java-version: '11'
         distribution: 'adopt'
         cache: gradle
-    - name: Go to server app directory
-      run: cd server_app
     - name: Grant execute permission for gradlew
-      run: chmod +x gradlew
+      run: chmod +x server_app/gradlew
     - name: Build with Gradle
-      run: ./gradlew build    
+      run: bash server_app/gradlew build    
     - name: Compile javadoc
-      run: ./gradlew javadoc
+      run: bash server_app/gradlew javadoc
