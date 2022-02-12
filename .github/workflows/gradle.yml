@@ -26,7 +26,9 @@ jobs:
     - name: Build with Gradle
       run: bash client_app/gradlew build    
     - name: Compile javadoc
-      run: bash client_app/gradlew javadoc
+      run: |
+        cd client_app
+        bash gradlew javadoc
       
   build_server:
     runs-on: ubuntu-latest
@@ -43,4 +45,6 @@ jobs:
     - name: Build with Gradle
       run: bash server_app/gradlew build    
     - name: Compile javadoc
-      run: bash server_app/gradlew javadoc
+      run: |
+        cd server_app
+        bash gradlew javadoc
