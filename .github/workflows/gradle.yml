@@ -26,9 +26,9 @@ jobs:
     - name: Grant execute permission for gradlew
       run: chmod +x gradlew
     - name: Build with Gradle
-      run: ./gradlew build    
+      run: bash client_app/gradlew build    
     - name: Compile javadoc
-      run: ./gradlew javadoc
+      run: bash client_app/gradlew javadoc
       
   build_server:
     runs-on: ubuntu-latest
