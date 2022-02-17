@@ -13,7 +13,7 @@ import wallet.APP.Wallet;
 public class User implements YamlReader {
 
     private UserData          data;
-    private ArrayList<Wallet> walletsList;
+    private ArrayList<Wallet> walletsList = new ArrayList<>();
 
     public void add_wallet(String filePath) {
         Wallet wallet = new Wallet();
@@ -23,6 +23,7 @@ public class User implements YamlReader {
         catch (Exception e) {
             System.out.println("error while adding a wallet. file path : " + filePath);
         }
+        walletsList.add(wallet);
     }
 
     @Override
@@ -41,11 +42,9 @@ public class User implements YamlReader {
     public String toString() {
         String s = ("--- USER INFO --- \n" + data.toString() + "\n" +
                     "---  WALLETS  --- \n");
-        /*
         for (int i = 0; i < walletsList.size(); i++) {
-            s += walletsList.get(i).toString() + "\n";
+            s += (walletsList.get(i).toString() + "\n");
         }
-        */
         return s;
     }
 

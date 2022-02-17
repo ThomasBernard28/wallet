@@ -52,11 +52,11 @@ public class WalletData {
 
     @Override
     public String toString() {
-        return "walletID    : " + walletID    + "\n" +
-               "userID      : " + userID      + "\n" +
-               "bic         : " + bic         + "\n" +
-               "openingDate : " + openingDate + "\n" +
-               "activity    : " + activity    + "\n";
+        return ("walletID    : " + walletID    + "\n" +
+                "userID      : " + userID      + "\n" +
+                "bic         : " + bic         + "\n" +
+                "openingDate : " + openingDate + "\n" +
+                "activity    : " + activity    + "\n");
     }
 
 
