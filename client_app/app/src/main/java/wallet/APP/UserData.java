@@ -34,8 +34,9 @@ public class UserData {
 
     @Override
     public String toString() {
-        String s = firstName + " " + lastName + " " + nationalID;
-        return s;   
+        return (firstName   + "\n" +
+                lastName    + "\n" +
+                nationalID);
     }
 
  
