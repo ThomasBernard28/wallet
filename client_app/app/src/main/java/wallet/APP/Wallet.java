@@ -12,6 +12,7 @@ public class Wallet implements YamlReader {
 
     private WalletData data;
 
+    /* read the given yaml file and save the data in the walletData instance of the current user */
     @Override
     public void read_data(String filePath) throws Exception {
         ObjectMapper objectMapper = new ObjectMapper(new YAMLFactory());

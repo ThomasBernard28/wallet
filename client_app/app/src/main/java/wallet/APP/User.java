@@ -15,6 +15,7 @@ public class User implements YamlReader {
     private UserData          data;
     private ArrayList<Wallet> walletsList = new ArrayList<>();
 
+    /* add a new wallet to the walletsList. It is not saved to the database (not yet) */
     public void add_wallet(String filePath) {
         Wallet wallet = new Wallet();
         try {
@@ -26,6 +27,7 @@ public class User implements YamlReader {
         walletsList.add(wallet);
     }
 
+    /* read the given yaml file and save the data in the userdata instance of the current user */
     @Override
     public void read_data(String filePath) throws Exception {
         ObjectMapper objectMapper = new ObjectMapper(new YAMLFactory());
