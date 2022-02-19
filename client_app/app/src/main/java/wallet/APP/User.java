@@ -14,7 +14,13 @@ public class User implements YamlReader {
 
     private UserData          data;
     private ArrayList<Wallet> walletsList = new ArrayList<>();
+    private String            username;
 
+    public User(String username) {
+        this.username = username;
+    }
+
+    /* add a new wallet to the walletsList. It is not saved to the database (not yet) */
     public void add_wallet(String filePath) {
         Wallet wallet = new Wallet();
         try {
@@ -26,8 +32,9 @@ public class User implements YamlReader {
         walletsList.add(wallet);
     }
 
+    /* read the given yaml file and save the data in the userdata instance of the current user */
     @Override
-    public void read_data(String filePath) throws Exception {
+    public String read_data(String filePath) throws Exception {
         ObjectMapper objectMapper = new ObjectMapper(new YAMLFactory());
         try {
             File yamlFile = new File(filePath);
@@ -36,16 +43,12 @@ public class User implements YamlReader {
         catch (Exception e) {
             System.out.println("file not found : " + filePath);
         }
+        return data.toString();
     }
 
     @Override
     public String toString() {
-        String s = ("--- USER INFO --- \n" + data.toString() + "\n" +
-                    "---  WALLETS  --- \n");
-        for (int i = 0; i < walletsList.size(); i++) {
-            s += (walletsList.get(i).toString() + "\n");
-        }
-        return s;
+        return data.toString();
     }
 
  

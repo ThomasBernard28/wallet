@@ -12,8 +12,9 @@ public class Wallet implements YamlReader {
 
     private WalletData data;
 
+    /* read the given yaml file and save the data in the walletData instance of the current user */
     @Override
-    public void read_data(String filePath) throws Exception {
+    public String read_data(String filePath) throws Exception {
         ObjectMapper objectMapper = new ObjectMapper(new YAMLFactory());
         try {
             File yamlFile = new File(filePath);
@@ -22,6 +23,7 @@ public class Wallet implements YamlReader {
         catch (Exception e) {
             System.out.println("file not found : " + filePath);
         }
+        return data.toString();
     }
 
     @Override
