@@ -17,7 +17,7 @@ public class PasswordUtils{
 
     public static final int ITERATIONS = 1000;
     public static final int KEY_LENGTH = 512;
-    private static final String ALGORITHM = "PBKDF2WithHmacSHA152";
+    private static final String ALGORITHM = "PBKDF2WithHmacSHA512";
     private static final SecureRandom RAND = new SecureRandom();
     
     /*
@@ -33,7 +33,7 @@ public class PasswordUtils{
         return Optional.of(Base64.getEncoder().encodeToString(salt));
     }
 
-    public static Optional<String> hasThePlainTextPassword(String plainTextPassword, String salt){
+    public static Optional<String> hashThePlainTextPassword(String plainTextPassword, String salt){
         
         char[] chars = plainTextPassword.toCharArray();
         byte[] bytes = salt.getBytes();
@@ -56,7 +56,7 @@ public class PasswordUtils{
     }
 
     public static boolean verifyThePlainTextPassword(String plainTextPassword, String hashedPassword, String salt){
-        Optional<String> optEncrypted = hasThePlainTextPassword(plainTextPassword, salt);
+        Optional<String> optEncrypted = hashThePlainTextPassword(plainTextPassword, salt);
         
         if(!optEncrypted.isPresent()){
             return false;
