@@ -1,38 +1,34 @@
 package wallet;
 
-import wallet.APP.User;
 import java.io.FileNotFoundException;
+
+import wallet.APP.User;
+import wallet.APP.UserData;
 
 public class App {
 
     public static User currentUser;
     
     public static void main(String[] args) {
-        connect("theo", "linux4life");
+        connect();
         System.out.println(currentUser);
     }
 
-    public static boolean connect(String username, String passwd) {
+    public static void connect() {
         // userYamlFile = API CALL
         String userFile = "build/resources/main/yaml/userExample.yaml"; // tmp
-        currentUser = new User(username);
+        currentUser = new User();
         try {
-            currentUser.read_data(userFile);
+            currentUser.read_data(userFile);    
         }
         catch (Exception e) {
-            System.out.println("User data file not found");
-            disconnect();
-            return false;
+            e.printStackTrace();
         }
-        return true;
+
     }
 
     public static void disconnect() {
         currentUser = null;
-    }
-
-    public static void change_password(String new_passwd) {
-        // API CALL
     }
 
 

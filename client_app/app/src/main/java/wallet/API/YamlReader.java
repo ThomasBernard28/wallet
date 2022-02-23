@@ -2,5 +2,6 @@ package wallet.API;
 
 public interface YamlReader {
 
-    public String read_data(String id) throws Exception;
-    }
+    public void read_data(String filePath) throws Exception;
+
+}
