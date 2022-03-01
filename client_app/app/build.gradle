@@ -31,6 +31,7 @@ dependencies {
     // jackson - yaml library
     implementation group: 'com.fasterxml.jackson.dataformat', name: 'jackson-dataformat-yaml', version: '2.10.3'
     implementation group: 'com.fasterxml.jackson.core', name: 'jackson-databind', version: '2.10.3'
+
 }
 
 javafx {

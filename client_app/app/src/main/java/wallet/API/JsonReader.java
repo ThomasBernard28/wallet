@@ -1,6 +1,6 @@
 package wallet.API;
 
-public interface YamlReader {
+public interface JsonReader {
 
     public void read_data(String filePath) throws Exception;
 

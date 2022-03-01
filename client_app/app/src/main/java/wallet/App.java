@@ -16,7 +16,7 @@ public class App {
 
     public static void connect() {
         // userYamlFile = API CALL
-        String userFile = "build/resources/main/yaml/userExample.yaml"; // tmp
+        String userFile = "build/resources/main/yaml/userExample.json"; // tmp
         currentUser = new User();
         try {
             currentUser.read_data(userFile);    

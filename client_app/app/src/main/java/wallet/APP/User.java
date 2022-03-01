@@ -1,17 +1,17 @@
 package wallet.APP;
 
 import java.util.ArrayList;
-import java.io.File;
+import java.io.FileReader;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.fasterxml.jackson.dataformat.yaml.YAMLFactory;
+import java.nio.file.Paths;
 
 import wallet.APP.UserData;
 import wallet.APP.Wallet;
 import wallet.APP.WalletData;
-import wallet.API.YamlReader;
+import wallet.API.JsonReader;
 
 /* Represent a user of the application */
-public class User implements YamlReader {
+public class User implements JsonReader {
 
     private UserData          data        = new UserData();
     private ArrayList<Wallet> walletsList = new ArrayList<>();
@@ -19,13 +19,12 @@ public class User implements YamlReader {
     public User() {
     }
 
-    /* read the given yaml file and save the data in the data instance of the current user */
+    /* read the given json file and save the data in the data instance of the current user */
     @Override
     public void read_data(String filePath) throws Exception {
-        ObjectMapper objectMapper = new ObjectMapper(new YAMLFactory());
         try {
-            File yamlFile = new File(filePath);
-            data = objectMapper.readValue(yamlFile, UserData.class);
+            ObjectMapper mapper = new ObjectMapper();
+            data = mapper.readValue(Paths.get(filePath).toFile(), UserData.class);
         }
         catch (Exception e) {
             e.printStackTrace();
