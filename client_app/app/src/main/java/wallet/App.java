@@ -1,6 +1,7 @@
 package wallet;
 
 import java.io.FileNotFoundException;
+import java.util.ArrayList;
 
 import wallet.APP.User;
 import wallet.APP.UserData;
@@ -11,7 +12,16 @@ public class App {
     
     public static void main(String[] args) {
         connect();
+        currentUser.add_wallet("build/resources/main/yaml/walletExample.json");
+        currentUser.add_wallet("build/resources/main/yaml/walletExample.json");
+
+        System.out.println("----- USER -----");
         System.out.println(currentUser);
+        ArrayList walletsList = currentUser.get_walletsList();
+        for(int i = 0; i < walletsList.size(); i++) {
+            System.out.println("----- WALLET -----");
+            System.out.println(walletsList.get(i));
+        }
     }
 
     public static void connect() {
@@ -24,7 +34,6 @@ public class App {
         catch (Exception e) {
             e.printStackTrace();
         }
-
     }
 
     public static void disconnect() {

@@ -35,6 +35,10 @@ public class User implements JsonReader {
          // API CALL 
     }
 
+    public ArrayList get_walletsList() {
+        return walletsList;
+    }
+
     public String get_userID() {
         return data.getFirstName() + data.getLastName() + data.getNationalID();
     }
@@ -53,6 +57,14 @@ public class User implements JsonReader {
 
     /* add a new wallet to the walletsList. It is not saved to the database (not yet) */
     public void add_wallet(String filePath) {
+       Wallet wallet = new Wallet();
+       try {
+          wallet.read_data(filePath);
+          walletsList.add(wallet);
+        }
+        catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 
     @Override
