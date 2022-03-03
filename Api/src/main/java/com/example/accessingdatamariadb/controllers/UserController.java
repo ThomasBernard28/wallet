@@ -1,5 +1,7 @@
-package com.example.accessingdatamariadb;
+package com.example.accessingdatamariadb.controllers;
 
+import com.example.accessingdatamariadb.repositories.UserRepository;
+import com.example.accessingdatamariadb.data.Users;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -25,7 +27,7 @@ public class UserController {
         //@ResponseBody means the returned String is the response, not a view name
         //@RequestParam means it is a parameter from the GET or POST request
 
-        User n = new User();
+        Users n = new Users();
         n.setUserID(userID);
         n.setNatID(natID);
         n.setPassword(password);
@@ -38,7 +40,7 @@ public class UserController {
     }
 
     @GetMapping(path="/all")
-    public @ResponseBody Iterable<User> getAllUsers(){
+    public @ResponseBody Iterable<Users> getAllUsers(){
         // This returns a JSON with the Users
         return userRepository.findAll();
     }

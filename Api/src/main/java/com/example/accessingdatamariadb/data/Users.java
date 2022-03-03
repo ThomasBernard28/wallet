@@ -1,4 +1,4 @@
-package com.example.accessingdatamariadb;
+package com.example.accessingdatamariadb.data;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -13,7 +13,7 @@ import lombok.*;
 @NoArgsConstructor
 
 @Entity
-public class User {
+public class Users {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private String userID;
