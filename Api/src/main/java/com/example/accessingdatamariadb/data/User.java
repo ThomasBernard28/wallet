@@ -1,9 +1,6 @@
 package com.example.accessingdatamariadb.data;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 
 import lombok.*;
 
@@ -12,10 +9,10 @@ import lombok.*;
 @AllArgsConstructor
 @NoArgsConstructor
 
-@Entity
-public class Users {
+
+@Entity(name = "User")
+public class User {
 	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
 	private String userID;
 	private Integer natID;
 	private String password;
@@ -23,6 +20,4 @@ public class Users {
 	private String firstName;
 	private String language;
 	private Long id;
-
-
 }

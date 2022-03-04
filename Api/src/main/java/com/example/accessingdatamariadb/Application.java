@@ -7,9 +7,9 @@ import org.springframework.context.annotation.ComponentScan;
 
 @ComponentScan("org.mariadb")
 @SpringBootApplication(exclude = {DataSourceAutoConfiguration.class })
-public class AccessingDataApp {
+public class Application {
 
     public static void main(String[] args) {
-        SpringApplication.run(AccessingDataApp.class, args);
+        SpringApplication.run(Application.class, args);
     }
 }
