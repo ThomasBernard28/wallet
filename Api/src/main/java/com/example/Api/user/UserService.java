@@ -1,22 +1,58 @@
 package com.example.Api.user;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import javax.transaction.Transactional;
 import java.util.List;
+import java.util.Objects;
+import java.util.Optional;
 
 @Service
 public class UserService {
 
+    private final UserRepository userRepository;
+
+    @Autowired
+    public UserService(UserRepository userRepository){
+        this.userRepository = userRepository;
+    }
+
     public List<User> getUsers(){
-        return List.of(
-                new User(
-                        "thomasbernard02032811708",
-                        "02032817708",
-                        "1234",
-                        "Bernard",
-                        "Thomas",
-                        "FR"
-                )
-        );
+        return userRepository.findAll();
+    }
+
+    public void addNewUser(User user){
+        Optional<User> userOptional = userRepository.findUserByUserID(user.getUserID());
+
+        if(userOptional.isPresent()){
+            throw new IllegalStateException("User already exists");
+        }
+        userRepository.save(user);
+    }
+
+    public void deleteUser(String userID){
+        boolean exists = userRepository.existsById(userID);
+
+        if(!exists){
+            throw new IllegalStateException("The user doesn't exist with id : " + userID);
+        }
+
+        userRepository.deleteById(userID);
+    }
+
+    @Transactional
+    public void updateUser(String userID, String psswd, String language){
+        User user = userRepository.findById(userID).orElseThrow(() -> new IllegalStateException(
+                "user with id " + userID + "doesn't exist"
+        ));
+
+        if(psswd != null && psswd.length() > 0 && !Objects.equals(user.getPsswd(), psswd)){
+            user.setPsswd(psswd);
+        }
+
+        if(language != null && language.length() == 2 && !Objects.equals(user.getLanguage(), language)){
+            user.setLanguage(language);
+        }
     }
 }
