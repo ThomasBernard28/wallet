@@ -2,10 +2,7 @@ package com.example.Api.user;
 
 import lombok.*;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 
 @Getter
 @Setter
@@ -13,16 +10,57 @@ import javax.persistence.Table;
 @NoArgsConstructor
 @ToString
 
-@Entity
-@Table(name = "USERS")
+
+@Entity(name = "USERS")
+@Table(
+        name = "USERS",
+        uniqueConstraints = @UniqueConstraint(
+                name = "users_natid_unique",
+                columnNames = "natID"
+        )
+)
 public class User {
 
     @Id
+    @Column(
+            name = "userID",
+            nullable = false,
+            updatable = false
+    )
     private String userID;
-    private String natID;
-    private String psswd;
-    private String lastName;
-    private String firstName;
-    private String language;
 
+    @Column(
+            name = "natID",
+            nullable = false,
+            updatable = false,
+            columnDefinition = "char"
+    )
+    private String natID;
+
+    @Column(
+            name = "psswd",
+            nullable = false
+    )
+    private String psswd;
+
+    @Column(
+            name = "lastName",
+            nullable = false,
+            updatable = false
+    )
+    private String lastName;
+
+    @Column(
+            name = "firstName",
+            nullable = false,
+            updatable = false
+    )
+    private String firstName;
+
+    @Column(
+            name = "language",
+            nullable = false,
+            columnDefinition = "char"
+    )
+    private String language;
 }

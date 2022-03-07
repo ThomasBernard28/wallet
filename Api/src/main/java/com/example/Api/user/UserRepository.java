@@ -12,4 +12,5 @@ public interface UserRepository extends JpaRepository<User, String> {
     //@Query("SELECT s FROM User s WHERE s.userID = ?1")
     //This is the same query
     Optional<User> findUserByUserID(String userID);
+
 }

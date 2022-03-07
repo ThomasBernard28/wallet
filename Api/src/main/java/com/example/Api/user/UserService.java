@@ -3,6 +3,7 @@ package com.example.Api.user;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import javax.swing.text.html.Option;
 import javax.transaction.Transactional;
 import java.util.List;
 import java.util.Objects;
@@ -21,6 +22,16 @@ public class UserService {
     public List<User> getUsers(){
         return userRepository.findAll();
     }
+
+    public Optional<User> getOneUser(String userID){
+        Optional<User> userById = userRepository.findUserByUserID(userID);
+        boolean isPresent = userById.isPresent();
+        if(!isPresent){
+            throw new IllegalStateException("This user doesn't exist");
+        }
+        return userRepository.findUserByUserID(userID);
+    }
+
 
     public void addNewUser(User user){
         Optional<User> userOptional = userRepository.findUserByUserID(user.getUserID());
