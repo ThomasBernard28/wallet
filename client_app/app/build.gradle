@@ -42,6 +42,7 @@ javafx {
 application {
     // Define the main class for the application.
     mainClass = 'wallet.App'
+    mainModule = 'java.module-info'
 }
 
 tasks.named('test') {

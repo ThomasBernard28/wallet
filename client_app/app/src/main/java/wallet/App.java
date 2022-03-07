@@ -1,16 +1,34 @@
 package wallet;
 
-import java.io.FileNotFoundException;
 import java.util.ArrayList;
 
 import wallet.APP.User;
 import wallet.APP.UserData;
 
-public class App {
+import javafx.application.Application;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Scene;
+import javafx.stage.Stage;
+
+import java.io.IOException;
+
+public class App extends Application {
 
     public static User currentUser;
+
+    @Override
+    public void start(Stage stage) throws IOException {
+        FXMLLoader fxmlLoader = new FXMLLoader(wallet.GUI.app.HelloApplication.class.getResource("build/resources/GUI/mainmenu.fxml"));
+        Scene scene = new Scene(fxmlLoader.load(), 320, 240);
+        stage.setTitle("Hello!");
+        stage.setScene(scene);
+        stage.setMaximized(true);
+
+        stage.show();
+    }
     
     public static void main(String[] args) {
+        launch();
         connect();
         currentUser.add_wallet("build/resources/main/yaml/walletExample.json");
         currentUser.add_wallet("build/resources/main/yaml/walletExample.json");
