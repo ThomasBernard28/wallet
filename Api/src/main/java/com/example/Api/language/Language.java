@@ -1,6 +1,7 @@
 package com.example.Api.language;
 
 import lombok.*;
+import org.hibernate.annotations.BatchSize;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -21,7 +22,7 @@ public class Language {
             name = "language",
             nullable = false,
             updatable = false,
-            columnDefinition = "char"
+            columnDefinition = "CHAR(2)"
     )
     private String language;
 }

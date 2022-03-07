@@ -33,7 +33,7 @@ public class User {
             name = "natID",
             nullable = false,
             updatable = false,
-            columnDefinition = "char"
+            columnDefinition = "CHAR(11)"
     )
     private String natID;
 
@@ -60,7 +60,7 @@ public class User {
     @Column(
             name = "language",
             nullable = false,
-            columnDefinition = "char"
+            columnDefinition = "CHAR(2)"
     )
     private String language;
 }
