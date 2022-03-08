@@ -1,5 +1,6 @@
 package com.example.Api.user;
 
+import com.example.Api.language.Language;
 import lombok.*;
 
 import javax.persistence.*;
@@ -57,10 +58,11 @@ public class User {
     )
     private String firstName;
 
-    @Column(
-            name = "language",
-            nullable = false,
-            columnDefinition = "CHAR(2)"
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(
+            name = "language", //the column in this table
+            referencedColumnName = "language" //the column referenced in LANGUAGES table
     )
-    private String language;
+    private Language language;
+
 }

@@ -1,5 +1,6 @@
 package com.example.Api.user;
 
+import com.example.Api.language.Language;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -62,8 +63,8 @@ public class UserService {
             user.setPsswd(psswd);
         }
 
-        if(language != null && language.length() == 2 && !Objects.equals(user.getLanguage(), language)){
-            user.setLanguage(language);
+        if(language != null && language.length() == 2 && !Objects.equals(user.getLanguage(), new Language(language))){
+           user.setLanguage(new Language(language));
         }
     }
 }

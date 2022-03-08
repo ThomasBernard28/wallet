@@ -1,5 +1,8 @@
 package com.example.Api.user;
 
+import com.example.Api.language.Language;
+import com.example.Api.language.LanguageRepository;
+import com.github.javafaker.Faker;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -18,7 +21,7 @@ public class UserConfig {
                     "1234",
                     "Bernard",
                     "Thomas",
-                    "FR"
+                    new Language("FR")
             );
 
             User Theo = new User(
@@ -27,7 +30,7 @@ public class UserConfig {
                     "1234",
                     "Godin",
                     "Theo",
-                    "FR"
+                    new Language("FR")
             );
 
             userRepository.saveAll(

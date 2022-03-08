@@ -1,5 +1,6 @@
 package com.example.Api.institution;
 
+import com.example.Api.language.Language;
 import lombok.*;
 
 import javax.persistence.*;
@@ -36,10 +37,11 @@ public class Institution {
     )
     private String name;
 
-    @Column(
+
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(
             name = "language",
-            nullable = false,
-            columnDefinition = "CHAR(2)"
+            referencedColumnName = "language"
     )
-    private String language;
+    private Language language;
 }

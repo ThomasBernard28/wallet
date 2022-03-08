@@ -1,5 +1,6 @@
 package com.example.Api.wallet;
 
+import com.example.Api.user.User;
 import lombok.*;
 
 import javax.persistence.*;
@@ -38,7 +39,12 @@ public class Wallet{
             updatable = false
     )
     private Long walletID;
-
+    /*
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(
+            name = "userID",
+            columnDefinition = "userID"
+    )*/
     @Column(
             name = "userID",
             nullable = false,
@@ -66,4 +72,5 @@ public class Wallet{
             nullable = false
     )
     private Integer activity;
+
 }

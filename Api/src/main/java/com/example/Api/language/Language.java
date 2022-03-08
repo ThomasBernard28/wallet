@@ -1,7 +1,6 @@
 package com.example.Api.language;
 
 import lombok.*;
-import org.hibernate.annotations.BatchSize;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
