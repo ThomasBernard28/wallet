@@ -17,7 +17,7 @@ import java.time.LocalDate;
 @Table(
         name = "WALLETS",
         uniqueConstraints = @UniqueConstraint(
-                name = "WALLETS_userID_bic_unidex",
+                name = "WALLETS_userID_bic_uindex",
                 columnNames = {"userID", "bic"}
         )
 )

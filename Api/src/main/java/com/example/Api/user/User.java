@@ -15,7 +15,7 @@ import javax.persistence.*;
 @Table(
         name = "USERS",
         uniqueConstraints = @UniqueConstraint(
-                name = "users_natid_unique",
+                name = "USERS_natID_uindex",
                 columnNames = "natID"
         )
 )

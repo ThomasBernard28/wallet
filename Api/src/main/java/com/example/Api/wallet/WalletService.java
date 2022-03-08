@@ -21,6 +21,11 @@ public class WalletService {
         return walletRepository.findAll();
     }
 
+    public List<Wallet> getUserWallets(String userID){
+
+        return walletRepository.findWalletByUserIDEquals(userID);
+    }
+
     public void addNewWallet(Wallet wallet){
         Optional<Wallet> walletOptional = walletRepository.findWalletByWalletID(wallet.getWalletID());
 

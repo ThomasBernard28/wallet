@@ -21,6 +21,11 @@ public class WalletController {
         return walletService.getWallets();
     }
 
+    @GetMapping(path = "{userId}")
+    public List<Wallet> getUserWallets(@PathVariable("userId") String userID){
+        return walletService.getUserWallets(userID);
+    }
+
     @PostMapping
     public void registerNewWallet(@RequestBody Wallet wallet){
 
