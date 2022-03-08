@@ -1,9 +1,7 @@
 package com.example.Api.wallet;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -21,5 +19,24 @@ public class WalletController {
     @GetMapping
     public List<Wallet> getWallets(){
         return walletService.getWallets();
+    }
+
+    @PostMapping
+    public void registerNewWallet(@RequestBody Wallet wallet){
+
+        walletService.addNewWallet(wallet);
+    }
+
+    @DeleteMapping(path = "{walletId}")
+    public void deleteWallet(@PathVariable("walletId") Long walletID){
+        walletService.deleteWallet(walletID);
+    }
+
+    @PutMapping(path = "{walletId}")
+    public void updateWallet(
+            @PathVariable("walletId") Long walletID,
+            @RequestParam(required = false) Integer activity
+    ){
+        walletService.updateWallet(walletID, activity);
     }
 }

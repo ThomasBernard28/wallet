@@ -50,7 +50,7 @@ public class Wallet{
             name = "bic",
             nullable = false,
             updatable = false,
-            columnDefinition = "char"
+            columnDefinition = "CHAR(8)"
     )
     private String bic;
 
@@ -63,8 +63,7 @@ public class Wallet{
 
     @Column(
             name = "activity",
-            nullable = false,
-            columnDefinition = "bit"
+            nullable = false
     )
-    private Byte activity;
+    private Integer activity;
 }

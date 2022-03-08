@@ -9,4 +9,6 @@ import java.util.Optional;
 public interface WalletRepository  extends JpaRepository<Wallet, Long> {
 
     Optional<Wallet> findWalletByWalletID(Long walletID);
+
+    Optional<Wallet> findWalletByUserIDAndBic(String userID, String bic);
 }
