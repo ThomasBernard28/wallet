@@ -1,4 +1,4 @@
-package client.app.clientapp;
+package wallet.GUI.controllers;
 
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
@@ -8,6 +8,8 @@ import javafx.stage.Stage;
 import java.io.IOException;
 import java.util.Dictionary;
 import java.util.Hashtable;
+
+/*
 
 public class HelloApplication extends Application {
     public static Dictionary<String, String> dic = new Hashtable<String, String>();
@@ -26,4 +28,9 @@ public class HelloApplication extends Application {
    public static void main(String[] args) {
         launch();
     }
+}
+*/
+
+public class HelloApplication {
+    public static Dictionary<String, String> dic = new Hashtable<String, String>();
 }

@@ -4,42 +4,39 @@ import java.util.ArrayList;
 
 import wallet.APP.User;
 import wallet.APP.UserData;
+import wallet.GUI.controllers.MainMenuController;
 
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
+import javafx.scene.Parent;
 import javafx.stage.Stage;
 
 import java.io.IOException;
+import java.io.File;
 
 public class App extends Application {
 
-    public static User currentUser;
+    public static User  currentUser;
+    
+    public static Stage stage;
 
     @Override
     public void start(Stage stage) throws IOException {
-        FXMLLoader fxmlLoader = new FXMLLoader(wallet.GUI.app.HelloApplication.class.getResource("build/resources/GUI/mainmenu.fxml"));
-        Scene scene = new Scene(fxmlLoader.load(), 320, 240);
+        FXMLLoader fxmlLoader = new FXMLLoader(new File("build/resources/main/GUI/fxml/mainmenu.fxml").toURL());
+        Parent root = fxmlLoader.load(); 
+        Scene scene = new Scene(root, 320, 240);
+
+        this.stage = stage;
         stage.setTitle("Hello!");
         stage.setScene(scene);
         stage.setMaximized(true);
 
         stage.show();
     }
-    
+   
     public static void main(String[] args) {
         launch();
-        connect();
-        currentUser.add_wallet("build/resources/main/yaml/walletExample.json");
-        currentUser.add_wallet("build/resources/main/yaml/walletExample.json");
-
-        System.out.println("----- USER -----");
-        System.out.println(currentUser);
-        ArrayList walletsList = currentUser.get_walletsList();
-        for(int i = 0; i < walletsList.size(); i++) {
-            System.out.println("----- WALLET -----");
-            System.out.println(walletsList.get(i));
-        }
     }
 
     public static void connect() {

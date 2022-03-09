@@ -8,7 +8,7 @@
 
 <StackPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0"
            style="-fx-background-color: beige " xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1"
-           fx:controller="client.app.clientapp.WalletgridController">
+           fx:controller="wallet.GUI.controllers.WalletgridController">
    <children>
       <Button fx:id="back" mnemonicParsing="false" text="Back" onAction="#onBackButtonCLick" StackPane.alignment="TOP_LEFT" />
       <GridPane fx:id="grid" hgap="50.0" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="354.0" prefWidth="411.0" vgap="50.0" StackPane.alignment="CENTER">

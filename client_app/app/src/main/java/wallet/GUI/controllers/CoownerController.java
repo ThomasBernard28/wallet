@@ -1,4 +1,4 @@
-package client.app.clientapp;
+package wallet.GUI.controllers;
 
 public class CoownerController {
 }

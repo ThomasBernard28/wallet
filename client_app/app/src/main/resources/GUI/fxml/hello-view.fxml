@@ -10,7 +10,7 @@
 
 <VBox alignment="CENTER" fillWidth="false" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity"
       minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" spacing="15.0"
-      xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="client.app.clientapp.HelloController">
+      xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="wallet.GUI.controllers.HelloController">
    <children>
       <Label fx:id="wrong" contentDisplay="CENTER" text="Wrong password or ID" textFill="RED" visible="false" />
       <HBox alignment="CENTER" prefHeight="49.0" prefWidth="600.0">

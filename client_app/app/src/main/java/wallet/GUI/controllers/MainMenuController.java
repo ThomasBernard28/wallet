@@ -1,4 +1,4 @@
-package client.app.clientapp;
+package wallet.GUI.controllers;
 
 import javafx.animation.Animation;
 import javafx.animation.KeyFrame;
@@ -68,6 +68,7 @@ public class MainMenuController {
     }
     @FXML
     private void onSettingsButtonClick() throws IOException {
+
         FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("settings.fxml"));
         Stage stage= (Stage)(wallets.getScene().getWindow());
         Scene scene = new Scene(fxmlLoader.load(),320,320);
@@ -101,10 +102,12 @@ public class MainMenuController {
     }
     @FXML
     private void onWalletButtonClick() throws IOException {
+
         FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("walletgrid.fxml"));
         Stage stage= (Stage)(wallets.getScene().getWindow());
         Scene scene = new Scene(fxmlLoader.load(),320,320);
         stage.setScene(scene);
         stage.show();
+
     }
 }

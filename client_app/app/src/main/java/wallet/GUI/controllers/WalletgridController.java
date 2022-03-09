@@ -1,4 +1,4 @@
-package client.app.clientapp;
+package wallet.GUI.controllers;
 
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;

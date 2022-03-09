@@ -12,7 +12,7 @@
 <?import javafx.scene.layout.VBox?>
 
 <StackPane xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1"
-           fx:controller="client.app.clientapp.RegisterController">
+           fx:controller="wallet.GUI.controllers.RegisterController">
    <children>
       <VBox alignment="TOP_CENTER" StackPane.alignment="CENTER">
          <children>

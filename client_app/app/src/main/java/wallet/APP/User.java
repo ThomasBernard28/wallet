@@ -31,6 +31,9 @@ public class User implements JsonReader {
         }
     }
 
+    public void write_data(String data) {
+    }
+
     public void set_walletsList(String nID) {
          // API CALL 
     }
