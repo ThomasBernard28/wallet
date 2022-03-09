@@ -1,5 +1,6 @@
 package com.example.Api.wallet;
 
+import com.example.Api.user.User;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
@@ -11,7 +12,7 @@ public interface WalletRepository  extends JpaRepository<Wallet, Long> {
 
     Optional<Wallet> findWalletByWalletID(Long walletID);
 
-    Optional<Wallet> findWalletByUserIDAndBic(String userID, String bic);
+    Optional<Wallet> findWalletByUserAndBic(String userID, String bic);
 
-    List<Wallet> findWalletByUserIDEquals(String userID);
+    List<Wallet> findWalletByUserEquals(User user);
 }

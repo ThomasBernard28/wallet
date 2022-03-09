@@ -1,19 +1,26 @@
 package com.example.Api.wallet;
 
+import com.example.Api.user.User;
+import com.example.Api.user.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import java.time.LocalDate;
 import java.util.List;
+import java.util.Map;
+import java.util.Optional;
 
 @RestController
 @RequestMapping(path = "api/v1/wallets")
 public class WalletController {
 
     private final WalletService walletService;
+    private final UserService userService;
 
     @Autowired
-    public WalletController(WalletService walletService){
+    public WalletController(WalletService walletService, UserService userService){
         this.walletService = walletService;
+        this.userService = userService;
     }
 
     @GetMapping
@@ -27,9 +34,19 @@ public class WalletController {
     }
 
     @PostMapping
-    public void registerNewWallet(@RequestBody Wallet wallet){
+    public void registerNewWallet(@RequestBody Map<String, String> json){
+        Integer activity = Integer.parseInt(json.get("activity"));
+        LocalDate localDate = LocalDate.parse(json.get("openingDate"));
 
-        walletService.addNewWallet(wallet);
+        Optional<User> user = userService.getOneUser(json.get("userID"));
+
+        if(user.isPresent()){
+            Wallet walletToCreate = new Wallet(user.get(), json.get("bic"), localDate, activity);
+            walletService.addNewWallet(walletToCreate);
+        }
+        else{
+            throw new IllegalStateException("User not found");
+        }
     }
 
     @DeleteMapping(path = "{walletId}")

@@ -39,18 +39,18 @@ public class Wallet{
             updatable = false
     )
     private Long walletID;
-    /*
+
     @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(
             name = "userID",
             columnDefinition = "userID"
-    )*/
-    @Column(
+    )
+    /*@Column(
             name = "userID",
             nullable = false,
             updatable = false
-    )
-    private String userID;
+    )*/
+    private User user;
 
     @Column(
             name = "bic",
@@ -72,5 +72,12 @@ public class Wallet{
             nullable = false
     )
     private Integer activity;
+
+    public Wallet(User user, String bic, LocalDate openingDate, Integer activity){
+        this.user = user;
+        this.bic=bic;
+        this.openingDate = openingDate;
+        this.activity = activity;
+    }
 
 }

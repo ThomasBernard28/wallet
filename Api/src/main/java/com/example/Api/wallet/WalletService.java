@@ -1,5 +1,7 @@
 package com.example.Api.wallet;
 
+import com.example.Api.user.User;
+import com.example.Api.user.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -11,10 +13,12 @@ import java.util.Optional;
 public class WalletService {
 
     private final WalletRepository walletRepository;
+    private UserRepository userRepository;
 
     @Autowired
-    public WalletService(WalletRepository walletRepository){
+    public WalletService(WalletRepository walletRepository, UserRepository userRepository){
         this.walletRepository = walletRepository;
+        this.userRepository = userRepository;
     }
 
     public List<Wallet> getWallets(){
@@ -22,8 +26,12 @@ public class WalletService {
     }
 
     public List<Wallet> getUserWallets(String userID){
+        Optional<User> user = userRepository.findUserByUserID(userID);
 
-        return walletRepository.findWalletByUserIDEquals(userID);
+        if(!user.isPresent()){
+            throw new IllegalStateException("The user doesn't exist");
+        }
+        return walletRepository.findWalletByUserEquals(user.get());
     }
 
     public void addNewWallet(Wallet wallet){
@@ -32,7 +40,7 @@ public class WalletService {
         if(walletOptional.isPresent()){
             throw new IllegalStateException("Wallet already exists");
         }
-        Optional<Wallet> walletForUser = walletRepository.findWalletByUserIDAndBic(wallet.getUserID(), wallet.getBic());
+        Optional<Wallet> walletForUser = walletRepository.findWalletByUserAndBic(wallet.getUser().getUserID(), wallet.getBic());
 
         if (walletForUser.isPresent()){
             throw new IllegalStateException("User already has a wallet in this institution");
