@@ -6,6 +6,8 @@ import lombok.*;
 import javax.persistence.*;
 import java.time.LocalDate;
 
+import static javax.persistence.GenerationType.SEQUENCE;
+
 
 @Getter
 @Setter
@@ -30,7 +32,7 @@ public class Wallet{
             allocationSize = 1
     )
     @GeneratedValue(
-        strategy = GenerationType.SEQUENCE,
+        strategy = SEQUENCE,
         generator = "wallet_sequence"
     )
     @Column(
@@ -40,16 +42,15 @@ public class Wallet{
     )
     private Long walletID;
 
-    @OneToOne(cascade = CascadeType.ALL)
+    @ManyToOne
     @JoinColumn(
             name = "userID",
-            columnDefinition = "userID"
-    )
-    /*@Column(
-            name = "userID",
             nullable = false,
-            updatable = false
-    )*/
+            referencedColumnName = "userID",
+            foreignKey = @ForeignKey(
+                    name = "WALLETS_USERS_userID_fk"
+            )
+    )
     private User user;
 
     @Column(

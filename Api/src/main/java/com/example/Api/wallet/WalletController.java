@@ -35,14 +35,15 @@ public class WalletController {
 
     @PostMapping
     public void registerNewWallet(@RequestBody Map<String, String> json){
+        System.out.println("Im here");
         Integer activity = Integer.parseInt(json.get("activity"));
         LocalDate localDate = LocalDate.parse(json.get("openingDate"));
 
         Optional<User> user = userService.getOneUser(json.get("userID"));
 
         if(user.isPresent()){
-            Wallet walletToCreate = new Wallet(user.get(), json.get("bic"), localDate, activity);
-            walletService.addNewWallet(walletToCreate);
+            System.out.println("User found");
+            walletService.addNewWallet(json.get("userID"), json.get("bic"), localDate, activity);
         }
         else{
             throw new IllegalStateException("User not found");

@@ -61,7 +61,10 @@ public class User {
     @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(
             name = "language", //the column in this table
-            referencedColumnName = "language" //the column referenced in LANGUAGES table
+            referencedColumnName = "language", //the column referenced in LANGUAGES table
+            foreignKey = @ForeignKey(
+                    name = "USERS_LANGUAGES_language_fk"
+            )
     )
     private Language language;
 

@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
+import java.time.LocalDate;
 import java.util.List;
 import java.util.Optional;
 
@@ -13,7 +14,7 @@ import java.util.Optional;
 public class WalletService {
 
     private final WalletRepository walletRepository;
-    private UserRepository userRepository;
+    private final UserRepository userRepository;
 
     @Autowired
     public WalletService(WalletRepository walletRepository, UserRepository userRepository){
@@ -34,20 +35,27 @@ public class WalletService {
         return walletRepository.findWalletByUserEquals(user.get());
     }
 
-    public void addNewWallet(Wallet wallet){
+    public void addNewWallet(String userID, String bic, LocalDate openingDate, Integer activity) {
+        System.out.println("I will create the wallet");
+        Wallet wallet = new Wallet(userRepository.getById(userID), bic, openingDate, activity);
+        System.out.println("Wallet created");
         Optional<Wallet> walletOptional = walletRepository.findWalletByWalletID(wallet.getWalletID());
+
 
         if(walletOptional.isPresent()){
             throw new IllegalStateException("Wallet already exists");
         }
+        /*
+        //TODO Fix the error here
         Optional<Wallet> walletForUser = walletRepository.findWalletByUserAndBic(wallet.getUser().getUserID(), wallet.getBic());
 
         if (walletForUser.isPresent()){
             throw new IllegalStateException("User already has a wallet in this institution");
         }
-
+         */
         walletRepository.save(wallet);
     }
+
     public void deleteWallet(Long walletID){
         boolean exists = walletRepository.existsById(walletID);
 
