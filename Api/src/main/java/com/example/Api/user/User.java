@@ -1,9 +1,12 @@
 package com.example.Api.user;
 
 import com.example.Api.language.Language;
+import com.example.Api.wallet.Wallet;
 import lombok.*;
 
 import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
 
 @Getter
 @Setter
@@ -68,4 +71,33 @@ public class User {
     )
     private Language language;
 
+    @OneToMany(
+            mappedBy = "walletID",
+            orphanRemoval = true,
+            cascade = CascadeType.ALL
+    )
+    private List<Wallet> wallets = new ArrayList<>();
+
+    public void addWallet(Wallet wallet){
+        if (!this.wallets.contains(wallet)){
+            this.wallets.add(wallet);
+            wallet.setUser(this);
+        }
+    }
+
+    public void removeWallet(Wallet wallet){
+        if(this.wallets.contains(wallet)){
+            this.wallets.remove(wallet);
+            wallet.setUser(null);
+        }
+    }
+
+    public User(String userID, String natID, String psswd, String lastName, String firstName, Language language ){
+        this.userID = userID;
+        this.natID = natID;
+        this.psswd = psswd;
+        this.lastName = lastName;
+        this.firstName = firstName;
+        this.language = language;
+    }
 }

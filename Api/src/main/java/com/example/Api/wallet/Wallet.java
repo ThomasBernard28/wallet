@@ -1,10 +1,14 @@
 package com.example.Api.wallet;
 
+import com.example.Api.account.Account;
 import com.example.Api.user.User;
 import lombok.*;
+import org.apache.catalina.LifecycleState;
 
 import javax.persistence.*;
 import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.List;
 
 import static javax.persistence.GenerationType.SEQUENCE;
 
@@ -74,11 +78,30 @@ public class Wallet{
     )
     private Integer activity;
 
+    @OneToMany(
+            mappedBy = "wallet"
+    )
+    private List<Account> accounts = new ArrayList<>();
+
     public Wallet(User user, String bic, LocalDate openingDate, Integer activity){
         this.user = user;
         this.bic=bic;
         this.openingDate = openingDate;
         this.activity = activity;
+    }
+
+    public void addAccount(Account account){
+        if(!this.accounts.contains(account)){
+            this.accounts.add(account);
+            account.setWallet(this);
+        }
+    }
+
+    public void removeAccount(Account account){
+        if(this.accounts.contains(account)){
+            this.accounts.remove(account);
+            account.setWallet(null);
+        }
     }
 
 }

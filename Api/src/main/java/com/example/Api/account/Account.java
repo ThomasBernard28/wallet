@@ -1,5 +1,6 @@
 package com.example.Api.account;
 
+import com.example.Api.wallet.Wallet;
 import lombok.*;
 
 import javax.persistence.*;
@@ -23,10 +24,15 @@ public class Account {
     )
     private String iban;
 
-    @Column(
-            name = "walletID"
+    @ManyToOne
+    @JoinColumn(
+            name = "walletID",
+            referencedColumnName = "walletID",
+            foreignKey = @ForeignKey(
+                    name = "ACCOUNTS_WALLETS_walletID_fk"
+            )
     )
-    private Long walletID;
+    private Wallet wallet;
 
     @Column(
             name = "bic",
