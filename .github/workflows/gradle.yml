@@ -5,9 +5,9 @@ name: Java CI with Gradle
 
 on:
   push:
-    branches: [ main ]
+    branches: [ frontend ]
   pull_request:
-    branches: [ main ]
+    branches: [ frontend ]
 
 jobs:
 
@@ -51,25 +51,4 @@ jobs:
     - name: Compile javadoc
       run: |
         cd employee_app
-        bash gradlew javadoc
-
-  build_server:
-    runs-on: ubuntu-latest
-    steps:
-    - uses: actions/checkout@v2
-    - name: Set up JDK 11
-      uses: actions/setup-java@v2
-      with:
-        java-version: '11'
-        distribution: 'adopt'
-        cache: gradle
-    - name: Grant execute permission for gradlew
-      run: chmod +x server_app/gradlew
-    - name: Build with Gradle
-      run: |
-        cd server_app
-        bash gradlew build    
-    - name: Compile javadoc
-      run: |
-        cd server_app
         bash gradlew javadoc
