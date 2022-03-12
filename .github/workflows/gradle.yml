@@ -65,4 +65,5 @@ jobs:
         password: ${{ secrets.PASSWORD }}
         port: ${{ secrets.PORT }}
         source: "server_app/build/libs/Api-0.0.1-SNAPSHOT.jar"
-        target: "/home/server_access/Api-0.0.1-SNAPSHOT.jar"
+        target: "/home/server_access/"
+        strip_components: 3
