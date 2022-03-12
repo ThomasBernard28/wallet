@@ -54,6 +54,6 @@ jobs:
         repo_token: "${{ secrets.GITHUB_TOKEN }}"
         automatic_release_tag: "backend-jar"
         prerelease: false
-        title: "backend fatjar"
+        title: "Backend fatjar"
         files: |
           server_app/build/libs/Api-0.0.1-SNAPSHOT.jar
