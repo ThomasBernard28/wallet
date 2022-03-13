@@ -78,30 +78,10 @@ public class Wallet{
     )
     private Integer activity;
 
-    @OneToMany(
-            mappedBy = "wallet"
-    )
-    private List<Account> accounts = new ArrayList<>();
-
     public Wallet(User user, String bic, LocalDate openingDate, Integer activity){
         this.user = user;
         this.bic=bic;
         this.openingDate = openingDate;
         this.activity = activity;
     }
-
-    public void addAccount(Account account){
-        if(!this.accounts.contains(account)){
-            this.accounts.add(account);
-            account.setWallet(this);
-        }
-    }
-
-    public void removeAccount(Account account){
-        if(this.accounts.contains(account)){
-            this.accounts.remove(account);
-            account.setWallet(null);
-        }
-    }
-
 }

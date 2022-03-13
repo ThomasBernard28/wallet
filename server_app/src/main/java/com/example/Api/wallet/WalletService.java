@@ -51,22 +51,15 @@ public class WalletService {
             throw new IllegalStateException("User already has a wallet in this institution");
         }
          */
-        User user = userRepository.findUserByUserID(userID).get();
-        user.addWallet(wallet);
         walletRepository.save(wallet);
     }
 
     public void deleteWallet(Long walletID){
         boolean exists = walletRepository.existsById(walletID);
-        Optional<User> user = userRepository.findUserByUserID(walletRepository.findWalletByWalletID(walletID).get().getUser().getUserID());
 
         if(!exists){
             throw new IllegalStateException("The wallet doesn't exist");
         }
-        if(!user.isPresent()){
-            throw new IllegalStateException("Critical error wallet has no User");
-        }
-        user.get().removeWallet(walletRepository.getById(walletID));
         walletRepository.deleteById(walletID);
     }
 
@@ -79,17 +72,6 @@ public class WalletService {
         if (activity.equals(wallet.getActivity())){
             throw new IllegalStateException("The activity of the wallet is already set to" + activity);
         }
-
-        else{
-            User user = userRepository.getById(walletRepository.getById(walletID).getUser().getUserID());
-            if(activity.equals(1)){
-                user.addWallet(wallet);
-            }
-            else{
-                user.removeWallet(wallet);
-            }
-            wallet.setActivity(activity);
-        }
-
+        wallet.setActivity(activity);
     }
 }
