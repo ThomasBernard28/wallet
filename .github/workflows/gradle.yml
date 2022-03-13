@@ -52,3 +52,34 @@ jobs:
       run: |
         cd employee_app
         bash gradlew javadoc
+        
+  release_fatjars:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v2
+    - name: Set up JDK 11
+      uses: actions/setup-java@v2
+      with:
+        java-version: '11'
+        distribution: 'adopt'
+        cache: gradle
+    - name: Grant execute permission for gradlew
+      run: |
+        chmod +x client_app/gradlew
+        chmod +x employee_app/gradlew
+    - name: Create fatjar with Gradle
+      run: |
+        cd client_app
+        bash gradlew jar
+#       cd ../employee_app
+#       bash gradlew jar
+    - name: Release fatjars
+      uses: "marvinpinto/action-automatic-releases@latest"
+      with:
+        repo_token: "${{ secrets.GITHUB_TOKEN }}"
+        automatic_release_tag: "frontend-jar"
+        prerelease: false
+        title: "Frontend fatjar"
+        files: |
+          client_app/app/build/libs/app.jar
+#         employee_app/app/build/libs/app.jar
