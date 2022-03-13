@@ -9,7 +9,6 @@
 plugins {
     // Apply the application plugin to add support for building a CLI application in Java.
     id 'application'
-    id "com.github.johnrengelman.shadow" version "7.1.2"
     id 'org.openjfx.javafxplugin' version '0.0.9'
 }
 
@@ -35,7 +34,7 @@ dependencies {
 }
 
 javafx {
-    version = "15.0.1"
+    version = "17"
     modules = [ 'javafx.base', 'javafx.controls', 'javafx.fxml', 'javafx.graphics', 'javafx.media', 'javafx.swing', 'javafx.web' ]
         }
 
@@ -48,4 +47,14 @@ application {
 tasks.named('test') {
     // Use junit platform for unit tests.
     useJUnitPlatform()
+}
+
+jar {
+    duplicatesStrategy = 'include'
+    manifest {
+        attributes 'Main-Class': 'wallet.Launcher'
+    }
+    from {
+        configurations.runtimeClasspath.collect {it.isDirectory() ? it: zipTree(it)}
+    }
 }

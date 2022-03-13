@@ -14,6 +14,13 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 import java.io.File;
+import java.io.*;
+import java.net.URI;
+import java.net.URISyntaxException;
+import java.net.URL;
+import java.nio.charset.StandardCharsets;
+import java.nio.file.Files;
+import java.util.List;
 
 public class App extends Application {
 
@@ -23,8 +30,11 @@ public class App extends Application {
 
     @Override
     public void start(Stage stage) throws IOException {
-        FXMLLoader fxmlLoader = new FXMLLoader(new File("build/resources/main/GUI/fxml/mainmenu.fxml").toURL());
-        Parent root = fxmlLoader.load(); 
+
+        FXMLLoader fxmlLoader = new FXMLLoader();
+
+        // FXMLLoader fxmlLoader = new FXMLLoader(new File("build/resources/main/GUI/fxml/mainmenu.fxml").toURL());
+        Parent root = fxmlLoader.load(getFileFromResourceAsStream("GUI/fxml/mainmenu.fxml")); 
         Scene scene = new Scene(root, 320, 240);
 
         this.stage = stage;
@@ -55,5 +65,21 @@ public class App extends Application {
         currentUser = null;
     }
 
+    // get a file from the resources folder
+    // works everywhere, IDEA, unit test and JAR file.
+    private InputStream getFileFromResourceAsStream(String fileName) {
+
+        // The class loader that loaded the class
+        ClassLoader classLoader = getClass().getClassLoader();
+        InputStream inputStream = classLoader.getResourceAsStream(fileName);
+
+        // the stream holding the file content
+        if (inputStream == null) {
+            throw new IllegalArgumentException("file not found! " + fileName);
+        } else {
+            return inputStream;
+        }
+
+    }
 
 }
