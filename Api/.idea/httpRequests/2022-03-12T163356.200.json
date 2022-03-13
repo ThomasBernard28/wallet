@@ -1,0 +1,18 @@
+[
+  {
+    "walletID": 1,
+    "user": {
+      "userID": "thomasbernard02032811708",
+      "natID": "02032817708",
+      "psswd": "1234",
+      "lastName": "Bernard",
+      "firstName": "Thomas",
+      "language": {
+        "language": "FR"
+      }
+    },
+    "bic": "CPHBBE75",
+    "openingDate": "2022-03-08",
+    "activity": 1
+  }
+]

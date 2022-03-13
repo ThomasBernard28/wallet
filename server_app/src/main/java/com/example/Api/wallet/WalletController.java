@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 import java.util.Optional;
@@ -30,7 +31,15 @@ public class WalletController {
 
     @GetMapping(path = "{userId}")
     public List<Wallet> getUserWallets(@PathVariable("userId") String userID){
-        return walletService.getUserWallets(userID);
+        List<Wallet> wallets = walletService.getUserWallets(userID);
+        List<Wallet> activeWallets = new ArrayList<>();
+
+        for (Wallet wallet: wallets) {
+            if (wallet.getActivity().equals(1)){
+                activeWallets.add(wallet);
+            }
+        }
+        return activeWallets;
     }
 
     @PostMapping

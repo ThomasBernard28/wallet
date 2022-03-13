@@ -9,7 +9,7 @@ import java.util.Optional;
 @Repository
 public interface AccountRepository extends JpaRepository<Account, String> {
 
-    List<Account> findAccountByWalletID(Long walletID);
+    List<Account> findAccountByWallet(Long walletID);
 
     Optional<Account> findByIban(String iban);
 }

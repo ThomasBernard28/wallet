@@ -16,6 +16,6 @@ public class AccountService {
     }
 
     public List<Account> getAccounts(Long walletID){
-        return accountRepository.findAccountByWalletID(walletID);
+        return accountRepository.findAccountByWallet(walletID);
     }
 }
