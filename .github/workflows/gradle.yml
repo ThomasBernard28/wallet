@@ -69,9 +69,10 @@ jobs:
         chmod +x employee_app/gradlew
     - name: Create fatjar with Gradle
       run: |
-        cd client_app
+        cd ~/client_app
         bash gradlew jar
-#       cd ../employee_app
+        mv ~/client_app/app/build/libs/app.jar ~/client-app.jar
+#       cd ~/employee_app
 #       bash gradlew jar
     - name: Release fatjars
       uses: "marvinpinto/action-automatic-releases@latest"
@@ -81,5 +82,5 @@ jobs:
         prerelease: false
         title: "Frontend fatjar"
         files: |
-          client_app/app/build/libs/app.jar
+          client-app.jar
 #         employee_app/app/build/libs/app.jar
