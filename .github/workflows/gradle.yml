@@ -71,7 +71,7 @@ jobs:
         cd client_app
         bash gradlew jar
         cd ..
-        mv client_app/app/build/libs/app.jar ~/client-app.jar
+        mv client_app/app/build/libs/app.jar client_app/app/build/libs/client-app.jar
 #       cd ../employee_app
 #       bash gradlew jar
     - name: Release fatjars
@@ -82,6 +82,5 @@ jobs:
         prerelease: false
         title: "Frontend fatjar"
         files: |
-          client_app/app/build/libs/app.jar
-          ~/client-app.jar
+          client_app/app/build/libs/client-app.jar
 #         employee_app/app/build/libs/app.jar
