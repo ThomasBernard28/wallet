@@ -31,7 +31,6 @@ jobs:
       run: |
         cd client_app
         bash gradlew javadoc
-
   build_employee:
     runs-on: ubuntu-latest
     steps:
@@ -71,8 +70,7 @@ jobs:
       run: |
         cd client_app
         bash gradlew jar
-        mv /home/runner/wallet/wallet/client_app/app/build/libs/app.jar /home/runner/wallet/wallet/client-app.jar
-#       cd ~/employee_app
+#       cd ../employee_app
 #       bash gradlew jar
     - name: Release fatjars
       uses: "marvinpinto/action-automatic-releases@latest"
@@ -82,5 +80,5 @@ jobs:
         prerelease: false
         title: "Frontend fatjar"
         files: |
-          client-app.jar
+          client_app/app/build/libs/app.jar
 #         employee_app/app/build/libs/app.jar
