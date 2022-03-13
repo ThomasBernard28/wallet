@@ -1,7 +1,0 @@
-{
-  "timestamp": "2022-03-12T18:52:59.294+00:00",
-  "status": 500,
-  "error": "Internal Server Error",
-  "message": "could not execute statement; SQL [n/a]; constraint [WALLETS_userID_bic_uindex]; nested exception is org.hibernate.exception.ConstraintViolationException: could not execute statement",
-  "path": "/api/v1/wallets"
-}

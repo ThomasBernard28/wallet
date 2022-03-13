@@ -1,7 +1,0 @@
-{
-  "timestamp": "2022-03-12T14:59:35.505+00:00",
-  "status": 500,
-  "error": "Internal Server Error",
-  "message": "could not execute statement; SQL [n/a]; constraint [PRIMARY]; nested exception is org.hibernate.exception.ConstraintViolationException: could not execute statement",
-  "path": "/api/v1/wallets"
-}

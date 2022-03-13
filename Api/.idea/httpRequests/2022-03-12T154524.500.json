@@ -1,7 +1,0 @@
-{
-  "timestamp": "2022-03-12T14:45:24.613+00:00",
-  "status": 500,
-  "error": "Internal Server Error",
-  "message": "Parameter value [thomasbernard02032811708] did not match expected type [com.example.Api.user.User (n/a)]; nested exception is java.lang.IllegalArgumentException: Parameter value [thomasbernard02032811708] did not match expected type [com.example.Api.user.User (n/a)]",
-  "path": "/api/v1/wallets"
-}

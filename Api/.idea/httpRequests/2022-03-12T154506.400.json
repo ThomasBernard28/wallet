@@ -1,7 +1,0 @@
-{
-  "timestamp": "2022-03-12T14:45:06.471+00:00",
-  "status": 400,
-  "error": "Bad Request",
-  "message": "JSON parse error: Unrecognized token 'thomasbernard02032811708': was expecting (JSON String, Number, Array, Object or token 'null', 'true' or 'false'); nested exception is com.fasterxml.jackson.core.JsonParseException: Unrecognized token 'thomasbernard02032811708': was expecting (JSON String, Number, Array, Object or token 'null', 'true' or 'false')\n at [Source: (org.springframework.util.StreamUtils$NonClosingInputStream); line: 2, column: 41]",
-  "path": "/api/v1/wallets"
-}
