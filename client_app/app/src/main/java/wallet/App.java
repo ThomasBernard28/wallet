@@ -2,6 +2,7 @@ package wallet;
 
 import java.util.ArrayList;
 
+import wallet.API.Api;
 import wallet.APP.User;
 import wallet.APP.UserData;
 import wallet.GUI.controllers.MainMenuController;
@@ -24,8 +25,8 @@ import java.util.List;
 
 public class App extends Application {
 
+    public static Api   api         = new Api();
     public static User  currentUser;
-    
     public static Stage stage;
 
     @Override
@@ -46,15 +47,24 @@ public class App extends Application {
     }
    
     public static void main(String[] args) {
+        // start tmp 
+        String userID = "thomasbernard02032811708"; // ceci doit etre recupere via le gui ( tiramisu )
+        try {
+            connect(userID);
+            System.out.println(currentUser);
+        }
+        catch (Exception e) {
+            e.printStackTrace();
+        }
+        // end tmp 
+
         launch();
     }
 
-    public static void connect() {
-        // userYamlFile = API CALL
-        String userFile = "build/resources/main/yaml/userExample.json"; // tmp
+    public static void connect(String userID) {
         currentUser = new User();
         try {
-            currentUser.read_data(userFile);    
+            currentUser.read_data(api.get_user(userID));;    
         }
         catch (Exception e) {
             e.printStackTrace();
