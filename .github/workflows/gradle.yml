@@ -69,9 +69,13 @@ jobs:
         chmod +x employee_app/gradlew
     - name: Create fatjar with Gradle
       run: |
-        cd ~/client_app
+        echo 72
+        ls
+        cd client_app
         bash gradlew jar
-        mv ~/client_app/app/build/libs/app.jar ~/client-app.jar
+        echo 75
+        ls
+        mv client_app/app/build/libs/app.jar client-app.jar
 #       cd ~/employee_app
 #       bash gradlew jar
     - name: Release fatjars
