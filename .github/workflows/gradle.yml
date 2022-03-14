@@ -72,8 +72,9 @@ jobs:
         bash gradlew jar
         cd ..
         mv client_app/app/build/libs/app.jar client_app/app/build/libs/client-app.jar
-#       cd ../employee_app
-#       bash gradlew jar
+        cd employee_app
+        bash gradlew jar
+        mv server_app/app/build/libs/app.jar server_app/app/build/libs/server-app.jar
     - name: Release fatjars
       uses: "marvinpinto/action-automatic-releases@latest"
       with:
@@ -83,4 +84,4 @@ jobs:
         title: "Frontend fatjar"
         files: |
           client_app/app/build/libs/client-app.jar
-#         employee_app/app/build/libs/app.jar
+          employee_app/app/build/libs/server-app.jar

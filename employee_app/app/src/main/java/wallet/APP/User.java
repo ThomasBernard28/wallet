@@ -21,22 +21,29 @@ public class User implements JsonReader {
 
     /* read the given json file and save the data in the data instance of the current user */
     @Override
-    public void read_data(String filePath) throws Exception {
+    public void read_data(String json) throws Exception {
         try {
             ObjectMapper mapper = new ObjectMapper();
-            data = mapper.readValue(Paths.get(filePath).toFile(), UserData.class);
+            data = mapper.readValue(json, UserData.class);
         }
         catch (Exception e) {
             e.printStackTrace();
         }
     }
 
+    public void write_data(String userID) {
+    }
+
     public void set_walletsList(String nID) {
          // API CALL 
     }
 
+    public ArrayList get_walletsList() {
+        return walletsList;
+    }
+
     public String get_userID() {
-        return data.getFirstName() + data.getLastName() + data.getNationalID();
+        return data.getUserID();
     }
 
     public String get_firstName() {
@@ -47,12 +54,24 @@ public class User implements JsonReader {
         return data.getLastName();
     }
 
-    public int get_nationalID() {
-        return data.getNationalID();  
+    public int get_natID() {
+        return data.getNatID();  
+    }
+
+    public String get_language() {
+        return data.getLanguage();
     }
 
     /* add a new wallet to the walletsList. It is not saved to the database (not yet) */
     public void add_wallet(String filePath) {
+       Wallet wallet = new Wallet();
+       try {
+          wallet.read_data(filePath);
+          walletsList.add(wallet);
+        }
+        catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 
     @Override
