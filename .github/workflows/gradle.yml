@@ -75,7 +75,7 @@ jobs:
         cd employee_app
         bash gradlew jar
         cd ..
-        mv employee_app/app/build/libs/app.jar server_app/app/build/libs/employee-app.jar
+        mv employee_app/app/build/libs/app.jar employee_app/app/build/libs/employee-app.jar
     - name: Release fatjars
       uses: "marvinpinto/action-automatic-releases@latest"
       with:
