@@ -12,6 +12,7 @@ import javafx.scene.control.Label;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 import javafx.util.Duration;
+import javafx.scene.Parent;
 
 import java.io.IOException;
 import java.text.Format;
@@ -21,6 +22,7 @@ import java.time.LocalDateTime;
 import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
 import java.util.Date;
+import java.io.File;
 
 
 
@@ -69,9 +71,10 @@ public class MainMenuController {
     @FXML
     private void onSettingsButtonClick() throws IOException {
 
-        FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("settings.fxml"));
+        FXMLLoader fxmlLoader = new FXMLLoader(new File("build/resources/main/GUI/fxml/settings.fxml").toURL());
+        Parent root = fxmlLoader.load();
         Stage stage= (Stage)(wallets.getScene().getWindow());
-        Scene scene = new Scene(fxmlLoader.load(),320,320);
+        Scene scene = new Scene(root,320,320);
         stage.setScene(scene);
         stage.show();
 
