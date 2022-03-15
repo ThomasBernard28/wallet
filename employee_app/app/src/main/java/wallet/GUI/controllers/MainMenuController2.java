@@ -69,7 +69,7 @@ public class MainMenuController2 {
     @FXML
     private void onSettingsButtonClick() throws IOException {
 
-        FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("settings.fxml"));
+        FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("settings2.fxml"));
         Stage stage= (Stage)(wallets.getScene().getWindow());
         Scene scene = new Scene(fxmlLoader.load(),320,320);
         stage.setScene(scene);
@@ -100,14 +100,5 @@ public class MainMenuController2 {
         Stage stage= (Stage)(leave.getScene().getWindow());
         stage.close();
     }
-    @FXML
-    private void onWalletButtonClick() throws IOException {
 
-        FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("walletgrid.fxml"));
-        Stage stage= (Stage)(wallets.getScene().getWindow());
-        Scene scene = new Scene(fxmlLoader.load(),320,320);
-        stage.setScene(scene);
-        stage.show();
-
-    }
 }

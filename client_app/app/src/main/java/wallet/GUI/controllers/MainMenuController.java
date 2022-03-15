@@ -65,6 +65,7 @@ public class MainMenuController {
         s = formatter.format(datum);
         date.setText(s);
         a=1;
+        sidebutton.setText("<");
 
 
     }
@@ -90,10 +91,13 @@ public class MainMenuController {
             menuTranslation.setRate(1);
             menuTranslation.play();
             a=1;
+            sidebutton.setText("<");
         } else {
 
             menuTranslation.setRate(-1);
             menuTranslation.play();
+
+            sidebutton.setText(">");
             a=-1;
         }
 
@@ -106,9 +110,10 @@ public class MainMenuController {
     @FXML
     private void onWalletButtonClick() throws IOException {
 
-        FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("walletgrid.fxml"));
-        Stage stage= (Stage)(wallets.getScene().getWindow());
-        Scene scene = new Scene(fxmlLoader.load(),320,320);
+        FXMLLoader fxmlLoader = new FXMLLoader(new File("build/resources/main/GUI/fxml/walletgrid.fxml").toURL());
+        Parent root = fxmlLoader.load();
+        Stage stage = (Stage) (wallets.getScene().getWindow());
+        Scene scene = new Scene(root, 320, 320);
         stage.setScene(scene);
         stage.show();
 
