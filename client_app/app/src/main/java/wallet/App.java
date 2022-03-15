@@ -35,7 +35,7 @@ public class App extends Application {
         FXMLLoader fxmlLoader = new FXMLLoader();
 
         // FXMLLoader fxmlLoader = new FXMLLoader(new File("build/resources/main/GUI/fxml/mainmenu.fxml").toURL());
-        Parent root = fxmlLoader.load(getFileFromResourceAsStream("GUI/fxml/mainmenu.fxml"));
+        Parent root = fxmlLoader.load(getFileFromResourceAsStream("GUI/fxml/hello-view.fxml"));
         Scene scene = new Scene(root, 320, 240);
 
         this.stage = stage;
@@ -47,17 +47,6 @@ public class App extends Application {
     }
 
     public static void main(String[] args) {
-        // start tmp 
-        String userID = "thomasbernard02032811708"; // ceci doit etre recupere via le gui ( tiramisu )
-        try {
-            // connect(userID);
-            //System.out.println(currentUser);
-            //currentUser.set_walletsList(api.get_wallets(userID));
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-        // end tmp 
-
         launch();
     }
 
@@ -65,7 +54,6 @@ public class App extends Application {
         currentUser = new User();
         try {
             currentUser.read_data(api.get_user(userID));
-            ;
         } catch (Exception e) {
             e.printStackTrace();
         }

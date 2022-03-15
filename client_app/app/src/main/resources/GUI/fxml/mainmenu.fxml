@@ -15,7 +15,7 @@
             <Button fx:id="wallets" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#onWalletButtonClick" text="My wallets" VBox.vgrow="ALWAYS" />
             <Button fx:id="accounts" maxWidth="1.7976931348623157E308" mnemonicParsing="false" text="My accounts" />
             <Button fx:id="settings" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#onSettingsButtonClick" prefHeight="24.0" prefWidth="142.0" text="Settings" />
-            <Button fx:id="singout" maxWidth="1.7976931348623157E308" mnemonicParsing="false" prefHeight="24.0" prefWidth="210.0" text="Sing out" />
+            <Button fx:id="signout" maxWidth="1.7976931348623157E308" mnemonicParsing="false" prefHeight="24.0" onMouseClicked="#onSignOutButtonClick" prefWidth="210.0" text="Sign out" />
             <Button fx:id="leave" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onMouseClicked="#onLeaveButtonCLick" text="Leave" />
          </children>
          <BorderPane.margin>

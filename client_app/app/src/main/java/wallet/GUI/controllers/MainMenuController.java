@@ -24,6 +24,7 @@ import java.time.format.DateTimeFormatter;
 import java.util.Date;
 import java.io.File;
 
+import wallet.App;
 
 
 public class MainMenuController {
@@ -38,7 +39,7 @@ public class MainMenuController {
     @FXML
     Button settings;
     @FXML
-    Button singout;
+    Button signout;
     @FXML
     Button leave;
     @FXML
@@ -80,6 +81,17 @@ public class MainMenuController {
         stage.setScene(scene);
         stage.show();
 
+    }
+
+    @FXML
+    private void onSignOutButtonClick() throws IOException {
+        App.disconnect();
+        FXMLLoader fxmlLoader = new FXMLLoader(new File("build/resources/main/GUI/fxml/hello-view.fxml").toURL());
+        Parent root = fxmlLoader.load();
+        Stage stage= (Stage)(wallets.getScene().getWindow());
+        Scene scene = new Scene(root,320,320);
+        stage.setScene(scene);
+        stage.show();
     }
 
     @FXML

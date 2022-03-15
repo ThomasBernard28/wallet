@@ -72,6 +72,10 @@ public class User implements JsonReader {
         return data.getLanguage();
     }
 
+    public String get_password() {
+        return data.getPsswd();
+    }
+
     /* add a new wallet to the walletsList. It is not saved to the database (not yet) */
     public void add_wallet(String filePath) {
        Wallet wallet = new Wallet();
