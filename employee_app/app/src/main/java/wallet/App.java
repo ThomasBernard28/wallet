@@ -2,10 +2,6 @@ package wallet;
 
 import java.util.ArrayList;
 
-import wallet.API.Api;
-import wallet.APP.User;
-import wallet.APP.UserData;
-import wallet.GUI.controllers.MainMenuController;
 
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
@@ -25,8 +21,7 @@ import java.util.List;
 
 public class App extends Application {
 
-    public static Api   api         = new Api();
-    public static User  currentUser;
+
     public static Stage stage;
 
     @Override
@@ -35,7 +30,7 @@ public class App extends Application {
         FXMLLoader fxmlLoader = new FXMLLoader();
 
         // FXMLLoader fxmlLoader = new FXMLLoader(new File("build/resources/main/GUI/fxml/mainmenu.fxml").toURL());
-        Parent root = fxmlLoader.load(getFileFromResourceAsStream("GUI/fxml/mainmenu.fxml")); 
+        Parent root = fxmlLoader.load(getFileFromResourceAsStream("GUI/fxml/mainmenu2.fxml"));
         Scene scene = new Scene(root, 320, 240);
 
         this.stage = stage;
@@ -47,49 +42,11 @@ public class App extends Application {
     }
    
     public static void main(String[] args) {
-        // start tmp 
-        String userID = "thomasbernard02032811708"; // ceci doit etre recupere via le gui ( tiramisu )
-        try {
-            connect(userID);
-            System.out.println(currentUser);
-        }
-        catch (Exception e) {
-            e.printStackTrace();
-        }
-        // end tmp 
-
         launch();
     }
 
-    public static void connect(String userID) {
-        currentUser = new User();
-        try {
-            currentUser.read_data(api.get_user(userID));;    
-        }
-        catch (Exception e) {
-            e.printStackTrace();
-        }
-    }
 
-    public static void disconnect() {
-        currentUser = null;
-    }
 
-    // get a file from the resources folder
-    // works everywhere, IDEA, unit test and JAR file.
-    private InputStream getFileFromResourceAsStream(String fileName) {
 
-        // The class loader that loaded the class
-        ClassLoader classLoader = getClass().getClassLoader();
-        InputStream inputStream = classLoader.getResourceAsStream(fileName);
-
-        // the stream holding the file content
-        if (inputStream == null) {
-            throw new IllegalArgumentException("file not found! " + fileName);
-        } else {
-            return inputStream;
-        }
-
-    }
 
 }
