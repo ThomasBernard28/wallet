@@ -36,6 +36,7 @@ public class User implements JsonReader {
     }
 
     public void set_walletsList(String json) {
+        System.out.println(json);
         Wallet wallet = new Wallet();
         try {
             wallet.read_data(json);
