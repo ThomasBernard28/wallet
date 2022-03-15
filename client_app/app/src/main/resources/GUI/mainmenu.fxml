@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0"
+            prefWidth="600.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="build/src/main/wallet/GUI/app/AddProductMenuController.java">
+
+   <left>
+      <VBox fx:id="sidemenu" alignment="CENTER" prefHeight="200.0" prefWidth="100.0" spacing="20.0" BorderPane.alignment="TOP_CENTER">
+         <children>
+            <Button fx:id="wallets" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#onWalletButtonClick" text="My wallets" VBox.vgrow="ALWAYS" />
+            <Button fx:id="accounts" maxWidth="1.7976931348623157E308" mnemonicParsing="false" text="My accounts" />
+            <Button fx:id="settings" maxWidth="1.7976931348623157E308" mnemonicParsing="false" prefHeight="24.0" prefWidth="142.0" text="Settings" />
+            <Button fx:id="singout" maxWidth="1.7976931348623157E308" mnemonicParsing="false" prefHeight="24.0" prefWidth="210.0" text="Sign out" />
+            <Button fx:id="leave" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onMouseClicked="#onLeaveButtonCLick" text="Leave" />
+         </children>
+         <BorderPane.margin>
+            <Insets />
+         </BorderPane.margin>
+      </VBox>
+   </left>
+   <top>
+      <Button fx:id="sidebutton" mnemonicParsing="false" onMouseClicked="#onSideMenuButtonClick"  BorderPane.alignment="TOP_LEFT" />
+   </top>
+   <center>
+      <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0" BorderPane.alignment="CENTER">
+         <children>
+            <Label fx:id="time" alignment="CENTER" contentDisplay="CENTER" text="Label" textFill="BLUE">
+               <font>
+                  <Font name="Comic Neue Bold Italic" size="95.0" />
+               </font>
+            </Label>
+            <Label fx:id="date" text="Label" textFill="ORANGE">
+               <font>
+                  <Font name="Comic Neue Bold Italic" size="93.0" />
+               </font>
+            </Label>
+         </children>
+      </VBox>
+   </center>
+</BorderPane>
