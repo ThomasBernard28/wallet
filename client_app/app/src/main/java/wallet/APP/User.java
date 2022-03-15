@@ -3,6 +3,7 @@ package wallet.APP;
 import java.util.ArrayList;
 import java.io.FileReader;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.databind.DeserializationFeature;
 import java.nio.file.Paths;
 
 import wallet.APP.UserData;
@@ -34,8 +35,16 @@ public class User implements JsonReader {
     public void write_data(String userID) {
     }
 
-    public void set_walletsList(String nID) {
-         // API CALL 
+    public void set_walletsList(String json) {
+        Wallet wallet = new Wallet();
+        try {
+            wallet.read_data(json);
+            walletsList.add(wallet);
+            System.out.println(wallet);
+        }
+        catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 
     public ArrayList get_walletsList() {

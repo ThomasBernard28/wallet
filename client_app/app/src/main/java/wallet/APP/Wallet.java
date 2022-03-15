@@ -3,6 +3,7 @@ package wallet.APP;
 import java.util.ArrayList;
 import java.io.FileReader;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.databind.DeserializationFeature;
 import java.nio.file.Paths;
 import java.util.ArrayList;
 
@@ -15,10 +16,11 @@ public class Wallet implements JsonReader {
     private ArrayList  ProductsList = new ArrayList();
 
     @Override
-    public void read_data(String filePath) throws Exception {
+    public void read_data(String json) throws Exception {
         try {
             ObjectMapper mapper = new ObjectMapper();
-            data = mapper.readValue(Paths.get(filePath).toFile(), WalletData.class);
+            mapper.configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, false);
+            data = mapper.readValue(json.substring(1, json.length()-1), WalletData.class);
         }
         catch (Exception e) {
             e.printStackTrace();

@@ -1,11 +1,13 @@
 package wallet.APP;
 
+import java.util.Map;
+
 public class WalletData {
 
     private int     walletID;
     private String  userID;
     private String  bic;
-    private int     openingDate;
+    private String  openingDate;
     private boolean activity;
 
     public WalletData() {}
@@ -18,8 +20,8 @@ public class WalletData {
         return walletID;
     }
 
-    public void setUserID(String userID) {
-        this.userID = userID;
+    public void setUser(Map user) {
+        this.userID = (String) user.get("userID");
     }
 
     public String getUserID() {
@@ -34,16 +36,19 @@ public class WalletData {
         return bic;
     }
 
-    public void setOpeningDate(int openingDate) {
+    public void setOpeningDate(String openingDate) {
         this.openingDate = openingDate;
     }
 
-    public int getOpeningDate() {
+    public String getOpeningDate() {
         return openingDate;
     }
 
-    public void setActivity(boolean activity) {
-        this.activity = activity;
+    public void setActivity(int activity) {
+        this.activity = false;
+        if (activity == 1) {
+            this.activity = true;
+        }
     }
 
     public boolean getActivity() {

@@ -52,6 +52,7 @@ public class App extends Application {
         try {
             connect(userID);
             System.out.println(currentUser);
+            currentUser.set_walletsList(api.get_wallets(userID));
         }
         catch (Exception e) {
             e.printStackTrace();
