@@ -27,8 +27,7 @@ public class User implements JsonReader {
             ObjectMapper mapper = new ObjectMapper();
             data = mapper.readValue(json, UserData.class);
         }
-        catch (Exception e) {
-            e.printStackTrace();
+        catch(Exception e) {
         }
     }
 
@@ -36,7 +35,6 @@ public class User implements JsonReader {
     }
 
     public void set_walletsList(String json) {
-        System.out.println(json);
         Wallet wallet = new Wallet();
         try {
             wallet.read_data(json);

@@ -50,13 +50,18 @@ public class App extends Application {
         launch();
     }
 
-    public static void connect(String userID) {
+    public static boolean connect(String userID) {
         currentUser = new User();
         try {
             currentUser.read_data(api.get_user(userID));
-        } catch (Exception e) {
-            e.printStackTrace();
+            if (currentUser.get_userID().equals(userID)) {
+                return true;
+            }
         }
+        catch (Exception e) {
+        }
+        disconnect();
+        return false;
     }
 
     public static void disconnect() {

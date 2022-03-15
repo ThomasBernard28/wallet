@@ -29,35 +29,27 @@ public class HelloController {
 
     @FXML
     protected void onLoginButtonClick() throws IOException {
-        try {
-            App.connect(id.getText()); 
-        }
-        catch (Exception e) {
-            App.currentUser = null;
-            wrong.setVisible(true);
-            PauseTransition visiblePause = new PauseTransition(Duration.seconds(2));
-            visiblePause.setOnFinished(
-                    event -> wrong.setVisible(false)
-            );
-            visiblePause.play();
+        boolean connected; 
+
+        connected = App.connect(id.getText()); 
+
+        if (connected) {
+            if (App.currentUser.get_password().equals(password.getText())) {
+                FXMLLoader fxmlLoader = new FXMLLoader(new File("build/resources/main/GUI/fxml/mainmenu.fxml").toURL());
+                Parent root = fxmlLoader.load();
+                Stage stage = (Stage) (login.getScene().getWindow());
+                Scene scene = new Scene(root, 320, 320);
+                stage.setScene(scene);
+                stage.show();
+            }
         }
 
-        if (App.currentUser.get_password().equals(password.getText()) && App.currentUser != null) {
-            FXMLLoader fxmlLoader = new FXMLLoader(new File("build/resources/main/GUI/fxml/mainmenu.fxml").toURL());
-            Parent root = fxmlLoader.load();
-            Stage stage = (Stage) (login.getScene().getWindow());
-            Scene scene = new Scene(root, 320, 320);
-            stage.setScene(scene);
-            stage.show();
-        }
-        else {
-            wrong.setVisible(true);
-            PauseTransition visiblePause = new PauseTransition(Duration.seconds(2));
-            visiblePause.setOnFinished(
-                    event -> wrong.setVisible(false)
-            );
-            visiblePause.play();
-        }
+        wrong.setVisible(true);
+        PauseTransition visiblePause = new PauseTransition(Duration.seconds(2));
+        visiblePause.setOnFinished(
+                event -> wrong.setVisible(false)
+        );
+        visiblePause.play();
     }
 
     @FXML
