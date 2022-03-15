@@ -60,6 +60,7 @@ public class WalletgridController {
     @FXML
     private void onBackButtonCLick() throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("mainmenu.fxml"));
+
         Stage stage= (Stage)(back.getScene().getWindow());
         Scene scene = new Scene(fxmlLoader.load(),320,320);
         stage.setScene(scene);
