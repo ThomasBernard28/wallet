@@ -26,27 +26,9 @@ public class App extends Application {
 
     @Override
     public void start(Stage stage) throws IOException {
-
-        FXMLLoader fxmlLoader = new FXMLLoader();
-
-        // FXMLLoader fxmlLoader = new FXMLLoader(new File("build/resources/main/GUI/fxml/mainmenu.fxml").toURL());
-        Parent root = fxmlLoader.load(getFileFromResourceAsStream("GUI/fxml/mainmenu2.fxml"));
-        Scene scene = new Scene(root, 320, 240);
-
-        this.stage = stage;
-        stage.setTitle("Hello!");
-        stage.setScene(scene);
-        stage.setMaximized(true);
-
-        stage.show();
     }
    
     public static void main(String[] args) {
-        launch();
     }
-
-
-
-
 
 }

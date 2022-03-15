@@ -48,11 +48,13 @@ public class SettingController2 {
     }
     @FXML
     private void onBackButtonCLick() throws IOException {
+    /*
         FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("mainmenu2.fxml"));
         Stage stage= (Stage)(back.getScene().getWindow());
         Scene scene = new Scene(fxmlLoader.load(),320,320);
         stage.setScene(scene);
         stage.show();
+    */
     }
 
 
