@@ -44,6 +44,7 @@ application {
     mainClass = 'wallet.App'
 }
 
+
 tasks.named('test') {
     // Use junit platform for unit tests.
     useJUnitPlatform()

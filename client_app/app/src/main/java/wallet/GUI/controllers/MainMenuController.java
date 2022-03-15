@@ -50,6 +50,7 @@ public class MainMenuController {
 
     @FXML
     private void initialize() {
+        sidemenu.setStyle("css/mainmenustyle.css");
 
         Timeline clock = new Timeline(new KeyFrame(Duration.ZERO, e -> {
             LocalTime currentTime = LocalTime.now();
