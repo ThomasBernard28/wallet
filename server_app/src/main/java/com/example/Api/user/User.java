@@ -61,7 +61,7 @@ public class User {
     )
     private String firstName;
 
-    @OneToOne(cascade = CascadeType.ALL)
+    @OneToOne()
     @JoinColumn(
             name = "language", //the column in this table
             referencedColumnName = "language", //the column referenced in LANGUAGES table

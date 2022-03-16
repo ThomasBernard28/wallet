@@ -4,6 +4,7 @@ import com.example.Api.language.Language;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import javax.persistence.EntityNotFoundException;
 import javax.swing.text.html.Option;
 import javax.transaction.Transactional;
 import java.util.List;
@@ -28,7 +29,7 @@ public class UserService {
         Optional<User> userById = userRepository.findUserByUserID(userID);
         boolean isPresent = userById.isPresent();
         if(!isPresent){
-            throw new IllegalStateException("This user doesn't exist");
+            throw new EntityNotFoundException("This user doesn't exist");
         }
         return userRepository.findUserByUserID(userID);
     }

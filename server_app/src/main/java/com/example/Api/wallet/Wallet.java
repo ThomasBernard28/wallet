@@ -46,7 +46,7 @@ public class Wallet{
     )
     private Long walletID;
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(
             name = "userID",
             nullable = false,
