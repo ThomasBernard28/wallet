@@ -68,7 +68,7 @@ public class WalletService {
         }
          */
         walletRepository.save(wallet);
-        clientService.registerClient(bic, userID);
+        //clientService.registerClient(bic, userID);
 
     }
 
