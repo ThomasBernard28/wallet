@@ -1,10 +1,16 @@
 package com.example.Api.wallet;
 
+import com.example.Api.clientVsInstitution.Client;
+import com.example.Api.clientVsInstitution.ClientRepository;
+import com.example.Api.clientVsInstitution.ClientService;
+import com.example.Api.institution.Institution;
+import com.example.Api.institution.InstitutionRepository;
 import com.example.Api.user.User;
 import com.example.Api.user.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import javax.persistence.EntityNotFoundException;
 import javax.transaction.Transactional;
 import java.time.LocalDate;
 import java.util.List;
@@ -15,11 +21,16 @@ public class WalletService {
 
     private final WalletRepository walletRepository;
     private final UserRepository userRepository;
+    private final InstitutionRepository institutionRepository;
+    private final ClientService clientService;
 
     @Autowired
-    public WalletService(WalletRepository walletRepository, UserRepository userRepository){
+    public WalletService(WalletRepository walletRepository, UserRepository userRepository,
+                         InstitutionRepository institutionRepository, ClientService clientService){
         this.walletRepository = walletRepository;
         this.userRepository = userRepository;
+        this.institutionRepository = institutionRepository;
+        this.clientService = clientService;
     }
 
     public List<Wallet> getWallets(){
@@ -38,11 +49,16 @@ public class WalletService {
     public void addNewWallet(String userID, String bic, LocalDate openingDate, Integer activity) {
         Wallet wallet = new Wallet(userRepository.getById(userID), bic, openingDate, activity);
         Optional<Wallet> walletOptional = walletRepository.findWalletByWalletID(wallet.getWalletID());
-
+        Optional<Institution> institution = institutionRepository.findInstitutionByBic(bic);
 
         if(walletOptional.isPresent()){
             throw new IllegalStateException("Wallet already exists");
         }
+
+        if(!institution.isPresent()){
+            throw new EntityNotFoundException("Institution doesn't exist");
+        }
+
         /*
         //TODO Fix the error here
         Optional<Wallet> walletForUser = walletRepository.findWalletByUserAndBic(wallet.getUser().getUserID(), wallet.getBic());
@@ -52,6 +68,8 @@ public class WalletService {
         }
          */
         walletRepository.save(wallet);
+        clientService.registerClient(bic, userID);
+
     }
 
     public void deleteWallet(Long walletID){

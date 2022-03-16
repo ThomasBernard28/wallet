@@ -1,5 +1,9 @@
 package com.example.Api.wallet;
 
+import com.example.Api.clientVsInstitution.Client;
+import com.example.Api.clientVsInstitution.ClientService;
+import com.example.Api.institution.Institution;
+import com.example.Api.institution.InstitutionService;
 import com.example.Api.user.User;
 import com.example.Api.user.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,11 +21,16 @@ public class WalletController {
 
     private final WalletService walletService;
     private final UserService userService;
+    private final ClientService clientService;
+    private final InstitutionService institutionService;
 
     @Autowired
-    public WalletController(WalletService walletService, UserService userService){
+    public WalletController(WalletService walletService, UserService userService,
+                            ClientService clientService, InstitutionService institutionService){
         this.walletService = walletService;
         this.userService = userService;
+        this.clientService = clientService;
+        this.institutionService = institutionService;
     }
 
     @GetMapping

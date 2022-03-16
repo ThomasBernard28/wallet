@@ -28,7 +28,7 @@ public class AccountService {
     }
 
     public List<Account> getAccountsForClient(String bic, String userID){
-        Client client = clientRepository.getClientByInstitutionAndAndUserID(institutionRepository.getById(bic), userID);
+        Client client = clientRepository.getClientByInstitutionAndAndUserID(institutionRepository.getById(bic), userID).get();
 
         return accountRepository.findAccountByClient(client);
     }
