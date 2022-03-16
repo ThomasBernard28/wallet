@@ -35,14 +35,21 @@ public class User implements JsonReader {
     }
 
     public void set_walletsList(String json) {
-        Wallet wallet = new Wallet();
-        try {
-            wallet.read_data(json);
-            walletsList.add(wallet);
-            System.out.println(wallet);
-        }
-        catch (Exception e) {
-            e.printStackTrace();
+        walletsList.clear();
+        json = json.substring(1, json.length()-1);
+        int jsonStart = 0;
+        
+        for (int i=1; i<json.length()+1; i++) {
+            if (i+1 == json.length()+1 || (json.charAt(i)==',' && json.charAt(i-1)=='}' && json.charAt(i+1)=='{')) {
+                Wallet wallet = new Wallet();
+                try {
+                    wallet.read_data(json.substring(jsonStart, i));
+                    walletsList.add(wallet);
+                    jsonStart = i+1;
+                }
+                catch (Exception e) {
+                }
+            }
         }
     }
 

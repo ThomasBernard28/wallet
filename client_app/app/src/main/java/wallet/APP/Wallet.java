@@ -20,10 +20,10 @@ public class Wallet implements JsonReader {
         try {
             ObjectMapper mapper = new ObjectMapper();
             mapper.configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, false);
-            data = mapper.readValue(json.substring(1, json.length()-1), WalletData.class);
+            data = mapper.readValue(json, WalletData.class);
         }
         catch (Exception e) {
-            e.printStackTrace();
+            System.out.println("oopsie"); // debug
         }
     }
 

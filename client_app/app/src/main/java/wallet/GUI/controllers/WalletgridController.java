@@ -10,6 +10,9 @@ import javafx.stage.Stage;
 
 import java.io.File;
 import java.io.IOException;
+import java.util.ArrayList;
+
+import wallet.App;
 
 public class WalletgridController {
     @FXML
@@ -27,6 +30,15 @@ public class WalletgridController {
     Boolean bool;
 
 
+    @FXML
+    private void initialize() {
+        try {
+            App.currentUser.set_walletsList(App.api.get_wallets(App.currentUser.get_userID()));
+        }
+        catch (Exception e) {
+        }
+    }
+        
     @FXML
     private void onPlusButtonClick() {
         Button temp = plus;
