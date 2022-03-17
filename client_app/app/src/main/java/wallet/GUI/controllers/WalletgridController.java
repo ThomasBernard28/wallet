@@ -13,6 +13,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 
 import wallet.App;
+import wallet.APP.Wallet;
 
 public class WalletgridController {
     @FXML
@@ -28,12 +29,19 @@ public class WalletgridController {
     int colonne = 1;
     int pq = 0;
     Boolean bool;
+    private ArrayList<Wallet> walletsList;
 
 
     @FXML
     private void initialize() {
         try {
             App.currentUser.set_walletsList(App.api.get_wallets(App.currentUser.get_userID()));
+            walletsList = App.currentUser.get_walletsList();
+            for (Wallet w : walletsList) {
+                System.out.println(w);
+                onPlusButtonClick();  // need to bind each wallet to a wallet button
+            }
+
         }
         catch (Exception e) {
         }
@@ -42,7 +50,6 @@ public class WalletgridController {
     @FXML
     private void onPlusButtonClick() {
         Button temp = plus;
-        System.out.println(ligne);
 
         if (ligne <= 1) {
             Integer past_row = GridPane.getRowIndex(plus);
@@ -62,7 +69,6 @@ public class WalletgridController {
             grid.add(button, past_column, past_row);
             button.setMaxWidth(wallet.getMaxWidth());
             button.setMaxHeight(wallet.getMaxHeight());
-            System.out.println(pq++);
             bool =true;
         }
         if (ligne == 2 && bool) {
@@ -76,7 +82,7 @@ public class WalletgridController {
         FXMLLoader fxmlLoader = new FXMLLoader(new File("build/resources/main/GUI/fxml/mainmenu.fxml").toURL());
         Parent root = fxmlLoader.load();
         Stage stage = (Stage) (back.getScene().getWindow());
-        Scene scene = new Scene(root, 320, 320);
+        Scene scene = new Scene(root, 319, 320);
         stage.setScene(scene);
         stage.show();
     }

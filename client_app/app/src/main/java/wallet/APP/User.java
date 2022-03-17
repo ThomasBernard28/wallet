@@ -10,6 +10,7 @@ import wallet.APP.UserData;
 import wallet.APP.Wallet;
 import wallet.APP.WalletData;
 import wallet.API.JsonReader;
+import wallet.API.JsonTools;
 
 /* Represent a user of the application */
 public class User implements JsonReader {
@@ -36,19 +37,14 @@ public class User implements JsonReader {
 
     public void set_walletsList(String json) {
         walletsList.clear();
-        json = json.substring(1, json.length()-1);
-        int jsonStart = 0;
-        
-        for (int i=1; i<json.length()+1; i++) {
-            if (i+1 == json.length()+1 || (json.charAt(i)==',' && json.charAt(i-1)=='}' && json.charAt(i+1)=='{')) {
-                Wallet wallet = new Wallet();
-                try {
-                    wallet.read_data(json.substring(jsonStart, i));
-                    walletsList.add(wallet);
-                    jsonStart = i+1;
-                }
-                catch (Exception e) {
-                }
+        ArrayList<String> jsonList = JsonTools.splitJson(json);
+        for (String jl : jsonList) {
+            Wallet wallet = new Wallet();
+            try {
+                wallet.read_data(jl);
+                walletsList.add(wallet);
+            }
+            catch (Exception e) {
             }
         }
     }

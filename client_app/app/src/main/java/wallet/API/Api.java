@@ -6,6 +6,7 @@ import java.net.http.HttpResponse;
 import java.net.URI;
 import java.io.IOException;
 import java.io.File;
+import java.util.ArrayList;
 
 public class Api {
 
@@ -24,4 +25,5 @@ public class Api {
         response = client.send(request, HttpResponse.BodyHandlers.ofString());
         return response.body();     // return the json
     }
+
 }
