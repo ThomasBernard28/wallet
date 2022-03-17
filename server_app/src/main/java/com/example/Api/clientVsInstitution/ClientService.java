@@ -21,9 +21,8 @@ public class ClientService {
     }
 
     public List<Client> getClients(String bic){
-        Institution institution = institutionRepository.getById(bic);
 
-        return clientRepository.findClientByInstitution(institution);
+        return clientRepository.findClientByInstitution(bic);
     }
 
     public void registerClient(String bic, String userID){
