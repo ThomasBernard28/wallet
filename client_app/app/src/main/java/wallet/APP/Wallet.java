@@ -16,7 +16,7 @@ public class Wallet implements JsonReader {
     private ArrayList  ProductsList = new ArrayList();
 
     @Override
-    public void read_data(String json) throws Exception {
+    public void read_data(String json) {
         try {
             ObjectMapper mapper = new ObjectMapper();
             mapper.configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, false);
@@ -25,6 +25,26 @@ public class Wallet implements JsonReader {
         catch (Exception e) {
             System.out.println("oopsie"); // debug
         }
+    }
+
+    public int get_walletID() {
+        return data.getWalletID();
+    }
+
+    public String get_userID() {
+        return data.getUserID();
+    }
+
+    public String get_bic() {
+        return data.getBic();
+    }
+
+    public String get_openingDate() {
+        return data.getOpeningDate();
+    }
+
+    public boolean get_activity() {
+        return data.getActivity();
     }
 
     @Override

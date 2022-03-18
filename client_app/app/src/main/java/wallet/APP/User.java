@@ -23,7 +23,7 @@ public class User implements JsonReader {
 
     /* read the given json file and save the data in the data instance of the current user */
     @Override
-    public void read_data(String json) throws Exception {
+    public void read_data(String json) {
         try {
             ObjectMapper mapper = new ObjectMapper();
             data = mapper.readValue(json, UserData.class);
