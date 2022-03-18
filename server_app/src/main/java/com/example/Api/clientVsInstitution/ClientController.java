@@ -5,11 +5,13 @@ import com.example.Api.institution.InstitutionService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import javax.persistence.EntityNotFoundException;
 import java.util.List;
 import java.util.Map;
+import java.util.Optional;
 
 @RestController
-@RequestMapping(name = "api/v1/clients")
+@RequestMapping(path = "api/v1/clients")
 public class ClientController {
 
     private final ClientService clientService;
@@ -29,6 +31,11 @@ public class ClientController {
     @PostMapping()
     public void addClient(@RequestBody Map<String, String> json){
 
+        Optional<Institution> institution = institutionService.getOneInstitution(json.get("bic"));
+
+        if(!institution.isPresent()){
+            throw new EntityNotFoundException("Institution " + json.get("bic") + " not found");
+        }
         clientService.registerClient(json.get("bic"), json.get("userID"));
     }
 }

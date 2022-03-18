@@ -9,7 +9,7 @@ import java.util.List;
 import java.util.Optional;
 
 @Repository
-public interface ClientRepository extends JpaRepository<Client, Institution> {
+public interface ClientRepository extends JpaRepository<Client, ClientId> {
 
     @Query("SELECT s FROM CLIENT_VS_INST s WHERE s.institution.bic = ?1")
     List<Client> findClientByInstitution(String bic);

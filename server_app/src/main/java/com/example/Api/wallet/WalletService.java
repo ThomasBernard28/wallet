@@ -49,24 +49,17 @@ public class WalletService {
     public void addNewWallet(String userID, String bic, LocalDate openingDate, Integer activity) {
         Wallet wallet = new Wallet(userRepository.getById(userID), bic, openingDate, activity);
         Optional<Wallet> walletOptional = walletRepository.findWalletByWalletID(wallet.getWalletID());
-        Optional<Institution> institution = institutionRepository.findInstitutionByBic(bic);
 
+        System.out.println(wallet);
         if(walletOptional.isPresent()){
             throw new IllegalStateException("Wallet already exists");
         }
 
-        if(!institution.isPresent()){
-            throw new EntityNotFoundException("Institution doesn't exist");
-        }
-
-        /*
-        //TODO Fix the error here
         Optional<Wallet> walletForUser = walletRepository.findWalletByUserAndBic(wallet.getUser().getUserID(), wallet.getBic());
 
         if (walletForUser.isPresent()){
             throw new IllegalStateException("User already has a wallet in this institution");
         }
-         */
         walletRepository.save(wallet);
         //clientService.registerClient(bic, userID);
 

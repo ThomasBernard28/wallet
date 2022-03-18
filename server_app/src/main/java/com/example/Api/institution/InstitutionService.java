@@ -21,13 +21,13 @@ public class InstitutionService {
         return institutionRepository.findAll();
     }
 
-    public Institution getOneInstitution(String bic){
+    public Optional<Institution> getOneInstitution(String bic){
         Optional<Institution> institution = institutionRepository.findInstitutionByBic(bic);
 
         if(!institution.isPresent()){
             throw new EntityNotFoundException("This institution doesn't exist");
         }
 
-        return institution.get();
+        return institution;
     }
 }
