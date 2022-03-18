@@ -21,7 +21,8 @@ public class User implements JsonReader {
     public User() {
     }
 
-    /* read the given json file and save the data in the data instance of the current user */
+    /* read the given json file and save the data 
+    in the data instance of the current user */
     @Override
     public void read_data(String json) {
         try {
@@ -32,9 +33,15 @@ public class User implements JsonReader {
         }
     }
 
+    /* write data in the data instance 
+    */
     public void write_data(String userID) {
     }
 
+    /*
+    get the user's wallets list from the api 
+    and put it in an arraylist
+    */
     public void set_walletsList(String json) {
         walletsList.clear();
         ArrayList<String> jsonList = JsonTools.splitJson(json);

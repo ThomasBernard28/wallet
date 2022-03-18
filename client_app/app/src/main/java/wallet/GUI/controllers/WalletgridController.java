@@ -39,7 +39,7 @@ public class WalletgridController {
             walletsList = App.currentUser.get_walletsList();
             for (Wallet w : walletsList) {
                 System.out.println(w);
-                onPlusButtonClick();  // need to bind each wallet to a wallet button
+                addWalletButton();  // need to bind each wallet to a wallet button
             }
 
         }
@@ -47,8 +47,8 @@ public class WalletgridController {
         }
     }
         
-    @FXML
-    private void onPlusButtonClick() {
+    private void addWalletButton() {
+
         Button temp = plus;
 
         if (ligne <= 1) {
@@ -77,21 +77,24 @@ public class WalletgridController {
         }
 
     }
+
+    @FXML 
+    private void onPlusButtonClick() throws IOException {
+        FXMLLoader fxmlLoader = new FXMLLoader(new File("build/resources/main/GUI/fxml/addwalletmenu.fxml").toURL());
+        Parent root = fxmlLoader.load();
+        Stage stage = (Stage) (back.getScene().getWindow());
+        Scene scene = new Scene(root, 320, 320);
+        stage.setScene(scene);
+        stage.show();
+    }
+
     @FXML
     private void onBackButtonCLick() throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(new File("build/resources/main/GUI/fxml/mainmenu.fxml").toURL());
         Parent root = fxmlLoader.load();
         Stage stage = (Stage) (back.getScene().getWindow());
-        Scene scene = new Scene(root, 319, 320);
+        Scene scene = new Scene(root, 320, 320);
         stage.setScene(scene);
         stage.show();
     }
 }
-
-
-
-
-
-
-
-

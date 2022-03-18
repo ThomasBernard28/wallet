@@ -26,4 +26,7 @@ public class Api {
         return response.body();     // return the json
     }
 
+    public void post_wallet(String walletJson) {
+    }
+
 }

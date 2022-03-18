@@ -11,7 +11,7 @@
 <BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0"
             xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="wallet.GUI.controllers.AddWalletMenuController">
    <top>
-      <Button mnemonicParsing="false" text="Back" BorderPane.alignment="TOP_LEFT" />
+      <Button fx:id="back" onAction="#onBackButtonClick" mnemonicParsing="false" text="Back" BorderPane.alignment="TOP_LEFT" />
    </top>
    <center>
       <HBox alignment="CENTER" prefHeight="306.0" prefWidth="600.0" spacing="50.0" BorderPane.alignment="CENTER">
@@ -22,7 +22,7 @@
       </HBox>
    </center>
    <bottom>
-      <Button alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" text="Add wallet" BorderPane.alignment="TOP_CENTER" />
+      <Button fx:id="add" onAction="#onAddButtonClick" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" text="Add wallet" BorderPane.alignment="TOP_CENTER" />
    </bottom>
    <padding>
       <Insets bottom="50.0" />
