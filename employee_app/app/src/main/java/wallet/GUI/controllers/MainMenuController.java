@@ -24,7 +24,7 @@ import java.util.Date;
 
 
 
-public class MainMenuController2 {
+public class MainMenuController {
     @FXML
     Label time;
     @FXML
@@ -68,21 +68,10 @@ public class MainMenuController2 {
     }
     @FXML
     private void onSettingsButtonClick() throws IOException {
-
-        /*
-        FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("settings2.fxml"));
-        Stage stage= (Stage)(wallets.getScene().getWindow());
-        Scene scene = new Scene(fxmlLoader.load(),320,320);
-        stage.setScene(scene);
-        stage.show();
-        */
-
     }
 
     @FXML
     private void onSideMenuButtonClick() {
-
-        /*
         TranslateTransition menuTranslation = new TranslateTransition(Duration.millis(500), sidemenu);
         menuTranslation.setFromX(-200);
         menuTranslation.setToX(0);
@@ -96,15 +85,12 @@ public class MainMenuController2 {
             menuTranslation.play();
             a=-1;
         }
-        */
-
     }
+
     @FXML
     private void onLeaveButtonCLick(){
-    /*
         Stage stage= (Stage)(leave.getScene().getWindow());
         stage.close();
-    */
     }
 
 }

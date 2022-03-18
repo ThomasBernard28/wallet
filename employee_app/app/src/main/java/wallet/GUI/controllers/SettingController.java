@@ -13,7 +13,7 @@ import javafx.util.Duration;
 
 import java.io.IOException;
 
-public class SettingController2 {
+public class SettingController {
 
     @FXML
     Button back;

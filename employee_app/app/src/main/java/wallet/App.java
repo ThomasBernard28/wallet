@@ -26,9 +26,45 @@ public class App extends Application {
 
     @Override
     public void start(Stage stage) throws IOException {
+        FXMLLoader fxmlLoader = new FXMLLoader();
+
+        Parent root = fxmlLoader.load(getFileFromResourceAsStream("GUI/fxml/loginscreen.fxml"));
+        Scene scene = new Scene(root, 320, 240);
+
+        this.stage = stage;
+        stage.setTitle("Hello!");
+        stage.setScene(scene);
+        stage.setMaximized(true);
+
+        stage.show();
     }
    
     public static void main(String[] args) {
+        launch();
+    }
+
+    public static boolean connect(String userID) {
+        return false;
+    }
+
+    public static void disconnect() {
+    }
+
+    // get a file from the resources folder
+    // works everywhere, IDEA, unit test and JAR file.
+    private InputStream getFileFromResourceAsStream(String fileName) {
+
+        // The class loader that loaded the class
+        ClassLoader classLoader = getClass().getClassLoader();
+        InputStream inputStream = classLoader.getResourceAsStream(fileName);
+
+        // the stream holding the file content
+        if (inputStream == null) {
+            throw new IllegalArgumentException("file not found! " + fileName);
+        } else {
+            return inputStream;
+        }
+
     }
 
 }
