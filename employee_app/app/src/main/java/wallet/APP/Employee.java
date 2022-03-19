@@ -26,9 +26,6 @@ public class Employee implements JsonReader {
         }
     }
 
-    public void write_data(String employeeID) {
-    }
-
     public void set_CliensList(String bic) {
          // API CALL 
     }
@@ -37,8 +34,16 @@ public class Employee implements JsonReader {
         return clientsList;
     }
 
-    public String get_employeeID() {
-        return data.getEmployeeID();
+    public String get_bic() {
+        return data.getBic();
+    }
+
+    public void get_password() {
+        return data.getPsswd();
+    }
+
+    public  void set_password(String password) {
+        data.setPsswd(password);
     }
 
     public String get_language() {
