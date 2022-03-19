@@ -38,7 +38,7 @@ public class Employee implements JsonReader {
         return data.getBic();
     }
 
-    public void get_password() {
+    public String get_password() {
         return data.getPsswd();
     }
 
