@@ -2,6 +2,7 @@ package wallet;
 
 import java.util.ArrayList;
 
+import wallet.APP.Employee;
 
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
@@ -21,8 +22,8 @@ import java.util.List;
 
 public class App extends Application {
 
-
-    public static Stage stage;
+    public static Stage    stage;
+    public static Employee currentEmployee;
 
     @Override
     public void start(Stage stage) throws IOException {
@@ -43,8 +44,9 @@ public class App extends Application {
         launch();
     }
 
-    public static boolean connect(String userID) {
-        return false;
+    public static boolean connect(String bic) {
+        currentEmployee = new Employee();
+        return true;
     }
 
     public static void disconnect() {
