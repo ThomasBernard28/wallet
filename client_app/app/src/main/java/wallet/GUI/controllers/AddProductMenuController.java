@@ -12,9 +12,17 @@ import java.io.File;
 import java.io.IOException;
 
 public class AddProductMenuController {
-        @FXML
-        Button back;
+    @FXML
+    Button back;
 
-
+    @FXML
+    private void onBackButtonClick() throws IOException {
+        FXMLLoader fxmlLoader = new FXMLLoader(new File("build/resources/main/GUI/fxml/productlist.fxml").toURL());
+        Parent root = fxmlLoader.load();
+        Stage stage = (Stage) (back.getScene().getWindow());
+        Scene scene = new Scene(root, 320, 320);
+        stage.setScene(scene);
+        stage.show();
+    }
 
 }
