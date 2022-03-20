@@ -23,7 +23,7 @@ public class App extends Application {
     public void start(Stage stage) throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader();
         // FXMLLoader fxmlLoader = new FXMLLoader(new File("build/resources/main/GUI/fxml/mainmenu.fxml").toURL());
-        Parent root = fxmlLoader.load(getFileFromResourceAsStream("GUI/fxml/mainmenu.fxml"));
+        Parent root = fxmlLoader.load(getFileFromResourceAsStream("GUI/fxml/hello-view.fxml"));
         Scene scene = new Scene(root, 320, 240);
 
         this.stage = stage;
@@ -58,7 +58,7 @@ public class App extends Application {
 
     // get a file from the resources folder
     // works everywhere, IDEA, unit test and JAR file.
-    private InputStream getFileFromResourceAsStream(String fileName) {
+    public InputStream getFileFromResourceAsStream(String fileName) {
 
         // The class loader that loaded the class
         ClassLoader classLoader = getClass().getClassLoader();

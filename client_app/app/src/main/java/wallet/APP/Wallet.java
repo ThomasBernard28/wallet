@@ -32,7 +32,7 @@ public class Wallet implements JsonReader {
             data = mapper.readValue(json, WalletData.class);
         }
         catch (Exception e) {
-            System.out.println("oopsie"); // debug
+            e.printStackTrace();
         }
     }
 
