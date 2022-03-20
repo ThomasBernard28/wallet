@@ -20,7 +20,7 @@
                                 <Font name="Montserrat Regular" size="17.0"/>
                             </font>
                         </Label>
-                        <Label fx:id="name" contentDisplay="CENTER" text="Stephan Dupont">
+                        <Label fx:id="name" contentDisplay="CENTER" text="name">
                             <font>
                                 <Font name="Montserrat Regular" size="17.0"/>
                             </font>
@@ -34,7 +34,7 @@
                                 <Font name="Montserrat Regular" size="17.0"/>
                             </font>
                         </Label>
-                        <Label fx:id="age" contentDisplay="CENTER" text="24">
+                        <Label fx:id="age" contentDisplay="CENTER" text="age">
                             <font>
                                 <Font name="Montserrat Regular" size="17.0"/>
                             </font>
@@ -50,7 +50,7 @@
                         </Label>
                         <Label fx:id="number" alignment="CENTER" contentDisplay="CENTER"
                                maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308"
-                               text="85.02.01-002.00">
+                               text="number">
                             <font>
                                 <Font name="Montserrat Regular" size="17.0"/>
                             </font>
@@ -64,7 +64,7 @@
                                 <Font name="Montserrat Regular" size="17.0"/>
                             </font>
                         </Label>
-                        <Label fx:id="date" contentDisplay="CENTER" text="22/03/2022">
+                        <Label fx:id="date" contentDisplay="CENTER" text="date">
                             <font>
                                 <Font name="Montserrat Regular" size="17.0"/>
                             </font>

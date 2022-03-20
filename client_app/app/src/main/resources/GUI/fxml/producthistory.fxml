@@ -24,7 +24,7 @@
             <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
             </rowConstraints>
             <children>
-                <Label alignment="CENTER" contentDisplay="CENTER" text="Stéphane Dupon BE09 4536 7596 3364">
+                <Label fx:id="text" alignment="CENTER" contentDisplay="CENTER" text="text">
                     <GridPane.margin>
                         <Insets left="20.0" />
                     </GridPane.margin>
