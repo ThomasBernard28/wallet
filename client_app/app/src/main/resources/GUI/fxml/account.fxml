@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<BorderPane prefHeight="494.0" prefWidth="547.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="wallet.GUI.controllers.AccountController">
+    <center>
+        <VBox alignment="CENTER" spacing="42.0" BorderPane.alignment="CENTER">
+            <children>
+                <HBox alignment="CENTER">
+                    <children>
+                        <Label contentDisplay="CENTER" text="First and second name :">
+                            <font>
+                                <Font name="Montserrat Regular" size="17.0"/>
+                            </font>
+                        </Label>
+                        <Label fx:id="name" contentDisplay="CENTER" text="Stephan Dupont">
+                            <font>
+                                <Font name="Montserrat Regular" size="17.0"/>
+                            </font>
+                        </Label>
+                    </children>
+                </HBox>
+                <HBox alignment="CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308">
+                    <children>
+                        <Label contentDisplay="CENTER" text="Age:">
+                            <font>
+                                <Font name="Montserrat Regular" size="17.0"/>
+                            </font>
+                        </Label>
+                        <Label fx:id="age" contentDisplay="CENTER" text="24">
+                            <font>
+                                <Font name="Montserrat Regular" size="17.0"/>
+                            </font>
+                        </Label>
+                    </children>
+                </HBox>
+                <HBox alignment="CENTER">
+                    <children>
+                        <Label contentDisplay="CENTER" text="National register number :">
+                            <font>
+                                <Font name="Montserrat Regular" size="17.0"/>
+                            </font>
+                        </Label>
+                        <Label fx:id="number" alignment="CENTER" contentDisplay="CENTER"
+                               maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308"
+                               text="85.02.01-002.00">
+                            <font>
+                                <Font name="Montserrat Regular" size="17.0"/>
+                            </font>
+                        </Label>
+                    </children>
+                </HBox>
+                <HBox alignment="CENTER">
+                    <children>
+                        <Label contentDisplay="CENTER" text="Registration date :">
+                            <font>
+                                <Font name="Montserrat Regular" size="17.0"/>
+                            </font>
+                        </Label>
+                        <Label fx:id="date" contentDisplay="CENTER" text="22/03/2022">
+                            <font>
+                                <Font name="Montserrat Regular" size="17.0"/>
+                            </font>
+                        </Label>
+                    </children>
+                </HBox>
+            </children>
+            <opaqueInsets>
+                <Insets/>
+            </opaqueInsets>
+        </VBox>
+    </center>
+    <top>
+        <Button mnemonicParsing="false" fx:id="back" text="back" onMouseClicked="#onBackButtonClick" BorderPane.alignment="TOP_LEFT">
+            <BorderPane.margin>
+                <Insets bottom="19.0" left="10.0" top="10.0"/>
+            </BorderPane.margin>
+        </Button>
+    </top>
+    <bottom>
+        <Button mnemonicParsing="false" fx:id="password" onMouseClicked="#onPasswordButtonClick" text="Change password" BorderPane.alignment="CENTER">
+            <BorderPane.margin>
+                <Insets bottom="10.0" top="10.0"/>
+            </BorderPane.margin>
+        </Button>
+    </bottom>
+</BorderPane>

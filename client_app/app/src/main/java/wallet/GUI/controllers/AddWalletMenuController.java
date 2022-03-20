@@ -23,7 +23,7 @@ public class AddWalletMenuController {
         onBackButtonClick();
     }
 
-    @FXML 
+    @FXML
     private void onBackButtonClick() throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(new File("build/resources/main/GUI/fxml/walletgrid.fxml").toURL());
         Parent root = fxmlLoader.load();

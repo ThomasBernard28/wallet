@@ -24,9 +24,9 @@ public class WalletgridController {
     Button plus;
     @FXML
     Button wallet;
-    int a = 2;
+    int a = 1;
     int ligne = 0;
-    int colonne = 1;
+    int colonne = 0;
     int pq = 0;
     Boolean bool;
     private ArrayList<Wallet> walletsList;
@@ -42,15 +42,12 @@ public class WalletgridController {
                 addWalletButton();  // need to bind each wallet to a wallet button
             }
 
-        }
-        catch (Exception e) {
+        } catch (Exception e) {
         }
     }
-        
+
     private void addWalletButton() {
-
         Button temp = plus;
-
         if (ligne <= 1) {
             Integer past_row = GridPane.getRowIndex(plus);
             Integer past_column = GridPane.getColumnIndex(plus);
@@ -66,19 +63,26 @@ public class WalletgridController {
             grid.getChildren().remove(plus);
             grid.add(temp, colonne, ligne);
             Button button = new Button("Wallet " + a++);
+            button.setOnMouseClicked(event -> {
+                try {
+                    switchToProduct();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            });
             grid.add(button, past_column, past_row);
-            button.setMaxWidth(wallet.getMaxWidth());
-            button.setMaxHeight(wallet.getMaxHeight());
-            bool =true;
+            button.setMaxWidth(temp.getMaxWidth());
+            button.setMaxHeight(temp.getMaxHeight());
+            bool = true;
         }
         if (ligne == 2 && bool) {
-            bool=false;
+            bool = false;
             grid.getChildren().remove(temp);
         }
 
     }
 
-    @FXML 
+    @FXML
     private void onPlusButtonClick() throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(new File("build/resources/main/GUI/fxml/addwalletmenu.fxml").toURL());
         Parent root = fxmlLoader.load();
@@ -97,4 +101,14 @@ public class WalletgridController {
         stage.setScene(scene);
         stage.show();
     }
+
+    private void switchToProduct() throws IOException {
+        FXMLLoader fxmlLoader = new FXMLLoader(new File("build/resources/main/GUI/fxml/productlist.fxml").toURL());
+        Parent root = fxmlLoader.load();
+        Stage stage = (Stage) (back.getScene().getWindow());
+        Scene scene = new Scene(root, 320, 320);
+        stage.setScene(scene);
+        stage.show();
+    }
+
 }

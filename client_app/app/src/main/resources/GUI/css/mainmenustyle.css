@@ -1,4 +1,9 @@
-.vbox{
-    background: black;
-    padding: 80px;
+#sidemenu{
+
+    -fx-padding: 15px;
+    fx-background-color: blue;
+}
+#wallets{
+
+    -fx-background-color: red;
 }

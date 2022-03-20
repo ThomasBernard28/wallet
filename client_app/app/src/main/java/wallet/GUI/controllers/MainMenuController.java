@@ -6,15 +6,18 @@ import javafx.animation.Timeline;
 import javafx.animation.TranslateTransition;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.geometry.Insets;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
-import javafx.scene.layout.VBox;
+import javafx.scene.layout.*;
+import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 import javafx.util.Duration;
 import javafx.scene.Parent;
 
 import java.io.IOException;
+import java.net.MalformedURLException;
 import java.text.Format;
 import java.text.SimpleDateFormat;
 import java.time.LocalDate;
@@ -24,10 +27,13 @@ import java.time.format.DateTimeFormatter;
 import java.util.Date;
 import java.io.File;
 
+import jdk.jshell.execution.StreamingExecutionControl;
 import wallet.App;
 
 
 public class MainMenuController {
+    @FXML
+    BorderPane borderpane;
     @FXML
     Label time;
     @FXML
@@ -35,7 +41,7 @@ public class MainMenuController {
     @FXML
     Button wallets;
     @FXML
-    Button accounts;
+    Button account;
     @FXML
     Button settings;
     @FXML
@@ -50,8 +56,16 @@ public class MainMenuController {
 
 
     @FXML
-    private void initialize() {
-        sidemenu.setStyle("css/mainmenustyle.css");
+    private void initialize() throws MalformedURLException {
+        FXMLLoader fxmlLoader = new FXMLLoader(new File("build/resources/main/GUI/fxml/settingsbis.fxml").toURL());
+
+       /* if(true){
+            borderpane.setBackground(new Background(new BackgroundFill(Color.PINK, CornerRadii.EMPTY, Insets.EMPTY)));
+        }else{
+            borderpane.setBackground(new Background(new BackgroundFill(Color.BEIGE, CornerRadii.EMPTY, Insets.EMPTY)));
+
+        }
+        sidemenu.setStyle("");*/
 
         Timeline clock = new Timeline(new KeyFrame(Duration.ZERO, e -> {
             LocalTime currentTime = LocalTime.now();
@@ -74,7 +88,7 @@ public class MainMenuController {
     @FXML
     private void onSettingsButtonClick() throws IOException {
 
-        FXMLLoader fxmlLoader = new FXMLLoader(new File("build/resources/main/GUI/fxml/settings.fxml").toURL());
+        FXMLLoader fxmlLoader = new FXMLLoader(new File("build/resources/main/GUI/fxml/settingsbis.fxml").toURL());
         Parent root = fxmlLoader.load();
         Stage stage= (Stage)(wallets.getScene().getWindow());
         Scene scene = new Scene(root,320,320);
@@ -130,5 +144,15 @@ public class MainMenuController {
         stage.setScene(scene);
         stage.show();
 
+    }
+
+    @FXML
+    private void onAccountButtonClick() throws IOException{
+        FXMLLoader fxmlLoader = new FXMLLoader(new File("build/resources/main/GUI/fxml/account.fxml").toURL());
+        Parent root = fxmlLoader.load();
+        Stage stage = (Stage) (account.getScene().getWindow());
+        Scene scene = new Scene(root, 320, 320);
+        stage.setScene(scene);
+        stage.show();
     }
 }

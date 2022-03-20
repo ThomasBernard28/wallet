@@ -29,10 +29,10 @@ public class HelloController {
 
 
     @FXML
-    protected void onLoginButtonClick() throws IOException {
-        boolean connected; 
+    private void onLoginButtonClick() throws IOException {
+        boolean connected;
 
-        connected = App.connect(id.getText()); 
+        connected = App.connect(id.getText());
 
         if (connected) {
             if (App.currentUser.get_password().equals(password.getText())) {
@@ -54,10 +54,11 @@ public class HelloController {
     }
 
     @FXML
-    protected void onRegisterButtonClick() throws IOException {
-        FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("register.fxml"));
-        Stage stage = (Stage) (login.getScene().getWindow());
-        Scene scene = new Scene(fxmlLoader.load(), 320, 320);
+    private void onRegisterButtonClick() throws IOException {
+        FXMLLoader fxmlLoader = new FXMLLoader(new File("build/resources/main/GUI/fxml/register.fxml").toURL());
+        Parent root = fxmlLoader.load();
+        Stage stage = (Stage) (register.getScene().getWindow());
+        Scene scene = new Scene(root, 320, 320);
         stage.setScene(scene);
         stage.show();
 

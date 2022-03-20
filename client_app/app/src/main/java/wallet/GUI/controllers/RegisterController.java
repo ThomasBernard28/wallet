@@ -30,18 +30,19 @@ public class RegisterController {
     @FXML
     private void onBackButtonCLicked() throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("hello-view.fxml"));
-        Stage stage= (Stage)(back.getScene().getWindow());
-        Scene scene = new Scene(fxmlLoader.load(),320,320);
+        Stage stage = (Stage) (back.getScene().getWindow());
+        Scene scene = new Scene(fxmlLoader.load(), 320, 320);
         stage.setScene(scene);
         stage.show();
     }
+
     @FXML
-    private void onRegisterClicked(){
-        if(password.getText().equals(confirmPassword.getText())) {
+    private void onRegisterClicked() {
+        if (password.getText().equals(confirmPassword.getText())) {
             HelloApplication.dic.put(nationalId.getText(), password.getText());
-        }else{
+        } else {
             wrong.setVisible(true);
-            PauseTransition visiblePause = new PauseTransition(Duration.seconds(3));
+            PauseTransition visiblePause = new PauseTransition(Duration.seconds(2));
             visiblePause.setOnFinished(
                     event -> wrong.setVisible(false)
             );
