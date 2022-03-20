@@ -1,9 +1,5 @@
-#sidemenu{
 
-    -fx-padding: 15px;
-    fx-background-color: blue;
-}
-#wallets{
+#wallets {
 
-    -fx-background-color: red;
+    //-fx-background-color: red;
 }
