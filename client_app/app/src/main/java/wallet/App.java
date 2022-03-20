@@ -23,7 +23,7 @@ public class App extends Application {
     public void start(Stage stage) throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader();
         // FXMLLoader fxmlLoader = new FXMLLoader(new File("build/resources/main/GUI/fxml/mainmenu.fxml").toURL());
-        Parent root = fxmlLoader.load(getFileFromResourceAsStream("GUI/fxml/changepassword.fxml"));
+        Parent root = fxmlLoader.load(getFileFromResourceAsStream("GUI/fxml/hello-view.fxml"));
         Scene scene = new Scene(root, 320, 240);
 
         this.stage = stage;

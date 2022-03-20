@@ -11,10 +11,12 @@ import wallet.APP.Wallet;
 import wallet.APP.WalletData;
 import wallet.API.JsonReader;
 import wallet.API.JsonTools;
+import wallet.API.Api;
 
 /* Represent a user of the application */
 public class User implements JsonReader {
 
+    private Api               api         = new Api();
     private UserData          data        = new UserData();
     private ArrayList<Wallet> walletsList = new ArrayList<>();
 
@@ -43,16 +45,20 @@ public class User implements JsonReader {
     and put it in an arraylist
     */
     public void set_walletsList(String json) {
-        walletsList.clear();
-        ArrayList<String> jsonList = JsonTools.splitJson(json);
-        for (String jl : jsonList) {
-            Wallet wallet = new Wallet();
-            try {
-                wallet.read_data(jl);
-                walletsList.add(wallet);
+        try {
+            walletsList.clear();
+            ArrayList<String> jsonList = JsonTools.splitJson(json);
+            for (String jl : jsonList) {
+                Wallet wallet = new Wallet();
+                try {
+                    wallet.read_data(jl);
+                    walletsList.add(wallet);
+                }
+                catch (Exception e) {
+                }
             }
-            catch (Exception e) {
-            }
+        }
+        catch (Exception e) {
         }
     }
 
@@ -85,14 +91,13 @@ public class User implements JsonReader {
     }
 
     /* add a new wallet to the walletsList. It is not saved to the database (not yet) */
-    public void add_wallet(String filePath) {
-       Wallet wallet = new Wallet();
-       try {
-          wallet.read_data(filePath);
-          walletsList.add(wallet);
+    public void add_wallet(String bic) {
+        Wallet wallet = new Wallet(get_userID(), bic, "2022-03-19", 1); 
+        try {
+            api.post_wallet(wallet.write_data());
         }
         catch (Exception e) {
-            e.printStackTrace();
+            System.out.println("failed to post the wallet"); // debug
         }
     }
 

@@ -10,6 +10,8 @@ import javafx.stage.Stage;
 import java.io.File;
 import java.io.IOException;
 
+import wallet.App;
+
 public class AddWalletMenuController {
     @FXML
     Button back;
@@ -18,8 +20,7 @@ public class AddWalletMenuController {
 
     @FXML
     private void onAddButtonClick() throws IOException {
-        // create wallet 
-        // post it via the api 
+        App.currentUser.add_wallet("GEBBABEB");
         onBackButtonClick();
     }
 

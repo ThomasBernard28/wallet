@@ -15,6 +15,15 @@ public class Wallet implements JsonReader {
     private WalletData data         = new WalletData();
     private ArrayList  ProductsList = new ArrayList();
 
+    public Wallet() {}
+
+    public Wallet(String userID, String bic, String openingDate, int activity) {
+        data.setUserID(userID);
+        data.setBic(bic);
+        data.setOpeningDate(openingDate);
+        data.setActivity(activity);
+    }
+
     @Override
     public void read_data(String json) {
         try {
@@ -25,6 +34,18 @@ public class Wallet implements JsonReader {
         catch (Exception e) {
             System.out.println("oopsie"); // debug
         }
+    }
+
+    public String write_data() {
+        String json = "";
+        try {
+            json = new ObjectMapper().writeValueAsString(data);
+            json = "{" + json.substring(14, json.length()); // remove "walletID":"0", from the json
+        }
+        catch (Exception e) {
+            System.out.println("failed to write wallet data");
+        }
+        return json;
     }
 
     public int get_walletID() {
@@ -43,7 +64,7 @@ public class Wallet implements JsonReader {
         return data.getOpeningDate();
     }
 
-    public boolean get_activity() {
+    public int get_activity() {
         return data.getActivity();
     }
 

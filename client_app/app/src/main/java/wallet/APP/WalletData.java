@@ -8,7 +8,7 @@ public class WalletData {
     private String  userID;
     private String  bic;
     private String  openingDate;
-    private boolean activity;
+    private int     activity;
 
     public WalletData() {}
 
@@ -22,6 +22,11 @@ public class WalletData {
 
     public void setUser(Map user) {
         this.userID = (String) user.get("userID");
+    }
+
+    //@JsonIgnore
+    public void setUserID(String userID) {
+        this.userID = userID;
     }
 
     public String getUserID() {
@@ -45,13 +50,10 @@ public class WalletData {
     }
 
     public void setActivity(int activity) {
-        this.activity = false;
-        if (activity == 1) {
-            this.activity = true;
-        }
+        this.activity = activity;
     }
 
-    public boolean getActivity() {
+    public int getActivity() {
         return activity;
     }
 
