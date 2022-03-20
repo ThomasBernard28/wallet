@@ -20,7 +20,7 @@ public class AddWalletMenuController {
 
     @FXML
     private void onAddButtonClick() throws IOException {
-        App.currentUser.add_wallet("GEBBABEB");
+        App.currentUser.add_wallet("GKCCBEBB");
         onBackButtonClick();
     }
 

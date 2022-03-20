@@ -27,12 +27,8 @@ public class Api {
     }
 
     public void post_wallet(String walletJson) throws Exception {
-    /*
-        request = HttpRequest.newBuilder().POST(HttpRequest.BodyPublishers.ofString(walletJson)).header("Content-Type", "application/json").uri(URI.create("http://sierra880.xyz:4545/api/v1/wallets")).build();
-        client.sendAsync(request, HttpResponse.BodyHandlers.ofString());
-    */
         request = HttpRequest.newBuilder()
-            .uri(URI.create("http://sierra880/api/v1/wallets"))
+            .uri(URI.create("http://sierra880.xyz:4545/api/v1/wallets"))
             .header("Content-Type", "application/json")
             .POST(HttpRequest.BodyPublishers.ofString(walletJson))
             .build();

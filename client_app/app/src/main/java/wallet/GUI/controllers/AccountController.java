@@ -11,6 +11,8 @@ import javafx.stage.Stage;
 import java.io.File;
 import java.io.IOException;
 
+import wallet.App;
+
 public class AccountController {
 
     @FXML
@@ -31,6 +33,12 @@ public class AccountController {
     @FXML
     private Button password;
 
+
+    @FXML
+    private void initialize() {
+        name.setText(App.currentUser.get_firstName().concat(App.currentUser.get_lastName())); 
+        number.setText(Integer.toString(App.currentUser.get_natID()));
+    }   
 
     @FXML
     private void onBackButtonClick() throws IOException {

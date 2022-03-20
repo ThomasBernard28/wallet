@@ -92,12 +92,12 @@ public class User implements JsonReader {
 
     /* add a new wallet to the walletsList. It is not saved to the database (not yet) */
     public void add_wallet(String bic) {
-        Wallet wallet = new Wallet(get_userID(), bic, "2022-03-19", 1); 
+        Wallet wallet = new Wallet(get_userID(), bic, "2022-03-20", 1); 
         try {
             api.post_wallet(wallet.write_data());
         }
         catch (Exception e) {
-            System.out.println("failed to post the wallet"); // debug
+            e.printStackTrace(); // debug
         }
     }
 

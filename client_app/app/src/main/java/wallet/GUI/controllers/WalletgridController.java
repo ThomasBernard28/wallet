@@ -39,14 +39,14 @@ public class WalletgridController {
             walletsList = App.currentUser.get_walletsList();
             for (Wallet w : walletsList) {
                 System.out.println(w);
-                addWalletButton();  // need to bind each wallet to a wallet button
+                addWalletButton(w.get_bic());
             }
 
         } catch (Exception e) {
         }
     }
 
-    private void addWalletButton() {
+    private void addWalletButton(String bic) {
         Button temp = plus;
         if (ligne <= 1) {
             Integer past_row = GridPane.getRowIndex(plus);
@@ -62,7 +62,8 @@ public class WalletgridController {
             }
             grid.getChildren().remove(plus);
             grid.add(temp, colonne, ligne);
-            Button button = new Button("Wallet " + a++);
+            Button button = new Button(bic);
+            a++;
             button.setOnMouseClicked(event -> {
                 try {
                     switchToProduct();
