@@ -60,7 +60,7 @@ jobs:
       uses: "marvinpinto/action-automatic-releases@latest"
       with:
         repo_token: "${{ secrets.GITHUB_TOKEN }}"
-        automatic_release_tag: "backend-jar-preversion"
+        automatic_release_tag: "backend-jar"
         prerelease: false
         title: "Backend fatjar"
         files: |
