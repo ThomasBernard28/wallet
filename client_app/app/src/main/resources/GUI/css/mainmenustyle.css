@@ -1,5 +1,10 @@
 
 #wallets {
 
-    //-fx-background-color: red;
+    -fx-background-color: red;
+}
+
+.button{
+    -fx-font-family: Monserat SemiBold;
+    -fx-font-size: 17px ;
 }

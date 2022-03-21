@@ -42,7 +42,7 @@ public class SettingController {
     private void initialize() {
 
         borderPane.backgroundProperty().bind(Bindings.when(theme.selectedProperty())
-                .then(new Background(new BackgroundFill(Color.PINK, CornerRadii.EMPTY, Insets.EMPTY)))
+                .then(new Background(new BackgroundFill(Color.GREY, CornerRadii.EMPTY, Insets.EMPTY)))
                 .otherwise(new Background(new BackgroundFill(Color.BEIGE, CornerRadii.EMPTY, Insets.EMPTY))));
 
     }

@@ -7,14 +7,19 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
 
+<?import javafx.scene.text.Font?>
 <BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0"
             prefWidth="600.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1"
             fx:controller="wallet.GUI.controllers.ProductMenuController">
     <top>
         <Button fx:id="back" mnemonicParsing="false" onMouseClicked="#onBackButtonClick" text="back"
                 BorderPane.alignment="TOP_LEFT">
+
+            <font>
+                <Font name="Montserrat SemiBold" size="17.0"/>
+            </font>
             <BorderPane.margin>
-                <Insets left="5.0" top="5.0"/>
+                <Insets left="10.0" top="10.0"/>
             </BorderPane.margin>
         </Button>
     </top>
@@ -59,11 +64,27 @@
               BorderPane.alignment="CENTER">
             <children>
                 <Button fx:id="transaction" onMouseClicked="#onTransactionButtonClick" mnemonicParsing="false"
-                        text="Transaction"/>
-                <Button fx:id="history" onMouseClicked="#onHistoryButtonClick" mnemonicParsing="false" text="History"/>
+                        text="Transaction">
+                    <font>
+                        <Font name="Montserrat SemiBold" size="17.0"/>
+                    </font>
+                </Button>
+                <Button fx:id="history" onMouseClicked="#onHistoryButtonClick" mnemonicParsing="false" text="History">
+                    <font>
+                        <Font name="Montserrat SemiBold" size="17.0"/>
+                    </font>
+                </Button>
                 <Button fx:id="coowner" onMouseClicked="#onCoownerButtonClick" mnemonicParsing="false"
-                        text="Co-owners"/>
-                <Button fx:id="delete" onMouseClicked="#onDeleteButtonClick" mnemonicParsing="false" text="Delete"/>
+                        text="Co-owners">
+                    <font>
+                        <Font name="Montserrat SemiBold" size="17.0"/>
+                    </font>
+                </Button>
+                <Button fx:id="delete" onMouseClicked="#onDeleteButtonClick" mnemonicParsing="false" text="Delete">
+                    <font>
+                        <Font name="Montserrat SemiBold" size="17.0"/>
+                    </font>
+                </Button>
             </children>
             <opaqueInsets>
                 <Insets/>

@@ -78,14 +78,23 @@
         </VBox>
     </center>
     <top>
-        <Button mnemonicParsing="false" fx:id="back" text="back" onMouseClicked="#onBackButtonClick" BorderPane.alignment="TOP_LEFT">
+        <Button mnemonicParsing="false" fx:id="back" text="back" onMouseClicked="#onBackButtonClick"
+                BorderPane.alignment="TOP_LEFT">
+            <font>
+                <Font name="Montserrat SemiBold" size="17.0"/>
+            </font>
             <BorderPane.margin>
-                <Insets bottom="19.0" left="10.0" top="10.0"/>
+                <Insets bottom="20.0" left="10.0" top="10.0"/>
+
             </BorderPane.margin>
         </Button>
     </top>
     <bottom>
-        <Button mnemonicParsing="false" fx:id="password" onMouseClicked="#onPasswordButtonClick" text="Change password" BorderPane.alignment="CENTER">
+        <Button mnemonicParsing="false" fx:id="password" onMouseClicked="#onPasswordButtonClick" text="Change password"
+                BorderPane.alignment="CENTER">
+            <font>
+                <Font name="Montserrat SemiBold" size="17.0"/>
+            </font>
             <BorderPane.margin>
                 <Insets bottom="10.0" top="10.0"/>
             </BorderPane.margin>

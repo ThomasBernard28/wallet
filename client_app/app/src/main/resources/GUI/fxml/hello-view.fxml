@@ -7,6 +7,7 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
 
+<?import javafx.scene.text.Font?>
 <VBox alignment="CENTER" fillWidth="false" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity"
       minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" spacing="15.0" xmlns="http://javafx.com/javafx/17"
       xmlns:fx="http://javafx.com/fxml/1" fx:controller="wallet.GUI.controllers.HelloController">
@@ -25,8 +26,16 @@
             </children>
         </HBox>
         <Button fx:id="login" mnemonicParsing="false" onAction="#onLoginButtonClick" prefHeight="29.0" prefWidth="123.0"
-                text="Login"/>
+                text="Login">
+            <font>
+                <Font name="Montserrat SemiBold" size="17.0"/>
+            </font>
+        </Button>
         <Button fx:id="register" mnemonicParsing="false" onMouseClicked="#onRegisterButtonClick" prefHeight="29.0"
-                prefWidth="121.0" text="Register"/>
+                prefWidth="121.0" text="Register">
+            <font>
+                <Font name="Montserrat SemiBold" size="17.0"/>
+            </font>
+        </Button>
     </children>
 </VBox>

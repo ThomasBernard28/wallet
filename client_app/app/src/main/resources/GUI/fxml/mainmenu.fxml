@@ -7,44 +7,74 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-
 <BorderPane fx:id="borderPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity"
-            prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1"
-            fx:controller="wallet.GUI.controllers.MainMenuController" stylesheets="@../../GUI/css/mainmenustyle.css">
+            prefHeight="400.0" prefWidth="600.0"
+            xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="wallet.GUI.controllers.MainMenuController">
 
     <left>
-        <VBox fx:id="sidemenu" alignment="CENTER" prefHeight="200.0" prefWidth="100.0" spacing="20.0"
+        <VBox fx:id="sidemenu" alignment="CENTER" prefHeight="376.0" prefWidth="183.0" spacing="50.0"
               BorderPane.alignment="TOP_CENTER">
             <children>
                 <Button fx:id="wallets" maxWidth="1.7976931348623157E308" mnemonicParsing="false"
-                        onAction="#onWalletButtonClick" text="My wallets" VBox.vgrow="ALWAYS"/>
-                <Button fx:id="account" onMouseClicked="#onAccountButtonClick" maxWidth="1.7976931348623157E308"
-                        mnemonicParsing="false" text="My accounts"/>
+                        onAction="#onWalletButtonClick" text="My wallets" VBox.vgrow="ALWAYS">
+                    <font>
+                        <Font name="Montserrat SemiBold" size="17.0"/>
+                    </font>
+                </Button>
+                <Button fx:id="account" maxWidth="1.7976931348623157E308" mnemonicParsing="false"
+                        onMouseClicked="#onAccountButtonClick" text="My accounts">
+                    <font>
+                        <Font name="Montserrat SemiBold" size="17.0"/>
+                    </font>
+                </Button>
                 <Button fx:id="settings" maxWidth="1.7976931348623157E308" mnemonicParsing="false"
-                        onAction="#onSettingsButtonClick" prefHeight="24.0" prefWidth="142.0" text="Settings"/>
-                <Button fx:id="signout" maxWidth="1.7976931348623157E308" mnemonicParsing="false" prefHeight="24.0"
-                        onMouseClicked="#onSignOutButtonClick" prefWidth="210.0" text="Sign out"/>
+                        onAction="#onSettingsButtonClick" prefHeight="24.0" prefWidth="142.0" text="Settings">
+                    <font>
+                        <Font name="Montserrat SemiBold" size="17.0"/>
+                    </font>
+                </Button>
+                <Button fx:id="signout" maxWidth="1.7976931348623157E308" mnemonicParsing="false"
+                        onMouseClicked="#onSignOutButtonClick" prefHeight="24.0" prefWidth="210.0" text="Sign out">
+                    <font>
+                        <Font name="Montserrat SemiBold" size="17.0"/>
+                    </font>
+                </Button>
                 <Button fx:id="leave" maxWidth="1.7976931348623157E308" mnemonicParsing="false"
-                        onMouseClicked="#onLeaveButtonCLick" text="Leave"/>
+                        onMouseClicked="#onLeaveButtonCLick" text="Leave">
+                    <font>
+                        <Font name="Montserrat SemiBold" size="17.0"/>
+                    </font>
+                </Button>
             </children>
             <BorderPane.margin>
                 <Insets/>
             </BorderPane.margin>
+            <padding>
+                <Insets left="15.0"/>
+            </padding>
         </VBox>
     </left>
     <top>
         <Button fx:id="sidebutton" mnemonicParsing="false" onMouseClicked="#onSideMenuButtonClick" text="&gt;"
-                BorderPane.alignment="TOP_LEFT"/>
+                BorderPane.alignment="TOP_LEFT">
+            <font>
+                <Font name="Montserrat SemiBold" size="17.0"/>
+            </font>
+            <BorderPane.margin>
+                <Insets left="10.0" top="10.0"/>
+            </BorderPane.margin>
+        </Button>
     </top>
     <center>
         <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0" BorderPane.alignment="CENTER">
             <children>
-                <Label fx:id="time" alignment="CENTER" contentDisplay="CENTER" text="Label" textFill="BLUE">
+                <Label fx:id="time" alignment="CENTER" contentDisplay="CENTER" text="Label">
                     <font>
                         <Font name="Comic Neue Bold Italic" size="95.0"/>
                     </font>
                 </Label>
-                <Label fx:id="date" text="Label" textFill="ORANGE">
+                <Label fx:id="date" text="Label" textFill="#466380">
                     <font>
                         <Font name="Comic Neue Bold Italic" size="93.0"/>
                     </font>
