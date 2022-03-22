@@ -1,5 +1,7 @@
 package com.example.Api.wallet;
 
+import com.example.Api.client.ClientVsInst;
+import com.example.Api.client.ClientVsInstService;
 import com.example.Api.clientVsInstitution.Client;
 import com.example.Api.clientVsInstitution.ClientRepository;
 import com.example.Api.clientVsInstitution.ClientService;
@@ -22,15 +24,15 @@ public class WalletService {
     private final WalletRepository walletRepository;
     private final UserRepository userRepository;
     private final InstitutionRepository institutionRepository;
-    private final ClientService clientService;
+    private final ClientVsInstService clientVsInstService;
 
     @Autowired
     public WalletService(WalletRepository walletRepository, UserRepository userRepository,
-                         InstitutionRepository institutionRepository, ClientService clientService){
+                         InstitutionRepository institutionRepository, ClientVsInstService clientVsInstService){
         this.walletRepository = walletRepository;
         this.userRepository = userRepository;
         this.institutionRepository = institutionRepository;
-        this.clientService = clientService;
+        this.clientVsInstService = clientVsInstService;
     }
 
     public List<Wallet> getWallets(){
@@ -61,7 +63,7 @@ public class WalletService {
             throw new IllegalStateException("User already has a wallet in this institution");
         }
         walletRepository.save(wallet);
-        //clientService.registerClient(bic, userID);
+        clientVsInstService.registerClient(bic, userID);
 
     }
 
