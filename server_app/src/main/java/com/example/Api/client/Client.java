@@ -12,10 +12,10 @@ import javax.persistence.*;
 @NoArgsConstructor
 @ToString
 
-@Entity(name = "clients")
-@Table(name = "clients")
-@IdClass(ClientVsInstID.class)
-public class ClientVsInst {
+@Entity(name = "CLIENT")
+@Table(name = "CLIENTS")
+@IdClass(ClientID.class)
+public class Client {
 
     @Id
     @ManyToOne(cascade = CascadeType.PERSIST)

@@ -18,4 +18,8 @@ public class LanguageService {
     public List<Language> getLanguages(){
         return languageRepository.findAll();
     }
+
+    public Language getLanguage(String language){
+        return languageRepository.findByLanguage(language);
+    }
 }

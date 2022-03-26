@@ -26,11 +26,7 @@ public class UserService {
     }
 
     public Optional<User> getOneUser(String userID){
-        Optional<User> userById = userRepository.findUserByUserID(userID);
-        boolean isPresent = userById.isPresent();
-        if(!isPresent){
-            throw new EntityNotFoundException("This user doesn't exist");
-        }
+
         return userRepository.findUserByUserID(userID);
     }
 

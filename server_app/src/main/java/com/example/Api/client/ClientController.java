@@ -8,22 +8,22 @@ import java.util.Map;
 
 @RestController
 @RequestMapping(path = "api/v1/clientVs")
-public class ClientVsInstController {
+public class ClientController {
 
-    private final ClientVsInstService clientVsInstService;
+    private final ClientService clientVsInstService;
 
     @Autowired
-    public ClientVsInstController(ClientVsInstService clientVsInstService){
+    public ClientController(ClientService clientVsInstService){
         this.clientVsInstService = clientVsInstService;
     }
 
     @GetMapping(path = "{bic}")
-    public List<ClientVsInst> getInstClients(@PathVariable("bic") String bic){
+    public List<Client> getInstClients(@PathVariable("bic") String bic){
         return clientVsInstService.getAllBankClients(bic);
     }
 
     @GetMapping(path = "{bic}/{userID}")
-    public ClientVsInst getOneClient(@PathVariable("bic") String bic, @PathVariable("userID") String userID){
+    public Client getOneClient(@PathVariable("bic") String bic, @PathVariable("userID") String userID){
         return clientVsInstService.getOneClient(bic, userID);
     }
 

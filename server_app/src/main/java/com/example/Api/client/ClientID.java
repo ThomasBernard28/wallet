@@ -1,7 +1,6 @@
 package com.example.Api.client;
 
 import com.example.Api.bank.Bank;
-import com.example.Api.institution.Institution;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -15,7 +14,7 @@ import java.util.Objects;
 @AllArgsConstructor
 @NoArgsConstructor
 
-public class ClientVsInstID implements Serializable {
+public class ClientID implements Serializable {
 
     private Bank bank;
     private String userID;
@@ -33,7 +32,7 @@ public class ClientVsInstID implements Serializable {
         if(o == null || getClass() != o.getClass()){
             return false;
         }
-        ClientVsInstID that = (ClientVsInstID) o;
+        ClientID that = (ClientID) o;
 
         return Objects.equals(getBank(), that.getBank()) && Objects.equals(getUserID(), that.getUserID());
     }

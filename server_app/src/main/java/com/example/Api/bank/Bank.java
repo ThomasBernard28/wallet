@@ -13,8 +13,8 @@ import javax.persistence.Table;
 @NoArgsConstructor
 @ToString
 
-@Entity(name = "bank")
-@Table(name = "bank")
+@Entity(name = "INSTITUTIONS")
+@Table(name = "INSTITUTIONS")
 public class Bank {
 
     @Id

@@ -1,18 +1,11 @@
 package com.example.Api.wallet;
 
-import com.example.Api.client.ClientVsInst;
-import com.example.Api.client.ClientVsInstService;
-import com.example.Api.clientVsInstitution.Client;
-import com.example.Api.clientVsInstitution.ClientRepository;
-import com.example.Api.clientVsInstitution.ClientService;
-import com.example.Api.institution.Institution;
-import com.example.Api.institution.InstitutionRepository;
+
 import com.example.Api.user.User;
 import com.example.Api.user.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import javax.persistence.EntityNotFoundException;
 import javax.transaction.Transactional;
 import java.time.LocalDate;
 import java.util.List;
@@ -23,16 +16,11 @@ public class WalletService {
 
     private final WalletRepository walletRepository;
     private final UserRepository userRepository;
-    private final InstitutionRepository institutionRepository;
-    private final ClientVsInstService clientVsInstService;
 
     @Autowired
-    public WalletService(WalletRepository walletRepository, UserRepository userRepository,
-                         InstitutionRepository institutionRepository, ClientVsInstService clientVsInstService){
+    public WalletService(WalletRepository walletRepository, UserRepository userRepository){
         this.walletRepository = walletRepository;
         this.userRepository = userRepository;
-        this.institutionRepository = institutionRepository;
-        this.clientVsInstService = clientVsInstService;
     }
 
     public List<Wallet> getWallets(){
@@ -63,7 +51,6 @@ public class WalletService {
             throw new IllegalStateException("User already has a wallet in this institution");
         }
         walletRepository.save(wallet);
-        clientVsInstService.registerClient(bic, userID);
 
     }
 

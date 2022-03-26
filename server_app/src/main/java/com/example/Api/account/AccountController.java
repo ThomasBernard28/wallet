@@ -1,6 +1,6 @@
 package com.example.Api.account;
 
-import com.example.Api.clientVsInstitution.ClientService;
+import com.example.Api.client.ClientService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -14,12 +14,10 @@ import java.util.List;
 public class AccountController {
 
     private final AccountService accountService;
-    private final ClientService clientService;
 
     @Autowired
-    public AccountController(AccountService accountService, ClientService clientService){
+    public AccountController(AccountService accountService){
         this.accountService = accountService;
-        this.clientService = clientService;
     }
 
     @GetMapping(path = "{walletId}")

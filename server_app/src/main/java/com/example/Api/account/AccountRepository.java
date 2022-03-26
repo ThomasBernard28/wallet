@@ -1,6 +1,6 @@
 package com.example.Api.account;
 
-import com.example.Api.clientVsInstitution.Client;
+import com.example.Api.client.Client;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;

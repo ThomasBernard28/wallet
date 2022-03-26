@@ -1,6 +1,7 @@
 package com.example.Api.account;
 
-import com.example.Api.clientVsInstitution.Client;
+
+import com.example.Api.client.Client;
 import com.example.Api.wallet.Wallet;
 import lombok.*;
 
