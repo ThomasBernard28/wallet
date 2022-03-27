@@ -1,11 +1,9 @@
 package com.example.Api.bank;
 
+import com.example.Api.client.Client;
 import lombok.*;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 
 @Getter
 @Setter
@@ -25,4 +23,10 @@ public class Bank {
             columnDefinition = "CHAR(8)"
     )
     private String bic;
+
+    @Column(
+            name = "psswd",
+            nullable = false
+    )
+    private String psswd;
 }

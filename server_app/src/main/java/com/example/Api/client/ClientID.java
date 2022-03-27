@@ -1,3 +1,4 @@
+/*
 package com.example.Api.client;
 
 import com.example.Api.bank.Bank;
@@ -37,3 +38,5 @@ public class ClientID implements Serializable {
         return Objects.equals(getBank(), that.getBank()) && Objects.equals(getUserID(), that.getUserID());
     }
 }
+
+ */

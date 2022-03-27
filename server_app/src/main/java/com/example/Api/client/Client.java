@@ -1,7 +1,6 @@
 package com.example.Api.client;
 
 
-import com.example.Api.bank.Bank;
 import lombok.*;
 
 import javax.persistence.*;
@@ -12,11 +11,12 @@ import javax.persistence.*;
 @NoArgsConstructor
 @ToString
 
-@Entity(name = "CLIENT")
+@Entity(name = "CLIENTS")
 @Table(name = "CLIENTS")
-@IdClass(ClientID.class)
+//@IdClass(ClientID.class)
+//@SQLInsert(sql = "INSERT IGNORE INTO CLIENTS(bic, userID)" + "VALUES (?, ?)")
 public class Client {
-
+    /*
     @Id
     @ManyToOne(cascade = CascadeType.PERSIST)
     @JoinColumn(name = "bic", referencedColumnName = "bic")
@@ -29,5 +29,12 @@ public class Client {
             updatable = false
     )
     private String userID;
+
+     */
+
+    @EmbeddedId()
+    private ClientIDEmb clientIDEmb;
+
+
 
 }

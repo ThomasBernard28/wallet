@@ -1,8 +1,12 @@
 package com.example.Api.client;
 
+import com.example.Api.bank.Bank;
+import com.example.Api.bank.BankRepository;
+import com.example.Api.bank.BankService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import java.sql.SQLOutput;
 import java.util.List;
 import java.util.Map;
 
@@ -10,21 +14,23 @@ import java.util.Map;
 @RequestMapping(path = "api/v1/clientVs")
 public class ClientController {
 
-    private final ClientService clientVsInstService;
+    private final ClientService clientService;
+    private final BankService bankService;
 
     @Autowired
-    public ClientController(ClientService clientVsInstService){
-        this.clientVsInstService = clientVsInstService;
+    public ClientController(ClientService clientService, BankService bankService){
+        this.clientService = clientService;
+        this.bankService = bankService;
     }
 
     @GetMapping(path = "{bic}")
     public List<Client> getInstClients(@PathVariable("bic") String bic){
-        return clientVsInstService.getAllBankClients(bic);
+        return clientService.getAllBankClients(bic);
     }
 
     @GetMapping(path = "{bic}/{userID}")
     public Client getOneClient(@PathVariable("bic") String bic, @PathVariable("userID") String userID){
-        return clientVsInstService.getOneClient(bic, userID);
+        return clientService.getOneClient(bic, userID);
     }
 
     @PostMapping
@@ -32,6 +38,11 @@ public class ClientController {
         String bic = json.get("bic");
         String userID = json.get("userID");
 
-        clientVsInstService.registerClient(bic, userID);
+        Bank bank = bankService.getBank(bic);
+
+        System.out.println(bank.toString());
+        System.out.println("Bank found");
+
+        clientService.registerClient(bank, userID);
     }
 }

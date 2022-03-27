@@ -40,7 +40,6 @@ public class WalletService {
         Wallet wallet = new Wallet(userRepository.getById(userID), bic, openingDate, activity);
         Optional<Wallet> walletOptional = walletRepository.findWalletByWalletID(wallet.getWalletID());
 
-        System.out.println(wallet);
         if(walletOptional.isPresent()){
             throw new IllegalStateException("Wallet already exists");
         }

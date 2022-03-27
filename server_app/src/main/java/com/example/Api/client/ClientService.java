@@ -12,12 +12,12 @@ import java.util.Optional;
 @Service
 public class ClientService {
 
-    private final ClientRepository clientVsInstRepository;
+    private final ClientRepository clientRepository;
     private final BankRepository bankRepository;
 
     @Autowired
-    public ClientService(ClientRepository clientVsInstRepository, BankRepository bankRepository){
-        this.clientVsInstRepository = clientVsInstRepository;
+    public ClientService(ClientRepository clientRepository, BankRepository bankRepository){
+        this.clientRepository = clientRepository;
         this.bankRepository = bankRepository;
     }
 
@@ -25,11 +25,11 @@ public class ClientService {
         if(!bankRepository.findBankByBic(bic).isPresent()){
             throw new EntityNotFoundException("This insitution doesn't exist");
         }
-        return clientVsInstRepository.findAllByBank(bic);
+        return clientRepository.findAllByBank(bic);
     }
 
     public Client getOneClient(String bic, String userID){
-        Optional<Client> clientVsInstOptional = clientVsInstRepository.findByBankAndUserID(bic, userID);
+        Optional<Client> clientVsInstOptional = clientRepository.findByBankAndUserID(bic, userID);
 
         if(!clientVsInstOptional.isPresent()){
             throw new EntityNotFoundException("This client doesn't exist");
@@ -38,17 +38,15 @@ public class ClientService {
         return clientVsInstOptional.get();
     }
 
-    public void registerClient(String bic, String userID){
-        if(clientVsInstRepository.findByBankAndUserID(bic, userID).isPresent()){
+    public void registerClient(Bank bank, String userID){
+        if(clientRepository.findByBankAndUserID(bank.getBic(), userID).isPresent()){
             throw new IllegalStateException("This client already exists");
         }
-        Optional<Bank> bank = bankRepository.findBankByBic(bic);
-        if (!bank.isPresent()){
-            throw new EntityNotFoundException("Please enter a correct bank");
-        }
 
-        Client clientVsInst = new Client(bank.get(), userID);
+        Client clientVsInst = new Client(new ClientIDEmb(bank.getBic(), userID));
+        System.out.println("Client created");
 
-        clientVsInstRepository.save(clientVsInst);
+        clientRepository.save(clientVsInst);
+        System.out.println("Client saved");
     }
 }
