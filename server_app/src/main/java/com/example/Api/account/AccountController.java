@@ -66,4 +66,14 @@ public class AccountController {
             accountService.registerAccount(iban, wallet, client, json.get("type"), Float.parseFloat(json.get("avgBalance")), json.get("localCurr"), Integer.parseInt(json.get("activity")));
         }
     }
+
+    @PutMapping(path = "{iban}")
+    public void updateAccount(
+            @PathVariable("iban") String iban,
+            @RequestParam(required = false) Integer activity,
+            @RequestParam(required = false) Float avgBalance
+    ){
+        accountService.updateAccount(iban, activity, avgBalance);
+    }
+
 }
