@@ -5,10 +5,13 @@ import com.example.Api.bank.BankRepository;
 import com.example.Api.client.Client;
 
 import com.example.Api.client.ClientRepository;
+import com.example.Api.client.ClientService;
+import com.example.Api.wallet.Wallet;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import javax.persistence.EntityNotFoundException;
+import javax.swing.text.html.Option;
 import java.util.List;
 import java.util.Optional;
 
@@ -39,5 +42,20 @@ public class AccountService {
         }
 
         return accountRepository.findAccountByClient(client.get());
+    }
+
+    public Account getIbanAccount(String iban) throws EntityNotFoundException{
+        Optional<Account> accountOptional = accountRepository.findByIban(iban);
+
+        if(!accountOptional.isPresent()){
+            throw new EntityNotFoundException("This account doesn't exist");
+        }
+
+        return accountOptional.get();
+    }
+
+    public void registerAccount(String iban, Wallet wallet, Client client, String type, Float avgBalance, String localCurr, Integer activity ){
+        Account account = new Account(iban, wallet, client, type, avgBalance, localCurr, activity);
+        accountRepository.save(account);
     }
 }

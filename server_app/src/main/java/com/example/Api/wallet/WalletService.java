@@ -6,6 +6,7 @@ import com.example.Api.user.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import javax.persistence.EntityNotFoundException;
 import javax.transaction.Transactional;
 import java.time.LocalDate;
 import java.util.List;
@@ -34,6 +35,18 @@ public class WalletService {
             throw new IllegalStateException("The user doesn't exist");
         }
         return walletRepository.findWalletByUserEquals(user.get());
+    }
+
+    public Optional<Wallet> getWalletByWalletID(Long walletID){
+        Optional<Wallet> walletOptional = walletRepository.findWalletByWalletID(walletID);
+
+        if(!walletOptional.isPresent()){
+            throw new EntityNotFoundException("Wallet doesn't exist");
+        }
+        if(walletOptional.get().getActivity().equals(0)){
+            throw new IllegalStateException("The wallet is currently inactive ");
+        }
+        return walletOptional;
     }
 
     public void addNewWallet(String userID, String bic, LocalDate openingDate, Integer activity) {

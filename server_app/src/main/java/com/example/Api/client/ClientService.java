@@ -28,14 +28,14 @@ public class ClientService {
         return clientRepository.findAllByBank(bic);
     }
 
-    public Client getOneClient(String bic, String userID){
+    public Optional<Client> getOneClient(String bic, String userID) throws EntityNotFoundException{
         Optional<Client> clientVsInstOptional = clientRepository.findByBankAndUserID(bic, userID);
 
         if(!clientVsInstOptional.isPresent()){
             throw new EntityNotFoundException("This client doesn't exist");
         }
 
-        return clientVsInstOptional.get();
+        return clientVsInstOptional;
     }
 
     public void registerClient(Bank bank, String userID){
@@ -48,5 +48,15 @@ public class ClientService {
 
         clientRepository.save(clientVsInst);
         System.out.println("Client saved");
+    }
+
+    public void deleteClient(Bank bank, String userID){
+
+        Optional<Client> clientOptional = clientRepository.findByBankAndUserID(bank.getBic(), userID);
+
+        if(!clientOptional.isPresent()){
+            throw new EntityNotFoundException("This client does not exist");
+        }
+        clientRepository.delete(clientOptional.get());
     }
 }

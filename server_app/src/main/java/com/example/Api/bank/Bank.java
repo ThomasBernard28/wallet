@@ -1,6 +1,7 @@
 package com.example.Api.bank;
 
 import com.example.Api.client.Client;
+import com.example.Api.language.Language;
 import lombok.*;
 
 import javax.persistence.*;
@@ -29,4 +30,22 @@ public class Bank {
             nullable = false
     )
     private String psswd;
+
+    @Column(
+            name = "name",
+            nullable = false,
+            updatable = false
+    )
+    private String name;
+
+    @OneToOne
+    @JoinColumn(
+            name = "language",
+            referencedColumnName = "language",
+            foreignKey = @ForeignKey(
+                    name = "INSTITUTIONS_LANGUAGES_language_fk"
+            )
+
+    )
+    private Language language;
 }

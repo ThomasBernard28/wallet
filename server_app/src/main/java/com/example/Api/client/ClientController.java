@@ -30,7 +30,7 @@ public class ClientController {
 
     @GetMapping(path = "{bic}/{userID}")
     public Client getOneClient(@PathVariable("bic") String bic, @PathVariable("userID") String userID){
-        return clientService.getOneClient(bic, userID);
+        return clientService.getOneClient(bic, userID).get();
     }
 
     @PostMapping
@@ -40,9 +40,13 @@ public class ClientController {
 
         Bank bank = bankService.getBank(bic);
 
-        System.out.println(bank.toString());
-        System.out.println("Bank found");
-
         clientService.registerClient(bank, userID);
+    }
+
+    @DeleteMapping(path = "{bic}/{userID}")
+    public void deleteClient(@PathVariable("bic") String bic, @PathVariable("userID") String userID){
+        Bank bank = bankService.getBank(bic);
+
+        clientService.deleteClient(bank, userID);
     }
 }
