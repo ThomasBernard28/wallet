@@ -41,7 +41,7 @@ public class AccountController {
         return accountService.getAccountsForClient(bic, userID);
     }
 
-    @GetMapping(path = "{iban}")
+    @GetMapping(path = "iban/{iban}")
     public Account getIbanAccount(@PathVariable("iban") String iban){
         return accountService.getIbanAccount(iban);
     }

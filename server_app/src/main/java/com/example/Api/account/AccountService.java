@@ -30,7 +30,7 @@ public class AccountService {
     }
 
     public List<Account> getAccounts(Long walletID){
-        return accountRepository.findAccountByWallet(walletID);
+        return accountRepository.findAccountByWalletID(walletID);
     }
 
     public List<Account> getAccountsForClient(String bic, String userID){
