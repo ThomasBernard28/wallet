@@ -22,12 +22,16 @@
                                 <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                             </rowConstraints>
                             <children>
-                                <Label text="National register number :" />
-                                <Label alignment="CENTER" contentDisplay="CENTER" text="Password :" GridPane.rowIndex="1" />
-                                <Label text="Confirm password :" GridPane.rowIndex="2" />
-                                <TextField fx:id="nationalId" GridPane.columnIndex="1" />
-                                <PasswordField fx:id="password" GridPane.columnIndex="1" GridPane.rowIndex="1" />
-                                <PasswordField fx:id="confirmPassword" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+                                <Label text="First name :" GridPane.rowIndex="1" />
+                                <Label text="Last name :" GridPane.rowIndex="2" />
+                                <Label text="National register number :" GridPane.rowIndex="3" />
+                                <Label alignment="CENTER" contentDisplay="CENTER" text="Password :" GridPane.rowIndex="4" />
+                                <Label text="Confirm password :" GridPane.rowIndex="5" />
+                                <TextField fx:id="firstName" GridPane.columnIndex="1" GridPane.rowIndex="1"/>
+                                <TextField fx:id="lastName" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+                                <TextField fx:id="nationalId" GridPane.columnIndex="1" GridPane.rowIndex="3"/>
+                                <PasswordField fx:id="password" GridPane.columnIndex="1" GridPane.rowIndex="4" />
+                                <PasswordField fx:id="confirmPassword" GridPane.columnIndex="1" GridPane.rowIndex="5" />
                             </children>
                             <VBox.margin>
                                 <Insets top="200.0" />

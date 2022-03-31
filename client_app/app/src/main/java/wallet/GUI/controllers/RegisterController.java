@@ -22,6 +22,10 @@ public class RegisterController {
     @FXML
     private Label wrong;
     @FXML
+    private TextField firstName;
+    @FXML
+    private TextField lastName;
+    @FXML
     private TextField nationalId;
     @FXML
     private PasswordField password;
@@ -45,7 +49,7 @@ public class RegisterController {
     @FXML
     private void onRegisterClicked() {
         if (password.getText().equals(confirmPassword.getText())) {
-            App.currentUser = new User("default", "default", nationalId.getText(), password.getText());
+            App.currentUser = new User(firstName.getText(), lastName.getText(), nationalId.getText(), password.getText());
             try {
                 App.api.post_user(App.currentUser.write_data());
                 onBackButtonClicked();
