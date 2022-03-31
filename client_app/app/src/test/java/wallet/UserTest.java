@@ -24,7 +24,7 @@ public class UserTest {
 		Assertions.assertEquals("u", user.get_firstName());
 		Assertions.assertEquals("id", user.get_lastName());
 		Assertions.assertEquals("1234", user.get_password());
-		Assertions.assertEquals(69420, user.get_natID());
+		Assertions.assertEquals("69420", user.get_natID());
 		Assertions.assertEquals("FR", user.get_language());
 	}
 
