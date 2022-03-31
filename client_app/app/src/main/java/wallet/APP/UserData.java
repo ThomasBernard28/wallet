@@ -5,11 +5,11 @@ import java.util.Map;
 public class UserData {
 
     private String userID;
-    private String firstName;
-    private String lastName;
+    private String natID;
     private String psswd;
-    private int    natID;
-    private String language;
+    private String lastName;
+    private String firstName;
+    private String language = "EN"; // default value
 
     public UserData() {}
 
@@ -53,11 +53,11 @@ public class UserData {
         return lastName;
     }
 
-    public void setNatID(int natID) {
+    public void setNatID(String natID) {
         this.natID = natID;
     }
 
-    public int getNatID() {
+    public String getNatID() {
         return natID;
     }
 

@@ -37,7 +37,7 @@ public class AccountController {
     @FXML
     private void initialize() {
         name.setText(App.currentUser.get_firstName().concat(App.currentUser.get_lastName())); 
-        number.setText(Integer.toString(App.currentUser.get_natID()));
+        number.setText(App.currentUser.get_natID());
     }   
 
     @FXML

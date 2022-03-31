@@ -15,6 +15,9 @@ import javafx.util.Duration;
 import java.io.IOException;
 import java.io.File;
 
+import wallet.App;
+import wallet.APP.User;
+
 public class RegisterController {
     @FXML
     private Label wrong;
@@ -30,7 +33,7 @@ public class RegisterController {
     private Button register;
 
     @FXML
-    private void onBackButtonCLicked() throws IOException {
+    private void onBackButtonClicked() throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(new File("build/resources/main/GUI/fxml/hello-view.fxml").toURL());
         Parent root = fxmlLoader.load();
         Stage stage = (Stage) (back.getScene().getWindow());
@@ -42,7 +45,13 @@ public class RegisterController {
     @FXML
     private void onRegisterClicked() {
         if (password.getText().equals(confirmPassword.getText())) {
-            HelloApplication.dic.put(nationalId.getText(), password.getText());
+            App.currentUser = new User("default", "default", nationalId.getText(), password.getText());
+            try {
+                App.api.post_user(App.currentUser.write_data());
+                onBackButtonClicked();
+            }
+            catch (Exception e) {
+            }
         } else {
             wrong.setVisible(true);
             PauseTransition visiblePause = new PauseTransition(Duration.seconds(2));

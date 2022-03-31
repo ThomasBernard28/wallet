@@ -23,6 +23,15 @@ public class User implements JsonReader {
     public User() {
     }
 
+    public User(String firstName, String lastName, String natID, String password) {
+        String userID = firstName + lastName + natID;
+        data.setFirstName(firstName);
+        data.setLastName(lastName);
+        data.setNatID(natID);
+        data.setUserID(userID);
+        data.setPsswd(password);
+    }
+
     /* read the given json file and save the data 
     in the data instance of the current user */
     @Override
@@ -35,9 +44,17 @@ public class User implements JsonReader {
         }
     }
 
-    /* write data in the data instance 
+    /* write data in a json string 
     */
-    public void write_data(String userID) {
+    public String write_data() {
+        String json = "";
+        try {
+            json = new ObjectMapper().writeValueAsString(data);
+        }
+        catch (Exception e) {
+            System.out.println("failed to write user data");
+        }
+        return json;
     }
 
     /*
@@ -78,7 +95,7 @@ public class User implements JsonReader {
         return data.getLastName();
     }
 
-    public int get_natID() {
+    public String get_natID() {
         return data.getNatID();  
     }
 

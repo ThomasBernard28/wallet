@@ -52,6 +52,10 @@ public class App extends Application {
         return false;
     }
 
+    public static void register(String id, String password) {
+             
+    }
+
     public static void disconnect() {
         currentUser = null;
     }

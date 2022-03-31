@@ -20,6 +20,15 @@ public class Api {
         return response.body();     // return the json
     }
 
+    public void post_user(String userJson) throws Exception {
+        request = HttpRequest.newBuilder()
+            .uri(URI.create("http://sierra880.xyz:4545/api/v1/user"))
+            .header("Content-Type", "application/json")
+            .POST(HttpRequest.BodyPublishers.ofString(userJson))
+            .build();
+        client.send(request, HttpResponse.BodyHandlers.ofString());
+    }
+
     public String get_wallets(String userID) throws IOException, InterruptedException {
         request = HttpRequest.newBuilder().GET().header("accept", "application/json").uri(URI.create("http://sierra880.xyz:4545/api/v1/wallets/"+userID)).build();
         response = client.send(request, HttpResponse.BodyHandlers.ofString());
