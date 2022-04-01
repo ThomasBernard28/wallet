@@ -11,27 +11,29 @@
             <children>
                 <VBox alignment="TOP_CENTER" StackPane.alignment="CENTER">
                     <children>
-                        <GridPane alignment="CENTER" prefHeight="299.0" prefWidth="600.0">
+                        <GridPane alignment="CENTER" prefHeight="299.0" prefWidth="600.0" vgap="30.0">
                             <columnConstraints>
                                 <ColumnConstraints hgrow="SOMETIMES" maxWidth="304.0" minWidth="10.0" prefWidth="299.0" />
                                 <ColumnConstraints hgrow="SOMETIMES" maxWidth="307.0" minWidth="10.0" prefWidth="301.0" />
                             </columnConstraints>
                             <rowConstraints>
-                                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                <RowConstraints maxHeight="-Infinity" valignment="CENTER" vgrow="SOMETIMES" />
+                                <RowConstraints maxHeight="-Infinity" vgrow="SOMETIMES" />
+                        <RowConstraints />
+                        <RowConstraints />
+                        <RowConstraints />
                             </rowConstraints>
                             <children>
-                                <Label text="First name :" GridPane.rowIndex="1" />
-                                <Label text="Last name :" GridPane.rowIndex="2" />
-                                <Label text="National register number :" GridPane.rowIndex="3" />
-                                <Label alignment="CENTER" contentDisplay="CENTER" text="Password :" GridPane.rowIndex="4" />
-                                <Label text="Confirm password :" GridPane.rowIndex="5" />
-                                <TextField fx:id="firstName" GridPane.columnIndex="1" GridPane.rowIndex="1"/>
-                                <TextField fx:id="lastName" GridPane.columnIndex="1" GridPane.rowIndex="2" />
-                                <TextField fx:id="nationalId" GridPane.columnIndex="1" GridPane.rowIndex="3"/>
-                                <PasswordField fx:id="password" GridPane.columnIndex="1" GridPane.rowIndex="4" />
-                                <PasswordField fx:id="confirmPassword" GridPane.columnIndex="1" GridPane.rowIndex="5" />
+                                <Label text="First name :" />
+                                <Label text="Last name :" GridPane.rowIndex="1" />
+                                <Label text="National register number :" GridPane.rowIndex="2" />
+                                <Label alignment="CENTER" contentDisplay="CENTER" text="Password :" GridPane.rowIndex="3" />
+                                <Label text="Confirm password :" GridPane.rowIndex="4" />
+                                <TextField fx:id="firstName" GridPane.columnIndex="1" />
+                                <TextField fx:id="lastName" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                                <TextField fx:id="nationalId" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+                                <PasswordField fx:id="password" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+                                <PasswordField fx:id="confirmPassword" GridPane.columnIndex="1" GridPane.rowIndex="4" />
                             </children>
                             <VBox.margin>
                                 <Insets top="200.0" />

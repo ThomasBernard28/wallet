@@ -57,7 +57,7 @@ public class MainMenuController {
 
     @FXML
     private void initialize() throws MalformedURLException {
-        FXMLLoader fxmlLoader = new FXMLLoader(new File("build/resources/main/GUI/fxml/settingsbis.fxml").toURL());
+        FXMLLoader fxmlLoader = new FXMLLoader(new File("build/resources/main/GUI/fxml/settings.fxml").toURL());
 
        /* if(true){
             borderpane.setBackground(new Background(new BackgroundFill(Color.PINK, CornerRadii.EMPTY, Insets.EMPTY)));
@@ -66,6 +66,7 @@ public class MainMenuController {
 
         }
         sidemenu.setStyle("");*/
+        borderpane.getStylesheets().add("resources/GUI/css/mainmenustyle.css");
 
         Timeline clock = new Timeline(new KeyFrame(Duration.ZERO, e -> {
             LocalTime currentTime = LocalTime.now();
@@ -88,7 +89,7 @@ public class MainMenuController {
     @FXML
     private void onSettingsButtonClick() throws IOException {
 
-        FXMLLoader fxmlLoader = new FXMLLoader(new File("build/resources/main/GUI/fxml/settingsbis.fxml").toURL());
+        FXMLLoader fxmlLoader = new FXMLLoader(new File("build/resources/main/GUI/fxml/settings.fxml").toURL());
         Parent root = fxmlLoader.load();
         Stage stage= (Stage)(wallets.getScene().getWindow());
         Scene scene = new Scene(root,320,320);
