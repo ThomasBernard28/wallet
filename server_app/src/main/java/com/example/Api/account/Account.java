@@ -84,7 +84,8 @@ public class Account {
 
     @Column(
             name = "activity",
-            nullable = false
+            nullable = false,
+            columnDefinition = "Integer(1) default '1' "
     )
     private Integer activity;
 }

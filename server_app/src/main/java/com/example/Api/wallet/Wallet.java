@@ -74,7 +74,8 @@ public class Wallet{
 
     @Column(
             name = "activity",
-            nullable = false
+            nullable = false,
+            columnDefinition = "Integer(1) default '1'"
     )
     private Integer activity;
 
