@@ -17,6 +17,7 @@ public interface AccountRepository extends JpaRepository<Account, String> {
     @Query("SELECT s FROM ACCOUNTS s WHERE s.client = ?1 AND s.activity = 1")
     List<Account> findAccountByClient(Client client);
 
-    @Query("SELECT s, a FROM ACCOUNTS s, CO_OWNER a WHERE s.wallet.walletID = ?1 AND s.activity = 1 AND a.coOwnerID.walletID = ?1")
+    @Query(value = "SELECT * FROM ACCOUNTS WHERE walletID = 2 AND activity =1 UNION (SELECT a.iban 'iban', a.walletID 'walletID', a.userID 'userID', a.bic 'bic', a.type 'type'," +
+            " a.avgBalance 'avgBalance', a.localCurr 'localCurr', a.activity 'activity' FROM ACCOUNTS a, CO_OWNER c WHERE a.iban = c.ibanOwner AND c.walletID_coOwner = 2)", nativeQuery = true)
     List<Account> findAccountByWalletID(Long walletID);
 }
