@@ -13,7 +13,7 @@ import java.time.LocalDate;
 @NoArgsConstructor
 @ToString
 
-@Entity
+@Entity(name = "PENSION_SAVINGS")
 @Table(name = "PENSION_SAVINGS")
 public class PensionSaving {
 
