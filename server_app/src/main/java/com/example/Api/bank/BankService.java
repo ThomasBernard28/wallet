@@ -1,5 +1,6 @@
 package com.example.Api.bank;
 
+import com.example.Api.exception.ApiNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -20,7 +21,7 @@ public class BankService {
         Optional<Bank> bankOptional = bankRepository.findBankByBic(bic);
 
         if(!bankOptional.isPresent()){
-            throw new EntityNotFoundException("This bank doesn't exist");
+            throw new ApiNotFoundException("This bank : " + bic+ " doesn't exist");
 
         }
         return bankOptional.get();

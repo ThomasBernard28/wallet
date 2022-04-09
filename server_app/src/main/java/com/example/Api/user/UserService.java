@@ -1,5 +1,7 @@
 package com.example.Api.user;
 
+import com.example.Api.exception.ApiIncorrectException;
+import com.example.Api.exception.ApiNotFoundException;
 import com.example.Api.language.Language;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -35,7 +37,7 @@ public class UserService {
         Optional<User> userOptional = userRepository.findUserByUserID(user.getUserID());
 
         if(userOptional.isPresent()){
-            throw new IllegalStateException("User already exists");
+            throw new ApiIncorrectException("User with userID : " +  user.getUserID() + " already exists");
         }
         userRepository.save(user);
     }
@@ -44,7 +46,7 @@ public class UserService {
         boolean exists = userRepository.existsById(userID);
 
         if(!exists){
-            throw new IllegalStateException("The user doesn't exist with id : " + userID);
+            throw new ApiNotFoundException("The user doesn't exist with id : " + userID);
         }
 
         userRepository.deleteById(userID);
@@ -52,7 +54,7 @@ public class UserService {
 
     @Transactional
     public void updateUser(String userID, String psswd, String language){
-        User user = userRepository.findById(userID).orElseThrow(() -> new IllegalStateException(
+        User user = userRepository.findById(userID).orElseThrow(() -> new ApiNotFoundException(
                 "user with id " + userID + "doesn't exist"
         ));
 

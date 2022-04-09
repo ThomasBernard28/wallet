@@ -1,6 +1,7 @@
 package com.example.Api.wallet;
 
 
+import com.example.Api.exception.ApiNotFoundException;
 import com.example.Api.user.User;
 import com.example.Api.user.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -54,7 +55,7 @@ public class WalletController {
             walletService.addNewWallet(json.get("userID"), json.get("bic"), localDate, activity);
         }
         else{
-            throw new IllegalStateException("User not found");
+            throw new ApiNotFoundException("User : " + json.get("userID") + " not found");
         }
     }
 

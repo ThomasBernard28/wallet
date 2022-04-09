@@ -1,5 +1,6 @@
 package com.example.Api.user;
 
+import com.example.Api.exception.ApiNotFoundException;
 import com.example.Api.language.LanguageService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -38,7 +39,7 @@ public class UserController {
         Optional<User> userOptional = userService.getOneUser(json.get("userID"));
 
         if(userOptional.isPresent()){
-            throw new IllegalStateException("This user already exists");
+            throw new ApiNotFoundException("This user already exists");
         }
         userService.addNewUser(new User(json.get("userID"), json.get("natID"), json.get("psswd"), json.get("lastName"),
                 json.get("firstName"), languageService.getLanguage(json.get("language"))));

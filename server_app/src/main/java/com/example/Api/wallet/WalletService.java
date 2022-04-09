@@ -1,6 +1,8 @@
 package com.example.Api.wallet;
 
 
+import com.example.Api.exception.ApiIncorrectException;
+import com.example.Api.exception.ApiNotFoundException;
 import com.example.Api.user.User;
 import com.example.Api.user.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -32,7 +34,7 @@ public class WalletService {
         Optional<User> user = userRepository.findUserByUserID(userID);
 
         if(!user.isPresent()){
-            throw new IllegalStateException("The user doesn't exist");
+            throw new ApiNotFoundException("The user : "+ userID +" doesn't exist");
         }
         return walletRepository.findWalletByUserEquals(user.get());
     }
@@ -41,10 +43,10 @@ public class WalletService {
         Optional<Wallet> walletOptional = walletRepository.findWalletByWalletID(walletID);
 
         if(!walletOptional.isPresent()){
-            throw new EntityNotFoundException("Wallet doesn't exist");
+            throw new ApiNotFoundException("Wallet with id : " + walletID +" doesn't exist");
         }
         if(walletOptional.get().getActivity().equals(0)){
-            throw new IllegalStateException("The wallet is currently inactive ");
+            throw new ApiIncorrectException("The wallet with id : " + walletID + " is currently inactive ");
         }
         return walletOptional;
     }
@@ -54,13 +56,13 @@ public class WalletService {
         Optional<Wallet> walletOptional = walletRepository.findWalletByWalletID(wallet.getWalletID());
 
         if(walletOptional.isPresent()){
-            throw new IllegalStateException("Wallet already exists");
+            throw new ApiNotFoundException("Wallet for user : "+ userID + "in the insitution : "+ bic + " already exists");
         }
 
         Optional<Wallet> walletForUser = walletRepository.findWalletByUserAndBic(wallet.getUser().getUserID(), wallet.getBic());
 
         if (walletForUser.isPresent()){
-            throw new IllegalStateException("User already has a wallet in this institution");
+            throw new ApiIncorrectException("User already has a wallet in this institution : "+ bic);
         }
         walletRepository.save(wallet);
 
@@ -70,7 +72,7 @@ public class WalletService {
         boolean exists = walletRepository.existsById(walletID);
 
         if(!exists){
-            throw new IllegalStateException("The wallet doesn't exist");
+            throw new ApiNotFoundException("The wallet with id : "+ walletID+" doesn't exist");
         }
         walletRepository.deleteById(walletID);
     }
@@ -78,11 +80,11 @@ public class WalletService {
     @Transactional
     public void updateWallet(Long walletID, Integer activity){
         Wallet wallet = walletRepository.findWalletByWalletID(walletID).orElseThrow(
-                () -> new IllegalStateException("Wallet with id " + walletID + "doesn't exist")
+                () -> new ApiNotFoundException("Wallet with id " + walletID + "doesn't exist")
         );
 
         if (activity.equals(wallet.getActivity())){
-            throw new IllegalStateException("The activity of the wallet is already set to" + activity);
+            throw new ApiIncorrectException("The activity of the wallet is already set to" + activity);
         }
         wallet.setActivity(activity);
     }

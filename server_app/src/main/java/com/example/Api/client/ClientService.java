@@ -2,6 +2,7 @@ package com.example.Api.client;
 
 import com.example.Api.bank.Bank;
 import com.example.Api.bank.BankRepository;
+import com.example.Api.exception.ApiNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -23,16 +24,16 @@ public class ClientService {
 
     public List<Client> getAllBankClients(String bic){
         if(!bankRepository.findBankByBic(bic).isPresent()){
-            throw new EntityNotFoundException("This insitution doesn't exist");
+            throw new ApiNotFoundException("This insitution : "+ bic +" doesn't exist");
         }
         return clientRepository.findAllByBank(bic);
     }
 
-    public Optional<Client> getOneClient(String bic, String userID) throws EntityNotFoundException{
+    public Optional<Client> getOneClient(String bic, String userID) throws ApiNotFoundException{
         Optional<Client> clientVsInstOptional = clientRepository.findByBankAndUserID(bic, userID);
 
         if(!clientVsInstOptional.isPresent()){
-            throw new EntityNotFoundException("This client doesn't exist");
+            throw new ApiNotFoundException("This client with userID and bic : " + userID + " " + bic + "doesn't exist");
         }
 
         return clientVsInstOptional;
@@ -55,7 +56,7 @@ public class ClientService {
         Optional<Client> clientOptional = clientRepository.findByBankAndUserID(bank.getBic(), userID);
 
         if(!clientOptional.isPresent()){
-            throw new EntityNotFoundException("This client does not exist");
+            throw new ApiNotFoundException("This client in the institution : " + bank.getName() + " with userID : " + userID + " does not exist");
         }
         clientRepository.delete(clientOptional.get());
     }

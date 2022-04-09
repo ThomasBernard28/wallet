@@ -7,11 +7,11 @@ import com.example.Api.client.Client;
 
 import com.example.Api.client.ClientRepository;
 
+import com.example.Api.exception.ApiIncorrectException;
+import com.example.Api.exception.ApiNotFoundException;
 import com.example.Api.wallet.Wallet;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
-import javax.persistence.EntityNotFoundException;
 import javax.transaction.Transactional;
 import java.util.List;
 import java.util.Optional;
@@ -42,17 +42,17 @@ public class AccountService {
         Optional<Client> client = clientRepository.findByBankAndUserID(bic, userID);
 
         if(!bankOptional.isPresent() ||  !client.isPresent()){
-            throw new EntityNotFoundException("Bank or client not found");
+            throw new ApiNotFoundException("Bank or client not found");
         }
 
         return accountRepository.findAccountByClient(client.get());
     }
 
-    public Account getIbanAccount(String iban) throws EntityNotFoundException{
+    public Account getIbanAccount(String iban) throws ApiNotFoundException{
         Optional<Account> accountOptional = accountRepository.findByIban(iban);
 
         if(!accountOptional.isPresent()){
-            throw new EntityNotFoundException("This account doesn't exist");
+            throw new ApiNotFoundException("This account : "+iban+" doesn't exist");
         }
 
         return accountOptional.get();
@@ -64,7 +64,7 @@ public class AccountService {
 
         try {
             balanceService.registerBalance(iban, localCurr, avgBalance);
-        }catch (IllegalStateException e){
+        }catch (ApiIncorrectException e){
             System.out.println(e.getMessage());
         }
     }
@@ -72,11 +72,11 @@ public class AccountService {
     @Transactional
     public void updateAccount(String iban, Integer activity, Float avgBalance){
         Account account = accountRepository.findByIban(iban).orElseThrow(
-                () -> new EntityNotFoundException("Account with iban : " + iban + " doesn't exist")
+                () -> new ApiNotFoundException("Account with iban : " + iban + " doesn't exist")
         );
 
         if(activity.equals(account.getActivity())){
-            throw new IllegalStateException("Activity is already set to : " + activity);
+            throw new ApiIncorrectException("Activity is already set to : " + activity);
         }
         account.setActivity(activity);
         account.setAvgBalance(avgBalance);

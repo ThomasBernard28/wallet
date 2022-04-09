@@ -2,6 +2,8 @@ package com.example.Api.coOwner;
 
 import com.example.Api.client.Client;
 import com.example.Api.client.ClientRepository;
+import com.example.Api.exception.ApiIncorrectException;
+import com.example.Api.exception.ApiNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -26,7 +28,7 @@ public class CoOwnerService {
         Optional<CoOwner> optionalCoOwner = coOwnerRepository.findByWalletIDAndIban(walletID, ibanOwner);
 
         if (optionalCoOwner.isPresent()){
-            throw new IllegalStateException("This client is already co_owner");
+            throw new ApiIncorrectException("This client : "+ userID_coOwner + " is already co_owner of the account " + ibanOwner + " for the wallet : " + walletID);
         }
         CoOwner coOwner = new CoOwner(new CoOwnerID(walletID, ibanOwner, userID_coOwner), client);
 
@@ -37,7 +39,7 @@ public class CoOwnerService {
         Optional<CoOwner> optionalCoOwner = coOwnerRepository.findByWalletIDAndIban(walletID_coOwner, ibanOwner);
 
         if(!optionalCoOwner.isPresent()){
-            throw new EntityNotFoundException("The coOwner doesn't exist");
+            throw new ApiNotFoundException("The coOwner doesn't exist");
         }
         coOwnerRepository.delete(optionalCoOwner.get());
     }
