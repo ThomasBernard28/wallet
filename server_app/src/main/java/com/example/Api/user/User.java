@@ -14,10 +14,18 @@ import java.util.List;
 @NoArgsConstructor
 @ToString
 
+/**
+ * User entity class, this class defines the USERS entity in the database.
+ * In each package there is one entity class that contains all the arguments of the Entity
+ * But also its Keys (PK, FK, UK)
+ */
 
+//@Entity stands for the Entity in Spring instance
 @Entity(name = "USERS")
+//@Table stands for the Entity in the database instance
 @Table(
         name = "USERS",
+        //defines an unique key in the table USERS
         uniqueConstraints = @UniqueConstraint(
                 name = "USERS_natID_uindex",
                 columnNames = "natID"
@@ -61,6 +69,7 @@ public class User {
     )
     private String firstName;
 
+    //defines a One To One foreign key relation between the USERS and LANGUAGES tables.
     @OneToOne()
     @JoinColumn(
             name = "language", //the column in this table

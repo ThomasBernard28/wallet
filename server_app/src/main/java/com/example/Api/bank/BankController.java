@@ -6,6 +6,8 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.List;
+
 @RestController
 @RequestMapping(path = "api/v1/bank")
 public class BankController {
@@ -20,5 +22,10 @@ public class BankController {
     @GetMapping(path = "{bic}")
     public Bank getBank(@PathVariable("bic") String bic){
         return bankService.getBank(bic);
+    }
+
+    @GetMapping
+    public List<Bank> getBanks(){
+        return bankService.getBanks();
     }
 }
