@@ -44,13 +44,14 @@ public class UserService {
     }
 
     public void deleteUser(String userID){
-        boolean exists = userRepository.existsById(userID);
+        Optional<User> userOptional = userRepository.findById(userID);
 
-        if(!exists){
+
+        if(userOptional.isEmpty()){
             throw new ApiNotFoundException("The user doesn't exist with id : " + userID);
         }
 
-        userRepository.deleteById(userID);
+        userRepository.delete(userOptional.get());
     }
 
     @Transactional
