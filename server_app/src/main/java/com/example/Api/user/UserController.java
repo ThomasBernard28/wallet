@@ -53,16 +53,16 @@ public class UserController {
     @PutMapping(path = "psswd/{userId}")
     public void updateUserPsswd(
             @PathVariable("userId") String userID,
-            @RequestParam(required = false) String psswd){
+            @RequestBody Map<String, String> json){
 
-        userService.updateUserPassword(userID, psswd);
+        userService.updateUserPassword(userID, json.get("psswd"));
     }
 
     @PutMapping(path = "language/{userId}")
     public void updateUserLanguage(
             @PathVariable("userId") String userID,
-            @RequestParam(required = false) String language
+            @RequestBody Map<String, String> json
     ){
-        userService.updateUserLanguage(userID, language);
+        userService.updateUserLanguage(userID, json.get("language"));
     }
 }
