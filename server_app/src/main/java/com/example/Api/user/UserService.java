@@ -3,6 +3,7 @@ package com.example.Api.user;
 import com.example.Api.exception.ApiIncorrectException;
 import com.example.Api.exception.ApiNotFoundException;
 import com.example.Api.language.Language;
+import com.example.Api.language.LanguageRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -17,10 +18,12 @@ import java.util.Optional;
 public class UserService {
 
     private final UserRepository userRepository;
+    private final LanguageRepository languageRepository;
 
     @Autowired
-    public UserService(UserRepository userRepository){
+    public UserService(UserRepository userRepository, LanguageRepository languageRepository){
         this.userRepository = userRepository;
+        this.languageRepository = languageRepository;
     }
 
     public List<User> getUsers(){
@@ -57,13 +60,18 @@ public class UserService {
         User user = userRepository.findById(userID).orElseThrow(() -> new ApiNotFoundException(
                 "user with id " + userID + "doesn't exist"
         ));
+        Optional<Language> optionalLanguage = languageRepository.findLanguageByLanguage(language);
+
+        if(!optionalLanguage.isPresent()){
+            throw new ApiNotFoundException("Language : " + language+ " does not exist");
+        }
 
         if(psswd != null && psswd.length() > 0 && !Objects.equals(user.getPsswd(), psswd)){
             user.setPsswd(psswd);
         }
 
-        if(language != null && language.length() == 2 && !Objects.equals(user.getLanguage(), new Language(language))){
-           user.setLanguage(new Language(language));
+        if(language != null && language.length() == 2 && !Objects.equals(user.getLanguage(), optionalLanguage.get())){
+           user.setLanguage(optionalLanguage.get());
         }
     }
 }
