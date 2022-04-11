@@ -14,6 +14,8 @@ import javafx.util.Duration;
 import java.io.File;
 import java.io.IOException;
 
+import wallet.App;
+
 public class ChangePasswordController {
 
 
@@ -24,10 +26,13 @@ public class ChangePasswordController {
     private Button changepassword;
 
     @FXML
-    private PasswordField confirmpassword;
+    private PasswordField oldPassword;
 
     @FXML
-    private PasswordField newpassword;
+    private PasswordField confirmPassword;
+
+    @FXML
+    private PasswordField newPassword;
 
     @FXML
     private Label match;
@@ -43,9 +48,10 @@ public class ChangePasswordController {
     }
 
     @FXML
-    private void onChangePasswordButtonClick() {
-        if (newpassword.getText().equals(confirmpassword.getText())) {
-           //
+    private void onChangePasswordButtonClick() throws Exception {
+        if (newPassword.getText().equals(confirmPassword.getText()) && oldPassword.getText().equals(App.currentUser.get_password())) {
+            App.currentUser.change_password(newPassword.getText()); 
+            onBackButtonClick();
         } else {
             match.setVisible(true);
             PauseTransition visiblePause = new PauseTransition(Duration.seconds(2));

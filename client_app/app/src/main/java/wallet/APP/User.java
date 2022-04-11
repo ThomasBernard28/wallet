@@ -57,6 +57,14 @@ public class User implements JsonReader {
         return json;
     }
 
+    public void change_password(String newPassword) {
+        try {
+            api.put_password(get_userID(), newPassword);
+        } catch(Exception e) {
+            e.printStackTrace(); // debug
+        }
+    }
+
     /*
     get the user's wallets list from the api 
     and put it in an arraylist
