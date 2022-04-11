@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import javax.persistence.EntityNotFoundException;
+import javax.transaction.Transactional;
 import java.util.List;
 import java.util.Optional;
 
@@ -37,6 +38,15 @@ public class BalanceService {
         return optionalBalance.get();
     }
 
+    public Balance getBalanceByIbanAndCurrency(String iban, String currency){
+        Optional<Balance> optionalBalance = balanceRepository.findByIbanAndCurrency(iban, currency);
+
+        if(optionalBalance.isEmpty()){
+            throw new ApiNotFoundException("No balance with iban : " + iban + " and currency : " + currency + " exists");
+        }
+        return optionalBalance.get();
+    }
+
     public void registerBalance(String iban, String currency, Float balance) throws IllegalStateException{
         Optional<Balance> optionalBalance = balanceRepository.findByIbanAndCurrency(iban, currency);
 
@@ -52,5 +62,9 @@ public class BalanceService {
 
         Balance newBalance = new Balance(account.get(), currency, balance);
         balanceRepository.save(newBalance);
+    }
+
+    public void updateBalance(Balance balance, Float amount){
+        balance.setBalance(balance.getBalance() + amount);
     }
 }

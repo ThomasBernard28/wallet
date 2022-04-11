@@ -92,5 +92,14 @@ public class Transaction {
     )
     private Integer status;
 
-
+    public Transaction(Balance ibanReceiver, Balance ibanSender, String operType, String currency, Float amount, LocalDateTime dateTime, Integer weekend, Integer status) {
+        this.ibanReceiver = ibanReceiver;
+        this.ibanSender = ibanSender;
+        this.operType = operType;
+        this.currency = currency;
+        this.amount = amount;
+        this.dateTime = dateTime;
+        this.weekend = weekend;
+        this.status = status;
+    }
 }
