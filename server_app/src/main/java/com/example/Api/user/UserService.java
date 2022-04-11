@@ -7,8 +7,6 @@ import com.example.Api.language.LanguageRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import javax.persistence.EntityNotFoundException;
-import javax.swing.text.html.Option;
 import javax.transaction.Transactional;
 import java.util.List;
 import java.util.Objects;
@@ -56,7 +54,19 @@ public class UserService {
     }
 
     @Transactional
-    public void updateUser(String userID, String psswd, String language){
+    public void updateUserPassword(String userID, String psswd){
+        User user = userRepository.findById(userID).orElseThrow(() -> new ApiNotFoundException(
+                "user with id " + userID + "doesn't exist"
+        ));
+
+        if(psswd != null && psswd.length() > 0 && !Objects.equals(user.getPsswd(), psswd)){
+            user.setPsswd(psswd);
+        }
+
+    }
+
+    @Transactional
+    public void updateUserLanguage(String userID, String language){
         User user = userRepository.findById(userID).orElseThrow(() -> new ApiNotFoundException(
                 "user with id " + userID + "doesn't exist"
         ));
@@ -66,12 +76,8 @@ public class UserService {
             throw new ApiNotFoundException("Language : " + language+ " does not exist");
         }
 
-        if(psswd != null && psswd.length() > 0 && !Objects.equals(user.getPsswd(), psswd)){
-            user.setPsswd(psswd);
-        }
-
         if(language != null && language.length() == 2 && !Objects.equals(user.getLanguage(), optionalLanguage.get())){
-           user.setLanguage(optionalLanguage.get());
+            user.setLanguage(optionalLanguage.get());
         }
     }
 }

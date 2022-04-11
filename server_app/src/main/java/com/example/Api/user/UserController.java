@@ -50,12 +50,19 @@ public class UserController {
         userService.deleteUser(userID);
     }
 
-    @PutMapping(path = "{userId}")
-    public void updateUser(
+    @PutMapping(path = "psswd/{userId}")
+    public void updateUserPsswd(
             @PathVariable("userId") String userID,
-            @RequestParam(required = false) String psswd,
-            @RequestParam(required = false) String language){
+            @RequestParam(required = false) String psswd){
 
-        userService.updateUser(userID, psswd, language);
+        userService.updateUserPassword(userID, psswd);
+    }
+
+    @PutMapping(path = "language/{userId}")
+    public void updateUserLanguage(
+            @PathVariable("userId") String userID,
+            @RequestParam(required = false) String language
+    ){
+        userService.updateUserLanguage(userID, language);
     }
 }
