@@ -6,7 +6,4 @@ public class ApiIncorrectException extends RuntimeException{
         super(message);
     }
 
-    public ApiIncorrectException(String message, Throwable cause) {
-        super(message, cause);
-    }
 }

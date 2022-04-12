@@ -47,6 +47,8 @@ public class TransactionController {
 
         Transaction transaction = new Transaction(ibanReceiver.getIban().getIban(), ibanSender.getIban().getIban(), json.get("operType"), json.get("currency"), amount, dateTime, weekend, status, json.get("comments"));
 
+        //If the transaction is planed for the future or it's a weekend day
+        // we don't execute it we only save it. The scheduler will process it on the right moment
         if (dateTime.isAfter(LocalDateTime.now()) || weekend == 1){
             transactionService.saveTransaction(transaction);
         }

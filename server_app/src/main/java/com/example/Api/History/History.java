@@ -1,8 +1,6 @@
 
 package com.example.Api.History;
 
-import com.example.Api.balance.Balance;
-import com.example.Api.transaction.Transaction;
 import lombok.*;
 
 import javax.persistence.*;

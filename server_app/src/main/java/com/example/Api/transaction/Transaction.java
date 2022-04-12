@@ -1,6 +1,6 @@
 package com.example.Api.transaction;
 
-import com.example.Api.balance.Balance;
+
 import lombok.*;
 
 import javax.persistence.*;
@@ -12,6 +12,9 @@ import java.time.LocalDateTime;
 @NoArgsConstructor
 @ToString
 
+/**
+ * Transaction Entity class working as the User's one
+ */
 @Entity(name = "TRANSACTIONS")
 @Table(name = "TRANSACTIONS")
 public class Transaction {
@@ -27,17 +30,7 @@ public class Transaction {
             generator = "trx_sequence"
     )
     private Long trxID;
-    /*
-    @OneToOne
-    @JoinColumn(
-            name = "ibanReceiver",
-            referencedColumnName = "iban",
-            foreignKey = @ForeignKey(
-                    name = "TRANSACTIONS_CASH_BALANCES_ibanReceiver_fk"
-            )
-    )
 
-     */
     @Column(
             name = "ibanReceiver",
             nullable = false,
@@ -46,17 +39,6 @@ public class Transaction {
     )
     private String ibanReceiver;
 
-    /*
-    @OneToOne
-    @JoinColumn(
-            name = "ibanSender",
-            referencedColumnName = "iban",
-            foreignKey = @ForeignKey(
-                    name = "TRANSACTIONS_CASH_BALANCES_ibanSender_fk"
-            )
-    )
-
-     */
     @Column(
             name = "ibanSender",
             nullable = false,

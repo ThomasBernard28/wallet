@@ -45,6 +45,11 @@ public class TransactionService {
         return transactionRepository.findByDateTime(dateTime);
     }
 
+    /**
+     * This method will perform a transaction updating both balances (Sender and Receiver)
+     * When it's done it will send the transaction to the HistoryService to be stored in the history of the accounts
+     * @param transaction The transaction to be performed
+     */
     @Transactional
     public void performTransaction(Transaction transaction){
 
@@ -52,6 +57,7 @@ public class TransactionService {
 
         Balance receiver = balanceService.getBalanceByIbanAndCurrency(transaction.getIbanReceiver(), transaction.getCurrency());
 
+        //Check if the balance of the sender has enough money
         if(sender.getBalance() < transaction.getAmount()){
             throw new ApiIncorrectException("Transaction denied your balance : " + sender.getBalance() + " is insufficient for a transaction amount of : " + transaction.getAmount());
         }
@@ -66,10 +72,12 @@ public class TransactionService {
         accountSender.setAvgBalance(sender.getBalance());
         accountReceiver.setAvgBalance(receiver.getBalance());
 
+        //set the status to "done" so the scheduler won't do it again
         transaction.setStatus(1);
-
+        //store the transaction as "done"
         saveTransaction(transaction);
 
+        //Send the transaction to the history to be stored in each account history
         historyService.separateTrxHistory(transaction);
     }
 

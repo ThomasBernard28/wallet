@@ -8,7 +8,6 @@ import com.example.Api.user.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import javax.persistence.EntityNotFoundException;
 import javax.transaction.Transactional;
 import java.time.LocalDate;
 import java.util.List;
@@ -61,6 +60,7 @@ public class WalletService {
 
         Optional<Wallet> walletForUser = walletRepository.findWalletByUserAndBic(wallet.getUser().getUserID(), wallet.getBic());
 
+        //User can only have one wallet per Institution
         if (walletForUser.isPresent()){
             throw new ApiIncorrectException("User already has a wallet in this institution : "+ bic);
         }

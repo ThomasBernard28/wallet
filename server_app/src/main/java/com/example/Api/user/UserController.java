@@ -78,9 +78,9 @@ public class UserController {
     }
 
     /**
-     * Method to
-     * @param userID
-     * @param json
+     * Method to catch a PUT request to change the user's password
+     * @param userID the id of the user
+     * @param json a json Map<> containing the new password
      */
     @PutMapping(path = "psswd/{userId}")
     public void updateUserPsswd(
@@ -90,6 +90,11 @@ public class UserController {
         userService.updateUserPassword(userID, json.get("psswd"));
     }
 
+    /**
+     * Method to catch a PUT request to change user's language
+     * @param userID the id of the user
+     * @param json a json Map<> containing the new language
+     */
     @PutMapping(path = "language/{userId}")
     public void updateUserLanguage(
             @PathVariable("userId") String userID,

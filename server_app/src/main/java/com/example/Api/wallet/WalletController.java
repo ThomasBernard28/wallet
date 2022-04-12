@@ -13,6 +13,9 @@ import java.util.List;
 import java.util.Map;
 import java.util.Optional;
 
+/**
+ * Wallet Controller working on the same principle as the User's one
+ */
 @RestController
 @RequestMapping(path = "api/v1/wallets")
 public class WalletController {
@@ -46,6 +49,7 @@ public class WalletController {
 
     @PostMapping
     public void registerNewWallet(@RequestBody Map<String, String> json){
+        //We need to parse the data to their original types
         Integer activity = Integer.parseInt(json.get("activity"));
         LocalDate localDate = LocalDate.parse(json.get("openingDate"));
 
@@ -55,6 +59,7 @@ public class WalletController {
             walletService.addNewWallet(json.get("userID"), json.get("bic"), localDate, activity);
         }
         else{
+            //We need an existing user to register a wallet
             throw new ApiNotFoundException("User : " + json.get("userID") + " not found");
         }
     }

@@ -12,12 +12,18 @@ import java.time.LocalDateTime;
 import java.util.List;
 import java.util.concurrent.TimeUnit;
 
+/**
+ * This class contains a Scheduler that will automatically check for transactions
+ * to process in the data base on a daily base.
+ */
 @Component @Slf4j @RequiredArgsConstructor
 public class TrxScheduler extends AbstractScheduler{
 
     private final TransactionService transactionService;
 
-
+    /**
+     * This method will process every transaction in the data base for which the date is already passed
+     */
     @Scheduled(initialDelay = 5, fixedRate = days, timeUnit = TimeUnit.SECONDS)
     public void processAllTrx(){
         // No transaction will be processed on week ends
@@ -39,6 +45,11 @@ public class TrxScheduler extends AbstractScheduler{
         }
     }
 
+    /**
+     * This method only check if we are on weekend day
+     * @param dateTime the dateTime we want to check
+     * @return true if we are on a weekend day, else false
+     */
     public boolean isWeekend(LocalDateTime dateTime){
         switch(dateTime.getDayOfWeek()){
             case FRIDAY:

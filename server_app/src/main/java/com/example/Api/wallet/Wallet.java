@@ -19,10 +19,13 @@ import static javax.persistence.GenerationType.SEQUENCE;
 @NoArgsConstructor
 @ToString
 
-
+/**
+ * WALLETS Entity class
+ */
 @Entity(name = "WALLETS")
 @Table(
         name = "WALLETS",
+        //defining an UK in the table
         uniqueConstraints = @UniqueConstraint(
                 name = "WALLETS_userID_bic_uindex",
                 columnNames = {"userID", "bic"}
@@ -30,6 +33,7 @@ import static javax.persistence.GenerationType.SEQUENCE;
 )
 public class Wallet{
     @Id
+    //With Sequence Generator we are able to automatically generate a unique walletID
     @SequenceGenerator(
             name = "wallet_sequence",
             sequenceName = "wallet_sequence",
@@ -46,6 +50,7 @@ public class Wallet{
     )
     private Long walletID;
 
+    //Many to One foreign key relation
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(
             name = "userID",
