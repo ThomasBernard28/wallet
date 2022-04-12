@@ -48,9 +48,9 @@ public class TransactionService {
     @Transactional
     public void performTransaction(Transaction transaction){
 
-        Balance sender = transaction.getIbanSender();
+        Balance sender = balanceService.getBalanceByIbanAndCurrency(transaction.getIbanSender(), transaction.getCurrency());
 
-        Balance receiver = transaction.getIbanReceiver();
+        Balance receiver = balanceService.getBalanceByIbanAndCurrency(transaction.getIbanReceiver(), transaction.getCurrency());
 
         if(sender.getBalance() < transaction.getAmount()){
             throw new ApiIncorrectException("Transaction denied your balance : " + sender.getBalance() + " is insufficient for a transaction amount of : " + transaction.getAmount());
@@ -60,8 +60,8 @@ public class TransactionService {
 
         balanceService.updateBalance(receiver, transaction.getAmount());
 
-        Account accountSender = transaction.getIbanSender().getIban();
-        Account accountReceiver = transaction.getIbanReceiver().getIban();
+        Account accountSender = sender.getIban();
+        Account accountReceiver = receiver.getIban();
 
         accountSender.setAvgBalance(sender.getBalance());
         accountReceiver.setAvgBalance(receiver.getBalance());

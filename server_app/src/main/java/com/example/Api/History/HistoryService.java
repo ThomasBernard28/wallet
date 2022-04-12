@@ -132,8 +132,8 @@ public class HistoryService {
         if (transaction.getStatus() == 0){
             throw new ApiIncorrectException("The transaction is not finished");
         }
-        Balance balanceIDSender = balanceRepository.findByIbanAndCurrency(transaction.getIbanSender().getIban().getIban(), transaction.getCurrency()).get();
-        Balance balanceIDReceiver = balanceRepository.findByIbanAndCurrency(transaction.getIbanReceiver().getIban().getIban(), transaction.getCurrency()).get();
+        Balance balanceIDSender = balanceRepository.findByIbanAndCurrency(transaction.getIbanSender(), transaction.getCurrency()).get();
+        Balance balanceIDReceiver = balanceRepository.findByIbanAndCurrency(transaction.getIbanReceiver(), transaction.getCurrency()).get();
 
         saveSenderHistory(transaction, balanceIDSender);
         saveReceiverHistory(transaction, balanceIDReceiver);
@@ -147,7 +147,7 @@ public class HistoryService {
         Float amount = -transaction.getAmount();
         Float nextBalance = balanceIDViewer.getBalance();
 
-        History history = new History(transaction.getTrxID(), balanceIDViewer.getBalanceID(), balanceIDViewer.getIban().getIban(), transaction.getIbanReceiver().getIban().getIban(),
+        History history = new History(transaction.getTrxID(), balanceIDViewer.getBalanceID(), balanceIDViewer.getIban().getIban(), transaction.getIbanReceiver(),
                      amount, prevBalance, nextBalance, transaction.getDateTime(), transaction.getComments());
 
         historyRepository.save(history);
@@ -159,7 +159,7 @@ public class HistoryService {
         Float amount = transaction.getAmount();
         Float nextBalance = balanceIDViewer.getBalance();
 
-        History history = new History(transaction.getTrxID(), balanceIDViewer.getBalanceID(), transaction.getIbanSender().getIban().getIban(), transaction.getIbanReceiver().getIban().getIban(),
+        History history = new History(transaction.getTrxID(), balanceIDViewer.getBalanceID(), transaction.getIbanSender(), transaction.getIbanReceiver(),
                 amount, prevBalance, nextBalance, transaction.getDateTime(), transaction.getComments());
 
         historyRepository.save(history);

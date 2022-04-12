@@ -45,11 +45,13 @@ public class TransactionController {
         Balance ibanSender = balanceService.getBalanceByIbanAndCurrency(json.get("ibanSender"), json.get("currency"));
         Balance ibanReceiver = balanceService.getBalanceByIbanAndCurrency(json.get("ibanReceiver"), json.get("currency"));
 
-        Transaction transaction = new Transaction(ibanReceiver, ibanSender, json.get("operType"), json.get("currency"), amount, dateTime, weekend, status, json.get("comments"));
+        Transaction transaction = new Transaction(ibanReceiver.getIban().getIban(), ibanSender.getIban().getIban(), json.get("operType"), json.get("currency"), amount, dateTime, weekend, status, json.get("comments"));
 
-        if (weekend == 1 || dateTime.isAfter(LocalDateTime.now())){
+        if (dateTime.isAfter(LocalDateTime.now()) || weekend == 1){
             transactionService.saveTransaction(transaction);
         }
-        transactionService.performTransaction(transaction);
+        else{
+            transactionService.performTransaction(transaction);
+        }
     }
 }

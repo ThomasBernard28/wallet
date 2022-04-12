@@ -27,7 +27,7 @@ public class Transaction {
             generator = "trx_sequence"
     )
     private Long trxID;
-
+    /*
     @OneToOne
     @JoinColumn(
             name = "ibanReceiver",
@@ -36,8 +36,17 @@ public class Transaction {
                     name = "TRANSACTIONS_CASH_BALANCES_ibanReceiver_fk"
             )
     )
-    private Balance ibanReceiver;
 
+     */
+    @Column(
+            name = "ibanReceiver",
+            nullable = false,
+            updatable = false,
+            columnDefinition = "CHAR(16)"
+    )
+    private String ibanReceiver;
+
+    /*
     @OneToOne
     @JoinColumn(
             name = "ibanSender",
@@ -46,7 +55,15 @@ public class Transaction {
                     name = "TRANSACTIONS_CASH_BALANCES_ibanSender_fk"
             )
     )
-    private Balance ibanSender;
+
+     */
+    @Column(
+            name = "ibanSender",
+            nullable = false,
+            updatable = false,
+            columnDefinition = "CHAR(16)"
+    )
+    private String ibanSender;
 
 
     @Column(
@@ -99,7 +116,7 @@ public class Transaction {
     )
     private String comments;
 
-    public Transaction(Balance ibanReceiver, Balance ibanSender, String operType, String currency,
+    public Transaction(String ibanReceiver, String ibanSender, String operType, String currency,
                        Float amount, LocalDateTime dateTime, Integer weekend, Integer status, String comments) {
         this.ibanReceiver = ibanReceiver;
         this.ibanSender = ibanSender;
