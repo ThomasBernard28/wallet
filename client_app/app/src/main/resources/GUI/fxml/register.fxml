@@ -54,7 +54,7 @@
         </Button>
     </bottom>
     <top>
-        <Button fx:id="back" alignment="TOP_LEFT" mnemonicParsing="false" onAction="#onBackButtonClicked" text="Back" BorderPane.alignment="TOP_LEFT">
+        <Button fx:id="back" alignment="TOP_LEFT" mnemonicParsing="false" onAction="#onBackButtonClicked" text="back" BorderPane.alignment="TOP_LEFT">
             <font>
                 <Font name="Montserrat SemiBold" size="17.0" />
             </font>

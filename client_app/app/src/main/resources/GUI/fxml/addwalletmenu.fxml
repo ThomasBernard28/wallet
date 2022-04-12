@@ -10,7 +10,7 @@
 
 <BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="wallet.GUI.controllers.AddWalletMenuController">
     <top>
-        <Button fx:id="back" mnemonicParsing="false" onAction="#onBackButtonClick" text="Back" BorderPane.alignment="TOP_LEFT">
+        <Button fx:id="back" mnemonicParsing="false" onAction="#onBackButtonClick" text="back" BorderPane.alignment="TOP_LEFT">
 
             <font>
                 <Font name="Montserrat SemiBold" size="17.0" />
