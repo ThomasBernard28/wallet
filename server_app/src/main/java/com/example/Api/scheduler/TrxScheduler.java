@@ -1,6 +1,6 @@
 package com.example.Api.scheduler;
 
-import com.example.Api.exception.ApiIncorrectException;
+
 import com.example.Api.transaction.Transaction;
 import com.example.Api.transaction.TransactionService;
 import lombok.RequiredArgsConstructor;
@@ -20,6 +20,7 @@ public class TrxScheduler extends AbstractScheduler{
 
     @Scheduled(initialDelay = 5, fixedRate = days, timeUnit = TimeUnit.SECONDS)
     public void processAllTrx(){
+        // No transaction will be processed on week ends
         if (isWeekend(LocalDateTime.now())){
             log.info("[SCHEDULED TASK] The process will start back on monday");
         }
