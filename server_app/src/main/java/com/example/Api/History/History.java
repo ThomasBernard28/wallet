@@ -18,7 +18,7 @@ import java.time.LocalDateTime;
 @Table(name = "TRX_HISTORY")
 public class History {
 
-    /*
+
     @Id
     @Column(
             name = "trxID",
@@ -27,10 +27,13 @@ public class History {
     )
     private Long trxID;
 
-     */
-    @EmbeddedId
-    private HistoryIDEmb historyIDEmb;
-
+    @Column(
+            name = "balanceIdViewer",
+            nullable = false,
+            updatable = false
+    )
+    private Long balanceIdViewer;
+    /*
     @OneToOne
     @JoinColumn(
             name = "ibanSender",
@@ -39,8 +42,16 @@ public class History {
                     name = "TRX_HISTORY_TRANSACTIONS_ibanSender_fk"
             )
     )
-    private Balance ibanSender;
 
+     */
+    @Column(
+            name = "ibanSender",
+            updatable = false,
+            nullable = false,
+            columnDefinition = "CHAR(16)"
+    )
+    private String ibanSender;
+    /*
     @OneToOne
     @JoinColumn(
             name = "ibanReceiver",
@@ -49,20 +60,15 @@ public class History {
                     name = "TRX_HISTORY_TRANSACTION_ibanReceiver_fk"
             )
     )
-    private Balance ibanReceiver;
-
-    /*
-    @OneToOne
-    @JoinColumn(
-            name = "balanceIdViewer",
-            referencedColumnName = "balanceID",
-            foreignKey = @ForeignKey(
-                    name = "TRX_HISTORY_TRANSACTIONS_balanceIdViewer"
-            )
-    )
-    private Balance balanceIdViewer;
 
      */
+    @Column(
+            name = "ibanReceiver",
+            nullable = false,
+            updatable = false,
+            columnDefinition = "CHAR(16)"
+    )
+    private String ibanReceiver;
 
     @Column(
             name = "amount",

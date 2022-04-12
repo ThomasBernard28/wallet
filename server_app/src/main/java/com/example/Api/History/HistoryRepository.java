@@ -9,9 +9,12 @@ import java.util.List;
 @Repository
 public interface HistoryRepository extends JpaRepository<History, Long> {
 
-    @Query("SELECT s FROM TRX_HISTORY s WHERE s.historyIDEmb.balanceIdViewer = ?1")
+    @Query(value = "SELECT * FROM TRX_HISTORY s WHERE s.balanceIdViewer = 1", nativeQuery = true)
     List<History> findByBalanceIdViewer(Long balanceIDViewer);
 
-    @Query("SELECT s FROM TRX_HISTORY s WHERE s.historyIDEmb.trxID = ?1")
+    @Query(value = "SELECT * FROM TRX_HISTORY ", nativeQuery = true)
+    List<History> findAll();
+
+    @Query(value = "SELECT * FROM TRX_HISTORY s WHERE s.trxID = ?1", nativeQuery = true)
     List<History> findByTrxID(Long trxID);
 }
