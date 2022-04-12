@@ -45,7 +45,7 @@ public class AddWalletMenuController {
 
     @FXML
     private void onAddButtonClick() throws IOException {
-        // App.currentUser.add_wallet("GKCCBEBB");
+        App.currentUser.add_wallet(App.get_bankBic((String) box.getValue()));
         onBackButtonClick();
     }
 
