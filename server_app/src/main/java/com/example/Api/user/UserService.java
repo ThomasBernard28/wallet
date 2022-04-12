@@ -42,7 +42,7 @@ public class UserService {
     /**
      * This method get one user by his ID
      * @param userID the ID of the user we want to get
-     * @return it returns an Optional<> which a kind of Collection on which we can check
+     * @return it returns an Optional which a kind of Collection on which we can check
      * if the user is present (.isPresent()) or if the Optional is empty (.isEmpty())
      */
     public Optional<User> getOneUser(String userID){

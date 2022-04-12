@@ -80,7 +80,7 @@ public class UserController {
     /**
      * Method to catch a PUT request to change the user's password
      * @param userID the id of the user
-     * @param json a json Map<> containing the new password
+     * @param json a json Map containing the new password
      */
     @PutMapping(path = "psswd/{userId}")
     public void updateUserPsswd(
@@ -93,7 +93,7 @@ public class UserController {
     /**
      * Method to catch a PUT request to change user's language
      * @param userID the id of the user
-     * @param json a json Map<> containing the new language
+     * @param json a json Map containing the new language
      */
     @PutMapping(path = "language/{userId}")
     public void updateUserLanguage(
