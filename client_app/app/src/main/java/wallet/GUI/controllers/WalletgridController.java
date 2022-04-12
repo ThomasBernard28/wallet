@@ -39,7 +39,7 @@ public class WalletgridController {
             walletsList = App.currentUser.get_walletsList();
             for (Wallet w : walletsList) {
                 System.out.println(w);
-                addWalletButton(w.get_bic());
+                addWalletButton(App.get_bankName(w.get_bic()));
             }
 
         } catch (Exception e) {

@@ -11,6 +11,8 @@ import javafx.stage.Stage;
 import java.io.File;
 import java.io.IOException;
 
+import wallet.App;
+import wallet.API.Api;
 
 public class ProductListController {
     @FXML
@@ -22,9 +24,8 @@ public class ProductListController {
 
     @FXML
     private void initialize() {
-        //récuperer les produits
+        // to do 
     }
-
 
     @FXML
     private void onBackButtonClick() throws IOException {

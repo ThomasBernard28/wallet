@@ -60,4 +60,20 @@ public class Api {
         client.send(request, HttpResponse.BodyHandlers.ofString());
     }
 
+    public void put_language(String userID, String language) throws IOException, InterruptedException {
+        String json = "{\"userID\":\""+userID+"\", \"language\":\""+language+"\"}";
+        request = HttpRequest.newBuilder()
+            .uri(URI.create("http://sierra880.xyz:4545/api/v1/user/language/"+userID))
+            .header("Content-Type", "application/json")
+            .PUT(HttpRequest.BodyPublishers.ofString(json))
+            .build();
+        client.send(request, HttpResponse.BodyHandlers.ofString());
+    }
+
+    public String get_banks() throws IOException, InterruptedException {
+        request  = HttpRequest.newBuilder().GET().header("accept", "application/json").uri(URI.create("http://sierra880.xyz:4545/api/v1/bank")).build();
+        response = client.send(request, HttpResponse.BodyHandlers.ofString());
+        return response.body();     // return the json
+    }
+
 }
