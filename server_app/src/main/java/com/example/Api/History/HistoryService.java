@@ -6,9 +6,11 @@ import com.example.Api.balance.BalanceRepository;
 import com.example.Api.exception.ApiIncorrectException;
 import com.example.Api.exception.ApiNotFoundException;
 import com.example.Api.transaction.Transaction;
+import org.apache.tomcat.jni.Local;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
@@ -57,8 +59,73 @@ public class HistoryService {
         if(balanceOptional.isEmpty()){
             throw new ApiNotFoundException("The balance with id : " + balanceIdViewer + " does not exist");
         }
-        System.out.println("balance found");
         return historyRepository.findByBalanceIdViewer(balanceIdViewer);
+    }
+
+    public List<History> findTrxBeforeDate(String iban, LocalDateTime dateTime){
+        List<Balance> allBalances = balanceRepository.findByIban(iban);
+
+        if (allBalances.size() == 1){
+            Balance balance = allBalances.get(0);
+            return historyRepository.findByBalanceIdViewerAndDateTimeBefore(balance.getBalanceID(), dateTime);
+        }
+        else{
+            List<History> result = new ArrayList<>();
+            int i = 0;
+            while(i < allBalances.size()){
+                Balance balance = allBalances.get(i);
+                List<History> temp = historyRepository.findByBalanceIdViewerAndDateTimeBefore(balance.getBalanceID(), dateTime);
+                for(int j = 0; j < temp.size(); j++){
+                    result.add(temp.get(j));
+                }
+                i++;
+            }
+            return result;
+        }
+    }
+
+    public List<History> findTrxAfterDate(String iban, LocalDateTime dateTime){
+        List<Balance> allBalances = balanceRepository.findByIban(iban);
+
+        if (allBalances.size() == 1){
+            Balance balance = allBalances.get(0);
+            return historyRepository.findByBalanceIdViewerAndDateTimeAfter(balance.getBalanceID(), dateTime);
+        }
+        else{
+            List<History> result = new ArrayList<>();
+            int i = 0;
+            while(i < allBalances.size()){
+                Balance balance = allBalances.get(i);
+                List<History> temp = historyRepository.findByBalanceIdViewerAndDateTimeAfter(balance.getBalanceID(), dateTime);
+                for(int j = 0; j < temp.size(); j++){
+                    result.add(temp.get(j));
+                }
+                i++;
+            }
+            return result;
+        }
+    }
+
+    public List<History> findTrxBetweenDates(String iban, LocalDateTime startDateTime, LocalDateTime endDateTime){
+        List<Balance> allBalances = balanceRepository.findByIban(iban);
+
+        if (allBalances.size() == 1){
+            Balance balance = allBalances.get(0);
+            return historyRepository.findByBalanceIdViewerAndDateTimeBetween(balance.getBalanceID(), startDateTime, endDateTime);
+        }
+        else{
+            List<History> result = new ArrayList<>();
+            int i = 0;
+            while(i < allBalances.size()){
+                Balance balance = allBalances.get(i);
+                List<History> temp = historyRepository.findByBalanceIdViewerAndDateTimeBetween(balance.getBalanceID(), startDateTime, endDateTime);
+                for(int j = 0; j < temp.size(); j++){
+                    result.add(temp.get(j));
+                }
+                i++;
+            }
+            return result;
+        }
     }
 
     public void separateTrxHistory(Transaction transaction){

@@ -33,17 +33,7 @@ public class History {
             updatable = false
     )
     private Long balanceIdViewer;
-    /*
-    @OneToOne
-    @JoinColumn(
-            name = "ibanSender",
-            referencedColumnName = "iban",
-            foreignKey = @ForeignKey(
-                    name = "TRX_HISTORY_TRANSACTIONS_ibanSender_fk"
-            )
-    )
 
-     */
     @Column(
             name = "ibanSender",
             updatable = false,
@@ -51,17 +41,7 @@ public class History {
             columnDefinition = "CHAR(16)"
     )
     private String ibanSender;
-    /*
-    @OneToOne
-    @JoinColumn(
-            name = "ibanReceiver",
-            referencedColumnName = "iban",
-            foreignKey = @ForeignKey(
-                    name = "TRX_HISTORY_TRANSACTION_ibanReceiver_fk"
-            )
-    )
 
-     */
     @Column(
             name = "ibanReceiver",
             nullable = false,
