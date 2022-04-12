@@ -22,7 +22,7 @@ public class Account implements JsonReader {
          data = mapper.readValue(json, AccountData.class);
       }
       catch (Exception e) {
-         e.printStackTrace();
+         System.out.println("failed to read account data"); // debug
       }
    }
 

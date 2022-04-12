@@ -10,9 +10,11 @@ import javafx.stage.Stage;
 
 import java.io.File;
 import java.io.IOException;
+import java.util.ArrayList;
 
 import wallet.App;
 import wallet.API.Api;
+import wallet.APP.Account;
 
 public class ProductListController {
     @FXML
@@ -22,9 +24,18 @@ public class ProductListController {
     @FXML
     Button plus;
 
+    private ArrayList<Account> accountsList;
+
     @FXML
     private void initialize() {
-        // to do 
+        try {
+            App.currentUser.set_accountsList(App.api.get_products(App.currentWallet.get_walletID()));
+            accountsList = App.currentUser.get_accountsList();
+            for (Account a : accountsList) {
+                System.out.println(a); // debug
+            }
+
+        } catch (Exception e) {}
     }
 
     @FXML

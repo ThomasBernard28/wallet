@@ -9,6 +9,7 @@ import java.nio.file.Paths;
 import wallet.APP.UserData;
 import wallet.APP.Wallet;
 import wallet.APP.WalletData;
+import wallet.APP.Account;
 import wallet.API.JsonReader;
 import wallet.API.JsonTools;
 import wallet.API.Api;
@@ -16,9 +17,10 @@ import wallet.API.Api;
 /* Represent a user of the application */
 public class User implements JsonReader {
 
-    private Api               api         = new Api();
-    private UserData          data        = new UserData();
-    private ArrayList<Wallet> walletsList = new ArrayList<>();
+    private Api                api          = new Api();
+    private UserData           data         = new UserData();
+    private ArrayList<Wallet>  walletsList  = new ArrayList();
+    private ArrayList<Account> accountsList = new ArrayList();
 
     public User() {
     }
@@ -89,6 +91,28 @@ public class User implements JsonReader {
 
     public ArrayList get_walletsList() {
         return walletsList;
+    }
+
+    public void set_accountsList(String json) {
+        try {
+            accountsList.clear();
+            ArrayList<String> jsonList = JsonTools.splitJson(json);
+            for (String jl : jsonList) {
+                Account account = new Account();
+                try {
+                    account.read_data(jl);
+                    accountsList.add(account);
+                }
+                catch (Exception e) {
+                }
+            }
+        }
+        catch (Exception e) {
+        }
+    }
+
+    public ArrayList get_accountsList() {
+        return accountsList;
     }
 
     public String get_userID() {

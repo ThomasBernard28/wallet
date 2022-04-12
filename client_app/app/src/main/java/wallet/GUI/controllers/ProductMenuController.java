@@ -10,6 +10,8 @@ import javafx.stage.Stage;
 import java.io.File;
 import java.io.IOException;
 
+import wallet.App;
+
 
 public class ProductMenuController {
     @FXML
@@ -22,6 +24,10 @@ public class ProductMenuController {
     private Button history;
     @FXML
     private Button transaction;
+
+    @FXML
+    private void initialize() {
+    }
 
     @FXML
     private void onBackButtonClick() throws IOException {

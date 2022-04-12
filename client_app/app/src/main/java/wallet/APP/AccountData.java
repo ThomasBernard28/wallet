@@ -2,36 +2,33 @@ package wallet.APP;
 
 import java.util.Map;
 
+import wallet.App;
+
 public class AccountData {
    
-   private String  userID;
+   private String  userID = App.currentUser.get_userID();
    private int     walletID;
    private float   avgBalance;
    private String  localCurr;
    private int     activity;
    private String  type; 
-   private String  bic;
-
-   public void setUser(Map wallet) {
-      Map user = (Map) wallet.get("user");
-      this.userID = (String) user.get("userID");
-   }
-
-   public void setUserID(String userID) {
-      this.userID = userID;
-   }
+   private String  bic = App.currentWallet.get_bic();
+   private String  iban;
 
    public String getUserID() {
       return userID;
    }
 
-   public void setBic(Map client) {
-      Map clientID = (Map) client.get("clientIDEmb");
-      this.bic = (String) clientID.get("bic");
-   }
-
    public String getBic() {
       return bic;
+   }
+
+   public void setIban(String iban) {
+      this.iban = iban;
+   }
+
+   public String getIban() {
+      return iban;
    }
 
    public void setWallet(Map wallet) {
@@ -54,7 +51,7 @@ public class AccountData {
       return avgBalance;
    }
 
-   public void setLocalcurr(String localCurr) {
+   public void setLocalCurr(String localCurr) {
       this.localCurr = localCurr;
    }
 
@@ -82,6 +79,7 @@ public class AccountData {
    public String toString() {
       return userID     + '\n' +
              walletID   + '\n' +
+             iban       + '\n' +
              avgBalance + '\n' +
              localCurr  + '\n' +
              type       + '\n' +
