@@ -2,14 +2,16 @@ package com.example.Api.transaction;
 
 import com.example.Api.balance.Balance;
 import com.example.Api.balance.BalanceService;
+import org.apache.tomcat.jni.Local;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
+import javax.xml.xpath.XPath;
+import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.util.List;
 import java.util.Map;
+import java.util.Optional;
 
 @RestController
 @RequestMapping(path = "api/v1/transactions")
@@ -24,6 +26,16 @@ public class TransactionController {
         this.balanceService = balanceService;
     }
 
+    @GetMapping(path = "{trxID}")
+    public Transaction getTrxById(Long trxID){
+        return transactionService.getTrxById(trxID);
+    }
+
+    @GetMapping(path = "date/{dateTime}")
+    public List<Transaction> getTrxByDate(@PathVariable("dateTime") LocalDateTime dateTime){
+        return transactionService.getTransactionToProcess(dateTime);
+    }
+
     @PostMapping
     public void createTransaction(@RequestBody Map<String, String> json){
         LocalDateTime dateTime = LocalDateTime.parse(json.get("dateTime"));
@@ -33,7 +45,7 @@ public class TransactionController {
         Balance ibanSender = balanceService.getBalanceByIbanAndCurrency(json.get("ibanSender"), json.get("currency"));
         Balance ibanReceiver = balanceService.getBalanceByIbanAndCurrency(json.get("ibanReceiver"), json.get("currency"));
 
-        Transaction transaction = new Transaction(ibanReceiver, ibanSender, json.get("operType"), json.get("currency"), amount, dateTime, weekend, status);
+        Transaction transaction = new Transaction(ibanReceiver, ibanSender, json.get("operType"), json.get("currency"), amount, dateTime, weekend, status, json.get("comments"));
 
         if (weekend == 1 || dateTime.isAfter(LocalDateTime.now())){
             transactionService.saveTransaction(transaction);

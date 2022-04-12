@@ -92,7 +92,15 @@ public class Transaction {
     )
     private Integer status;
 
-    public Transaction(Balance ibanReceiver, Balance ibanSender, String operType, String currency, Float amount, LocalDateTime dateTime, Integer weekend, Integer status) {
+    @Column(
+            name = "comments",
+            nullable = false,
+            columnDefinition = "VARCHAR(255) default ''"
+    )
+    private String comments;
+
+    public Transaction(Balance ibanReceiver, Balance ibanSender, String operType, String currency,
+                       Float amount, LocalDateTime dateTime, Integer weekend, Integer status, String comments) {
         this.ibanReceiver = ibanReceiver;
         this.ibanSender = ibanSender;
         this.operType = operType;
@@ -101,5 +109,6 @@ public class Transaction {
         this.dateTime = dateTime;
         this.weekend = weekend;
         this.status = status;
+        this.comments = comments;
     }
 }

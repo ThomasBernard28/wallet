@@ -18,6 +18,7 @@ import java.time.LocalDateTime;
 @Table(name = "TRX_HISTORY")
 public class History {
 
+    /*
     @Id
     @Column(
             name = "trxID",
@@ -25,6 +26,10 @@ public class History {
             updatable = false
     )
     private Long trxID;
+
+     */
+    @EmbeddedId
+    private HistoryIDEmb historyIDEmb;
 
     @OneToOne
     @JoinColumn(
@@ -46,6 +51,7 @@ public class History {
     )
     private Balance ibanReceiver;
 
+    /*
     @OneToOne
     @JoinColumn(
             name = "balanceIdViewer",
@@ -55,6 +61,8 @@ public class History {
             )
     )
     private Balance balanceIdViewer;
+
+     */
 
     @Column(
             name = "amount",
@@ -83,6 +91,13 @@ public class History {
             nullable = false
     )
     private LocalDateTime dateTime;
+
+    @Column(
+            name = "comments",
+            nullable = false,
+            updatable = false
+    )
+    private String comments;
 
 }
 

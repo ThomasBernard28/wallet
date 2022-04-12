@@ -1,5 +1,6 @@
 package com.example.Api.transaction;
 
+import com.example.Api.History.HistoryService;
 import com.example.Api.account.Account;
 import com.example.Api.account.AccountRepository;
 import com.example.Api.account.AccountService;
@@ -20,20 +21,15 @@ import java.util.Optional;
 public class TransactionService {
 
     private final TransactionRepository transactionRepository;
-    private final BalanceRepository balanceRepository;
-    private final AccountRepository accountRepository;
-    private final AccountService accountService;
     private final BalanceService balanceService;
+    private final HistoryService historyService;
 
 
     @Autowired
-    public TransactionService(TransactionRepository transactionRepository, BalanceRepository balanceRepository,
-                              AccountRepository accountRepository, BalanceService balanceService, AccountService accountService){
+    public TransactionService(TransactionRepository transactionRepository, BalanceService balanceService, HistoryService historyService){
         this.transactionRepository = transactionRepository;
-        this.balanceRepository = balanceRepository;
-        this.accountRepository = accountRepository;
         this.balanceService = balanceService;
-        this.accountService = accountService;
+        this.historyService = historyService;
     }
 
     public Transaction getTrxById(Long trxID){
@@ -71,6 +67,10 @@ public class TransactionService {
         accountReceiver.setAvgBalance(receiver.getBalance());
 
         transaction.setStatus(1);
+
+        saveTransaction(transaction);
+
+        historyService.separateTrxHistory(transaction);
     }
 
     public void saveTransaction(Transaction transaction){
