@@ -1,14 +1,11 @@
 package com.example.Api.pensionSaving;
 
 import com.example.Api.client.ClientRepository;
-import com.example.Api.client.ClientService;
 import com.example.Api.exception.ApiIncorrectException;
 import com.example.Api.exception.ApiNotFoundException;
+import com.example.Api.insurance.InsuranceService;
 import com.example.Api.insuranceInfo.InsuranceInfoRepository;
-import com.example.Api.insuranceInfo.InsuranceInfoService;
-import com.example.Api.wallet.Wallet;
 import com.example.Api.wallet.WalletRepository;
-import com.example.Api.wallet.WalletService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -22,14 +19,16 @@ public class PensionSavingService {
     private final WalletRepository walletRepository;
     private final ClientRepository clientRepository;
     private final InsuranceInfoRepository insuranceInfoRepository;
+    private final InsuranceService insuranceService;
 
     @Autowired
     public PensionSavingService(PensionSavingRepository pensionSavingRepository, WalletRepository walletRepository,
-                                ClientRepository clientRepository, InsuranceInfoRepository insuranceInfoRepository){
+                                ClientRepository clientRepository, InsuranceInfoRepository insuranceInfoRepository, InsuranceService insuranceService){
         this.pensionSavingRepository = pensionSavingRepository;
         this.clientRepository = clientRepository;
         this.walletRepository = walletRepository;
         this.insuranceInfoRepository = insuranceInfoRepository;
+        this.insuranceService = insuranceService;
     }
 
     public PensionSaving getPensionSavingByID(Long pensionID){
@@ -59,8 +58,13 @@ public class PensionSavingService {
             throw new ApiIncorrectException("You can only possess one active pension saving");
         }
 
+        if(insuranceInfoRepository.findByInsType(type).isEmpty()){
+            throw new ApiNotFoundException("Insurance type : " + type + " doesn't exist");
+        }
+
         PensionSaving pensionSaving = new PensionSaving(walletID, bic, userID, subDate, renewDate, type, percentage, balance, activity);
         pensionSavingRepository.save(pensionSaving);
 
+        insuranceService.createInsuranceFromPension(pensionSaving);
     }
 }

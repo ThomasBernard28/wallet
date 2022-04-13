@@ -20,7 +20,7 @@ public interface WalletRepository  extends JpaRepository<Wallet, Long> {
     @Query("SELECT s FROM WALLETS s WHERE s.user.userID = ?1 and s.bic = ?2")
     Optional<Wallet> findWalletByUserAndBic(String userID, String bic);
 
-    @Query("SELECT s FROM WALLETS s WHERE s.user=?1")
+    @Query("SELECT s FROM WALLETS s WHERE s.user=?1 AND s.activity = 1")
     List<Wallet> findWalletByUserEquals(User user);
 
     @Modifying
