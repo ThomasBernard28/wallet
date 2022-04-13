@@ -5,6 +5,7 @@ import wallet.API.JsonTools;
 import wallet.APP.User;
 import wallet.APP.Bank;
 import wallet.APP.Wallet;
+import wallet.APP.Account;
 
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
@@ -20,9 +21,10 @@ public class App extends Application {
 
     public static Api api = new Api();
     public static ArrayList<Bank> banksList = new ArrayList();   // all supported banks ( given by the api )
-    public static User   currentUser;
-    public static Wallet currentWallet;
-    public static Stage  stage;
+    public static User    currentUser;
+    public static Wallet  currentWallet;
+    public static Account currentAccount;
+    public static Stage   stage;
 
 
     @Override
