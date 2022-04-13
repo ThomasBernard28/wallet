@@ -27,4 +27,8 @@ public interface HistoryRepository extends JpaRepository<History, Long> {
 
     @Query(value = "SELECT * FROM TRX_HISTORY s WHERE s.balanceIdViewer = ?1 AND s.dateTime BETWEEN ?2 AND ?3 ORDER BY s.dateTime ", nativeQuery = true)
     List<History> findByBalanceIdViewerAndDateTimeBetween(Long balanceIdViewer, LocalDateTime starDateTime, LocalDateTime endDateTime);
+
+    @Query(value = "INSERT INTO TRX_HISTORY (trxID, balanceIdViewer, amount, dateTime, nextBalance, prevBalance, ibanReceiver, ibanSender, comments)  " +
+            "VALUES(?1, ?2, ?3, ?4, ?5, ?6 , ?7, ?8, ?9) ", nativeQuery = true)
+    void insertHistory(Long trxID, Long balanceID, Float amount, LocalDateTime dateTime, Float nextBalance, Float prevBalance, String ibanReceiver, String ibanSender, String comments);
 }

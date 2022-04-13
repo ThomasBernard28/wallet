@@ -190,11 +190,11 @@ public class HistoryService {
         Float amount = -transaction.getAmount();
         Float nextBalance = balanceIDViewer.getBalance();
 
-        History history = new History(transaction.getTrxID(), balanceIDViewer.getBalanceID(), balanceIDViewer.getIban().getIban(), transaction.getIbanReceiver(),
-                     amount, prevBalance, nextBalance, transaction.getDateTime(), transaction.getComments());
+        historyRepository.insertHistory(transaction.getTrxID(), balanceIDViewer.getBalanceID(), amount,transaction.getDateTime(), nextBalance,
+                prevBalance, transaction.getIbanReceiver(),  balanceIDViewer.getIban().getIban(), transaction.getComments());
 
-        System.out.println(history + "sender");
-        historyRepository.save(history);
+        //System.out.println(history + "sender");
+        //historyRepository.save(history);
     }
 
     public void saveReceiverHistory(Transaction transaction, Balance balanceIDViewer){
@@ -204,11 +204,12 @@ public class HistoryService {
         Float amount = transaction.getAmount();
         Float nextBalance = balanceIDViewer.getBalance();
 
-        History history = new History(transaction.getTrxID(), balanceIDViewer.getBalanceID(), transaction.getIbanSender(), transaction.getIbanReceiver(),
-                amount, prevBalance, nextBalance, transaction.getDateTime(), transaction.getComments());
+        historyRepository.insertHistory(transaction.getTrxID(), balanceIDViewer.getBalanceID(), amount,transaction.getDateTime(), nextBalance,
+                prevBalance, transaction.getIbanReceiver(),  balanceIDViewer.getIban().getIban(), transaction.getComments());
 
-        System.out.println(history + "receiver");
-        historyRepository.save(history);
+        //System.out.println(history + "receiver");
+        //historyRepository.save(history);
 
     }
 }
+
