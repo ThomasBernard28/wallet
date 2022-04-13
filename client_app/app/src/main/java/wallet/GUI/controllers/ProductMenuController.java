@@ -5,6 +5,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.stage.Stage;
 
 import java.io.File;
@@ -24,9 +25,18 @@ public class ProductMenuController {
     private Button history;
     @FXML
     private Button transaction;
+    @FXML
+    private Label balance;
+    @FXML
+    private Label curr;
+    @FXML
+    private Label iban;
 
     @FXML
     private void initialize() {
+        balance.setText(Float.toString(App.currentAccount.get_avgBalance()));
+        curr.setText(App.currentAccount.get_localCurr());
+        iban.setText(App.currentAccount.get_iban());
     }
 
     @FXML

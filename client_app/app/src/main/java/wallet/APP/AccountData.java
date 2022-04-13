@@ -47,7 +47,7 @@ public class AccountData {
       this.avgBalance = avgBalance;
    }
 
-   public float getAvgbalance() {
+   public float getAvgBalance() {
       return avgBalance;
    }
 
@@ -55,7 +55,7 @@ public class AccountData {
       this.localCurr = localCurr;
    }
 
-   public String getCurrency() {
+   public String getLocalCurr() {
       return localCurr;
    }
 

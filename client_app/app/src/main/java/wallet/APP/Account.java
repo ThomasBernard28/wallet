@@ -26,6 +26,18 @@ public class Account implements JsonReader {
       }
    }
 
+   public float get_avgBalance() {
+      return data.getAvgBalance();
+   }
+
+   public String get_localCurr() {
+      return data.getLocalCurr();
+   }
+
+   public String get_iban() {
+      return data.getIban();
+   }
+
    @Override
    public String toString() {
       return data.toString();
