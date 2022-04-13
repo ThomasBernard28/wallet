@@ -35,23 +35,7 @@ public class Account {
             )
     )
     private Wallet wallet;
-    /*
-    @Column(
-            name = "bic",
-            nullable = false,
-            updatable = false,
-            columnDefinition = "CHAR(8)"
-    )
-    private String bic;
 
-    @Column(
-            name = "userID",
-            nullable = false,
-            updatable = false
-    )
-    private String userID;
-
-     */
     @ManyToOne
     @JoinColumns(value = {
             @JoinColumn(name = "bic", referencedColumnName = "bic"),

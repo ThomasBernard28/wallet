@@ -36,6 +36,11 @@ public class TransactionController {
         return transactionService.getTransactionToProcess(dateTime);
     }
 
+    @GetMapping(path = "localDate")
+    public LocalDate getServerDate(){
+        return LocalDate.now();
+    }
+
     @PostMapping
     public void createTransaction(@RequestBody Map<String, String> json){
         LocalDateTime dateTime = LocalDateTime.parse(json.get("dateTime"));
