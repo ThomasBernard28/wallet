@@ -150,6 +150,14 @@ public class User implements JsonReader {
         }
     }
 
+    public void perform_transaction(Transaction transaction) {
+        try {
+            api.post_transaction(transaction.write_data());
+        } catch (Exception e) {
+        }
+    }
+
+
     @Override
     public String toString() {
         return data.toString();

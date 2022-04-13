@@ -38,6 +38,10 @@ public class Account implements JsonReader {
       return data.getIban();
    }
 
+   public String get_type() {
+      return data.getType();
+   }
+
    @Override
    public String toString() {
       return data.toString();

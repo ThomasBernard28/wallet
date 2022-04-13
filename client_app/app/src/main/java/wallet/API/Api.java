@@ -50,6 +50,15 @@ public class Api {
         return response.body();     // return the json
     }
 
+    public void post_transaction(String transactionJson) throws Exception {
+        request = HttpRequest.newBuilder()
+            .uri(URI.create("http://sierra880.xyz:4545/api/v1/transactions"))
+            .header("Content-Type", "application/json")
+            .POST(HttpRequest.BodyPublishers.ofString(transactionJson))
+            .build();
+        client.send(request, HttpResponse.BodyHandlers.ofString());
+    }
+
     public void put_password(String userID, String psswd) throws IOException, InterruptedException {
         String json = "{\"userID\":\""+userID+"\", \"psswd\":\""+psswd+"\"}";
         request = HttpRequest.newBuilder()

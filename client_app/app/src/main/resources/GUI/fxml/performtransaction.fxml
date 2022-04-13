@@ -18,7 +18,7 @@
         </Button>
     </top>
     <bottom>
-        <Button fx:id="confirm" alignment="CENTER" mnemonicParsing="false" text="Confirm" BorderPane.alignment="CENTER">
+        <Button fx:id="confirm" onMouseClicked="#onConfirmButtonClick" alignment="CENTER" mnemonicParsing="false" text="Confirm" BorderPane.alignment="CENTER">
             <font>
                 <Font name="Montserrat SemiBold" size="17.0" />
             </font>

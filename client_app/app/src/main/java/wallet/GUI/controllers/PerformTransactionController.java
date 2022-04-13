@@ -11,6 +11,10 @@ import javafx.stage.Stage;
 
 import java.io.File;
 import java.io.IOException;
+import java.time.LocalDateTime;
+
+import wallet.App;
+import wallet.APP.Transaction;
 
 public class PerformTransactionController {
 
@@ -32,6 +36,26 @@ public class PerformTransactionController {
     @FXML
     private TextField receiverName;
 
+    @FXML
+    private void onConfirmButtonClick() throws IOException {
+        boolean cancel = false;
+        if (Float.valueOf(amount.getText()).floatValue() > App.currentAccount.get_avgBalance()) {
+            cancel = true;
+        }
+        // to do : test dateTime with api dateTime
+        if (!cancel) {
+            Transaction transaction = new Transaction(App.currentAccount.get_iban(),
+                                                      iban.getText(),
+                                                      "Money transfer",
+                                                      App.currentAccount.get_localCurr(),
+                                                      Float.valueOf(amount.getText()).floatValue(),
+                                                      LocalDateTime.now().minusMinutes(122),
+                                                      communication.getText());
+            App.currentUser.perform_transaction(transaction);
+            onBackButtonClick();
+        }
+    }
+        
     @FXML
     private void onBackButtonClick() throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(new File("build/resources/main/GUI/fxml/productmenu.fxml").toURL());

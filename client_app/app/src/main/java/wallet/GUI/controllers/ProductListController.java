@@ -34,7 +34,12 @@ public class ProductListController {
             accountsList = App.currentUser.get_accountsList();
             int row = 0;
             for (Account a : accountsList) {
-                Button button = new Button("product test");
+                Button button = new Button();
+                switch(a.get_type()) {
+                    case "CA":
+                        button.setText("Checking account");
+                        break;
+                }
                 button.setOnAction(event -> {
                     try {
                         switchToProduct(a);
