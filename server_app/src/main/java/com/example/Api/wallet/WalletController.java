@@ -72,8 +72,8 @@ public class WalletController {
     @PutMapping(path = "{walletId}")
     public void updateWallet(
             @PathVariable("walletId") Long walletID,
-            @RequestParam(required = false) Integer activity
+            @RequestBody Map<String, String> json
     ){
-        walletService.updateWallet(walletID, activity);
+        walletService.updateWallet(walletID, Integer.parseInt(json.get("activity")));
     }
 }

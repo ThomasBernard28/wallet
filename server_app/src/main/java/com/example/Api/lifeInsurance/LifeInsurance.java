@@ -1,3 +1,4 @@
+/*
 package com.example.Api.lifeInsurance;
 
 import com.example.Api.client.Client;
@@ -34,6 +35,14 @@ public class LifeInsurance {
     )
     private Long lifeID;
 
+    /*
+    @OneToOne
+    @JoinColumn
+    private Insurance insurance
+
+
+     */
+/*
     @OneToOne
     @JoinColumn(
             name = "walletID",
@@ -77,3 +86,4 @@ public class LifeInsurance {
     )
     private Integer activity;
 }
+*/

@@ -69,10 +69,9 @@ public class AccountController {
     @PutMapping(path = "{iban}")
     public void updateAccount(
             @PathVariable("iban") String iban,
-            @RequestParam(required = false) Integer activity,
-            @RequestParam(required = false) Float avgBalance
+            @RequestBody Map<String, String> json
     ){
-        accountService.updateAccount(iban, activity, avgBalance);
+        accountService.updateAccount(iban, Integer.parseInt(json.get("activity")));
     }
 
 }

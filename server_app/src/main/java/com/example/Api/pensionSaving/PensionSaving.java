@@ -3,6 +3,7 @@ package com.example.Api.pensionSaving;
 import com.example.Api.client.Client;
 import com.example.Api.wallet.Wallet;
 import lombok.*;
+import org.springframework.context.annotation.EnableMBeanExport;
 
 import javax.persistence.*;
 import java.time.LocalDate;
@@ -24,46 +25,57 @@ public class PensionSaving {
             allocationSize = 1
     )
     @GeneratedValue(
-            strategy = GenerationType.SEQUENCE,
-            generator = "pension_sequence"
-    )
-    @Column(
-            name = "pensionID",
-            nullable = false,
-            updatable = false
+            generator = "pension_sequence",
+            strategy = GenerationType.SEQUENCE
     )
     private Long pensionID;
 
-    @OneToOne
-    @JoinColumn(
+    @Column(
             name = "walletID",
             nullable = false,
-            referencedColumnName = "walletID",
-            foreignKey = @ForeignKey(
-                    name = "PENSION_SAVINGS_WALLETS_walletID_fk"
-            )
+            updatable = false
     )
-    private Wallet walletID;
-
-    @OneToOne
-    @JoinColumns(value = {
-            @JoinColumn(name = "bic", referencedColumnName = "bic"),
-            @JoinColumn(name = "userID", referencedColumnName = "userID"),},
-            foreignKey = @ForeignKey(name = "PENSION_SAVINGS_CLIENTS_bic_userID_fk"))
-    private Client client;
+    private Long walletID;
 
     @Column(
-            name = "category",
+            name = "bic",
             nullable = false,
-            columnDefinition = "Integer(2) default '30' "
+            updatable = false,
+            columnDefinition = "CHAR(8)"
     )
-    private Integer category;
+    private String bic;
 
     @Column(
-            name = "subdate",
+            name = "userID",
+            nullable = false,
+            updatable = false
+    )
+    private String userID;
+
+    @Column(
+            name = "subDate",
             nullable = false
     )
     private LocalDate subDate;
+
+    @Column(
+            name = "renewDate",
+            nullable = false
+    )
+    private LocalDate renewDate;
+
+    @Column(
+          name = "type",
+          nullable = false,
+          columnDefinition = "CHAR(5)"
+    )
+    private String type;
+
+    @Column(
+            name = "percentage",
+            nullable = false
+    )
+    private Float percentage;
 
     @Column(
             name = "balance",
@@ -74,8 +86,19 @@ public class PensionSaving {
     @Column(
             name = "activity",
             nullable = false,
-            columnDefinition = "Integer(1) default '0' "
+            columnDefinition = "Integer(1) default '1'"
     )
     private Integer activity;
 
+    public PensionSaving(Long walletID, String bic, String userID, LocalDate subDate, LocalDate renewDate, String type, Float percentage, Float balance, Integer activity) {
+        this.walletID = walletID;
+        this.bic = bic;
+        this.userID = userID;
+        this.subDate = subDate;
+        this.renewDate = renewDate;
+        this.type = type;
+        this.percentage = percentage;
+        this.balance = balance;
+        this.activity = activity;
+    }
 }

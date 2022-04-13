@@ -70,7 +70,7 @@ public class AccountService {
     }
 
     @Transactional
-    public void updateAccount(String iban, Integer activity, Float avgBalance){
+    public void updateAccount(String iban, Integer activity){
         Account account = accountRepository.findByIban(iban).orElseThrow(
                 () -> new ApiNotFoundException("Account with iban : " + iban + " doesn't exist")
         );
@@ -79,6 +79,5 @@ public class AccountService {
             throw new ApiIncorrectException("Activity is already set to : " + activity);
         }
         account.setActivity(activity);
-        account.setAvgBalance(avgBalance);
     }
 }
