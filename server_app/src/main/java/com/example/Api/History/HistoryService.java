@@ -9,6 +9,7 @@ import com.example.Api.transaction.Transaction;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.sql.SQLOutput;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
@@ -173,10 +174,13 @@ public class HistoryService {
             throw new ApiIncorrectException("The transaction is not finished");
         }
         Balance balanceIDSender = balanceRepository.findByIbanAndCurrency(transaction.getIbanSender(), transaction.getCurrency()).get();
+        System.out.println("balance id of sender : + " + balanceIDSender.getBalanceID());
         Balance balanceIDReceiver = balanceRepository.findByIbanAndCurrency(transaction.getIbanReceiver(), transaction.getCurrency()).get();
+        System.out.println("balance id of receiver : " +balanceIDReceiver.getBalanceID());
 
         saveSenderHistory(transaction, balanceIDSender);
         saveReceiverHistory(transaction, balanceIDReceiver);
+        System.out.println("sencond part sent");
     }
 
     public void saveSenderHistory(Transaction transaction, Balance balanceIDViewer){
@@ -189,6 +193,7 @@ public class HistoryService {
         History history = new History(transaction.getTrxID(), balanceIDViewer.getBalanceID(), balanceIDViewer.getIban().getIban(), transaction.getIbanReceiver(),
                      amount, prevBalance, nextBalance, transaction.getDateTime(), transaction.getComments());
 
+        System.out.println(history + "sender");
         historyRepository.save(history);
     }
 
@@ -202,6 +207,7 @@ public class HistoryService {
         History history = new History(transaction.getTrxID(), balanceIDViewer.getBalanceID(), transaction.getIbanSender(), transaction.getIbanReceiver(),
                 amount, prevBalance, nextBalance, transaction.getDateTime(), transaction.getComments());
 
+        System.out.println(history + "receiver");
         historyRepository.save(history);
 
     }

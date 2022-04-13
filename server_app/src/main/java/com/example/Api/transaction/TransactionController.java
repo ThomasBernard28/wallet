@@ -37,8 +37,8 @@ public class TransactionController {
     }
 
     @GetMapping(path = "localDate")
-    public LocalDate getServerDate(){
-        return LocalDate.now();
+    public LocalDateTime getServerDate(){
+        return LocalDateTime.now();
     }
 
     @PostMapping

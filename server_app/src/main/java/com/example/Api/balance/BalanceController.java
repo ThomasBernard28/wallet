@@ -35,4 +35,9 @@ public class BalanceController {
 
         balanceService.registerBalance(iban, currency, balance);
     }
+
+    @PutMapping(path = "deposit/{iban}/{amount}")
+    public void cashDeposit(@PathVariable("iban") String iban, @PathVariable("amount") Float amount){
+
+    }
 }
