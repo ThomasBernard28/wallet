@@ -61,4 +61,17 @@ public class TransactionController {
             transactionService.performTransaction(transaction);
         }
     }
+
+    @PostMapping(path = "cashDeposit")
+    public void createCashDeposit(@RequestBody Map<String, String> json){
+        LocalDateTime dateTime = LocalDateTime.parse(json.get("dateTime"));
+        Integer status = Integer.parseInt(json.get("status"));
+        Integer weekend = 0;
+        Float amount = Float.parseFloat(json.get("amount"));
+        Balance ibanReceiver = balanceService.getBalanceByIbanAndCurrency(json.get("ibanReceiver"), json.get("currency"));
+
+        Transaction transaction = new Transaction(ibanReceiver.getIban().getIban(), json.get("operType"), json.get("currency"), amount, dateTime, weekend, status, json.get("comments"));
+
+        transactionService.performCashDeposit(transaction);
+    }
 }

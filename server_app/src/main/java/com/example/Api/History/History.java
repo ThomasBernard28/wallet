@@ -35,7 +35,6 @@ public class History {
     @Column(
             name = "ibanSender",
             updatable = false,
-            nullable = false,
             columnDefinition = "CHAR(16)"
     )
     private String ibanSender;
@@ -83,6 +82,16 @@ public class History {
     )
     private String comments;
 
+    public History(Long trxID, Long balanceIdViewer, String ibanReceiver, Float amount, Float prevBalance, Float nextBalance, LocalDateTime dateTime, String comments) {
+        this.trxID = trxID;
+        this.balanceIdViewer = balanceIdViewer;
+        this.ibanReceiver = ibanReceiver;
+        this.amount = amount;
+        this.prevBalance = prevBalance;
+        this.nextBalance = nextBalance;
+        this.dateTime = dateTime;
+        this.comments = comments;
+    }
 }
 
 

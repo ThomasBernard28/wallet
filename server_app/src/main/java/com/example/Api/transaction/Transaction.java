@@ -41,7 +41,6 @@ public class Transaction {
 
     @Column(
             name = "ibanSender",
-            nullable = false,
             updatable = false,
             columnDefinition = "CHAR(16)"
     )
@@ -102,6 +101,17 @@ public class Transaction {
                        Float amount, LocalDateTime dateTime, Integer weekend, Integer status, String comments) {
         this.ibanReceiver = ibanReceiver;
         this.ibanSender = ibanSender;
+        this.operType = operType;
+        this.currency = currency;
+        this.amount = amount;
+        this.dateTime = dateTime;
+        this.weekend = weekend;
+        this.status = status;
+        this.comments = comments;
+    }
+
+    public Transaction(String ibanReceiver, String operType, String currency, Float amount, LocalDateTime dateTime, Integer weekend, Integer status, String comments) {
+        this.ibanReceiver = ibanReceiver;
         this.operType = operType;
         this.currency = currency;
         this.amount = amount;

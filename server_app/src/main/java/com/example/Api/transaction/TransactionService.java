@@ -81,7 +81,24 @@ public class TransactionService {
         historyService.separateTrxHistory(transaction);
     }
 
+    public void performCashDeposit(Transaction transaction){
+        Balance receiver = balanceService.getBalanceByIbanAndCurrency(transaction.getIbanReceiver(), transaction.getCurrency());
+
+        balanceService.updateBalance(receiver, transaction.getAmount());
+
+        Account accountReceiver = receiver.getIban();
+
+        accountReceiver.setAvgBalance(receiver.getBalance());
+
+        transaction.setStatus(1);
+
+        saveTransaction(transaction);
+
+        historyService.saveReceiverHistory(transaction, receiver);
+    }
+
     public void saveTransaction(Transaction transaction){
         transactionRepository.save(transaction);
     }
+
 }
