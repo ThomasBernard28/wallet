@@ -7,6 +7,7 @@ import java.net.URI;
 import java.io.IOException;
 import java.io.File;
 import java.util.ArrayList;
+import java.time.LocalDateTime;
 
 public class Api {
 
@@ -58,6 +59,17 @@ public class Api {
             .build();
         client.send(request, HttpResponse.BodyHandlers.ofString());
     }
+
+    public void post_deposit(String iban, String amount) throws Exception {
+        String json = "{\"ibanReceiver\":\""+iban+"\",\"operType\":\"CASH_DEPOSIT\",\"currency\":\"EUR\",\"amount\":\""+amount+"\",\"dateTime\":\""+LocalDateTime.now().minusMinutes(122).toString()+"\",\"weekend\":\"0\",\"status\":\"0\",\"comments\":\"cash deposit\"}";
+        request = HttpRequest.newBuilder()
+            .uri(URI.create("http://sierra880.xyz:4545/api/v1/transactions/cashDeposit"))
+            .header("Content-Type", "application/json")
+            .POST(HttpRequest.BodyPublishers.ofString(json))
+            .build();
+        client.send(request, HttpResponse.BodyHandlers.ofString());
+    }
+        
 
     public void put_password(String userID, String psswd) throws IOException, InterruptedException {
         String json = "{\"userID\":\""+userID+"\", \"psswd\":\""+psswd+"\"}";

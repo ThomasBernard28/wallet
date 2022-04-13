@@ -59,3 +59,9 @@ jar {
         configurations.runtimeClasspath.collect {it.isDirectory() ? it: zipTree(it)}
     }
 }
+
+task giveMoney(type : JavaExec) {
+    description = "add the given amount of money to the given account"
+    classpath = sourceSets.main.runtimeClasspath
+    main = 'wallet.GiveMoney'
+}
