@@ -50,8 +50,9 @@ public class ProductMenuController {
     }
 
     @FXML
-    private void onDeleteButtonClick(){
-        //
+    private void onDeleteButtonClick() throws IOException {
+        App.currentUser.disable_account(App.currentAccount);
+        onBackButtonClick();
     }
 
     @FXML

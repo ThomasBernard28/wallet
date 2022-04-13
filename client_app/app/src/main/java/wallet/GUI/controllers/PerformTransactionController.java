@@ -42,7 +42,7 @@ public class PerformTransactionController {
         if (Float.valueOf(amount.getText()).floatValue() > App.currentAccount.get_avgBalance()) {
             cancel = true;
         }
-        // to do : test dateTime with api dateTime
+        // to do : date time control 
         if (!cancel) {
             Transaction transaction = new Transaction(App.currentAccount.get_iban(),
                                                       iban.getText(),

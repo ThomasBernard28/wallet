@@ -98,6 +98,15 @@ public class App extends Application {
         return "Unknown bank, bic: "+bic;
     }
 
+    public static String get_apiTime() {
+        String json ="";
+        try {
+            json = api.get_apiTime();
+        }
+        catch (Exception e) {}
+        return json;
+    }
+
     // get a file from the resources folder
     // works everywhere, IDEA, unit test and JAR file.
     public InputStream getFileFromResourceAsStream(String fileName) {

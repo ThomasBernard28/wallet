@@ -157,6 +157,12 @@ public class User implements JsonReader {
         }
     }
 
+    public void disable_account(Account account) {
+        try {
+            api.put_accountActivity(account.get_iban(), 0);
+        } catch (Exception e) {}
+    }
+
 
     @Override
     public String toString() {
