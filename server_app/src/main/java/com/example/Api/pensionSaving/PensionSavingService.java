@@ -4,6 +4,8 @@ import com.example.Api.client.ClientRepository;
 import com.example.Api.client.ClientService;
 import com.example.Api.exception.ApiIncorrectException;
 import com.example.Api.exception.ApiNotFoundException;
+import com.example.Api.insuranceInfo.InsuranceInfoRepository;
+import com.example.Api.insuranceInfo.InsuranceInfoService;
 import com.example.Api.wallet.Wallet;
 import com.example.Api.wallet.WalletRepository;
 import com.example.Api.wallet.WalletService;
@@ -19,12 +21,15 @@ public class PensionSavingService {
     private final PensionSavingRepository pensionSavingRepository;
     private final WalletRepository walletRepository;
     private final ClientRepository clientRepository;
+    private final InsuranceInfoRepository insuranceInfoRepository;
 
     @Autowired
-    public PensionSavingService(PensionSavingRepository pensionSavingRepository, WalletRepository walletRepository, ClientRepository clientRepository){
+    public PensionSavingService(PensionSavingRepository pensionSavingRepository, WalletRepository walletRepository,
+                                ClientRepository clientRepository, InsuranceInfoRepository insuranceInfoRepository){
         this.pensionSavingRepository = pensionSavingRepository;
         this.clientRepository = clientRepository;
         this.walletRepository = walletRepository;
+        this.insuranceInfoRepository = insuranceInfoRepository;
     }
 
     public PensionSaving getPensionSavingByID(Long pensionID){
@@ -37,18 +42,23 @@ public class PensionSavingService {
     }
 
     public void createPensionSaving(Long walletID, String userID, String bic, Float percentage, LocalDate subDate, LocalDate renewDate, String type, Float balance, Integer activity){
+
         if(walletRepository.findWalletByWalletID(walletID).isEmpty()){
             throw new ApiNotFoundException("Wallet with id : " + walletID + " doesn't exist or is inactive");
         }
+
         if (clientRepository.findByBankAndUserID(bic, userID).isEmpty()){
             throw new ApiNotFoundException("Client with userID : " + userID + " and bic : " + bic + " does not exist");
         }
+
         if(percentage != 30f){
             throw new ApiIncorrectException("The base percentage must be set to 30%");
         }
+
         if(pensionSavingRepository.findByUserID(userID).isPresent()){
             throw new ApiIncorrectException("You can only possess one active pension saving");
         }
+
         PensionSaving pensionSaving = new PensionSaving(walletID, bic, userID, subDate, renewDate, type, percentage, balance, activity);
         pensionSavingRepository.save(pensionSaving);
 

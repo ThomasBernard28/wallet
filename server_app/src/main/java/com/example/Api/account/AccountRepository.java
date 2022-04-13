@@ -14,6 +14,9 @@ public interface AccountRepository extends JpaRepository<Account, String> {
     @Query("SELECT s FROM ACCOUNTS s WHERE s.iban = ?1 AND s.activity = 1 ")
     Optional<Account> findByIban(String iban);
 
+    @Query("SELECT s FROM ACCOUNTS s WHERE s.iban = ?1")
+    Optional<Account> findByIbanToModify(String iban);
+
     @Query("SELECT s FROM ACCOUNTS s WHERE s.client = ?1 AND s.activity = 1")
     List<Account> findAccountByClient(Client client);
 

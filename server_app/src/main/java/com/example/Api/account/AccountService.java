@@ -71,7 +71,7 @@ public class AccountService {
 
     @Transactional
     public void updateAccount(String iban, Integer activity){
-        Account account = accountRepository.findByIban(iban).orElseThrow(
+        Account account = accountRepository.findByIbanToModify(iban).orElseThrow(
                 () -> new ApiNotFoundException("Account with iban : " + iban + " doesn't exist")
         );
 
