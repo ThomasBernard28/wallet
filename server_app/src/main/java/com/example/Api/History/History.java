@@ -83,7 +83,8 @@ public class History {
     @Column(
             name = "comments",
             nullable = false,
-            updatable = false
+            updatable = false,
+            columnDefinition = "VARCHAR(255) default ''"
     )
     private String comments;
 

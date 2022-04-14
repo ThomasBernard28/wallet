@@ -33,7 +33,6 @@ public class Transaction {
 
     @Column(
             name = "ibanReceiver",
-            nullable = false,
             updatable = false,
             columnDefinition = "CHAR(16)"
     )
@@ -45,6 +44,12 @@ public class Transaction {
             columnDefinition = "CHAR(16)"
     )
     private String ibanSender;
+
+    @Column(
+            name = "insIDReceiver",
+            updatable = false
+    )
+    private Long insIDReceiver;
 
 
     @Column(
@@ -79,7 +84,7 @@ public class Transaction {
     @Column(
             name = "weekend",
             nullable = false,
-            columnDefinition = "Integer(1)"
+            columnDefinition = "Integer(1) default '0'"
     )
     private Integer weekend;
 
@@ -119,5 +124,17 @@ public class Transaction {
         this.weekend = weekend;
         this.status = status;
         this.comments = comments;
+    }
+
+    public Transaction(String ibanSender, Long insIDReceiver, String operType, String currency, Float amount, LocalDateTime dateTime, Integer status, String comments, Integer weekend) {
+        this.ibanSender = ibanSender;
+        this.insIDReceiver = insIDReceiver;
+        this.operType = operType;
+        this.currency = currency;
+        this.amount = amount;
+        this.dateTime = dateTime;
+        this.status = status;
+        this.comments = comments;
+        this.weekend = weekend;
     }
 }

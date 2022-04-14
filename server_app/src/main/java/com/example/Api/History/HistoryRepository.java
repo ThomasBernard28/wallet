@@ -31,4 +31,9 @@ public interface HistoryRepository extends JpaRepository<History, Long> {
     @Query(value = "INSERT INTO TRX_HISTORY (trxID, balanceIdViewer, amount, dateTime, nextBalance, prevBalance, ibanReceiver, ibanSender, comments)  " +
             "VALUES(?1, ?2, ?3, ?4, ?5, ?6 , ?7, ?8, ?9) ", nativeQuery = true)
     void insertHistory(Long trxID, Long balanceID, Float amount, LocalDateTime dateTime, Float nextBalance, Float prevBalance, String ibanReceiver, String ibanSender, String comments);
+
+    @Query(value = "INSERT INTO TRX_HISTORY (trxID, balanceIdViewer, amount, dateTime, nextBalance, prevBalance, ibanReceiver, insIDReceiver)  " +
+            "VALUES(?1, ?2, ?3, ?4, ?5, ?6 , ?7, ?8) ", nativeQuery = true)
+    void insertInsHistory(Long trxID, Long balanceID, Float amount, LocalDateTime dateTime, Float nextBalance, Float prevBalance, String ibanReceiver, Long insIDReceiver);
+
 }

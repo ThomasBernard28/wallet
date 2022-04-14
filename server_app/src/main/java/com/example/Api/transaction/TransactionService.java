@@ -9,6 +9,9 @@ import com.example.Api.balance.BalanceRepository;
 import com.example.Api.balance.BalanceService;
 import com.example.Api.exception.ApiIncorrectException;
 import com.example.Api.exception.ApiNotFoundException;
+import com.example.Api.penBalance.PenBalance;
+import com.example.Api.penBalance.PenBalanceService;
+import com.example.Api.pensionSaving.PensionSaving;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -23,13 +26,16 @@ public class TransactionService {
     private final TransactionRepository transactionRepository;
     private final BalanceService balanceService;
     private final HistoryService historyService;
+    private final PenBalanceService penBalanceService;
 
 
     @Autowired
-    public TransactionService(TransactionRepository transactionRepository, BalanceService balanceService, HistoryService historyService){
+    public TransactionService(TransactionRepository transactionRepository, BalanceService balanceService, HistoryService historyService,
+                              PenBalanceService penBalanceService){
         this.transactionRepository = transactionRepository;
         this.balanceService = balanceService;
         this.historyService = historyService;
+        this.penBalanceService = penBalanceService;
     }
 
     public Transaction getTrxById(Long trxID){
@@ -95,6 +101,35 @@ public class TransactionService {
         saveTransaction(transaction);
 
         historyService.saveReceiverHistory(transaction, receiver);
+    }
+
+    @Transactional
+    public void performPenTrx(Transaction transaction){
+        PenBalance penBalance = penBalanceService.findByPensionIdAndCurrency(transaction.getInsIDReceiver(), transaction.getCurrency());
+
+        Balance ibanSender = balanceService.getBalanceByIbanAndCurrency(transaction.getIbanSender(), transaction.getCurrency());
+
+        if (ibanSender.getBalance() < transaction.getAmount()){
+            throw new ApiIncorrectException("Transaction denied your balance : " + ibanSender.getBalance() + " is insufficient for a transaction amount of : " + transaction.getAmount());
+        }
+
+        penBalanceService.updateBalance(penBalance, transaction.getAmount());
+
+        balanceService.updateBalance(ibanSender, -transaction.getAmount());
+
+        Account sender = ibanSender.getIban();
+
+        PensionSaving pensionSaving = penBalance.getPensionSaving();
+
+        sender.setAvgBalance(ibanSender.getBalance());
+
+        pensionSaving.setBalance(penBalance.getBalance());
+
+        transaction.setStatus(1);
+
+        saveTransaction(transaction);
+
+        historyService.saveInsuranceHistory(transaction, ibanSender);
     }
 
     public void saveTransaction(Transaction transaction){

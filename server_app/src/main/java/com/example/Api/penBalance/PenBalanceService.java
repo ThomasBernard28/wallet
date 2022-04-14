@@ -2,11 +2,15 @@ package com.example.Api.penBalance;
 
 import com.example.Api.exception.ApiIncorrectException;
 import com.example.Api.exception.ApiNotFoundException;
+import com.example.Api.insurance.Insurance;
+import com.example.Api.insurance.InsuranceRepository;
+import com.example.Api.insurance.InsuranceService;
 import com.example.Api.pensionSaving.PensionSaving;
 import com.example.Api.pensionSaving.PensionSavingRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import javax.swing.text.html.Option;
 import java.util.Optional;
 
 @Service
@@ -14,11 +18,13 @@ public class PenBalanceService {
 
     private final PenBalanceRepository penBalanceRepository;
     private final PensionSavingRepository pensionSavingRepository;
+    private final InsuranceRepository insuranceRepository;
 
     @Autowired
-    public PenBalanceService(PenBalanceRepository penBalanceRepository, PensionSavingRepository pensionSavingRepository){
+    public PenBalanceService(PenBalanceRepository penBalanceRepository, PensionSavingRepository pensionSavingRepository, InsuranceRepository insuranceRepository){
         this.penBalanceRepository = penBalanceRepository;
         this.pensionSavingRepository = pensionSavingRepository;
+        this.insuranceRepository = insuranceRepository;
     }
 
     public PenBalance findByPensionIdAndCurrency(Long pensionID, String currency){
@@ -69,9 +75,11 @@ public class PenBalanceService {
             penBalance.setBalance(penBalance.getBalance() + amount);
 
             Optional<PensionSaving> optionalPensionSaving = pensionSavingRepository.findByPensionID(penBalance.getPensionSaving().getPensionID());
+            Optional<Insurance> optionalInsurance = insuranceRepository.findById(optionalPensionSaving.get().getPensionID());
 
             optionalPensionSaving.get().setPercentage(25f);
             optionalPensionSaving.get().setType("PEN25");
+            optionalInsurance.get().setType("PEN25");
         }
         else{
             throw new ApiIncorrectException("The balance cannot exceed 1270€");

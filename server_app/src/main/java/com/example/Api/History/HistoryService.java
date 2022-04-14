@@ -211,5 +211,14 @@ public class HistoryService {
         //historyRepository.save(history);
 
     }
+
+    public void saveInsuranceHistory(Transaction transaction, Balance balanceIDViewer){
+        Float prevBalance = balanceIDViewer.getBalance() - transaction.getAmount();
+        Float amount  = transaction.getAmount();
+        Float nextBalance = balanceIDViewer.getBalance();
+
+        historyRepository.insertInsHistory(transaction.getTrxID(), balanceIDViewer.getBalanceID(), amount, transaction.getDateTime(), nextBalance,
+                prevBalance,balanceIDViewer.getIban().getIban(), transaction.getInsIDReceiver());
+    }
 }
 
