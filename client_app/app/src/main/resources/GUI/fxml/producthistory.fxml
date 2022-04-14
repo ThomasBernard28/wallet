@@ -16,7 +16,7 @@
             <Insets left="10.0" top="10.0" />
          </StackPane.margin>
         </Button>
-        <GridPane maxHeight="1.7976931348623157E308" maxWidth="-Infinity" prefHeight="400.0" prefWidth="330.0" vgap="50.0" StackPane.alignment="CENTER">
+        <GridPane fx:id="grid" maxHeight="1.7976931348623157E308" maxWidth="-Infinity" prefHeight="400.0" prefWidth="330.0" vgap="50.0" StackPane.alignment="CENTER">
             <columnConstraints>
                 <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
             </columnConstraints>
@@ -33,9 +33,6 @@
                         <Insets left="20.0" />
                     </GridPane.margin>
                 </Label>
-                <TextArea text="Cofeo Services SA&#10;24 november                           €-0,70" GridPane.rowIndex="1" />
-                <TextArea prefHeight="200.0" prefWidth="200.0" text="Divino Pasta&#10;29 november                           €-4,50" GridPane.rowIndex="2" />
-                <TextArea prefHeight="200.0" prefWidth="200.0" text="Alibaba &#10;30 november                           €-5,00" GridPane.rowIndex="3" />
             </children>
             <padding>
                 <Insets bottom="10.0" />

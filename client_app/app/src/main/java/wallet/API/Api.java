@@ -69,7 +69,12 @@ public class Api {
             .build();
         client.send(request, HttpResponse.BodyHandlers.ofString());
     }
-        
+
+    public String get_history(String iban) throws Exception {
+        request  = HttpRequest.newBuilder().GET().header("accept", "application/json").uri(URI.create("http://sierra880.xyz:4545/api/v1/history/iban/"+iban)).build();
+        response = client.send(request, HttpResponse.BodyHandlers.ofString());
+        return response.body();     // return the json
+    } 
 
     public void put_password(String userID, String psswd) throws IOException, InterruptedException {
         String json = "{\"userID\":\""+userID+"\", \"psswd\":\""+psswd+"\"}";

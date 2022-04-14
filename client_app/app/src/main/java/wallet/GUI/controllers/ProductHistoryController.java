@@ -6,15 +6,38 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.stage.Stage;
+import javafx.scene.layout.GridPane;
 
 import java.io.File;
 import java.io.IOException;
+import java.util.ArrayList;
+
+import wallet.App;
+import wallet.APP.History;
 
 public class ProductHistoryController {
     @FXML
     Button back;
+    @FXML 
+    GridPane grid;
 
+    ArrayList<History> historyList = new ArrayList();
+
+    @FXML
+    private void initialize() throws IOException {
+        try {
+            App.currentUser.set_historyList(App.api.get_history(App.currentAccount.get_iban()));
+            historyList = App.currentUser.get_historyList();
+        } catch (Exception e) {}
+
+        int row = 0;
+        for (History h : historyList) {
+            Label l = new Label(h.toString());
+            grid.add(l, 0, row++);
+        }
+    }
 
     @FXML
     private void onBackButtonClick() throws IOException {

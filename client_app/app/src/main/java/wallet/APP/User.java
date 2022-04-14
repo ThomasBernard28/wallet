@@ -10,6 +10,7 @@ import wallet.APP.UserData;
 import wallet.APP.Wallet;
 import wallet.APP.WalletData;
 import wallet.APP.Account;
+import wallet.APP.History;
 import wallet.API.JsonReader;
 import wallet.API.JsonTools;
 import wallet.API.Api;
@@ -21,6 +22,7 @@ public class User implements JsonReader {
     private UserData           data         = new UserData();
     private ArrayList<Wallet>  walletsList  = new ArrayList();
     private ArrayList<Account> accountsList = new ArrayList();
+    private ArrayList<History> historyList  = new ArrayList();
 
     public User() {
     }
@@ -114,6 +116,29 @@ public class User implements JsonReader {
     public ArrayList get_accountsList() {
         return accountsList;
     }
+
+    public void set_historyList(String json) {
+        try {
+            historyList.clear();
+            ArrayList<String> jsonList = JsonTools.splitJson(json);
+            for (String jl : jsonList) {
+                History history = new History();
+                try {
+                    history.read_data(jl);
+                    historyList.add(history);
+                }
+                catch (Exception e) {
+                }
+            }
+        }
+        catch (Exception e) {
+        }
+    }
+
+    public ArrayList get_historyList() {
+        return historyList;
+    }
+
 
     public String get_userID() {
         return data.getUserID();
