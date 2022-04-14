@@ -16,7 +16,7 @@ public class Employee implements JsonReader {
     private ArrayList<Client> clientsList = new ArrayList<>();
 
     @Override
-    public void read_data(String json) throws Exception {
+    public void read_data(String json) {
         try {
             ObjectMapper mapper = new ObjectMapper();
             data = mapper.readValue(json, EmployeeData.class);

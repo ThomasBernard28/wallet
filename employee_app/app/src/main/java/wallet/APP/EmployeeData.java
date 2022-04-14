@@ -46,7 +46,7 @@ public class EmployeeData {
         return (name      + "\n" +
                 bic       + "\n" +
                 psswd     + "\n" +
-                language);
+                language  + "\n");
     }
  
 }
