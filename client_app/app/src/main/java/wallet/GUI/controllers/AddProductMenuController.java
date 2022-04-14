@@ -6,7 +6,9 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.ComboBox;
 import javafx.stage.Stage;
+import javafx.collections.*;
 
 import java.io.File;
 import java.io.IOException;
@@ -14,6 +16,20 @@ import java.io.IOException;
 public class AddProductMenuController {
     @FXML
     Button back;
+    @FXML
+    ComboBox box;
+    @FXML
+    Button subscribe;
+
+    @FXML
+    private void initialize() {
+        String types[] = {"Checking account", "Saving account"};
+        box.setItems(FXCollections.observableArrayList(types));
+    }
+
+    @FXML
+    private void onSubscribeButtonClick() throws IOException {
+    }
 
     @FXML
     private void onBackButtonClick() throws IOException {

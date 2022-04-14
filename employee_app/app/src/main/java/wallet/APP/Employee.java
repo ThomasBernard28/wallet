@@ -9,11 +9,12 @@ import wallet.APP.EmployeeData;
 import wallet.APP.Client;
 import wallet.APP.ClientData;
 import wallet.API.JsonReader;
+import wallet.API.JsonTools;
 
 public class Employee implements JsonReader {
 
     private EmployeeData      data         = new EmployeeData();
-    private ArrayList<Client> clientsList = new ArrayList<>();
+    private ArrayList<Client> clientsList = new ArrayList();
 
     @Override
     public void read_data(String json) {
@@ -26,8 +27,20 @@ public class Employee implements JsonReader {
         }
     }
 
-    public void set_CliensList(String bic) {
-         // API CALL 
+    public void set_clientsList(String json) {
+        try {
+            clientsList.clear();
+            ArrayList<String> jsonList = JsonTools.splitJson(json);
+            for (String jl : jsonList) {
+                Client client = new Client();
+                try {
+                    client.read_data(jl.substring(15, jl.length()-1));
+                    clientsList.add(client);
+                }
+                catch (Exception e) {}
+            }
+        }
+        catch (Exception e) {}
     }
 
     public ArrayList get_clientsList() {

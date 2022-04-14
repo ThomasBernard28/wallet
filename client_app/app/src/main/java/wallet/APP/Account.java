@@ -14,6 +14,8 @@ public class Account implements JsonReader {
 
    private AccountData data = new AccountData();
 
+   public Account() {}
+
    @Override
    public void read_data(String json) {
       try {

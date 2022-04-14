@@ -93,6 +93,7 @@ public class MainMenuController {
 
     @FXML
     private void onClientsButtonClick() throws Exception {
+        App.currentEmployee.set_clientsList(App.api.get_clients(App.currentEmployee.get_bic())); 
     }
 
     @FXML
