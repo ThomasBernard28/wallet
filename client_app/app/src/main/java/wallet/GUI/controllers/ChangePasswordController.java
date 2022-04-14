@@ -8,6 +8,8 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
+import javafx.scene.control.Alert;
+import javafx.scene.control.Alert.AlertType;
 import javafx.stage.Stage;
 import javafx.util.Duration;
 
@@ -51,6 +53,9 @@ public class ChangePasswordController {
     private void onChangePasswordButtonClick() throws Exception {
         if (newPassword.getText().equals(confirmPassword.getText()) && oldPassword.getText().equals(App.currentUser.get_password())) {
             App.currentUser.change_password(newPassword.getText()); 
+            Alert a = new Alert(AlertType.INFORMATION);
+            a.setContentText("Your password has been changed.");
+            a.show();
             onBackButtonClick();
         } else {
             match.setVisible(true);

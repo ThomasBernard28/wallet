@@ -7,6 +7,8 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
+import javafx.scene.control.Alert;
+import javafx.scene.control.Alert.AlertType;
 import javafx.stage.Stage;
 
 import java.io.File;
@@ -39,14 +41,23 @@ public class PerformTransactionController {
     @FXML
     private void onConfirmButtonClick() throws IOException {
         boolean cancel = false;
-        if (Float.valueOf(amount.getText()).floatValue() > App.currentAccount.get_avgBalance()) {
+        if (iban.getText().equals("")) {
             cancel = true;
+            Alert a = new Alert(AlertType.WARNING);
+            a.setContentText("Please enter an iban.");
+            a.show();
+        }
+        else if (amount.getText().equals("") || Float.valueOf(amount.getText()).floatValue() > App.currentAccount.get_avgBalance()) {
+            cancel = true;
+            Alert a = new Alert(AlertType.WARNING);
+            a.setContentText("Please enter a correct amount value.");
+            a.show();
         }
         // to do : date time control 
         if (!cancel) {
             Transaction transaction = new Transaction(App.currentAccount.get_iban(),
                                                       iban.getText(),
-                                                      "Money transfer",
+                                                      "SEPA",
                                                       App.currentAccount.get_localCurr(),
                                                       Float.valueOf(amount.getText()).floatValue(),
                                                       LocalDateTime.now().minusMinutes(122),
