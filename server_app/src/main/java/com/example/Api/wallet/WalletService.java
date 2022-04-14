@@ -38,6 +38,15 @@ public class WalletService {
         return walletRepository.findWalletByUserEquals(user.get());
     }
 
+    public Wallet getWalletByUserAndBic(String bic, String userID){
+        Optional<Wallet> optionalWallet = walletRepository.findWalletByUserAndBic(userID, bic);
+
+        if (optionalWallet.isEmpty()){
+            throw new ApiNotFoundException("Wallet for user : " +userID + " and bank : " + bic + " does not exist");
+        }
+        return optionalWallet.get();
+    }
+
     public List<Wallet> getAllUserWallets(String userID){
         Optional<User> user = userRepository.findUserByUserID(userID);
 

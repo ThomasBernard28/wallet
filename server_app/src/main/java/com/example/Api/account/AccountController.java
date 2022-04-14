@@ -4,6 +4,7 @@ import com.example.Api.bank.BankService;
 import com.example.Api.client.Client;
 import com.example.Api.client.ClientService;
 import com.example.Api.exception.ApiNotFoundException;
+import com.example.Api.pendingRequests.accountRequest.AccountRequestService;
 import com.example.Api.wallet.Wallet;
 import com.example.Api.wallet.WalletService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,16 +19,14 @@ import java.util.Map;
 public class AccountController {
 
     private final AccountService accountService;
-    private final WalletService walletService;
     private final ClientService clientService;
-    private final BankService bankService;
+    private final AccountRequestService accountRequestService;
 
     @Autowired
-    public AccountController(AccountService accountService, WalletService walletService, ClientService clientService, BankService bankService){
+    public AccountController(AccountService accountService,ClientService clientService, AccountRequestService accountRequestService ){
         this.accountService = accountService;
-        this.walletService = walletService;
         this.clientService = clientService;
-        this.bankService = bankService;
+        this.accountRequestService = accountRequestService;
     }
 
     @GetMapping(path = "{walletId}")
@@ -47,23 +46,9 @@ public class AccountController {
 
     @PostMapping
     public void createAccount(@RequestBody Map<String , String> json){
-        String iban = json.get("iban");
-        try{
-            clientService.getOneClient(json.get("bic"), json.get("userID"));
+        Client client = clientService.getOneClient(json.get("bic"), json.get("userID"));
 
-        }catch(ApiNotFoundException e){
-            clientService.registerClient(bankService.getBank(json.get("bic")), json.get("userID"));
-        }
-
-        try{
-            accountService.getIbanAccount(iban).getIban().equals(iban);
-
-        }catch (ApiNotFoundException e){
-            Wallet wallet = walletService.getWalletByWalletID(Long.parseLong(json.get("walletID"))).get();
-            Client client = clientService.getOneClient(json.get("bic"), json.get("userID")).get();
-
-            accountService.registerAccount(iban, wallet, client, json.get("type"), Float.parseFloat(json.get("avgBalance")), json.get("localCurr"), Integer.parseInt(json.get("activity")));
-        }
+        accountRequestService.registerAccountRequest(client, json.get("type"));
     }
 
     @PutMapping(path = "{iban}")

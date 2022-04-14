@@ -29,14 +29,14 @@ public class ClientService {
         return clientRepository.findAllByBank(bic);
     }
 
-    public Optional<Client> getOneClient(String bic, String userID) throws ApiNotFoundException{
+    public Client getOneClient(String bic, String userID){
         Optional<Client> clientVsInstOptional = clientRepository.findByBankAndUserID(bic, userID);
 
-        if(!clientVsInstOptional.isPresent()){
+        if(clientVsInstOptional.isEmpty()){
             throw new ApiNotFoundException("This client with userID and bic : " + userID + " " + bic + "doesn't exist");
         }
 
-        return clientVsInstOptional;
+        return clientVsInstOptional.get();
     }
 
     public void registerClient(Bank bank, String userID){

@@ -30,7 +30,7 @@ public class ClientController {
 
     @GetMapping(path = "{bic}/{userID}")
     public Client getOneClient(@PathVariable("bic") String bic, @PathVariable("userID") String userID){
-        return clientService.getOneClient(bic, userID).get();
+        return clientService.getOneClient(bic, userID);
     }
 
     @PostMapping

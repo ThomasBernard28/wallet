@@ -1,6 +1,9 @@
 package com.example.Api.scheduler;
 
 
+import com.example.Api.account.AccountService;
+import com.example.Api.pendingRequests.accountRequest.AccountRequest;
+import com.example.Api.pendingRequests.accountRequest.AccountRequestService;
 import com.example.Api.transaction.Transaction;
 import com.example.Api.transaction.TransactionService;
 import lombok.RequiredArgsConstructor;
@@ -20,6 +23,8 @@ import java.util.concurrent.TimeUnit;
 public class TrxScheduler extends AbstractScheduler{
 
     private final TransactionService transactionService;
+    private final AccountRequestService accountRequestService;
+    private final AccountService accountService;
 
     /**
      * This method will process every transaction in the data base for which the date is already passed
@@ -36,10 +41,27 @@ public class TrxScheduler extends AbstractScheduler{
             //Printing number of transactions to process
             log.info("[SCHEDULED TASK] Processing transactions (i={})", trxToProcess.size());
 
-            for(int i = 0; i < trxToProcess.size(); i ++){
-                Transaction transaction = trxToProcess.get(i);
-
+            for (Transaction transaction : trxToProcess) {
                 transactionService.performTransaction(transaction);
+            }
+            log.info("[SCHEDULED TASK] Completed all scheduled task");
+        }
+    }
+
+    @Scheduled(initialDelay = 10, fixedRate = minutes, timeUnit = TimeUnit.SECONDS)
+    public void processAllRequest(){
+        if (isWeekend(LocalDateTime.now())){
+            log.info("[SCHEDULED TASK] The request will start to be processed back on monday");
+        }
+        else{
+            List<AccountRequest> requestToProcess = accountRequestService.getAllRequestToProcess();
+
+            log.info("[SCHEDULED TASK] Processing account create request (j={})", requestToProcess.size());
+
+            for (AccountRequest request : requestToProcess){
+                if(accountService.registerAccount(request.getClient(), request.getType())){
+                    accountRequestService.deleteRequest(request);
+                }
             }
             log.info("[SCHEDULED TASK] Completed all scheduled task");
         }
