@@ -9,6 +9,8 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
+import javafx.scene.control.Alert;
+import javafx.scene.control.Alert.AlertType;
 import javafx.stage.Stage;
 import javafx.util.Duration;
 
@@ -48,10 +50,23 @@ public class RegisterController {
 
     @FXML
     private void onRegisterClicked() {
-        if (password.getText().equals(confirmPassword.getText())) {
-            App.currentUser = new User(firstName.getText(), lastName.getText(), nationalId.getText(), password.getText());
+        if (nationalId.getText().equals("") || firstName.getText().equals("") || lastName.getText().equals("") || password.getText().equals("")) {
+            Alert a = new Alert(AlertType.WARNING);
+            a.setContentText("All informations are required.");
+            a.show();
+        }
+        else if (nationalId.getText().length() != 11) {
+            Alert a = new Alert(AlertType.WARNING);
+            a.setContentText("Your national ID must be 11 numbers long.");
+            a.show();
+        }
+        else if (password.getText().equals(confirmPassword.getText())) {
+            App.currentUser = new User(firstName.getText().toLowerCase(), lastName.getText().toLowerCase(), nationalId.getText(), password.getText());
             try {
                 App.api.post_user(App.currentUser.write_data());
+                Alert a = new Alert(AlertType.INFORMATION);
+                a.setContentText("Your account has been successffuly created"+'\n'+"your id : "+App.currentUser.get_userID());
+                a.show();
                 onBackButtonClicked();
             }
             catch (Exception e) {
