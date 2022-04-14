@@ -34,7 +34,16 @@ public class ProductHistoryController {
 
         int row = 0;
         for (History h : historyList) {
-            Label l = new Label(h.toString());
+            String direction = h.get_ibanSender() + " ---> " + h.get_ibanReceiver() + '\n';
+            if (h.get_ibanReceiver().equals(App.currentAccount.get_iban())) {
+                direction = h.get_ibanReceiver() + " <--- " + h.get_ibanSender() + '\n';
+            }
+            String amount = "amount : " + h.get_amount() + " " + App.currentAccount.get_localCurr() + '\n';
+            String newBal = "balance : " + h.get_prevBalance() + " ---> " + h.get_nextBalance() + '\n';
+            String date   = "date : " + h.get_dateTime().substring(0, 10) + '\n';
+            String com    = "communication : \n" + h.get_comments();
+            Label l = new Label(direction + amount + newBal + date + com);
+            l.setStyle("-fx-border-color: grey;");
             grid.add(l, 0, row++);
         }
     }
