@@ -5,6 +5,7 @@ import com.example.Api.exception.ApiIncorrectException;
 import com.example.Api.exception.ApiNotFoundException;
 import com.example.Api.insurance.InsuranceService;
 import com.example.Api.insuranceInfo.InsuranceInfoRepository;
+import com.example.Api.penBalance.PenBalanceService;
 import com.example.Api.wallet.WalletRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -20,15 +21,18 @@ public class PensionSavingService {
     private final ClientRepository clientRepository;
     private final InsuranceInfoRepository insuranceInfoRepository;
     private final InsuranceService insuranceService;
+    private final PenBalanceService penBalanceService;
 
     @Autowired
     public PensionSavingService(PensionSavingRepository pensionSavingRepository, WalletRepository walletRepository,
-                                ClientRepository clientRepository, InsuranceInfoRepository insuranceInfoRepository, InsuranceService insuranceService){
+                                ClientRepository clientRepository, InsuranceInfoRepository insuranceInfoRepository,
+                                InsuranceService insuranceService, PenBalanceService penBalanceService){
         this.pensionSavingRepository = pensionSavingRepository;
         this.clientRepository = clientRepository;
         this.walletRepository = walletRepository;
         this.insuranceInfoRepository = insuranceInfoRepository;
         this.insuranceService = insuranceService;
+        this.penBalanceService = penBalanceService;
     }
 
     public PensionSaving getPensionSavingByID(Long pensionID){
@@ -66,5 +70,7 @@ public class PensionSavingService {
         pensionSavingRepository.save(pensionSaving);
 
         insuranceService.createInsuranceFromPension(pensionSaving);
+
+        penBalanceService.registerPenBalance(pensionSaving.getPensionID(), pensionSaving.getBalance(), "EUR");
     }
 }

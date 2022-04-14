@@ -23,6 +23,9 @@ public interface WalletRepository  extends JpaRepository<Wallet, Long> {
     @Query("SELECT s FROM WALLETS s WHERE s.user=?1 AND s.activity = 1")
     List<Wallet> findWalletByUserEquals(User user);
 
+    @Query("SELECT s FROM WALLETS s WHERE s.user=?1")
+    List<Wallet> findWalletByUserEqualsAll(User user);
+
     @Modifying
     @Query("DELETE FROM WALLETS s WHERE s.walletID = ?1")
     void deleteById(Long walletID);

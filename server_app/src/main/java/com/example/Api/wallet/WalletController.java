@@ -36,15 +36,13 @@ public class WalletController {
 
     @GetMapping(path = "{userId}")
     public List<Wallet> getUserWallets(@PathVariable("userId") String userID){
-        List<Wallet> wallets = walletService.getUserWallets(userID);
-        List<Wallet> activeWallets = new ArrayList<>();
+        return walletService.getUserWallets(userID);
 
-        for (Wallet wallet: wallets) {
-            if (wallet.getActivity().equals(1)){
-                activeWallets.add(wallet);
-            }
-        }
-        return activeWallets;
+    }
+
+    @GetMapping(path = "all/{userID}")
+    public List<Wallet> getAllUserWallets(@PathVariable("userID") String userID){
+        return walletService.getAllUserWallets(userID);
     }
 
     @PostMapping

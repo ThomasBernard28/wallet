@@ -38,6 +38,15 @@ public class WalletService {
         return walletRepository.findWalletByUserEquals(user.get());
     }
 
+    public List<Wallet> getAllUserWallets(String userID){
+        Optional<User> user = userRepository.findUserByUserID(userID);
+
+        if(!user.isPresent()){
+            throw new ApiNotFoundException("The user : "+ userID +" doesn't exist");
+        }
+        return walletRepository.findWalletByUserEqualsAll(user.get());
+    }
+
     public Optional<Wallet> getWalletByWalletID(Long walletID){
         Optional<Wallet> walletOptional = walletRepository.findWalletByWalletID(walletID);
 

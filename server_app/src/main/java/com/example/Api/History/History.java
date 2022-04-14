@@ -40,8 +40,13 @@ public class History {
     private String ibanSender;
 
     @Column(
+            name = "insIDReceiver",
+            updatable = false
+    )
+    private Long insIDReceiver;
+
+    @Column(
             name = "ibanReceiver",
-            nullable = false,
             updatable = false,
             columnDefinition = "CHAR(16)"
     )
@@ -86,6 +91,18 @@ public class History {
         this.trxID = trxID;
         this.balanceIdViewer = balanceIdViewer;
         this.ibanReceiver = ibanReceiver;
+        this.amount = amount;
+        this.prevBalance = prevBalance;
+        this.nextBalance = nextBalance;
+        this.dateTime = dateTime;
+        this.comments = comments;
+    }
+
+    public History(Long trxID, Long balanceIdViewer, String ibanSender, Long insIDReceiver, Float amount, Float prevBalance, Float nextBalance, LocalDateTime dateTime, String comments) {
+        this.trxID = trxID;
+        this.balanceIdViewer = balanceIdViewer;
+        this.ibanSender = ibanSender;
+        this.insIDReceiver = insIDReceiver;
         this.amount = amount;
         this.prevBalance = prevBalance;
         this.nextBalance = nextBalance;
