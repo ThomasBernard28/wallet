@@ -13,18 +13,21 @@ import javafx.scene.Scene;
 import javafx.scene.Parent;
 import javafx.stage.Stage;
 
-import java.io.IOException;
 import java.io.*;
 import java.util.ArrayList;
+import java.util.Map;
+import com.fasterxml.jackson.core.type.TypeReference;  
+import com.fasterxml.jackson.databind.ObjectMapper;  
 
 public class App extends Application {
 
     public static Api api = new Api();
     public static ArrayList<Bank> banksList = new ArrayList();   // all supported banks ( given by the api )
-    public static User    currentUser;
-    public static Wallet  currentWallet;
-    public static Account currentAccount;
-    public static Stage   stage;
+    public static User                currentUser;
+    public static Wallet              currentWallet;
+    public static Account             currentAccount;
+    public static Map<String, String> currentLanguage;
+    public static Stage               stage;
 
 
     @Override
@@ -42,6 +45,7 @@ public class App extends Application {
     }
 
     public static void main(String[] args) {
+        set_currentLanguage("FR"); // debug
         // creating a list of banks
         String json;
         try {
@@ -63,6 +67,7 @@ public class App extends Application {
         try {
             currentUser.read_data(api.get_user(userID));
             if (currentUser.get_userID().equals(userID)) {
+                set_currentLanguage(currentUser.get_language());
                 return true;
             }
         }
@@ -87,6 +92,21 @@ public class App extends Application {
             }
         }
         return "Unknown bank, name: "+name;
+    }
+
+    public static void set_currentLanguage(String language) {
+        ObjectMapper mapper = new ObjectMapper(); 
+        File json;
+        try {
+            json = new File("build/resources/main/languages/"+language+".json");
+        }
+        catch (Exception e) {
+            json = new File("build/resources/main/languages/EN.json");
+        }
+        try {  
+            currentLanguage = mapper.readValue(json, new TypeReference<Map<String, String>>() {});
+        }
+        catch (Exception e) {}
     }
 
     public static String get_bankName(String bic) {

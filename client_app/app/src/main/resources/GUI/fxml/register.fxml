@@ -22,11 +22,11 @@
                                 <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                             </rowConstraints>
                             <children>
-                                <Label text="First name :" GridPane.rowIndex="1" />
-                                <Label text="Last name :" GridPane.rowIndex="2" />
-                                <Label text="National register number :" GridPane.rowIndex="3" />
-                                <Label alignment="CENTER" contentDisplay="CENTER" text="Password :" GridPane.rowIndex="4" />
-                                <Label text="Confirm password :" GridPane.rowIndex="5" />
+                                <Label fx:id="firstNameLabel" text="First name :" GridPane.rowIndex="1" />
+                                <Label fx:id="lastNameLabel" text="Last name :" GridPane.rowIndex="2" />
+                                <Label fx:id="nationalIdLabel" text="National register number :" GridPane.rowIndex="3" />
+                                <Label fx:id="passwordLabel" alignment="CENTER" contentDisplay="CENTER" text="Password :" GridPane.rowIndex="4" />
+                                <Label fx:id="confirmPasswordLabel" text="Confirm password :" GridPane.rowIndex="5" />
                                 <TextField fx:id="firstName" GridPane.columnIndex="1" GridPane.rowIndex="1"/>
                                 <TextField fx:id="lastName" GridPane.columnIndex="1" GridPane.rowIndex="2" />
                                 <TextField fx:id="nationalId" GridPane.columnIndex="1" GridPane.rowIndex="3"/>

@@ -31,9 +31,23 @@ public class ProductMenuController {
     private Label curr;
     @FXML
     private Label iban;
+    @FXML
+    private Label balanceLabel;
+    @FXML
+    private Label ibanLabel;
 
     @FXML
     private void initialize() {
+        // set language
+        back.setText(App.currentLanguage.get("back"));
+        coowner.setText(App.currentLanguage.get("coOwners"));
+        history.setText(App.currentLanguage.get("history"));
+        transaction.setText(App.currentLanguage.get("transaction"));
+        delete.setText(App.currentLanguage.get("delete"));
+        balanceLabel.setText(App.currentLanguage.get("balance")+" : ");
+        ibanLabel.setText(App.currentLanguage.get("iban")+" : ");
+
+        // set values
         balance.setText(Float.toString(App.currentAccount.get_avgBalance()));
         curr.setText(App.currentAccount.get_localCurr());
         iban.setText(App.currentAccount.get_iban());

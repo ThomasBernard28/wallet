@@ -7,6 +7,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
+import javafx.scene.control.Label;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
 import javafx.stage.Stage;
@@ -39,18 +40,41 @@ public class PerformTransactionController {
     private TextField receiverName;
 
     @FXML
+    private Label receiverLabel;
+    @FXML
+    private Label nameLabel;
+    @FXML
+    private Label ibanLabel;
+    @FXML
+    private Label amountLabel;
+    @FXML
+    private Label communicationLabel;
+
+    @FXML
+    private void initialize() {
+        // set language
+        back.setText(App.currentLanguage.get("back"));
+        confirm.setText(App.currentLanguage.get("confirm"));
+        receiverLabel.setText(App.currentLanguage.get("receiver")+" : ");
+        nameLabel.setText(App.currentLanguage.get("firstName")+", "+App.currentLanguage.get("lastName")+" : ");
+        amountLabel.setText(App.currentLanguage.get("amount")+" : ");
+        communicationLabel.setText(App.currentLanguage.get("communication")+" : ");
+
+    }
+
+    @FXML
     private void onConfirmButtonClick() throws IOException {
         boolean cancel = false;
         if (iban.getText().equals("")) {
             cancel = true;
             Alert a = new Alert(AlertType.WARNING);
-            a.setContentText("Please enter an iban.");
+            a.setContentText(App.currentLanguage.get("transactionWarning1"));
             a.show();
         }
         else if (amount.getText().equals("") || Float.valueOf(amount.getText()).floatValue() > App.currentAccount.get_avgBalance()) {
             cancel = true;
             Alert a = new Alert(AlertType.WARNING);
-            a.setContentText("Please enter a correct amount value.");
+            a.setContentText(App.currentLanguage.get("transactionWarning2"));
             a.show();
         }
         // to do : date time control 

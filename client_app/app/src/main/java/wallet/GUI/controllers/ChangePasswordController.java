@@ -37,7 +37,25 @@ public class ChangePasswordController {
     private PasswordField newPassword;
 
     @FXML
+    private Label oldPasswordLabel;
+    @FXML
+    private Label newPasswordLabel;
+    @FXML
+    private Label confirmPasswordLabel;
+
+    @FXML
     private Label match;
+
+    @FXML
+    private void initialize() {
+        // set language
+        back.setText(App.currentLanguage.get("back"));
+        changepassword.setText(App.currentLanguage.get("changePassword"));
+        match.setText(App.currentLanguage.get("pwMissmatch"));
+        oldPasswordLabel.setText(App.currentLanguage.get("oldPassword")+" :");
+        newPasswordLabel.setText(App.currentLanguage.get("newPassword")+" :");
+        confirmPasswordLabel.setText(App.currentLanguage.get("confirmPassword")+" :");
+    }
 
     @FXML
     private void onBackButtonClick() throws IOException {
@@ -54,7 +72,7 @@ public class ChangePasswordController {
         if (newPassword.getText().equals(confirmPassword.getText()) && oldPassword.getText().equals(App.currentUser.get_password())) {
             App.currentUser.change_password(newPassword.getText()); 
             Alert a = new Alert(AlertType.INFORMATION);
-            a.setContentText("Your password has been changed.");
+            a.setContentText(App.currentLanguage.get("changePasswordMessage"));
             a.show();
             onBackButtonClick();
         } else {

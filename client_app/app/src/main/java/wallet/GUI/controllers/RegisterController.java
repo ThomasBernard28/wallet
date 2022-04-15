@@ -37,6 +37,29 @@ public class RegisterController {
     private Button back;
     @FXML
     private Button register;
+    @FXML
+    private Label firstNameLabel;
+    @FXML
+    private Label lastNameLabel;
+    @FXML
+    private Label nationalIdLabel;
+    @FXML
+    private Label passwordLabel;
+    @FXML
+    private Label confirmPasswordLabel;
+
+    @FXML 
+    private void initialize() {
+        // set language
+        wrong.setText(App.currentLanguage.get("pwMissmatch"));
+        back.setText(App.currentLanguage.get("back"));
+        register.setText(App.currentLanguage.get("register"));
+        firstNameLabel.setText(App.currentLanguage.get("firstName")+" :");
+        lastNameLabel.setText(App.currentLanguage.get("lastName")+" :");
+        nationalIdLabel.setText(App.currentLanguage.get("nationalID")+" :");
+        passwordLabel.setText(App.currentLanguage.get("password")+" :");
+        confirmPasswordLabel.setText(App.currentLanguage.get("confirmPassword")+" :");
+    }
 
     @FXML
     private void onBackButtonClicked() throws IOException {
@@ -52,12 +75,12 @@ public class RegisterController {
     private void onRegisterClicked() {
         if (nationalId.getText().equals("") || firstName.getText().equals("") || lastName.getText().equals("") || password.getText().equals("")) {
             Alert a = new Alert(AlertType.WARNING);
-            a.setContentText("All informations are required.");
+            a.setContentText(App.currentLanguage.get("registerWarning1"));
             a.show();
         }
         else if (nationalId.getText().length() != 11) {
             Alert a = new Alert(AlertType.WARNING);
-            a.setContentText("Your national ID must be 11 numbers long.");
+            a.setContentText(App.currentLanguage.get("registerWarning2"));
             a.show();
         }
         else if (password.getText().equals(confirmPassword.getText())) {
@@ -65,7 +88,7 @@ public class RegisterController {
             try {
                 App.api.post_user(App.currentUser.write_data());
                 Alert a = new Alert(AlertType.INFORMATION);
-                a.setContentText("Your account has been successffuly created"+'\n'+"your id : "+App.currentUser.get_userID());
+                a.setContentText(App.currentLanguage.get("registerMessage")+App.currentUser.get_userID());
                 a.show();
                 onBackButtonClicked();
             }

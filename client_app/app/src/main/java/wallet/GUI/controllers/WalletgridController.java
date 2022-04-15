@@ -34,6 +34,9 @@ public class WalletgridController {
 
     @FXML
     private void initialize() {
+        // set language
+        back.setText(App.currentLanguage.get("back"));
+
         try {
             App.currentUser.set_walletsList(App.api.get_wallets(App.currentUser.get_userID()));
             walletsList = App.currentUser.get_walletsList();

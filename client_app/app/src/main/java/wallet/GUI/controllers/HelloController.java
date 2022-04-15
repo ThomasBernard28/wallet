@@ -14,6 +14,8 @@ import javafx.util.Duration;
 import java.io.IOException;
 import java.io.File;
 
+import wallet.App;
+
 
 public class HelloController {
     @FXML
@@ -26,7 +28,19 @@ public class HelloController {
     private Button login;
     @FXML
     private Button register;
+    @FXML
+    private Label idLabel;
+    @FXML
+    private Label passwordLabel;
 
+
+    @FXML
+    private void initialize() {
+        login.setText(App.currentLanguage.get("login"));
+        register.setText(App.currentLanguage.get("register"));
+        idLabel.setText(App.currentLanguage.get("id")+" :");
+        passwordLabel.setText(App.currentLanguage.get("password")+" :");
+    }
 
     @FXML
     private void onLoginButtonClick() throws IOException {

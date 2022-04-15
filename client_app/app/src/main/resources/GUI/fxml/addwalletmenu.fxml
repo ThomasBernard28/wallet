@@ -23,7 +23,7 @@
     <center>
         <HBox alignment="CENTER" prefHeight="306.0" prefWidth="600.0" spacing="50.0" BorderPane.alignment="CENTER">
             <children>
-                <Label alignment="CENTER" contentDisplay="CENTER" maxWidth="1.7976931348623157E308" prefHeight="16.0" prefWidth="213.0" text="Select your financial institution :" />
+                <Label fx:id="selectInstitution" alignment="CENTER" contentDisplay="CENTER" maxWidth="1.7976931348623157E308" prefHeight="16.0" prefWidth="213.0" text="Select your financial institution :" />
                 <ComboBox fx:id="box" prefHeight="24.0" prefWidth="209.0" />
             </children>
         </HBox>

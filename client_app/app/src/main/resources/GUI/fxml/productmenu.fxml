@@ -28,7 +28,7 @@
             <children>
                 <HBox alignment="CENTER" prefHeight="100.0" prefWidth="145.0">
                     <children>
-                        <Label text="Balance :">
+                        <Label fx:id="balanceLabel" text="Balance :">
                             <HBox.margin>
                                 <Insets right="5.0"/>
                             </HBox.margin>
@@ -43,7 +43,7 @@
                 </HBox>
                 <HBox alignment="CENTER" prefHeight="100.0" prefWidth="272.0">
                     <children>
-                        <Label maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" text="IBAN :">
+                        <Label fx:id="ibanLabel" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" text="IBAN :">
                             <HBox.margin>
                                 <Insets right="5.0"/>
                             </HBox.margin>

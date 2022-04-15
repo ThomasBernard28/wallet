@@ -6,6 +6,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
+import javafx.scene.control.Label;
 import javafx.stage.Stage;
 import javafx.collections.*;
 
@@ -24,9 +25,16 @@ public class AddWalletMenuController {
     Button add;
     @FXML
     ComboBox box;
+    @FXML
+    Label selectInstitution;
 
     @FXML
     private void initialize() {
+        // set language
+        back.setText(App.currentLanguage.get("back"));
+        add.setText(App.currentLanguage.get("addWallet"));
+        selectInstitution.setText(App.currentLanguage.get("selectInstitution")+" : ");
+
         ArrayList<String> names = new ArrayList();
         for (Bank b : App.banksList) {
             boolean subscribed = false;

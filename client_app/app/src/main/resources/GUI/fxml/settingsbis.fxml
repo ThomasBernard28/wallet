@@ -29,25 +29,24 @@
                 <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
             </rowConstraints>
             <children>
-                <Label maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" text="Language">
+                <Label fx:id="languageLabel" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" text="Language">
                     <font>
                         <Font name="Montserrat Regular" size="34.0" />
                     </font>
                 </Label>
                 <ComboBox fx:id="language" maxWidth="1.7976931348623157E308" prefWidth="150.0" promptText="Select Language" GridPane.columnIndex="1" />
-                <Label maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" text="Sound" GridPane.rowIndex="1">
+                <Label fx:id="soundLabel" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" text="Sound" GridPane.rowIndex="1">
                     <font>
                         <Font name="Montserrat Regular" size="34.0" />
                     </font>
                 </Label>
-                <Label maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" text="Dark theme" GridPane.rowIndex="2">
+                <Label fx:id="darkThemeLabel" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" text="Dark theme" GridPane.rowIndex="2">
                     <font>
                         <Font name="Montserrat Regular" size="34.0" />
                     </font>
                 </Label>
                 <CheckBox fx:id="theme" alignment="CENTER" contentDisplay="CENTER" maxHeight="1.7976931348623157E308" maxWidth="-Infinity" mnemonicParsing="false" onAction="#OnThemeCheckBoxChecked" prefHeight="84.0" prefWidth="0.0" GridPane.columnIndex="1" GridPane.rowIndex="2" />
                 <CheckBox fx:id="sound" alignment="CENTER" contentDisplay="CENTER" maxHeight="1.7976931348623157E308" maxWidth="-Infinity" mnemonicParsing="false" prefHeight="84.0" prefWidth="59.0" GridPane.columnIndex="1" GridPane.rowIndex="1" />
-                <Label fx:id="sike" alignment="CENTER" contentDisplay="RIGHT" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" nodeOrientation="LEFT_TO_RIGHT" prefHeight="16.0" prefWidth="165.0" text="Et non Théo" visible="false" GridPane.columnIndex="1" GridPane.halignment="RIGHT" GridPane.rowIndex="2" GridPane.valignment="CENTER" />
             </children>
         </GridPane>
     </center>

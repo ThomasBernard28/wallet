@@ -27,6 +27,9 @@ public class ProductHistoryController {
 
     @FXML
     private void initialize() throws IOException {
+        // set language
+        back.setText(App.currentLanguage.get("back"));
+
         try {
             App.currentUser.set_historyList(App.api.get_history(App.currentAccount.get_iban()));
             historyList = App.currentUser.get_historyList();
@@ -38,10 +41,10 @@ public class ProductHistoryController {
             if (h.get_ibanReceiver().equals(App.currentAccount.get_iban())) {
                 direction = h.get_ibanReceiver() + " <--- " + h.get_ibanSender() + '\n';
             }
-            String amount = "amount : " + h.get_amount() + " " + App.currentAccount.get_localCurr() + '\n';
-            String newBal = "balance : " + h.get_prevBalance() + " ---> " + h.get_nextBalance() + '\n';
-            String date   = "date : " + h.get_dateTime().substring(0, 10) + '\n';
-            String com    = "communication : \n" + h.get_comments();
+            String amount = App.currentLanguage.get("amount")+ " : " + h.get_amount() + " " + App.currentAccount.get_localCurr() + '\n';
+            String newBal = App.currentLanguage.get("balance")+ " : " + h.get_prevBalance() + " ---> " + h.get_nextBalance() + '\n';
+            String date   = App.currentLanguage.get("date")+ " : " + h.get_dateTime().substring(0, 10) + '\n';
+            String com    = App.currentLanguage.get("communication")+ " : \n" + h.get_comments();
             Label l = new Label(direction + amount + newBal + date + com);
             l.setStyle("-fx-border-color: grey;");
             grid.add(l, 0, row++);

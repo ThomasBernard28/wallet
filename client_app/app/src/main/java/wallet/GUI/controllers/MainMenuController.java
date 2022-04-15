@@ -57,6 +57,13 @@ public class MainMenuController {
 
     @FXML
     private void initialize() throws MalformedURLException {
+        // set language text :
+        wallets.setText(App.currentLanguage.get("myWallets"));
+        account.setText(App.currentLanguage.get("myProfile"));
+        settings.setText(App.currentLanguage.get("settings"));
+        signout.setText(App.currentLanguage.get("signOut"));
+        leave.setText(App.currentLanguage.get("leave"));
+
         FXMLLoader fxmlLoader = new FXMLLoader(new File("build/resources/main/GUI/fxml/settingsbis.fxml").toURL());
 
        /* if(true){

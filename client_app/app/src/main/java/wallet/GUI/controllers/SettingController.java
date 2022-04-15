@@ -22,6 +22,8 @@ import javafx.util.Duration;
 
 import java.io.*;
 
+import wallet.App;
+
 
 public class SettingController {
     @FXML
@@ -35,11 +37,22 @@ public class SettingController {
     @FXML
     CheckBox theme;
     @FXML
-    Label sike;
+    Label languageLabel;
+    @FXML
+    Label soundLabel;
+    @FXML
+    Label darkThemeLabel;
 
 
     @FXML
     private void initialize() {
+        // set language
+        back.setText(App.currentLanguage.get("back"));
+        languageLabel.setText(App.currentLanguage.get("language")+" :");
+        soundLabel.setText(App.currentLanguage.get("sound")+" :");
+        darkThemeLabel.setText(App.currentLanguage.get("darkTheme")+" : ");
+        language.setPromptText(App.currentLanguage.get("selectLanguage"));
+
 
         borderPane.backgroundProperty().bind(Bindings.when(theme.selectedProperty())
                 .then(new Background(new BackgroundFill(Color.GREY, CornerRadii.EMPTY, Insets.EMPTY)))
@@ -49,12 +62,6 @@ public class SettingController {
 
     @FXML
     private void OnThemeCheckBoxChecked() {
-        sike.setVisible(true);
-        PauseTransition visiblePause = new PauseTransition(Duration.seconds(1.5));
-        visiblePause.setOnFinished(
-                event -> sike.setVisible(false)
-        );
-        visiblePause.play();
     }
 
     @FXML
