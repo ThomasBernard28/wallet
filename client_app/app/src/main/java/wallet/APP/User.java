@@ -182,6 +182,25 @@ public class User implements JsonReader {
         }
     }
 
+    public boolean add_account(String type) {
+        String t = "";
+        switch(type) {
+            case "Checking account":
+                t = "CA";
+                break;
+            case "Saving account":
+                t = "SA";
+                break;
+        }
+        Account account = new Account(t);
+        try {
+            api.post_accountRequest(account.write_data());
+            return true;
+        }
+        catch (Exception e) {}
+        return false;
+    }
+
     public void disable_account(Account account) {
         try {
             api.put_accountActivity(account.get_iban(), 0);

@@ -16,6 +16,10 @@ public class Account implements JsonReader {
 
    public Account() {}
 
+   public Account(String type) {
+      data.setType(type);
+   }
+
    @Override
    public void read_data(String json) {
       try {
@@ -26,6 +30,18 @@ public class Account implements JsonReader {
       catch (Exception e) {
          System.out.println("failed to read account data"); // debug
       }
+   }
+
+   public String write_data() {
+      return "{\"bic\":\""+get_bic()+"\", \"userID\":\""+get_userID()+"\", \"type\":\""+get_type()+"\"}";
+   }
+
+   public String get_bic() {
+      return data.getBic();
+   }
+
+   public String get_userID() {
+      return data.getUserID();
    }
 
    public float get_avgBalance() {

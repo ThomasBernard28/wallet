@@ -45,6 +45,15 @@ public class Api {
         client.send(request, HttpResponse.BodyHandlers.ofString());
     }
 
+    public void post_accountRequest(String json) throws Exception {
+        request = HttpRequest.newBuilder()
+            .uri(URI.create("http://sierra880.xyz:4545/api/v1/accounts"))
+            .header("Content-Type", "application/json")
+            .POST(HttpRequest.BodyPublishers.ofString(json))
+            .build();
+        client.send(request, HttpResponse.BodyHandlers.ofString());
+    } 
+
     public String get_products(int userID) throws IOException, InterruptedException {
         request  = HttpRequest.newBuilder().GET().header("accept", "application/json").uri(URI.create("http://sierra880.xyz:4545/api/v1/accounts/"+Integer.toString(userID))).build();
         response = client.send(request, HttpResponse.BodyHandlers.ofString());
