@@ -1,6 +1,5 @@
 package wallet.GUI.controllers;
 
-
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -27,6 +26,7 @@ public class AddProductMenuController {
 
     @FXML
     private void initialize() {
+        // set comboBox values
         String types[] = {"Checking account", "Saving account"};
         box.setItems(FXCollections.observableArrayList(types));
     }
@@ -38,6 +38,7 @@ public class AddProductMenuController {
             a.setContentText("Please select an account type.");
             a.show();
         }
+
         else {
             boolean requested = App.currentUser.add_account((String) box.getValue());
             if (requested) {

@@ -11,7 +11,7 @@ import java.time.LocalDateTime;
 
 public class Api {
 
-    private HttpClient           client   = HttpClient.newHttpClient();
+    private HttpClient           client = HttpClient.newHttpClient();
     private HttpRequest          request;
     private HttpResponse<String> response;
 

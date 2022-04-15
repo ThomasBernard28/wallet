@@ -25,7 +25,6 @@ import java.io.*;
 
 import wallet.App;
 
-
 public class SettingController {
     @FXML
     BorderPane borderPane;
@@ -44,7 +43,6 @@ public class SettingController {
     @FXML
     Label darkThemeLabel;
 
-
     @FXML
     private void initialize() {
         // set language
@@ -60,7 +58,6 @@ public class SettingController {
         borderPane.backgroundProperty().bind(Bindings.when(theme.selectedProperty())
                 .then(new Background(new BackgroundFill(Color.GREY, CornerRadii.EMPTY, Insets.EMPTY)))
                 .otherwise(new Background(new BackgroundFill(Color.BEIGE, CornerRadii.EMPTY, Insets.EMPTY))));
-
     }
 
     @FXML
@@ -75,7 +72,6 @@ public class SettingController {
 
     @FXML
     private void onBackButtonCLick() throws IOException {
-
         FXMLLoader fxmlLoader = new FXMLLoader(new File("build/resources/main/GUI/fxml/mainmenu.fxml").toURL());
         Parent root = fxmlLoader.load();
         Stage stage = (Stage) (back.getScene().getWindow());
@@ -83,14 +79,13 @@ public class SettingController {
         stage.setScene(scene);
         stage.show();
     }
+
     public boolean getThemeValue(){
         return theme.isSelected();
     }
+
     public CheckBox getTheme(){
         return theme;
     }
 
-
 }
-
-

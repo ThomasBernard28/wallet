@@ -19,30 +19,22 @@ import java.io.IOException;
 import wallet.App;
 
 public class ChangePasswordController {
-
-
     @FXML
     private Button back;
-
     @FXML
     private Button changepassword;
-
     @FXML
     private PasswordField oldPassword;
-
     @FXML
     private PasswordField confirmPassword;
-
     @FXML
     private PasswordField newPassword;
-
     @FXML
     private Label oldPasswordLabel;
     @FXML
     private Label newPasswordLabel;
     @FXML
     private Label confirmPasswordLabel;
-
     @FXML
     private Label match;
 
@@ -75,7 +67,10 @@ public class ChangePasswordController {
             a.setContentText(App.currentLanguage.get("changePasswordMessage"));
             a.show();
             onBackButtonClick();
-        } else {
+        } 
+
+        // if passwords aren't matching : 
+        else {
             match.setVisible(true);
             PauseTransition visiblePause = new PauseTransition(Duration.seconds(2));
             visiblePause.setOnFinished(
@@ -86,4 +81,3 @@ public class ChangePasswordController {
     }
 
 }
-

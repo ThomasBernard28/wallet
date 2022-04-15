@@ -35,6 +35,7 @@ public class AddWalletMenuController {
         add.setText(App.currentLanguage.get("addWallet"));
         selectInstitution.setText(App.currentLanguage.get("selectInstitution")+" : ");
 
+        // set comboBox values (banks in which the user has no wallet yet)
         ArrayList<String> names = new ArrayList();
         for (Bank b : App.banksList) {
             boolean subscribed = false;

@@ -16,7 +16,6 @@ import java.io.File;
 
 import wallet.App;
 
-
 public class HelloController {
     @FXML
     private Label wrong;
@@ -33,9 +32,9 @@ public class HelloController {
     @FXML
     private Label passwordLabel;
 
-
     @FXML
     private void initialize() {
+        // set language
         login.setText(App.currentLanguage.get("login"));
         register.setText(App.currentLanguage.get("register"));
         idLabel.setText(App.currentLanguage.get("id")+" :");

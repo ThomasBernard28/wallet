@@ -23,8 +23,8 @@ public class App extends Application {
 
     public static Api api = new Api();
     public static ArrayList<Bank> banksList = new ArrayList();   // all supported banks ( given by the api )
-    public static User                currentUser;
-    public static Wallet              currentWallet;
+    public static User                currentUser; 
+    public static Wallet              currentWallet;             
     public static Account             currentAccount;
     public static Map<String, String> currentLanguage;
     public static Stage               stage;
@@ -33,20 +33,19 @@ public class App extends Application {
     @Override
     public void start(Stage stage) throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader();
-        Parent root = fxmlLoader.load(getFileFromResourceAsStream("GUI/fxml/hello-view.fxml"));
+        Parent root = fxmlLoader.load(getFileFromResourceAsStream("GUI/fxml/hello-view.fxml")); 
         Scene scene = new Scene(root, 320, 240);
-
         this.stage = stage;
         stage.setTitle("Hello!");
         stage.setScene(scene);
         stage.setMaximized(true);
-
         stage.show();
     }
 
     public static void main(String[] args) {
-        set_currentLanguage("EN");
-        // creating a list of banks
+        set_currentLanguage("EN"); // default language
+
+        // creating the list of banks
         String json;
         try {
             json = api.get_banks();
@@ -58,10 +57,15 @@ public class App extends Application {
             }
         } catch (Exception e) {}
 
-        // launch GUI ( see start method )
+        // launch GUI (see start method above)
         launch();
     }
 
+    /* This method make an api call to get one user's data and create a currentUser with them.
+     * It also set the currentLanguage of the app with the user's prefered language.
+     * @param Stirng userID : precise for which user we want to get data 
+     * @return true if the user's data are correctly retrived from the api
+     */
     public static boolean connect(String userID) {
         currentUser = new User();
         try {
@@ -77,30 +81,20 @@ public class App extends Application {
         return false;
     }
 
-    public static void register(String id, String password) {
-             
-    }
-
     public static void disconnect() {
         currentUser = null;
     }
 
-    public static String get_bankBic(String name) {
-        for (Bank b : banksList) {
-            if (b.get_name().equals(name)) {
-                return b.get_bic();
-            }
-        }
-        return "Unknown bank, name: "+name;
-    }
-
     public static void set_currentLanguage(String language) {
+        // if there is no logged in user
         if (currentUser != null) {
             currentUser.set_language(language);
             try {
                 api.put_language(currentUser.get_userID(), language);
             } catch (Exception e) {}
         }
+
+        // create a Map object (currentLanguage) from a json file
         ObjectMapper mapper = new ObjectMapper(); 
         File json;
         try {
@@ -115,6 +109,23 @@ public class App extends Application {
         catch (Exception e) {}
     }
 
+    /*
+     * @param name : a bank's name
+     * @return the bank's bic linked to the given name
+     */
+    public static String get_bankBic(String name) {
+        for (Bank b : banksList) {
+            if (b.get_name().equals(name)) {
+                return b.get_bic();
+            }
+        }
+        return "Unknown bank, name: "+name;
+    }
+
+    /*
+     * @param bic : a bank's bic
+     * @return the bank's name linked to the given bic
+     */
     public static String get_bankName(String bic) {
         for (Bank b : banksList) {
             if (b.get_bic().equals(bic)) {
@@ -124,6 +135,9 @@ public class App extends Application {
         return "Unknown bank, bic: "+bic;
     }
 
+    /*
+     * @return the LocalDateTime of the server in a String
+     */
     public static String get_apiTime() {
         String json ="";
         try {

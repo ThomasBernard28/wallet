@@ -20,25 +20,18 @@ import wallet.App;
 import wallet.APP.Transaction;
 
 public class PerformTransactionController {
-
     @FXML
     private TextField amount;
-
     @FXML
     private Button back;
-
     @FXML
     private TextArea communication;
-
     @FXML
     private Button confirm;
-
     @FXML
     private TextField iban;
-
     @FXML
     private TextField receiverName;
-
     @FXML
     private Label receiverLabel;
     @FXML
@@ -100,4 +93,5 @@ public class PerformTransactionController {
         stage.setScene(scene);
         stage.show();
     }
+
 }

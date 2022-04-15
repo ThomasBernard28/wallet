@@ -24,28 +24,28 @@ public class WalletgridController {
     Button plus;
     @FXML
     Button wallet;
-    int a = 1;
-    int ligne = 0;
-    int colonne = 0;
-    int pq = 0;
-    Boolean bool;
-    private ArrayList<Wallet> walletsList;
 
+    int a       = 1;
+    int ligne   = 0;
+    int colonne = 0;
+    int pq      = 0;
+
+    private ArrayList<Wallet> walletsList;
+    Boolean bool;
 
     @FXML
     private void initialize() {
         // set language
         back.setText(App.currentLanguage.get("back"));
 
+        // set values
         try {
             App.currentUser.set_walletsList(App.api.get_wallets(App.currentUser.get_userID()));
             walletsList = App.currentUser.get_walletsList();
             for (Wallet w : walletsList) {
                 addWalletButton(App.get_bankName(w.get_bic()), w);
             }
-
-        } catch (Exception e) {
-        }
+        } catch (Exception e) {}
     }
 
     private void addWalletButton(String bic, Wallet wallet) {
@@ -82,7 +82,6 @@ public class WalletgridController {
             bool = false;
             grid.getChildren().remove(temp);
         }
-
     }
 
     @FXML

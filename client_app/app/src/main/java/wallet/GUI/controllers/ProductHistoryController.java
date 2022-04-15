@@ -30,6 +30,7 @@ public class ProductHistoryController {
         // set language
         back.setText(App.currentLanguage.get("back"));
 
+        // set values
         try {
             App.currentUser.set_historyList(App.api.get_history(App.currentAccount.get_iban()));
             historyList = App.currentUser.get_historyList();

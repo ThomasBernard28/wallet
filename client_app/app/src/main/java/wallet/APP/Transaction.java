@@ -21,6 +21,9 @@ public class Transaction {
         data.setComments(com);
     }
 
+    /*
+     * @return 1 if the given date is a weekend day
+     */
     private int isWeekend(LocalDateTime dateTime){
         int we = 0;
         switch(dateTime.getDayOfWeek()){
@@ -40,6 +43,9 @@ public class Transaction {
         return we;
     }
 
+    /*
+     * @return the transaction's data as a json 
+     */
     public String write_data() {
         String json = "";
         try {

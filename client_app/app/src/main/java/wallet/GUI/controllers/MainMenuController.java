@@ -30,7 +30,6 @@ import java.io.File;
 import jdk.jshell.execution.StreamingExecutionControl;
 import wallet.App;
 
-
 public class MainMenuController {
     @FXML
     BorderPane borderpane;
@@ -54,7 +53,6 @@ public class MainMenuController {
     VBox sidemenu;
     int a;
 
-
     @FXML
     private void initialize() throws MalformedURLException {
         // set language text :
@@ -65,7 +63,6 @@ public class MainMenuController {
         leave.setText(App.currentLanguage.get("leave"));
 
         FXMLLoader fxmlLoader = new FXMLLoader(new File("build/resources/main/GUI/fxml/settingsbis.fxml").toURL());
-
        /* if(true){
             borderpane.setBackground(new Background(new BackgroundFill(Color.PINK, CornerRadii.EMPTY, Insets.EMPTY)));
         }else{
@@ -73,7 +70,6 @@ public class MainMenuController {
 
         }
         sidemenu.setStyle("");*/
-
         Timeline clock = new Timeline(new KeyFrame(Duration.ZERO, e -> {
             LocalTime currentTime = LocalTime.now();
             time.setText(currentTime.getHour() + ":" + currentTime.getMinute() + ":" + currentTime.getSecond());
@@ -89,9 +85,8 @@ public class MainMenuController {
         date.setText(s);
         a=1;
         sidebutton.setText("<");
-
-
     }
+
     @FXML
     private void onSettingsButtonClick() throws IOException {
 
@@ -117,7 +112,6 @@ public class MainMenuController {
 
     @FXML
     private void onSideMenuButtonClick() {
-
         TranslateTransition menuTranslation = new TranslateTransition(Duration.millis(500), sidemenu);
         menuTranslation.setFromX(-200);
         menuTranslation.setToX(0);
@@ -126,31 +120,30 @@ public class MainMenuController {
             menuTranslation.play();
             a=1;
             sidebutton.setText("<");
-        } else {
-
+        } 
+        else {
             menuTranslation.setRate(-1);
             menuTranslation.play();
 
             sidebutton.setText(">");
             a=-1;
         }
-
     }
+
     @FXML
     private void onLeaveButtonCLick(){
         Stage stage= (Stage)(leave.getScene().getWindow());
         stage.close();
     }
+
     @FXML
     private void onWalletButtonClick() throws IOException {
-
         FXMLLoader fxmlLoader = new FXMLLoader(new File("build/resources/main/GUI/fxml/walletgrid.fxml").toURL());
         Parent root = fxmlLoader.load();
         Stage stage = (Stage) (wallets.getScene().getWindow());
         Scene scene = new Scene(root, 320, 320);
         stage.setScene(scene);
         stage.show();
-
     }
 
     @FXML
@@ -162,4 +155,5 @@ public class MainMenuController {
         stage.setScene(scene);
         stage.show();
     }
+
 }

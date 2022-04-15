@@ -14,29 +14,22 @@ import java.io.IOException;
 import wallet.App;
 
 public class AccountController {
-
     @FXML
     private Button back;
-
     @FXML
     private Label firstName;
-
     @FXML
     private Label lastName;
-
     @FXML
     private Label number;
-
     @FXML
     private Button password;
-
     @FXML
     private Label firstNameLabel;
     @FXML
     private Label lastNameLabel;
     @FXML
     private Label natIDLabel;
-
 
     @FXML
     private void initialize() {

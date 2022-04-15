@@ -73,16 +73,19 @@ public class RegisterController {
 
     @FXML
     private void onRegisterClicked() {
+        // if an entry is empty
         if (nationalId.getText().equals("") || firstName.getText().equals("") || lastName.getText().equals("") || password.getText().equals("")) {
             Alert a = new Alert(AlertType.WARNING);
             a.setContentText(App.currentLanguage.get("registerWarning1"));
             a.show();
         }
+        // if the national register numner is not 11 numbers long
         else if (nationalId.getText().length() != 11) {
             Alert a = new Alert(AlertType.WARNING);
             a.setContentText(App.currentLanguage.get("registerWarning2"));
             a.show();
         }
+        // everything is ok and the passwords are matching
         else if (password.getText().equals(confirmPassword.getText())) {
             App.currentUser = new User(firstName.getText().toLowerCase(), lastName.getText().toLowerCase(), nationalId.getText(), password.getText());
             try {
@@ -94,6 +97,7 @@ public class RegisterController {
             }
             catch (Exception e) {
             }
+        // the passwords aren't matching
         } else {
             wrong.setVisible(true);
             PauseTransition visiblePause = new PauseTransition(Duration.seconds(2));

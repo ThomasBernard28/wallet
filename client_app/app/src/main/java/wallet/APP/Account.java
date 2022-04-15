@@ -32,6 +32,9 @@ public class Account implements JsonReader {
       }
    }
 
+    /*
+     * @return the account's data as a json 
+     */
    public String write_data() {
       return "{\"bic\":\""+get_bic()+"\", \"userID\":\""+get_userID()+"\", \"type\":\""+get_type()+"\"}";
    }

@@ -24,7 +24,6 @@ public class WalletData {
         this.userID = (String) user.get("userID");
     }
 
-    //@JsonIgnore
     public void setUserID(String userID) {
         this.userID = userID;
     }
