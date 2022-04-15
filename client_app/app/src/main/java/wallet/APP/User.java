@@ -160,6 +160,10 @@ public class User implements JsonReader {
         return data.getLanguage();
     }
 
+    public void set_language(String language) {
+        data.set_language(language);
+    }
+
     public String get_password() {
         return data.getPsswd();
     }

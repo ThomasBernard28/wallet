@@ -34,7 +34,7 @@
                         <Font name="Montserrat Regular" size="34.0" />
                     </font>
                 </Label>
-                <ComboBox fx:id="language" maxWidth="1.7976931348623157E308" prefWidth="150.0" promptText="Select Language" GridPane.columnIndex="1" />
+                <ComboBox fx:id="language" onAction="#onLanguageClick" maxWidth="1.7976931348623157E308" prefWidth="150.0" promptText="Select Language" GridPane.columnIndex="1" />
                 <Label fx:id="soundLabel" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" text="Sound" GridPane.rowIndex="1">
                     <font>
                         <Font name="Montserrat Regular" size="34.0" />

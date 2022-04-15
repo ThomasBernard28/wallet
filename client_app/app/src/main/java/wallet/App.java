@@ -45,7 +45,7 @@ public class App extends Application {
     }
 
     public static void main(String[] args) {
-        set_currentLanguage("FR"); // debug
+        set_currentLanguage("EN");
         // creating a list of banks
         String json;
         try {
@@ -95,6 +95,12 @@ public class App extends Application {
     }
 
     public static void set_currentLanguage(String language) {
+        if (currentUser != null) {
+            currentUser.set_language(language);
+            try {
+                api.put_language(currentUser.get_userID(), language);
+            } catch (Exception e) {}
+        }
         ObjectMapper mapper = new ObjectMapper(); 
         File json;
         try {

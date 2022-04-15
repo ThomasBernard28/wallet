@@ -19,6 +19,7 @@ import javafx.scene.layout.CornerRadii;
 import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 import javafx.util.Duration;
+import javafx.collections.*;
 
 import java.io.*;
 
@@ -53,6 +54,8 @@ public class SettingController {
         darkThemeLabel.setText(App.currentLanguage.get("darkTheme")+" : ");
         language.setPromptText(App.currentLanguage.get("selectLanguage"));
 
+        String[] languages = {"EN", "FR"}; // to do : check for languages json 
+        language.setItems(FXCollections.observableArrayList(languages));
 
         borderPane.backgroundProperty().bind(Bindings.when(theme.selectedProperty())
                 .then(new Background(new BackgroundFill(Color.GREY, CornerRadii.EMPTY, Insets.EMPTY)))
@@ -62,6 +65,12 @@ public class SettingController {
 
     @FXML
     private void OnThemeCheckBoxChecked() {
+    }
+
+    @FXML
+    private void onLanguageClick() {
+        App.set_currentLanguage((String) language.getValue());
+        initialize();
     }
 
     @FXML
