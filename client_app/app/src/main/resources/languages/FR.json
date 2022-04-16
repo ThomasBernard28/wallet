@@ -1,11 +1,11 @@
 {
-"hello":"bonjour",
-"world":"monde",
+"hello":"Bonjour",
+"world":"Monde",
 
-"id":"identifiant",
-"password":"mot de passe",
-"login":"se connecter",
-"register":"créer un compte",
+"id":"Identifiant",
+"password":"Mot de passe",
+"login":"Se connecter",
+"register":"Créer un compte",
 "badCredentials":"Identifiant ou mot de passe incorrect",
 
 
