@@ -24,4 +24,19 @@ public class Api {
         response = client.send(request, HttpResponse.BodyHandlers.ofString());
         return response.body();     // return the json
     }
+
+    public String get_accountRequests(String bic) throws IOException, InterruptedException {
+        request = HttpRequest.newBuilder().GET().header("accept", "application/json").uri(URI.create("http://sierra880.xyz:4545/api/v1/accounts/"+bic)).build();
+        response = client.send(request, HttpResponse.BodyHandlers.ofString());
+        return response.body();     // return the json
+    } 
+
+    public void put_addAccount(String requestID) throws Exception {
+        request = HttpRequest.newBuilder()
+            .uri(URI.create("http://sierra880.xyz:4545/api/v1/accRequest/validate/"+requestID))
+            .header("Content-Type", "application/json")
+            .build();
+        client.send(request, HttpResponse.BodyHandlers.ofString());
+    }
+        
 }

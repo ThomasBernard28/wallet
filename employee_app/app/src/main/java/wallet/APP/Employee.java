@@ -7,14 +7,16 @@ import java.nio.file.Paths;
 
 import wallet.APP.EmployeeData;
 import wallet.APP.Client;
-import wallet.APP.ClientData;
+import wallet.APP.AccountRequest;
 import wallet.API.JsonReader;
 import wallet.API.JsonTools;
 
 public class Employee implements JsonReader {
 
-    private EmployeeData      data         = new EmployeeData();
-    private ArrayList<Client> clientsList = new ArrayList();
+    private EmployeeData              data         = new EmployeeData();
+
+    private ArrayList<Client>         clientsList  = new ArrayList();
+    private ArrayList<AccountRequest> requestsList = new ArrayList();
 
     @Override
     public void read_data(String json) {
@@ -45,6 +47,26 @@ public class Employee implements JsonReader {
 
     public ArrayList get_clientsList() {
         return clientsList;
+    }
+
+    public void set_requestsList(String json) {
+        try {
+            requestsList.clear();
+            ArrayList<String> jsonList = JsonTools.splitJson(json);
+            for (String jl : jsonList) {
+                AccountRequest request = new AccountRequest();
+                try {
+                    request.read_data(jl.substring(15, jl.length()-1));
+                    requestsList.add(request);
+                }
+                catch (Exception e) {}
+            }
+        }
+        catch (Exception e) {}
+    }
+
+    public ArrayList get_requestsList() {
+        return requestsList;
     }
 
     public String get_bic() {
