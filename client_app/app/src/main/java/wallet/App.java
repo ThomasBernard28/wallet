@@ -14,10 +14,12 @@ import javafx.scene.Parent;
 import javafx.stage.Stage;
 
 import java.io.*;
+import java.nio.file.*;
 import java.util.ArrayList;
 import java.util.Map;
+import java.util.HashMap;
 import com.fasterxml.jackson.core.type.TypeReference;  
-import com.fasterxml.jackson.databind.ObjectMapper;  
+import com.fasterxml.jackson.databind.*;  
 
 public class App extends Application {
 
@@ -43,7 +45,14 @@ public class App extends Application {
     }
 
     public static void main(String[] args) {
-        set_currentLanguage("EN"); // default language
+        // set default language (saved in options.json)
+        try {
+            Reader reader = Files.newBufferedReader(Paths.get("build/resources/main/options.json"));
+            ObjectMapper objectMapper = new ObjectMapper();
+            JsonNode parser = objectMapper.readTree(reader);
+            set_currentLanguage(parser.path("language").asText());
+            reader.close();
+        } catch (Exception e) {}
 
         // creating the list of banks
         String json;
@@ -107,6 +116,15 @@ public class App extends Application {
             currentLanguage = mapper.readValue(json, new TypeReference<Map<String, String>>() {});
         }
         catch (Exception e) {}
+
+        // save the currently used language in the options json file
+        try {
+            BufferedWriter writer = Files.newBufferedWriter(Paths.get("build/resources/main/options.json"));
+            Map<String, String> options = new HashMap<>();
+            options.put("language", language);
+            writer.write(mapper.writeValueAsString(options));
+            writer.close();
+        } catch (Exception e) {}
     }
 
     /*
