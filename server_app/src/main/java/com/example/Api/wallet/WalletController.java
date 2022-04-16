@@ -1,6 +1,8 @@
 package com.example.Api.wallet;
 
 
+import com.example.Api.client.Client;
+import com.example.Api.client.ClientService;
 import com.example.Api.exception.ApiNotFoundException;
 import com.example.Api.user.User;
 import com.example.Api.user.UserService;
@@ -22,11 +24,13 @@ public class WalletController {
 
     private final WalletService walletService;
     private final UserService userService;
+    private final ClientService clientService;
 
     @Autowired
-    public WalletController(WalletService walletService, UserService userService){
+    public WalletController(WalletService walletService, UserService userService, ClientService clientService){
         this.walletService = walletService;
         this.userService = userService;
+        this.clientService = clientService;
     }
 
     @GetMapping
@@ -53,8 +57,10 @@ public class WalletController {
 
         Optional<User> user = userService.getOneUser(json.get("userID"));
 
+        Client client = clientService.getOneClient(json.get("bic"), json.get("userID"));
+
         if(user.isPresent()){
-            walletService.addNewWallet(json.get("userID"), json.get("bic"), localDate, activity);
+            walletService.addNewWallet(json.get("userID"), json.get("bic"), localDate, activity, client);
         }
         else{
             //We need an existing user to register a wallet

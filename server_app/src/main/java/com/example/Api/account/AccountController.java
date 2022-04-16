@@ -1,12 +1,8 @@
 package com.example.Api.account;
 
-import com.example.Api.bank.BankService;
 import com.example.Api.client.Client;
 import com.example.Api.client.ClientService;
-import com.example.Api.exception.ApiNotFoundException;
 import com.example.Api.pendingRequests.accountRequest.AccountRequestService;
-import com.example.Api.wallet.Wallet;
-import com.example.Api.wallet.WalletService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 

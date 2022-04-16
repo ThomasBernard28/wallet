@@ -32,7 +32,8 @@ public class Account {
             referencedColumnName = "walletID",
             foreignKey = @ForeignKey(
                     name = "ACCOUNTS_WALLETS_walletID_fk"
-            )
+            ),
+            nullable = true
     )
     private Wallet wallet;
 
@@ -72,4 +73,13 @@ public class Account {
             columnDefinition = "Integer(1) default '1' "
     )
     private Integer activity;
+
+    public Account(String iban, Client client, String type, Float avgBalance, String localCurr, Integer activity) {
+        this.iban = iban;
+        this.client = client;
+        this.type = type;
+        this.avgBalance = avgBalance;
+        this.localCurr = localCurr;
+        this.activity = activity;
+    }
 }

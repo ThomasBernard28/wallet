@@ -10,7 +10,9 @@ import com.example.Api.wallet.WalletRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import javax.transaction.Transactional;
 import java.time.LocalDate;
+import java.util.List;
 import java.util.Optional;
 
 @Service
@@ -44,6 +46,10 @@ public class PensionSavingService {
         return optionalPensionSaving.get();
     }
 
+    public List<PensionSaving> pensionSavingsToRetribute(LocalDate date){
+        return pensionSavingRepository.findByRenewDate(date);
+    }
+
     public void createPensionSaving(Long walletID, String userID, String bic, Float percentage, LocalDate subDate, LocalDate renewDate, String type, Float balance, Integer activity){
 
         if(walletRepository.findWalletByWalletID(walletID).isEmpty()){
@@ -73,4 +79,11 @@ public class PensionSavingService {
 
         penBalanceService.registerPenBalance(pensionSaving.getPensionID(), pensionSaving.getBalance(), "EUR");
     }
+    /*
+    @Transactional
+    public void retributePension(PensionSaving pensionSaving){
+
+    }
+
+     */
 }

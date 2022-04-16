@@ -1,6 +1,5 @@
 package com.example.Api.account;
 
-import com.example.Api.balance.Balance;
 import com.example.Api.balance.BalanceRepository;
 import com.example.Api.balance.BalanceService;
 import com.example.Api.bank.Bank;
@@ -14,7 +13,6 @@ import com.example.Api.client.ClientRepository;
 import com.example.Api.exception.ApiIncorrectException;
 import com.example.Api.exception.ApiNotFoundException;
 import com.example.Api.wallet.Wallet;
-import com.example.Api.wallet.WalletRepository;
 import com.example.Api.wallet.WalletService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -54,7 +52,7 @@ public class AccountService {
         Optional<Bank> bankOptional = bankRepository.findBankByBic(bic);
         Optional<Client> client = clientRepository.findByBankAndUserID(bic, userID);
 
-        if(!bankOptional.isPresent() ||  !client.isPresent()){
+        if(bankOptional.isEmpty() || client.isEmpty()){
             throw new ApiNotFoundException("Bank or client not found");
         }
 
@@ -64,7 +62,7 @@ public class AccountService {
     public Account getIbanAccount(String iban) throws ApiNotFoundException{
         Optional<Account> accountOptional = accountRepository.findByIban(iban);
 
-        if(!accountOptional.isPresent()){
+        if(accountOptional.isEmpty()){
             throw new ApiNotFoundException("This account : "+iban+" doesn't exist");
         }
 

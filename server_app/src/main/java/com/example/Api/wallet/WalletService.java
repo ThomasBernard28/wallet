@@ -1,6 +1,11 @@
 package com.example.Api.wallet;
 
 
+import com.example.Api.account.Account;
+import com.example.Api.account.AccountRepository;
+import com.example.Api.account.AccountService;
+import com.example.Api.client.Client;
+import com.example.Api.client.ClientService;
 import com.example.Api.exception.ApiIncorrectException;
 import com.example.Api.exception.ApiNotFoundException;
 import com.example.Api.user.User;
@@ -18,11 +23,13 @@ public class WalletService {
 
     private final WalletRepository walletRepository;
     private final UserRepository userRepository;
+    private final AccountRepository accountRepository;
 
     @Autowired
-    public WalletService(WalletRepository walletRepository, UserRepository userRepository){
+    public WalletService(WalletRepository walletRepository, UserRepository userRepository, AccountRepository accountRepository){
         this.walletRepository = walletRepository;
         this.userRepository = userRepository;
+        this.accountRepository = accountRepository;
     }
 
     public List<Wallet> getWallets(){
@@ -68,7 +75,7 @@ public class WalletService {
         return walletOptional;
     }
 
-    public void addNewWallet(String userID, String bic, LocalDate openingDate, Integer activity) {
+    public void addNewWallet(String userID, String bic, LocalDate openingDate, Integer activity, Client client) {
         Wallet wallet = new Wallet(userRepository.getById(userID), bic, openingDate, activity);
         Optional<Wallet> walletOptional = walletRepository.findWalletByWalletID(wallet.getWalletID());
 
@@ -83,6 +90,13 @@ public class WalletService {
             throw new ApiIncorrectException("User already has a wallet in this institution : "+ bic);
         }
         walletRepository.save(wallet);
+
+
+        List<Account> accountsForTheWallet = accountRepository.findAccountByClient(client);
+
+        for (Account account : accountsForTheWallet){
+            accountRepository.addWalletToAccounts(wallet.getWalletID(), account.getIban());
+        }
 
     }
 
