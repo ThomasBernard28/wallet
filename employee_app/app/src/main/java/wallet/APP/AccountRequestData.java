@@ -50,7 +50,7 @@ public class AccountRequestData {
 
    @Override
    public String toString() {
-      return accRequestID + '\n' +
+      return accRequestID + "\n" + // idk why if I use '' here It duplicates the accRequestID instead of going to the next line
              type         + '\n' +
              status       + '\n' +
              validator    + '\n' +

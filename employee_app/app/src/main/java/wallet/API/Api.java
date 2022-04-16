@@ -26,7 +26,7 @@ public class Api {
     }
 
     public String get_accountRequests(String bic) throws IOException, InterruptedException {
-        request = HttpRequest.newBuilder().GET().header("accept", "application/json").uri(URI.create("http://sierra880.xyz:4545/api/v1/accounts/"+bic)).build();
+        request = HttpRequest.newBuilder().GET().header("accept", "application/json").uri(URI.create("http://sierra880.xyz:4545/api/v1/accRequest/"+bic)).build();
         response = client.send(request, HttpResponse.BodyHandlers.ofString());
         return response.body();     // return the json
     } 

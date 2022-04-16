@@ -56,7 +56,7 @@ public class Employee implements JsonReader {
             for (String jl : jsonList) {
                 AccountRequest request = new AccountRequest();
                 try {
-                    request.read_data(jl.substring(15, jl.length()-1));
+                    request.read_data(jl);
                     requestsList.add(request);
                 }
                 catch (Exception e) {}
