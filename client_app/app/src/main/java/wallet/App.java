@@ -46,6 +46,13 @@ public class App extends Application {
 
     public static void main(String[] args) {
         // set default language (saved in options.json)
+        File file = new File("build/resources/main/options.json");
+        if (!file.exists()) {
+            try {
+                Files.writeString(Paths.get("build/resources/main/options.json"), "{\"language\":\"EN\"}");
+                set_currentLanguage("EN");
+            } catch (Exception e) {}
+        }
         try {
             Reader reader = Files.newBufferedReader(Paths.get("build/resources/main/options.json"));
             ObjectMapper objectMapper = new ObjectMapper();
