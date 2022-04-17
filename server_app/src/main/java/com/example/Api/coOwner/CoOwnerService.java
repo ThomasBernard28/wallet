@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import javax.persistence.EntityNotFoundException;
+import java.util.List;
 import java.util.Optional;
 
 @Service
@@ -21,6 +22,10 @@ public class CoOwnerService {
     public CoOwnerService(CoOwnerRepository coOwnerRepository, ClientRepository clientRepository){
         this.coOwnerRepository = coOwnerRepository;
         this.clientRepository = clientRepository;
+    }
+
+    public List<CoOwner> getAllByIbanOwner(String iban){
+        return coOwnerRepository.findByIbanOwner(iban);
     }
 
     public void registerCoOwner(Long walletID, String ibanOwner, String userID_coOwner, String bicOwner, String userIDOwner){

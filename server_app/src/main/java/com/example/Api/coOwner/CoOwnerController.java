@@ -5,6 +5,7 @@ import com.example.Api.wallet.WalletService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
 import java.util.Map;
 import java.util.Optional;
 
@@ -29,6 +30,11 @@ public class CoOwnerController {
 
         coOwnerService.registerCoOwner(wallet.getWalletID(), json.get("ibanOwner"), wallet.getUser().getUserID(), json.get("bicOwner"), json.get("userIDOwner"));
 
+    }
+
+    @GetMapping("{ibanOwner}")
+    public List<CoOwner> getAllByIbanOwner(@PathVariable("ibanOwner") String ibanOwner){
+        return coOwnerService.getAllByIbanOwner(ibanOwner);
     }
 
     @DeleteMapping(path = "{walletID_coOwner}/{ibanOwner}")

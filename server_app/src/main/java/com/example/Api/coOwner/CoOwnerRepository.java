@@ -10,7 +10,7 @@ import java.util.Optional;
 @Repository
 public interface CoOwnerRepository extends JpaRepository<CoOwner, CoOwnerID> {
 
-    @Query("SELECT s FROM CO_OWNER s WHERE s.coOwnerID.ibanOwner = ?1")
+    @Query(value = "SELECT * FROM CO_OWNER WHERE ibanOwner = ?1", nativeQuery = true)
     List<CoOwner> findByIbanOwner(String ibanOwner);
 
     @Query("SELECT s FROM CO_OWNER s WHERE s.coOwnerID.walletID = ?1")
@@ -18,4 +18,6 @@ public interface CoOwnerRepository extends JpaRepository<CoOwner, CoOwnerID> {
 
     @Query("SELECT s FROM CO_OWNER s WHERE s.coOwnerID.walletID = ?1 AND s.coOwnerID.ibanOwner = ?2")
     Optional<CoOwner> findByWalletIDAndIban(Long walletID, String ibanOwner);
+
+
 }
