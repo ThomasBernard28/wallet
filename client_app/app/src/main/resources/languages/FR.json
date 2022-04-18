@@ -1,0 +1,71 @@
+{
+"hello":"Bonjour",
+"world":"Monde",
+
+"id":"Identifiant",
+"password":"Mot de passe",
+"login":"Se connecter",
+"register":"Créer un compte",
+"badCredentials":"Identifiant ou mot de passe incorrect",
+
+
+"back":"Retour",
+"firstName":"Prénom",
+"lastName":"Nom",
+"nationalID":"Numéro de registre national",
+"confirmPassword":"Confirmer le mot de passe",
+"registerWarning1":"Toutes les informations sont requises.",
+"registerWarning2":"Votre numéro de registre national doit être composé de 11 chiffres.",
+"pwMissmatch":"Veuillez entrer le même mot de passe",
+"registerMessage":"Votre compte a été créé avec succès \nvotre identifiant : ",
+
+
+"myWallets":"Mes portefeuilles",
+"myProfile":"Mon profile",
+"settings":"Paramètres",
+"signOut":"Se déconnecter",
+"leave":"Quitter",
+
+"selectInstitution":"Sélectionnez une institution financière",
+"addWallet":"Ajouter",
+
+
+"selectProduct":"Sélectionnez un produit",
+"subscribe":"Souscrire",
+"addProductWarning1":"Sélectionnez un type de compte.",
+"addProductMessage1":"La création de votre compte sera bientôt vérifiée et confirmée. Veuillez patienter.",
+"checkingAccount":"Compte courant",
+"savingAccount":"Compte épargne",
+
+
+"balance":"Solde",
+"iban":"IBAN",
+"transaction":"Virement",
+"history":"Historique",
+"coOwners":"Co-titulaires",
+"delete":"Supprimer",
+
+
+"receiver":"Receveur",
+"amount":"Montant",
+"communication":"Communication",
+"confirm":"Confirmer",
+"transactionWarning1":"Veuillez entrer un iban.",
+"transactionWarning2":"Veuillez enter un montant correct.",
+
+
+"date":"Date",
+
+
+"changePassword":"Changer de mot de passe",
+"oldPassword":"Ancien mot de passe",
+"newPassword":"Nouveau mot de passe",
+"changePasswordMessage":"Votre mot de passe a été changé.",
+
+
+"language":"Langue",
+"sound":"Son",
+"darkTheme":"Theme sombre",
+"selectLanguage":"Sélectionnez une langue"
+
+}

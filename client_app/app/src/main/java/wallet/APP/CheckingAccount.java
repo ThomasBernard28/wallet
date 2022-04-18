@@ -2,10 +2,9 @@ package wallet.APP;
 
 import java.io.File;
 
-import wallet.APP.Product;
 import wallet.API.JsonReader;
 
-public class CheckingAccount extends Product implements JsonReader {
+public class CheckingAccount implements JsonReader {
 
    private CheckingAccountData data = new CheckingAccountData();
 

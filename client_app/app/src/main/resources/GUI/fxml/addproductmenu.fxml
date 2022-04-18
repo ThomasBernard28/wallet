@@ -14,12 +14,12 @@
         <HBox alignment="CENTER" prefHeight="306.0" prefWidth="600.0" spacing="50.0" BorderPane.alignment="CENTER">
             <children>
                 <Label alignment="CENTER" contentDisplay="CENTER" maxWidth="1.7976931348623157E308" prefHeight="16.0" prefWidth="213.0" text="Select a product" />
-                <ComboBox prefHeight="24.0" prefWidth="209.0" />
+                <ComboBox fx:id="box" prefHeight="24.0" prefWidth="209.0" />
             </children>
         </HBox>
     </center>
     <bottom>
-        <Button alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" text="Subscribe" BorderPane.alignment="TOP_CENTER">
+        <Button fx:id="subscribe" onAction="#onSubscribeButtonClick" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" text="Subscribe" BorderPane.alignment="TOP_CENTER">
             <font>
                 <Font name="Montserrat SemiBold" size="17.0" />
             </font>
@@ -33,7 +33,7 @@
     <top>
         <StackPane prefHeight="47.0" prefWidth="600.0" BorderPane.alignment="CENTER">
             <children>
-                <Button fx:id="back" mnemonicParsing="false" onAction="#onBackButtonClick" text="Back" StackPane.alignment="TOP_LEFT">
+                <Button fx:id="back" mnemonicParsing="false" onAction="#onBackButtonClick" text="back" StackPane.alignment="TOP_LEFT">
                     <font>
                         <Font name="Montserrat SemiBold" size="17.0" />
                     </font>

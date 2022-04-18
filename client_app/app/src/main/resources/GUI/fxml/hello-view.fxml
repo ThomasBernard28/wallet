@@ -15,13 +15,13 @@
         <Label fx:id="wrong" contentDisplay="CENTER" text="Wrong password or ID" textFill="RED" visible="false"/>
         <HBox alignment="CENTER" prefHeight="49.0" prefWidth="600.0">
             <children>
-                <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="16.0" prefWidth="106.0" text="ID :"/>
+                <Label fx:id="idLabel" alignment="CENTER" contentDisplay="CENTER" prefHeight="16.0" prefWidth="106.0" text="ID :"/>
                 <TextField fx:id="id"/>
             </children>
         </HBox>
         <HBox alignment="CENTER" prefHeight="53.0" prefWidth="600.0">
             <children>
-                <Label prefHeight="16.0" prefWidth="106.0" text="Password :"/>
+                <Label fx:id="passwordLabel" prefHeight="16.0" prefWidth="106.0" text="Password :"/>
                 <PasswordField fx:id="password" prefHeight="24.0" prefWidth="169.0"/>
             </children>
         </HBox>

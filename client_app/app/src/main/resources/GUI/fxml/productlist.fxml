@@ -7,7 +7,7 @@
 
 <BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="wallet.GUI.controllers.ProductListController">
     <center>
-        <GridPane hgap="15.0" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="358.0" prefWidth="319.0" vgap="15.0" BorderPane.alignment="CENTER">
+        <GridPane fx:id="grid" hgap="15.0" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="358.0" prefWidth="319.0" vgap="15.0" BorderPane.alignment="CENTER">
             <BorderPane.margin>
                 <Insets />
             </BorderPane.margin>
@@ -19,23 +19,6 @@
                 <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                 <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
             </rowConstraints>
-            <children>
-                <Button maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" text="..." GridPane.rowIndex="2">
-                    <font>
-                        <Font name="Montserrat SemiBold" size="17.0" />
-                    </font>
-                </Button>
-                <Button fx:id="product" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onMouseClicked="#onProductButtonClick" text="Product 1">
-                    <font>
-                        <Font name="Montserrat SemiBold" size="17.0" />
-                    </font>
-                </Button>
-                <Button maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onMouseClicked="#onProductButtonClick" text="Product 2" GridPane.rowIndex="1">
-                    <font>
-                        <Font name="Montserrat SemiBold" size="17.0" />
-                    </font>
-                </Button>
-            </children>
         </GridPane>
     </center>
     <left>

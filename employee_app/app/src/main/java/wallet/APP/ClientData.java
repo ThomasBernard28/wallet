@@ -2,10 +2,10 @@ package wallet.APP;
 
 public  class ClientData {
    
-   private String userID;
-   private int    natID;
-   private String firstName;
-   private String lastName;
+   private String userID    = "";
+   private int    natID     = 0;
+   private String firstName = "";
+   private String lastName  = "";
 
    public void setUserID(String userID) {
       this.userID = userID;
@@ -37,5 +37,13 @@ public  class ClientData {
 
    public String getLastName() {
       return lastName;
+   }
+
+   @Override
+   public String toString() {
+      return userID    + '\n' + 
+             natID     + '\n' +
+             firstName + '\n' +
+             lastName  + '\n';
    }
 }

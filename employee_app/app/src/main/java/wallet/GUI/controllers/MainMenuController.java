@@ -12,8 +12,10 @@ import javafx.scene.control.Label;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 import javafx.util.Duration;
+import javafx.scene.Parent;
 
 import java.io.IOException;
+import java.io.File;
 import java.text.Format;
 import java.text.SimpleDateFormat;
 import java.time.LocalDate;
@@ -22,6 +24,7 @@ import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
 import java.util.Date;
 
+import wallet.App;
 
 
 public class MainMenuController {
@@ -30,13 +33,13 @@ public class MainMenuController {
     @FXML
     Label date;
     @FXML
-    Button wallets;
+    Button clients;
     @FXML
     Button accounts;
     @FXML
     Button settings;
     @FXML
-    Button singout;
+    Button signout;
     @FXML
     Button leave;
     @FXML
@@ -66,9 +69,6 @@ public class MainMenuController {
 
 
     }
-    @FXML
-    private void onSettingsButtonClick() throws IOException {
-    }
 
     @FXML
     private void onSideMenuButtonClick() {
@@ -86,6 +86,31 @@ public class MainMenuController {
             a=-1;
         }
     }
+
+    @FXML
+    private void onSettingsButtonClick() throws IOException {
+    }
+
+    @FXML
+    private void onClientsButtonClick() throws Exception {
+        App.currentEmployee.set_clientsList(App.api.get_clients(App.currentEmployee.get_bic())); 
+    }
+
+    @FXML
+    private void onAccountsButtonClick() throws Exception {
+    }
+
+    @FXML
+    private void onSignOutButtonClick() throws Exception {
+        App.disconnect();
+        FXMLLoader fxmlLoader = new FXMLLoader(new File("build/resources/main/GUI/fxml/loginscreen.fxml").toURL());
+        Parent root = fxmlLoader.load();
+        Stage stage = (Stage) (leave.getScene().getWindow());
+        Scene scene = new Scene(root, 320, 320);
+        stage.setScene(scene);
+        stage.show();
+    }
+
 
     @FXML
     private void onLeaveButtonCLick(){

@@ -28,28 +28,27 @@
             <children>
                 <HBox alignment="CENTER" prefHeight="100.0" prefWidth="145.0">
                     <children>
-                        <Label text="Balance :">
+                        <Label fx:id="balanceLabel" text="Balance :">
                             <HBox.margin>
                                 <Insets right="5.0"/>
                             </HBox.margin>
                         </Label>
-                        <Label maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity"
-                               text="420.69">
+                        <Label fx:id="balance" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity">
                             <HBox.margin>
                                 <Insets right="5.0"/>
                             </HBox.margin>
                         </Label>
-                        <Label text="€"/>
+                        <Label fx:id="curr"/>
                     </children>
                 </HBox>
                 <HBox alignment="CENTER" prefHeight="100.0" prefWidth="272.0">
                     <children>
-                        <Label maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" text="IBAN :">
+                        <Label fx:id="ibanLabel" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" text="IBAN :">
                             <HBox.margin>
                                 <Insets right="5.0"/>
                             </HBox.margin>
                         </Label>
-                        <Label maxWidth="-Infinity" text="BE 047523 58 96 57">
+                        <Label fx:id="iban" maxWidth="-Infinity">
                             <HBox.margin>
                                 <Insets right="5.0"/>
                             </HBox.margin>

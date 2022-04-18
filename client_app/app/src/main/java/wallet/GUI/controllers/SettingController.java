@@ -19,9 +19,11 @@ import javafx.scene.layout.CornerRadii;
 import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 import javafx.util.Duration;
+import javafx.collections.*;
 
 import java.io.*;
 
+import wallet.App;
 
 public class SettingController {
     @FXML
@@ -35,31 +37,41 @@ public class SettingController {
     @FXML
     CheckBox theme;
     @FXML
-    Label sike;
-
+    Label languageLabel;
+    @FXML
+    Label soundLabel;
+    @FXML
+    Label darkThemeLabel;
 
     @FXML
     private void initialize() {
+        // set language
+        back.setText(App.currentLanguage.get("back"));
+        languageLabel.setText(App.currentLanguage.get("language")+" :");
+        soundLabel.setText(App.currentLanguage.get("sound")+" :");
+        darkThemeLabel.setText(App.currentLanguage.get("darkTheme")+" : ");
+        language.setPromptText(App.currentLanguage.get("selectLanguage"));
+
+        String[] languages = {"EN", "FR"}; // to do : check for languages json 
+        language.setItems(FXCollections.observableArrayList(languages));
 
         borderPane.backgroundProperty().bind(Bindings.when(theme.selectedProperty())
                 .then(new Background(new BackgroundFill(Color.GREY, CornerRadii.EMPTY, Insets.EMPTY)))
                 .otherwise(new Background(new BackgroundFill(Color.BEIGE, CornerRadii.EMPTY, Insets.EMPTY))));
-
     }
 
     @FXML
     private void OnThemeCheckBoxChecked() {
-        sike.setVisible(true);
-        PauseTransition visiblePause = new PauseTransition(Duration.seconds(1.5));
-        visiblePause.setOnFinished(
-                event -> sike.setVisible(false)
-        );
-        visiblePause.play();
+    }
+
+    @FXML
+    private void onLanguageClick() {
+        App.set_currentLanguage((String) language.getValue());
+        initialize();
     }
 
     @FXML
     private void onBackButtonCLick() throws IOException {
-
         FXMLLoader fxmlLoader = new FXMLLoader(new File("build/resources/main/GUI/fxml/mainmenu.fxml").toURL());
         Parent root = fxmlLoader.load();
         Stage stage = (Stage) (back.getScene().getWindow());
@@ -67,14 +79,13 @@ public class SettingController {
         stage.setScene(scene);
         stage.show();
     }
+
     public boolean getThemeValue(){
         return theme.isSelected();
     }
+
     public CheckBox getTheme(){
         return theme;
     }
 
-
 }
-
-

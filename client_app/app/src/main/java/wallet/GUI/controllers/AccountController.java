@@ -14,29 +14,35 @@ import java.io.IOException;
 import wallet.App;
 
 public class AccountController {
-
-    @FXML
-    private Label age;
-
     @FXML
     private Button back;
-
     @FXML
-    private Label date;
-
+    private Label firstName;
     @FXML
-    private Label name;
-
+    private Label lastName;
     @FXML
     private Label number;
-
     @FXML
     private Button password;
-
+    @FXML
+    private Label firstNameLabel;
+    @FXML
+    private Label lastNameLabel;
+    @FXML
+    private Label natIDLabel;
 
     @FXML
     private void initialize() {
-        name.setText(App.currentUser.get_firstName().concat(App.currentUser.get_lastName())); 
+        // set language
+        firstNameLabel.setText(App.currentLanguage.get("firstName")+" : ");
+        lastNameLabel.setText(App.currentLanguage.get("lastName")+" : ");
+        natIDLabel.setText(App.currentLanguage.get("nationalID")+" : ");
+        back.setText(App.currentLanguage.get("back"));
+        password.setText(App.currentLanguage.get("changePassword"));
+
+        // set values
+        firstName.setText(App.currentUser.get_firstName());
+        lastName.setText(App.currentUser.get_lastName()); 
         number.setText(App.currentUser.get_natID());
     }   
 

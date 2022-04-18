@@ -24,29 +24,31 @@ public class WalletgridController {
     Button plus;
     @FXML
     Button wallet;
-    int a = 1;
-    int ligne = 0;
-    int colonne = 0;
-    int pq = 0;
-    Boolean bool;
-    private ArrayList<Wallet> walletsList;
 
+    int a       = 1;
+    int ligne   = 0;
+    int colonne = 0;
+    int pq      = 0;
+
+    private ArrayList<Wallet> walletsList;
+    Boolean bool;
 
     @FXML
     private void initialize() {
+        // set language
+        back.setText(App.currentLanguage.get("back"));
+
+        // set values
         try {
             App.currentUser.set_walletsList(App.api.get_wallets(App.currentUser.get_userID()));
             walletsList = App.currentUser.get_walletsList();
             for (Wallet w : walletsList) {
-                System.out.println(w);
-                addWalletButton(w.get_bic());
+                addWalletButton(App.get_bankName(w.get_bic()), w);
             }
-
-        } catch (Exception e) {
-        }
+        } catch (Exception e) {}
     }
 
-    private void addWalletButton(String bic) {
+    private void addWalletButton(String bic, Wallet wallet) {
         Button temp = plus;
         if (ligne <= 1) {
             Integer past_row = GridPane.getRowIndex(plus);
@@ -66,7 +68,7 @@ public class WalletgridController {
             a++;
             button.setOnMouseClicked(event -> {
                 try {
-                    switchToProduct();
+                    switchToProduct(wallet);
                 } catch (IOException e) {
                     e.printStackTrace();
                 }
@@ -80,7 +82,6 @@ public class WalletgridController {
             bool = false;
             grid.getChildren().remove(temp);
         }
-
     }
 
     @FXML
@@ -103,7 +104,8 @@ public class WalletgridController {
         stage.show();
     }
 
-    private void switchToProduct() throws IOException {
+    private void switchToProduct(Wallet wallet) throws IOException {
+        App.currentWallet = wallet;
         FXMLLoader fxmlLoader = new FXMLLoader(new File("build/resources/main/GUI/fxml/productlist.fxml").toURL());
         Parent root = fxmlLoader.load();
         Stage stage = (Stage) (back.getScene().getWindow());

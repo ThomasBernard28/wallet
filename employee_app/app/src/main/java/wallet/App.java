@@ -3,6 +3,7 @@ package wallet;
 import java.util.ArrayList;
 
 import wallet.APP.Employee;
+import wallet.API.Api;
 
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
@@ -22,8 +23,9 @@ import java.util.List;
 
 public class App extends Application {
 
-    public static Stage    stage;
+    public static Api      api = new Api();
     public static Employee currentEmployee;
+    public static Stage    stage;
 
     @Override
     public void start(Stage stage) throws IOException {
@@ -46,10 +48,19 @@ public class App extends Application {
 
     public static boolean connect(String bic) {
         currentEmployee = new Employee();
-        return true;
+        try {
+            currentEmployee.read_data(api.get_employee(bic));
+            if (currentEmployee.get_bic().equals(bic)) {
+                return true;
+            }
+        }
+        catch (Exception e) {}
+        disconnect();
+        return false;
     }
 
     public static void disconnect() {
+        currentEmployee = null;
     }
 
     // get a file from the resources folder

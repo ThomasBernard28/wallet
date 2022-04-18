@@ -7,7 +7,6 @@ public class JsonTools {
     /* 
      * When the api gives multiple objects in one json, this method is used to split them
      * ex: if I want the wallets of an user, this method will split the json so I'll have one json for each wallet
-     * @return an arrayList of json
      */ 
     public static ArrayList splitJson(String json) {
         ArrayList<String> jsonList = new ArrayList();

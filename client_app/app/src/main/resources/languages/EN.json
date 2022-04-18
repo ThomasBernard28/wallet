@@ -1,0 +1,72 @@
+{
+"hello":"Hello",
+"world":"World",
+
+
+"id":"ID",
+"password":"Password",
+"login":"Login",
+"register":"Register",
+"badCredentials":"Wrong id or password",
+
+
+"back":"Back",
+"firstName":"First name",
+"lastName":"Last name",
+"nationalID":"National register number",
+"confirmPassword":"Confirm password",
+"registerWarning1":"All informations are required.",
+"registerWarning2":"Your national register number must be 11 numbers long.",
+"pwMissmatch":"Passwords must be matching",
+"registerMessage":"Your account has been successfully created \nyour id : ",
+
+
+"myWallets":"My wallets",
+"myProfile":"My profile",
+"settings":"Settings",
+"signOut":"Sign out",
+"leave":"Exit",
+
+"selectInstitution":"Select your financial institution",
+"addWallet":"Add wallet",
+
+
+"selectProduct":"Select a product",
+"subscribe":"Subscribe",
+"addProductWarning1":"Please select an account type.",
+"addProductMessage1":"The creation of your account will be verified and confirmed soon. Please be patient.",
+"checkingAccount":"Checking account",
+"savingAccount":"Saving account",
+
+
+"balance":"Balance",
+"iban":"IBAN",
+"transaction":"Transaction",
+"history":"History",
+"coOwners":"Co-owners",
+"delete":"Delete",
+
+
+"receiver":"Receiver",
+"amount":"Amount",
+"communication":"Communication",
+"confirm":"Confirm",
+"transactionWarning1":"Please enter an iban.",
+"transactionWarning2":"Please enter a correct amount value.",
+
+
+"date":"Date",
+
+
+"changePassword":"Change password",
+"oldPassword":"Old password",
+"newPassword":"New password",
+"changePasswordMessage":"Your password has been changed.",
+
+
+"language":"Language",
+"sound":"Sound",
+"darkTheme":"Dark theme",
+"selectLanguage":"Select language"
+
+}

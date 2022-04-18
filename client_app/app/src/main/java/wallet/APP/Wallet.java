@@ -36,11 +36,14 @@ public class Wallet implements JsonReader {
         }
     }
 
+    /*
+     * @return the wallet's data as a json 
+     */
     public String write_data() {
         String json = "";
         try {
             json = new ObjectMapper().writeValueAsString(data);
-            json = "{" + json.substring(14, json.length()); // remove "walletID":"0", from the json
+            json = "{" + json.substring(14, json.length()); // remove "walletID":"0", from the json (it's not required by the api)
         }
         catch (Exception e) {
             System.out.println("failed to write wallet data");

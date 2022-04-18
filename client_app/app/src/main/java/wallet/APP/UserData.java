@@ -33,6 +33,10 @@ public class UserData {
         this.language = (String) language.get("language");
     }
 
+    public void set_language(String language) {
+        this.language = language;
+    }
+
     public String getLanguage() {
         return language;
     }

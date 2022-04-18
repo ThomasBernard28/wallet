@@ -23,7 +23,7 @@
                     </font>
                 </Button>
                 <Button fx:id="account" maxWidth="1.7976931348623157E308" mnemonicParsing="false"
-                        onMouseClicked="#onAccountButtonClick" text="My accounts">
+                        onMouseClicked="#onAccountButtonClick" text="My profile">
                     <font>
                         <Font name="Montserrat SemiBold" size="17.0"/>
                     </font>

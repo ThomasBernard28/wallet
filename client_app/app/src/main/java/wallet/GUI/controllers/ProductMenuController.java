@@ -5,15 +5,17 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.stage.Stage;
 
 import java.io.File;
 import java.io.IOException;
 
+import wallet.App;
 
 public class ProductMenuController {
     @FXML
-    Button back;
+    private Button back;
     @FXML
     private Button coowner;
     @FXML
@@ -22,6 +24,33 @@ public class ProductMenuController {
     private Button history;
     @FXML
     private Button transaction;
+    @FXML
+    private Label balance;
+    @FXML
+    private Label curr;
+    @FXML
+    private Label iban;
+    @FXML
+    private Label balanceLabel;
+    @FXML
+    private Label ibanLabel;
+
+    @FXML
+    private void initialize() {
+        // set language
+        back.setText(App.currentLanguage.get("back"));
+        coowner.setText(App.currentLanguage.get("coOwners"));
+        history.setText(App.currentLanguage.get("history"));
+        transaction.setText(App.currentLanguage.get("transaction"));
+        delete.setText(App.currentLanguage.get("delete"));
+        balanceLabel.setText(App.currentLanguage.get("balance")+" : ");
+        ibanLabel.setText(App.currentLanguage.get("iban")+" : ");
+
+        // set values
+        balance.setText(Float.toString(App.currentAccount.get_avgBalance()));
+        curr.setText(App.currentAccount.get_localCurr());
+        iban.setText(App.currentAccount.get_iban());
+    }
 
     @FXML
     private void onBackButtonClick() throws IOException {
@@ -34,8 +63,9 @@ public class ProductMenuController {
     }
 
     @FXML
-    private void onDeleteButtonClick(){
-        //
+    private void onDeleteButtonClick() throws IOException {
+        App.currentUser.disable_account(App.currentAccount);
+        onBackButtonClick();
     }
 
     @FXML

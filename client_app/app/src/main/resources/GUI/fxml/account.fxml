@@ -15,26 +15,12 @@
             <children>
                 <HBox alignment="CENTER">
                     <children>
-                        <Label contentDisplay="CENTER" text="First and second name :">
+                        <Label fx:id="firstNameLabel" contentDisplay="CENTER" text="First and second name :">
                             <font>
                                 <Font name="Montserrat Regular" size="17.0"/>
                             </font>
                         </Label>
-                        <Label fx:id="name" contentDisplay="CENTER" text="name">
-                            <font>
-                                <Font name="Montserrat Regular" size="17.0"/>
-                            </font>
-                        </Label>
-                    </children>
-                </HBox>
-                <HBox alignment="CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308">
-                    <children>
-                        <Label contentDisplay="CENTER" text="Age:">
-                            <font>
-                                <Font name="Montserrat Regular" size="17.0"/>
-                            </font>
-                        </Label>
-                        <Label fx:id="age" contentDisplay="CENTER" text="age">
+                        <Label fx:id="firstName" contentDisplay="CENTER" text="name">
                             <font>
                                 <Font name="Montserrat Regular" size="17.0"/>
                             </font>
@@ -43,7 +29,21 @@
                 </HBox>
                 <HBox alignment="CENTER">
                     <children>
-                        <Label contentDisplay="CENTER" text="National register number :">
+                        <Label fx:id="lastNameLabel" contentDisplay="CENTER" text="First and second name :">
+                            <font>
+                                <Font name="Montserrat Regular" size="17.0"/>
+                            </font>
+                        </Label>
+                        <Label fx:id="lastName" contentDisplay="CENTER" text="name">
+                            <font>
+                                <Font name="Montserrat Regular" size="17.0"/>
+                            </font>
+                        </Label>
+                    </children>
+                </HBox>
+                <HBox alignment="CENTER">
+                    <children>
+                        <Label fx:id="natIDLabel" contentDisplay="CENTER" text="National register number :">
                             <font>
                                 <Font name="Montserrat Regular" size="17.0"/>
                             </font>
@@ -51,20 +51,6 @@
                         <Label fx:id="number" alignment="CENTER" contentDisplay="CENTER"
                                maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308"
                                text="number">
-                            <font>
-                                <Font name="Montserrat Regular" size="17.0"/>
-                            </font>
-                        </Label>
-                    </children>
-                </HBox>
-                <HBox alignment="CENTER">
-                    <children>
-                        <Label contentDisplay="CENTER" text="Registration date :">
-                            <font>
-                                <Font name="Montserrat Regular" size="17.0"/>
-                            </font>
-                        </Label>
-                        <Label fx:id="date" contentDisplay="CENTER" text="date">
                             <font>
                                 <Font name="Montserrat Regular" size="17.0"/>
                             </font>
