@@ -14,6 +14,9 @@ import javax.persistence.Table;
 @NoArgsConstructor
 @ToString
 
+/**
+ * Insurance info entity
+ */
 @Entity(name = "INSURANCES_INFO")
 @Table(name = "INSURANCES_INFO")
 public class InsuranceInfo {

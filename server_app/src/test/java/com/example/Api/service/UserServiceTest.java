@@ -1,4 +1,4 @@
-package com.example.Api.repository;
+package com.example.Api.service;
 
 
 import com.example.Api.exception.ApiNotFoundException;
