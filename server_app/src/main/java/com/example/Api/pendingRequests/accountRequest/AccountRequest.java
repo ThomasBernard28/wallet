@@ -11,6 +11,9 @@ import javax.persistence.*;
 @NoArgsConstructor
 @ToString
 
+/**
+ * Account Creation Request Entity
+ */
 @Entity(name = "ACCOUNT_REQUEST")
 @Table(name = "ACCOUNT_REQUEST")
 public class AccountRequest {

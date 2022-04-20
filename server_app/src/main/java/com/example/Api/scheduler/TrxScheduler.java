@@ -48,6 +48,9 @@ public class TrxScheduler extends AbstractScheduler{
         }
     }
 
+    /**
+     * This method process all account creation request that are validated by the institution
+     */
     @Scheduled(initialDelay = 10, fixedRate = minutes, timeUnit = TimeUnit.SECONDS)
     public void processAllRequest(){
         if (isWeekend(LocalDateTime.now())){

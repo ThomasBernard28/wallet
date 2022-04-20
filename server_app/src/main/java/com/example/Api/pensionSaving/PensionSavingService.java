@@ -15,6 +15,9 @@ import java.time.LocalDate;
 import java.util.List;
 import java.util.Optional;
 
+/**
+ * Pension Saving Service layer
+ */
 @Service
 public class PensionSavingService {
 
@@ -25,6 +28,15 @@ public class PensionSavingService {
     private final InsuranceService insuranceService;
     private final PenBalanceService penBalanceService;
 
+    /**
+     * Constructor
+     * @param pensionSavingRepository Pension Saving Repository
+     * @param walletRepository Wallet Repository
+     * @param clientRepository Client Repository
+     * @param insuranceInfoRepository Insurance Repository
+     * @param insuranceService Insurance Service
+     * @param penBalanceService Pension Balance Service
+     */
     @Autowired
     public PensionSavingService(PensionSavingRepository pensionSavingRepository, WalletRepository walletRepository,
                                 ClientRepository clientRepository, InsuranceInfoRepository insuranceInfoRepository,
@@ -37,6 +49,11 @@ public class PensionSavingService {
         this.penBalanceService = penBalanceService;
     }
 
+    /**
+     * Method to get a Pension Saving with a specific id
+     * @param pensionID The id we want the Pension Saving from
+     * @return The Pension Saving if found or throw and exception if not found
+     */
     public PensionSaving getPensionSavingByID(Long pensionID){
         Optional<PensionSaving> optionalPensionSaving = pensionSavingRepository.findByPensionID(pensionID);
 
@@ -46,10 +63,27 @@ public class PensionSavingService {
         return optionalPensionSaving.get();
     }
 
-    public List<PensionSaving> pensionSavingsToRetribute(LocalDate date){
+    /**
+     * Method to get all the Pension Saving to reward. (After 1 year)
+     * @param date The reference date
+     * @return A list containing the Pension Savings to reward
+     */
+    public List<PensionSaving> pensionSavingsToReward(LocalDate date){
         return pensionSavingRepository.findByRenewDate(date);
     }
 
+    /**
+     *
+     * @param walletID The walletID of the Wallet we want to add the Pension Saving to
+     * @param userID The userID of the User that want to subscribe to the Pension Saving
+     * @param bic The bic of the institution the Client is registered to
+     * @param percentage The reward percentage
+     * @param subDate The subscription date
+     * @param renewDate The renewal date
+     * @param type The type of Insurance (PEN30 in this case)
+     * @param balance The balance (0 by default)
+     * @param activity The activity (1 by default)
+     */
     public void createPensionSaving(Long walletID, String userID, String bic, Float percentage, LocalDate subDate, LocalDate renewDate, String type, Float balance, Integer activity){
 
         if(walletRepository.findWalletByWalletID(walletID).isEmpty()){
