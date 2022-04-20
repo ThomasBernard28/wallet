@@ -12,6 +12,9 @@ import javax.persistence.*;
 @NoArgsConstructor
 @ToString
 
+/**
+ * Language Entity
+ */
 @Entity(name = "LANGUAGES")
 @Table(name = "LANGUAGES")
 public class Language {

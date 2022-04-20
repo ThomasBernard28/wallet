@@ -12,6 +12,9 @@ import javax.persistence.*;
 @NoArgsConstructor
 @ToString
 
+/**
+ * Pension Balance entity
+ */
 @Entity(name = "PENSION_BALANCE")
 @Table(name = "PENSION_BALANCE")
 public class PenBalance {
