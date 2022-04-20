@@ -27,6 +27,7 @@
 "signOut":"Sign out",
 "leave":"Exit",
 
+
 "selectInstitution":"Select your financial institution",
 "addWallet":"Add wallet",
 
@@ -67,6 +68,9 @@
 "language":"Language",
 "sound":"Sound",
 "darkTheme":"Dark theme",
-"selectLanguage":"Select language"
+"selectLanguage":"Select language",
 
+
+"addCoOwner":"Add a new co-owner",
+"add":"Add"
 }

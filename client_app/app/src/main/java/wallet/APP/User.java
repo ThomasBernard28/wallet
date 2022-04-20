@@ -11,6 +11,7 @@ import wallet.APP.Wallet;
 import wallet.APP.WalletData;
 import wallet.APP.Account;
 import wallet.APP.History;
+import wallet.APP.CoOwner;
 import wallet.API.JsonReader;
 import wallet.API.JsonTools;
 import wallet.API.Api;
@@ -23,6 +24,7 @@ public class User implements JsonReader {
     private ArrayList<Wallet>  walletsList  = new ArrayList();
     private ArrayList<Account> accountsList = new ArrayList();
     private ArrayList<History> historyList  = new ArrayList();
+    private ArrayList<CoOwner> coOwnersList = new ArrayList();
 
     public User() {
     }
@@ -73,8 +75,6 @@ public class User implements JsonReader {
     }
 
     /*
-     * get the user's wallets list from the api 
-     * and put it in an arraylist
      */
     public void set_walletsList(String json) {
         try {
@@ -99,8 +99,6 @@ public class User implements JsonReader {
     }
 
     /*
-     * get the user's accounts(for a given institution) list from the api 
-     * and put it in an arraylist
      */
     public void set_accountsList(String json) {
         try {
@@ -125,8 +123,6 @@ public class User implements JsonReader {
     }
 
     /*
-     * get the user's history(for a given account) list from the api 
-     * and put it in an arraylist
      */
     public void set_historyList(String json) {
         try {
@@ -148,6 +144,28 @@ public class User implements JsonReader {
 
     public ArrayList get_historyList() {
         return historyList;
+    }
+
+    public void set_coOwnersList(String json) {
+        try {
+            coOwnersList.clear();
+            ArrayList<String> jsonList = JsonTools.splitJson(json);
+            for (String jl : jsonList) {
+                CoOwner coOwner = new CoOwner();
+                try {
+                    coOwner.read_data(jl);
+                    coOwnersList.add(coOwner);
+                }
+                catch (Exception e) {
+                }
+            }
+        }
+        catch (Exception e) {
+        }
+    }
+
+    public ArrayList get_coOwnersList() {
+        return coOwnersList;
     }
 
     public String get_userID() {
