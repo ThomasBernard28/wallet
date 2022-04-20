@@ -24,6 +24,8 @@ public class ProductListController {
     GridPane grid;
     @FXML
     Button plus;
+    @FXML
+    Button myInsurances;
 
     private ArrayList<Account> accountsList;
 
@@ -83,6 +85,16 @@ public class ProductListController {
     @FXML
     private void onPlusButtonClick() throws IOException{
         FXMLLoader fxmlLoader = new FXMLLoader(new File("build/resources/main/GUI/fxml/addproductmenu.fxml").toURL());
+        Parent root = fxmlLoader.load();
+        Stage stage = (Stage) (back.getScene().getWindow());
+        Scene scene = new Scene(root, 320, 320);
+        stage.setScene(scene);
+        stage.show();
+    }
+
+    @FXML
+    private void onMyInsurancesButtonClick() throws IOException{
+        FXMLLoader fxmlLoader = new FXMLLoader(new File("build/resources/main/GUI/fxml/insurancemenu.fxml").toURL());
         Parent root = fxmlLoader.load();
         Stage stage = (Stage) (back.getScene().getWindow());
         Scene scene = new Scene(root, 320, 320);

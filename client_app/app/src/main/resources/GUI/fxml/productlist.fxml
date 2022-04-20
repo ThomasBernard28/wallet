@@ -42,4 +42,14 @@
          </BorderPane.margin>
         </Button>
     </right>
+    <bottom>
+        <Button fx:id="myInsurances" onMouseClicked="#onMyInsurancesButtonClick" text="My Insurances" mnemonicParsing="false" BorderPane.alignment="BOTTOM_CENTER">
+            <font>
+                <Font name="Montserrat Semibold" size="16.0"/>
+            </font>
+          <BorderPane.margin>
+              <Insets bottom="15"/>
+          </BorderPane.margin>
+        </Button>
+    </bottom>
 </BorderPane>

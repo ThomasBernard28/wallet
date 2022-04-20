@@ -18,11 +18,12 @@ import wallet.API.Api;
 /* Represent a user of the application */
 public class User implements JsonReader {
 
-    private Api                api          = new Api();
-    private UserData           data         = new UserData();
-    private ArrayList<Wallet>  walletsList  = new ArrayList();
-    private ArrayList<Account> accountsList = new ArrayList();
-    private ArrayList<History> historyList  = new ArrayList();
+    private Api                  api            = new Api();
+    private UserData             data           = new UserData();
+    private ArrayList<Wallet>    walletsList    = new ArrayList();
+    private ArrayList<Account>   accountsList   = new ArrayList();
+    private ArrayList<History>   historyList    = new ArrayList();
+    private ArrayList<Insurance> insurancesList = new ArrayList<>();
 
     public User() {
     }
@@ -112,6 +113,25 @@ public class User implements JsonReader {
         catch (Exception e) {
         }
     }
+
+    public void set_insurances_List(String json){
+        try{
+            insurancesList.clear();
+            ArrayList<String> jsonList = JsonTools.splitJson(json);
+            for (String jL: jsonList) {
+                Insurance insurance = new Insurance();
+                try {
+                    insurance.read_data(jL);
+                    insurancesList.add(insurance);
+                }catch(Exception e){
+
+                }
+            }
+        }catch (Exception e){
+
+        }
+    }
+    public ArrayList get_insuranceList(){return insurancesList;}
 
     public ArrayList get_accountsList() {
         return accountsList;
