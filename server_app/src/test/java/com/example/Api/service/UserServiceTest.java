@@ -18,6 +18,7 @@ import java.util.Optional;
 
 import static org.assertj.core.api.Assertions.*;
 import static org.junit.jupiter.api.Assertions.*;
+import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 
 @ExtendWith(MockitoExtension.class)
@@ -69,6 +70,47 @@ public class UserServiceTest {
         String userID = "idTest";
 
         assertThatThrownBy(() -> underTest.getOneUser(userID)).isInstanceOf(ApiNotFoundException.class).hasMessageContaining("No user with id : " + userID);
+    }
+
+    @Test
+    void shouldAddTheUser(){
+        String userID = "test";
+        Optional<User> optionalUser = Optional.of(new User(
+                userID,
+                "natID",
+                "1234",
+                "lastName",
+                "firstName",
+                new Language("FR")
+        ));
+
+        User user = optionalUser.get();
+
+        when(userRepository.findUserByUserID(userID)).thenReturn(optionalUser);
+
+        Optional<User> userRequested = userRepository.findUserByUserID(userID);
+
+        verify(userRepository).findUserByUserID(userID);
+        assertTrue(userRequested.isPresent() && user.getUserID().equals(userRequested.get().getUserID()));
+    }
+
+    @Test
+    void shouldDeleteUser(){
+        String userID = "test";
+        Optional<User> optionalUser = Optional.of(new User(
+                userID,
+                "natID",
+                "1234",
+                "lastName",
+                "firstName",
+                new Language("FR")
+        ));
+
+        when(userRepository.findUserByUserID(userID)).thenReturn(optionalUser);
+
+        underTest.deleteUser(userID);
+
+        assertTrue(userRepository.findUserByUserID(userID).isEmpty());
     }
 
 
