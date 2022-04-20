@@ -1,5 +1,6 @@
 package com.example.Api.user;
 
+import com.example.Api.exception.ApiIncorrectException;
 import com.example.Api.exception.ApiNotFoundException;
 import com.example.Api.language.LanguageService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -49,7 +50,7 @@ public class UserController {
     @GetMapping(path = "{userId}")
     public User getOneUser(@PathVariable("userId") String userID){
 
-        return userService.getOneUser(userID).get();
+        return userService.getOneUser(userID);
     }
 
     /**
@@ -59,13 +60,14 @@ public class UserController {
      */
     @PostMapping
     public void registerNewUser(@RequestBody Map<String, String> json){
-        Optional<User> userOptional = userService.getOneUser(json.get("userID"));
 
-        if(userOptional.isPresent()){
-            throw new ApiNotFoundException("This user already exists");
+        if (userService.canAddUser(json.get("userID"))){
+            userService.addNewUser(new User(json.get("userID"), json.get("natID"), json.get("psswd"), json.get("lastName"),
+                    json.get("firstName"), languageService.getLanguage(json.get("language"))));
         }
-        userService.addNewUser(new User(json.get("userID"), json.get("natID"), json.get("psswd"), json.get("lastName"),
-                json.get("firstName"), languageService.getLanguage(json.get("language"))));
+        else{
+            throw new ApiIncorrectException("User with id : " + json.get("userID") + " already exists");
+        }
     }
 
     /**

@@ -16,7 +16,12 @@ import java.util.Optional;
 @Transactional
 public interface UserRepository extends JpaRepository<User, String> {
 
-    @Query("SELECT s FROM USERS s WHERE s.userID = ?1")
+    /**
+     * Method to find a User in the db using the userID
+     * @param userID The userID of the User we are looking for
+     * @return an Optional containing a potential User
+     */
+    @Query(value = "SELECT * FROM USERS WHERE userID = ?1 ", nativeQuery = true)
     Optional<User> findUserByUserID(String userID);
 
 

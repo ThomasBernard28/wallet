@@ -28,7 +28,7 @@ public class CoOwnerController {
 
         Wallet wallet = walletService.getWalletByWalletID(walletID).get();
 
-        coOwnerService.registerCoOwner(wallet.getWalletID(), json.get("ibanOwner"), wallet.getUser().getUserID(), json.get("bicOwner"), json.get("userIDOwner"));
+        coOwnerService.registerCoOwner(wallet.getWalletID(), json.get("ibanOwner"), json.get(""), json.get("bicOwner"), json.get("userIDOwner"));
 
     }
 

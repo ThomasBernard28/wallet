@@ -55,17 +55,11 @@ public class WalletController {
         Integer activity = Integer.parseInt(json.get("activity"));
         LocalDate localDate = LocalDate.parse(json.get("openingDate"));
 
-        Optional<User> user = userService.getOneUser(json.get("userID"));
+        User user = userService.getOneUser(json.get("userID"));
 
         Client client = clientService.getOneClient(json.get("bic"), json.get("userID"));
 
-        if(user.isPresent()){
-            walletService.addNewWallet(json.get("userID"), json.get("bic"), localDate, activity, client);
-        }
-        else{
-            //We need an existing user to register a wallet
-            throw new ApiNotFoundException("User : " + json.get("userID") + " not found");
-        }
+        walletService.addNewWallet(json.get("userID"), json.get("bic"), localDate, activity, client);
     }
 
     @DeleteMapping(path = "{walletId}")

@@ -45,35 +45,60 @@ public class UserService {
      * @return it returns an Optional which a kind of Collection on which we can check
      * if the user is present (.isPresent()) or if the Optional is empty (.isEmpty())
      */
-    public Optional<User> getOneUser(String userID){
+    public User getOneUser(String userID){
 
-        return userRepository.findUserByUserID(userID);
+        Optional<User> userOptional = userRepository.findUserByUserID(userID);
+
+        if(userOptional.isEmpty()){
+            throw new ApiNotFoundException("No user with id : " + userID);
+        }
+
+        return userOptional.get();
     }
 
+    public boolean canAddUser(String userID){
+        Optional<User> optionalUser = userRepository.findUserByUserID(userID);
+        System.out.println();
+        return optionalUser.isEmpty();
+    }
 
+    /**
+     * Method to add a register a new User
+     * @param user The user instance to add in the db
+     */
     public void addNewUser(User user){
         // First we check if the user exists
-        Optional<User> userOptional = userRepository.findUserByUserID(user.getUserID());
-
-        if(userOptional.isPresent()){
-            //If not we throw a custom exception
-            throw new ApiIncorrectException("User with userID : " +  user.getUserID() + " already exists");
+        if (canAddUser(user.getUserID())){
+            //save method works like an INSERT SQL Request
+            userRepository.save(user);
         }
-        //else we save it using the repository
-        //save method works like an INSERT SQL Request
-        userRepository.save(user);
+        else{
+            //if user already exists
+            throw new ApiIncorrectException("User with id : " + user.getUserID() + " already exists");
+        }
     }
 
+    /**
+     * Method to delete a User using the userID
+     * @param userID The userID of the user we want to delete
+     */
     public void deleteUser(String userID){
+
         Optional<User> userOptional = userRepository.findById(userID);
 
-
+        //If no user found
         if(userOptional.isEmpty()){
             throw new ApiNotFoundException("The user doesn't exist with id : " + userID);
         }
-
+        //else delete
         userRepository.delete(userOptional.get());
     }
+
+    /**
+     * Method to update the password of a user using is userID
+     * @param userID The userID of the User we want to change the password
+     * @param psswd The new password
+     */
     //Transactional is here to revert changes in case of errors that may occur during the process
     @Transactional
     public void updateUserPassword(String userID, String psswd){
@@ -90,6 +115,11 @@ public class UserService {
 
     }
 
+    /**
+     * Method to update the favorite language of a user
+     * @param userID The userID of the User we want to change the language
+     * @param language The new language
+     */
     @Transactional
     public void updateUserLanguage(String userID, String language){
         User user = userRepository.findById(userID).orElseThrow(() -> new ApiNotFoundException(

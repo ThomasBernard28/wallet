@@ -28,7 +28,13 @@ public class TransactionService {
     private final HistoryService historyService;
     private final PenBalanceService penBalanceService;
 
-
+    /**
+     * The TransactionService taking repositories and services in arguments
+     * @param transactionRepository Transaction Repository
+     * @param balanceService Balance Service
+     * @param historyService History Service to store the processed transactions
+     * @param penBalanceService Pension Balance Service
+     */
     @Autowired
     public TransactionService(TransactionRepository transactionRepository, BalanceService balanceService, HistoryService historyService,
                               PenBalanceService penBalanceService){
@@ -38,6 +44,10 @@ public class TransactionService {
         this.penBalanceService = penBalanceService;
     }
 
+    /**
+     * @param trxID The id of the transaction we want
+     * @return The Transaction we want
+     */
     public Transaction getTrxById(Long trxID){
         Optional<Transaction> transaction = transactionRepository.findByTrxID(trxID);
 
@@ -87,6 +97,10 @@ public class TransactionService {
         historyService.separateTrxHistory(transaction);
     }
 
+    /**
+     * This method will perform a cash deposit updating the balance of the receiver
+     * @param transaction The transaction to perform
+     */
     public void performCashDeposit(Transaction transaction){
         Balance receiver = balanceService.getBalanceByIbanAndCurrency(transaction.getIbanReceiver(), transaction.getCurrency());
 
@@ -103,6 +117,10 @@ public class TransactionService {
         historyService.saveReceiverHistory(transaction, receiver);
     }
 
+    /**
+     * This method will perform a funding on a pension saving
+     * @param transaction The transaction to perform
+     */
     @Transactional
     public void performPenTrx(Transaction transaction){
         PenBalance penBalance = penBalanceService.findByPensionIdAndCurrency(transaction.getInsIDReceiver(), transaction.getCurrency());

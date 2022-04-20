@@ -18,6 +18,11 @@ public class PensionSavingController {
         this.pensionSavingService = pensionSavingService;
     }
 
+    @GetMapping("{pensionID}")
+    public PensionSaving getByID(Long pensionID){
+        return pensionSavingService.getPensionSavingByID(pensionID);
+    }
+
     @PostMapping
     public void registerPensionSaving(@RequestBody Map<String, String> json){
         Long walletID = Long.parseLong(json.get("walletID"));
