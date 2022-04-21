@@ -25,4 +25,7 @@ public interface AccountRepository extends JpaRepository<Account, String> {
 
     @Query(value = "UPDATE ACCOUNTS SET walletID = ?1 WHERE iban = ?2", nativeQuery = true)
     void addWalletToAccounts(Long wallletID, String iban);
+
+    @Query(value = "SELECT * FROM ACCOUNTS WHERE bic = ?1", nativeQuery = true)
+    List<Account> findAccountsByBic(String bic);
 }

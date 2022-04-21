@@ -69,6 +69,10 @@ public class AccountService {
         return accountOptional.get();
     }
 
+    public List<Account> findAllAccountForBank(String bic){
+        return accountRepository.findAccountsByBic(bic);
+    }
+
     public boolean registerAccount(Client client, String type){
         String iban = ibanGenerator(client.getClientIDEmb().getBic());
 

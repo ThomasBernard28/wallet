@@ -30,6 +30,11 @@ public class AccountController {
         return accountService.getAccounts(walletID);
     }
 
+    @GetMapping(path = "allByBic/{bic}")
+    public List<Account> getAllAccountsForInstitution(@PathVariable("bic") String bic){
+        return accountService.findAllAccountForBank(bic);
+    }
+
     @GetMapping(path = "{bic}/{userID}")
     public List<Account> getClientAccounts(@PathVariable("bic") String bic, @PathVariable("userID") String userID){
         return accountService.getAccountsForClient(bic, userID);
