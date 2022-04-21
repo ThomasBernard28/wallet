@@ -23,9 +23,10 @@ public interface AccountRepository extends JpaRepository<Account, String> {
     @Query(value = "SELECT * FROM ACCOUNTS WHERE walletID = ?1 AND activity =1 UNION (SELECT a.iban 'iban', c.walletID_coOwner 'walletID', a.userID 'userID', a.bic 'bic', a.type 'type', a.avgBalance 'avgBalance', a.localCurr 'localCurr', a.activity 'activity' FROM ACCOUNTS a, CO_OWNER c WHERE a.iban = c.ibanOwner AND c.walletID_coOwner = ?1)", nativeQuery = true)
     List<Account> findAccountByWalletID(Long walletID);
 
+    @Query(value = "SELECT * FROM ACCOUNTS WHERE bic = ?1", nativeQuery = true)
+    List<Account> findAccountsByBic(String bic);
+
     @Query(value = "UPDATE ACCOUNTS SET walletID = ?1 WHERE iban = ?2", nativeQuery = true)
     void addWalletToAccounts(Long wallletID, String iban);
 
-    @Query(value = "SELECT * FROM ACCOUNTS WHERE bic = ?1", nativeQuery = true)
-    List<Account> findAccountsByBic(String bic);
 }
