@@ -2,10 +2,12 @@ package wallet.GUI.controllers;
 
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.geometry.Insets;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
-import javafx.scene.layout.GridPane;
+import javafx.scene.layout.*;
+import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 
 import java.io.File;
@@ -24,11 +26,13 @@ public class WalletgridController {
     Button plus;
     @FXML
     Button wallet;
+    @FXML
+    private BorderPane borderPane;
 
-    int a       = 1;
-    int ligne   = 0;
+    int a = 1;
+    int ligne = 0;
     int colonne = 0;
-    int pq      = 0;
+    int pq = 0;
 
     private ArrayList<Wallet> walletsList;
     Boolean bool;
@@ -37,7 +41,11 @@ public class WalletgridController {
     private void initialize() {
         // set language
         back.setText(App.currentLanguage.get("back"));
-
+        if (App.dark){
+            borderPane.setBackground(new Background( new BackgroundFill(Color.GREY, CornerRadii.EMPTY, Insets.EMPTY)));
+        }else{
+            borderPane.setBackground(new Background( new BackgroundFill(Color.WHITE, CornerRadii.EMPTY, Insets.EMPTY)));
+        }
         // set values
         try {
             App.currentUser.set_walletsList(App.api.get_wallets(App.currentUser.get_userID()));
@@ -45,7 +53,8 @@ public class WalletgridController {
             for (Wallet w : walletsList) {
                 addWalletButton(App.get_bankName(w.get_bic()), w);
             }
-        } catch (Exception e) {}
+        } catch (Exception e) {
+        }
     }
 
     private void addWalletButton(String bic, Wallet wallet) {

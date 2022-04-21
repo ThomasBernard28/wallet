@@ -9,41 +9,47 @@
 <?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="wallet.GUI.controllers.AddProductMenuController">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0"
+            prefWidth="600.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="wallet.GUI.controllers.AddProductMenuController"
+            fx:id="borderPane">
     <center>
         <HBox alignment="CENTER" prefHeight="306.0" prefWidth="600.0" spacing="50.0" BorderPane.alignment="CENTER">
             <children>
-                <Label alignment="CENTER" contentDisplay="CENTER" maxWidth="1.7976931348623157E308" prefHeight="16.0" prefWidth="213.0" text="Select a product" />
-                <ComboBox fx:id="box" prefHeight="24.0" prefWidth="209.0" />
+                <Label alignment="CENTER" contentDisplay="CENTER" maxWidth="1.7976931348623157E308" prefHeight="16.0"
+                       prefWidth="213.0" text="Select a product"/>
+                <ComboBox fx:id="box" prefHeight="24.0" prefWidth="209.0"/>
             </children>
         </HBox>
     </center>
     <bottom>
-        <Button fx:id="subscribe" onAction="#onSubscribeButtonClick" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" text="Subscribe" BorderPane.alignment="TOP_CENTER">
+        <Button fx:id="subscribe" onAction="#onSubscribeButtonClick" alignment="CENTER" contentDisplay="CENTER"
+                mnemonicParsing="false" text="Subscribe" BorderPane.alignment="TOP_CENTER">
             <font>
-                <Font name="Montserrat SemiBold" size="17.0" />
+                <Font name="Montserrat SemiBold" size="17.0"/>
             </font>
         </Button>
 
 
     </bottom>
     <padding>
-        <Insets bottom="50.0" />
+        <Insets bottom="50.0"/>
     </padding>
     <top>
         <StackPane prefHeight="47.0" prefWidth="600.0" BorderPane.alignment="CENTER">
             <children>
-                <Button fx:id="back" mnemonicParsing="false" onAction="#onBackButtonClick" text="back" StackPane.alignment="TOP_LEFT">
+                <Button fx:id="back" mnemonicParsing="false" onAction="#onBackButtonClick" text="back"
+                        StackPane.alignment="TOP_LEFT">
                     <font>
-                        <Font name="Montserrat SemiBold" size="17.0" />
+                        <Font name="Montserrat SemiBold" size="17.0"/>
                     </font>
-               <StackPane.margin>
-                  <Insets left="10.0" top="10.0" />
-               </StackPane.margin>
-                    
+                    <StackPane.margin>
+                        <Insets left="10.0" top="10.0"/>
+                    </StackPane.margin>
+
                 </Button>
 
-                <Label text="N27" />
+                <Label text="N27"/>
             </children>
         </StackPane>
     </top>

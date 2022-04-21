@@ -3,12 +3,14 @@ package wallet.GUI.controllers;
 import javafx.fxml.FXML;
 
 import javafx.fxml.FXMLLoader;
+import javafx.geometry.Insets;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.layout.*;
+import javafx.scene.paint.Color;
 import javafx.stage.Stage;
-import javafx.scene.layout.GridPane;
 
 import java.io.File;
 import java.io.IOException;
@@ -20,8 +22,10 @@ import wallet.APP.History;
 public class ProductHistoryController {
     @FXML
     Button back;
-    @FXML 
+    @FXML
     GridPane grid;
+    @FXML
+    private StackPane stackPane;
 
     ArrayList<History> historyList = new ArrayList();
 
@@ -34,7 +38,8 @@ public class ProductHistoryController {
         try {
             App.currentUser.set_historyList(App.api.get_history(App.currentAccount.get_iban()));
             historyList = App.currentUser.get_historyList();
-        } catch (Exception e) {}
+        } catch (Exception e) {
+        }
 
         int row = 0;
         for (History h : historyList) {
@@ -42,13 +47,18 @@ public class ProductHistoryController {
             if (h.get_ibanReceiver().equals(App.currentAccount.get_iban())) {
                 direction = h.get_ibanReceiver() + " <--- " + h.get_ibanSender() + '\n';
             }
-            String amount = App.currentLanguage.get("amount")+ " : " + h.get_amount() + " " + App.currentAccount.get_localCurr() + '\n';
-            String newBal = App.currentLanguage.get("balance")+ " : " + h.get_prevBalance() + " ---> " + h.get_nextBalance() + '\n';
-            String date   = App.currentLanguage.get("date")+ " : " + h.get_dateTime().substring(0, 10) + '\n';
-            String com    = App.currentLanguage.get("communication")+ " : \n" + h.get_comments();
+            String amount = App.currentLanguage.get("amount") + " : " + h.get_amount() + " " + App.currentAccount.get_localCurr() + '\n';
+            String newBal = App.currentLanguage.get("balance") + " : " + h.get_prevBalance() + " ---> " + h.get_nextBalance() + '\n';
+            String date = App.currentLanguage.get("date") + " : " + h.get_dateTime().substring(0, 10) + '\n';
+            String com = App.currentLanguage.get("communication") + " : \n" + h.get_comments();
             Label l = new Label(direction + amount + newBal + date + com);
             l.setStyle("-fx-border-color: grey;");
             grid.add(l, 0, row++);
+            if (App.dark) {
+                stackPane.setBackground(new Background(new BackgroundFill(Color.GREY, CornerRadii.EMPTY, Insets.EMPTY)));
+            } else {
+                stackPane.setBackground(new Background(new BackgroundFill(Color.WHITE, CornerRadii.EMPTY, Insets.EMPTY)));
+            }
         }
     }
 

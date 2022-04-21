@@ -54,14 +54,21 @@ public class SettingController {
 
         String[] languages = {"EN", "FR"}; // to do : check for languages json 
         language.setItems(FXCollections.observableArrayList(languages));
-
-        borderPane.backgroundProperty().bind(Bindings.when(theme.selectedProperty())
-                .then(new Background(new BackgroundFill(Color.GREY, CornerRadii.EMPTY, Insets.EMPTY)))
-                .otherwise(new Background(new BackgroundFill(Color.BEIGE, CornerRadii.EMPTY, Insets.EMPTY))));
+        if (App.dark){
+            borderPane.setBackground(new Background( new BackgroundFill(Color.GREY, CornerRadii.EMPTY, Insets.EMPTY)));
+        }else{
+            borderPane.setBackground(new Background( new BackgroundFill(Color.WHITE, CornerRadii.EMPTY, Insets.EMPTY)));
+        }
     }
 
     @FXML
     private void OnThemeCheckBoxChecked() {
+        if (App.dark){
+            App.dark = false;
+        }else {
+            App.dark = true;
+        }
+        initialize();
     }
 
     @FXML
@@ -80,12 +87,6 @@ public class SettingController {
         stage.show();
     }
 
-    public boolean getThemeValue(){
-        return theme.isSelected();
-    }
 
-    public CheckBox getTheme(){
-        return theme;
-    }
 
 }

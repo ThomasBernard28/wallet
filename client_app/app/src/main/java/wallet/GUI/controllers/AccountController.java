@@ -2,10 +2,13 @@ package wallet.GUI.controllers;
 
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.geometry.Insets;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.layout.*;
+import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 
 import java.io.File;
@@ -32,6 +35,9 @@ public class AccountController {
     private Label natIDLabel;
 
     @FXML
+    private BorderPane borderPane;
+
+    @FXML
     private void initialize() {
         // set language
         firstNameLabel.setText(App.currentLanguage.get("firstName")+" : ");
@@ -44,6 +50,11 @@ public class AccountController {
         firstName.setText(App.currentUser.get_firstName());
         lastName.setText(App.currentUser.get_lastName()); 
         number.setText(App.currentUser.get_natID());
+        if (App.dark){
+            borderPane.setBackground(new Background( new BackgroundFill(Color.GREY, CornerRadii.EMPTY, Insets.EMPTY)));
+        }else{
+            borderPane.setBackground(new Background( new BackgroundFill(Color.WHITE, CornerRadii.EMPTY, Insets.EMPTY)));
+        }
     }   
 
     @FXML

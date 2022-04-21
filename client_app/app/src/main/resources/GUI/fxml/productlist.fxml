@@ -5,41 +5,47 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="wallet.GUI.controllers.ProductListController">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0"
+            prefWidth="600.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="wallet.GUI.controllers.ProductListController"
+            fx:id="borderPane">
     <center>
-        <GridPane fx:id="grid" hgap="15.0" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="358.0" prefWidth="319.0" vgap="15.0" BorderPane.alignment="CENTER">
+        <GridPane fx:id="grid" hgap="15.0" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="358.0"
+                  prefWidth="319.0" vgap="15.0" BorderPane.alignment="CENTER">
             <BorderPane.margin>
-                <Insets />
+                <Insets/>
             </BorderPane.margin>
             <columnConstraints>
-                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" />
+                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0"/>
             </columnConstraints>
             <rowConstraints>
-                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
+                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES"/>
+                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES"/>
+                <RowConstraints minHeight="10.0" vgrow="SOMETIMES"/>
             </rowConstraints>
         </GridPane>
     </center>
     <left>
-        <Button fx:id="back" mnemonicParsing="false" onMouseClicked="#onBackButtonClick" text="back" BorderPane.alignment="TOP_LEFT">
+        <Button fx:id="back" mnemonicParsing="false" onMouseClicked="#onBackButtonClick" text="back"
+                BorderPane.alignment="TOP_LEFT">
             <font>
-                <Font name="Montserrat SemiBold" size="17.0" />
+                <Font name="Montserrat SemiBold" size="17.0"/>
             </font>
-            <Insets left="10.0" top="10.0" />
-         <BorderPane.margin>
-            <Insets left="10.0" top="10.0" />
-         </BorderPane.margin>
+            <Insets left="10.0" top="10.0"/>
+            <BorderPane.margin>
+                <Insets left="10.0" top="10.0"/>
+            </BorderPane.margin>
         </Button>
     </left>
     <right>
-        <Button fx:id="plus" mnemonicParsing="false" onMouseClicked="#onPlusButtonClick" text="+" BorderPane.alignment="TOP_RIGHT">
+        <Button fx:id="plus" mnemonicParsing="false" onMouseClicked="#onPlusButtonClick" text="+"
+                BorderPane.alignment="TOP_RIGHT">
             <font>
-                <Font name="Montserrat SemiBold" size="17.0" />
+                <Font name="Montserrat SemiBold" size="17.0"/>
             </font>
-         <BorderPane.margin>
-            <Insets right="10.0" top="10.0" />
-         </BorderPane.margin>
+            <BorderPane.margin>
+                <Insets right="10.0" top="10.0"/>
+            </BorderPane.margin>
         </Button>
     </right>
 </BorderPane>

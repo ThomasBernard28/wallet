@@ -1,5 +1,7 @@
 package wallet;
 
+import javafx.beans.Observable;
+import javafx.beans.value.ObservableBooleanValue;
 import wallet.API.Api;
 import wallet.API.JsonTools;
 import wallet.APP.User;
@@ -30,12 +32,14 @@ public class App extends Application {
     public static Account             currentAccount;
     public static Map<String, String> currentLanguage;
     public static Stage               stage;
+    public static boolean dark;
 
 
     @Override
     public void start(Stage stage) throws IOException {
+        dark= false;
         FXMLLoader fxmlLoader = new FXMLLoader();
-        Parent root = fxmlLoader.load(getFileFromResourceAsStream("GUI/fxml/hello-view.fxml"));
+        Parent root = fxmlLoader.load(getFileFromResourceAsStream("GUI/fxml/settings.fxml"));
         Scene scene = new Scene(root, 320, 240);
         this.stage = stage;
         stage.setTitle("Hello!");

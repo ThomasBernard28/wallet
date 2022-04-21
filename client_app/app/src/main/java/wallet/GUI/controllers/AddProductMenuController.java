@@ -2,12 +2,18 @@ package wallet.GUI.controllers;
 
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.geometry.Insets;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
+import javafx.scene.layout.Background;
+import javafx.scene.layout.BackgroundFill;
+import javafx.scene.layout.BorderPane;
+import javafx.scene.layout.CornerRadii;
+import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 import javafx.collections.*;
 
@@ -18,17 +24,25 @@ import wallet.App;
 
 public class AddProductMenuController {
     @FXML
-    Button back;
+     private Button back;
     @FXML
-    ComboBox box;
+    private ComboBox box;
     @FXML
-    Button subscribe;
+    private Button subscribe;
+    @FXML
+    private BorderPane borderPane;
+
 
     @FXML
     private void initialize() {
         // set comboBox values
         String types[] = {"Checking account", "Saving account"};
         box.setItems(FXCollections.observableArrayList(types));
+        if (App.dark){
+            borderPane.setBackground(new Background( new BackgroundFill(Color.GREY, CornerRadii.EMPTY, Insets.EMPTY)));
+        }else{
+            borderPane.setBackground(new Background( new BackgroundFill(Color.WHITE, CornerRadii.EMPTY, Insets.EMPTY)));
+        }
     }
 
     @FXML

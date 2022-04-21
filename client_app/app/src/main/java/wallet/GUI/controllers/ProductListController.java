@@ -2,10 +2,12 @@ package wallet.GUI.controllers;
 
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.geometry.Insets;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
-import javafx.scene.layout.GridPane;
+import javafx.scene.layout.*;
+import javafx.scene.paint.Color;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 
@@ -24,11 +26,18 @@ public class ProductListController {
     GridPane grid;
     @FXML
     Button plus;
+    @FXML
+    private BorderPane borderPane;
 
     private ArrayList<Account> accountsList;
 
     @FXML
     private void initialize() {
+        if (App.dark){
+            borderPane.setBackground(new Background( new BackgroundFill(Color.GREY, CornerRadii.EMPTY, Insets.EMPTY)));
+        }else{
+            borderPane.setBackground(new Background( new BackgroundFill(Color.WHITE, CornerRadii.EMPTY, Insets.EMPTY)));
+        }
         try {
             App.currentUser.set_accountsList(App.api.get_products(App.currentWallet.get_walletID()));
             accountsList = App.currentUser.get_accountsList();

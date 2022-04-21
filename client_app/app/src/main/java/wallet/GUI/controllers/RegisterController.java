@@ -3,6 +3,7 @@ package wallet.GUI.controllers;
 import javafx.animation.PauseTransition;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.geometry.Insets;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
@@ -11,6 +12,11 @@ import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
+import javafx.scene.layout.Background;
+import javafx.scene.layout.BackgroundFill;
+import javafx.scene.layout.BorderPane;
+import javafx.scene.layout.CornerRadii;
+import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 import javafx.util.Duration;
 
@@ -47,6 +53,9 @@ public class RegisterController {
     private Label passwordLabel;
     @FXML
     private Label confirmPasswordLabel;
+    @FXML
+    private BorderPane borderPane;
+
 
     @FXML 
     private void initialize() {
@@ -59,6 +68,11 @@ public class RegisterController {
         nationalIdLabel.setText(App.currentLanguage.get("nationalID")+" :");
         passwordLabel.setText(App.currentLanguage.get("password")+" :");
         confirmPasswordLabel.setText(App.currentLanguage.get("confirmPassword")+" :");
+        if (App.dark){
+            borderPane.setBackground(new Background( new BackgroundFill(Color.GREY, CornerRadii.EMPTY, Insets.EMPTY)));
+        }else{
+            borderPane.setBackground(new Background( new BackgroundFill(Color.WHITE, CornerRadii.EMPTY, Insets.EMPTY)));
+        }
     }
 
     @FXML

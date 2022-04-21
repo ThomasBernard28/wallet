@@ -10,7 +10,9 @@
 <BorderPane fx:id="borderPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity"
             prefHeight="400.0" prefWidth="600.0"
             xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1"
-            fx:controller="wallet.GUI.controllers.MainMenuController">
+            fx:controller="wallet.GUI.controllers.MainMenuController"
+            stylesheets="@../../GUI/css/mainmenustyle.css"
+>
 
     <left>
         <VBox fx:id="sidemenu" alignment="CENTER" prefHeight="376.0" prefWidth="183.0" spacing="50.0"

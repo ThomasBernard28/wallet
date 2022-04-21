@@ -10,7 +10,8 @@
 <?import javafx.scene.text.Font?>
 <BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0"
             prefWidth="600.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1"
-            fx:controller="wallet.GUI.controllers.ProductMenuController">
+            fx:controller="wallet.GUI.controllers.ProductMenuController"
+            fx:id="borderPane">
     <top>
         <Button fx:id="back" mnemonicParsing="false" onMouseClicked="#onBackButtonClick" text="back"
                 BorderPane.alignment="TOP_LEFT">
@@ -33,7 +34,8 @@
                                 <Insets right="5.0"/>
                             </HBox.margin>
                         </Label>
-                        <Label fx:id="balance" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity">
+                        <Label fx:id="balance" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity"
+                               minWidth="-Infinity">
                             <HBox.margin>
                                 <Insets right="5.0"/>
                             </HBox.margin>
@@ -43,7 +45,8 @@
                 </HBox>
                 <HBox alignment="CENTER" prefHeight="100.0" prefWidth="272.0">
                     <children>
-                        <Label fx:id="ibanLabel" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" text="IBAN :">
+                        <Label fx:id="ibanLabel" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308"
+                               text="IBAN :">
                             <HBox.margin>
                                 <Insets right="5.0"/>
                             </HBox.margin>

@@ -2,10 +2,16 @@ package wallet.GUI.controllers;
 
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.geometry.Insets;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.layout.Background;
+import javafx.scene.layout.BackgroundFill;
+import javafx.scene.layout.BorderPane;
+import javafx.scene.layout.CornerRadii;
+import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 
 import java.io.File;
@@ -34,6 +40,8 @@ public class ProductMenuController {
     private Label balanceLabel;
     @FXML
     private Label ibanLabel;
+    @FXML
+    private BorderPane borderPane;
 
     @FXML
     private void initialize() {
@@ -43,13 +51,18 @@ public class ProductMenuController {
         history.setText(App.currentLanguage.get("history"));
         transaction.setText(App.currentLanguage.get("transaction"));
         delete.setText(App.currentLanguage.get("delete"));
-        balanceLabel.setText(App.currentLanguage.get("balance")+" : ");
-        ibanLabel.setText(App.currentLanguage.get("iban")+" : ");
+        balanceLabel.setText(App.currentLanguage.get("balance") + " : ");
+        ibanLabel.setText(App.currentLanguage.get("iban") + " : ");
 
         // set values
         balance.setText(Float.toString(App.currentAccount.get_avgBalance()));
         curr.setText(App.currentAccount.get_localCurr());
         iban.setText(App.currentAccount.get_iban());
+        if (App.dark){
+            borderPane.setBackground(new Background( new BackgroundFill(Color.GREY, CornerRadii.EMPTY, Insets.EMPTY)));
+        }else{
+            borderPane.setBackground(new Background( new BackgroundFill(Color.WHITE, CornerRadii.EMPTY, Insets.EMPTY)));
+        }
     }
 
     @FXML

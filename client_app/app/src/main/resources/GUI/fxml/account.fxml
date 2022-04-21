@@ -9,7 +9,8 @@
 <?import javafx.scene.text.Font?>
 
 <BorderPane prefHeight="494.0" prefWidth="547.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1"
-            fx:controller="wallet.GUI.controllers.AccountController">
+            fx:controller="wallet.GUI.controllers.AccountController"
+            fx:id="borderPane">
     <center>
         <VBox alignment="CENTER" spacing="42.0" BorderPane.alignment="CENTER">
             <children>
