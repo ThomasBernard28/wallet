@@ -6,10 +6,18 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
+import javafx.scene.control.Label;
+import javafx.scene.control.Alert;
+import javafx.scene.control.Alert.AlertType;
+import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
 import java.io.File;
 import java.io.IOException;
+import java.util.ArrayList;
+
+import wallet.App;
+import wallet.APP.CoOwner;
 
 public class CoownerController {
     @FXML
@@ -22,6 +30,54 @@ public class CoownerController {
     TextField natregnumb;
     @FXML
     Button add;
+    @FXML
+    VBox vbox;
+    @FXML
+    Label firstnameLabel;
+    @FXML
+    Label lastnameLabel;
+    @FXML
+    Label natIDLabel;
+    @FXML
+    Label addCoOwnerLabel;
+
+    ArrayList<CoOwner> coOwnersList = new ArrayList();
+
+    @FXML 
+    private void initialize() {
+        // set language
+        back.setText(App.currentLanguage.get("back"));
+        firstnameLabel.setText(App.currentLanguage.get("firstName")+" : ");
+        lastnameLabel.setText(App.currentLanguage.get("lastName")+" : ");
+        natIDLabel.setText(App.currentLanguage.get("nationalID")+" : ");
+        addCoOwnerLabel.setText(App.currentLanguage.get("addCoOwner")+" : "); 
+        add.setText(App.currentLanguage.get("add"));
+
+        try {
+            App.currentUser.set_coOwnersList(App.api.get_coOwners(App.currentAccount.get_iban()));
+            coOwnersList = App.currentUser.get_coOwnersList();
+        } catch (Exception e) {}
+        for (CoOwner co : coOwnersList) {
+            Label l = new Label(co.get_coOwnerID());
+            vbox.getChildren().add(l);
+        }
+    }
+
+    @FXML 
+    private void onAddButtonClick() throws IOException {
+        try {
+            App.api.post_coOwner(App.currentWallet.get_walletID(), App.currentAccount.get_iban(), firstname.getText()+lastname.getText()+natregnumb.getText(), App.currentWallet.get_bic(), App.currentUser.get_userID());
+            Alert a = new Alert(AlertType.INFORMATION);
+            a.setContentText("New co-owner added.");
+            a.show();
+            initialize(); 
+            }
+        catch (Exception e) {
+            Alert a = new Alert(AlertType.ERROR);
+            a.setContentText("Cannot add this user to the co-owners.");
+            a.show();
+        }
+    }
 
     @FXML
     private void onBackButtonClick() throws IOException {

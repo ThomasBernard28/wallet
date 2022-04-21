@@ -85,6 +85,10 @@ public class Employee implements JsonReader {
         return data.getLanguage();
     }
 
+    public void set_language(String language) {
+        data.set_language(language);
+    }
+
     /* add a new client to the clientsList. It is not saved to the database (not yet) */
     public void add_client(String filePath) {
     }

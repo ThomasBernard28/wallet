@@ -9,6 +9,7 @@ import java.util.ArrayList;
 
 import wallet.APP.AccountData;
 import wallet.API.JsonReader;
+import wallet.API.Api;
 
 public class Account implements JsonReader {
 

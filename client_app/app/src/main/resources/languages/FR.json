@@ -2,6 +2,7 @@
 "hello":"Bonjour",
 "world":"Monde",
 
+
 "id":"Identifiant",
 "password":"Mot de passe",
 "login":"Se connecter",
@@ -25,6 +26,7 @@
 "settings":"Paramètres",
 "signOut":"Se déconnecter",
 "leave":"Quitter",
+
 
 "selectInstitution":"Sélectionnez une institution financière",
 "addWallet":"Ajouter",
@@ -66,6 +68,9 @@
 "language":"Langue",
 "sound":"Son",
 "darkTheme":"Theme sombre",
-"selectLanguage":"Sélectionnez une langue"
+"selectLanguage":"Sélectionnez une langue",
 
+
+"addCoOwner":"Ajouter un nouveau co-titulaire",
+"add":"Ajouter"
 }

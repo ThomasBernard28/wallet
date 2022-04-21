@@ -85,6 +85,23 @@ public class Api {
         return response.body();     // return the json
     } 
 
+    public String get_coOwners(String iban) throws Exception {
+        request  = HttpRequest.newBuilder().GET().header("accept", "application/json").uri(URI.create("http://sierra880.xyz:4545/api/v1/coOwners/"+iban)).build();
+        response = client.send(request, HttpResponse.BodyHandlers.ofString());
+        return response.body();     // return the json
+    } 
+
+    public void post_coOwner(int walletID, String iban, String userIDcoOwner, String bic, String userID) throws Exception {
+        String json = "{\"walletID_coOwner\":\""+walletID+"\",\"ibanOwner\":\""+iban+"\",\"userID_coOwner\":\""+userIDcoOwner+"\",\"bicOwner\":\""+bic+"\",\"userIDOwner\":\""+userID+"\"}";
+        request = HttpRequest.newBuilder()
+            .uri(URI.create("http://sierra880.xyz:4545/api/v1/coOwner"))
+            .header("Content-Type", "application/json")
+            .POST(HttpRequest.BodyPublishers.ofString(json))
+            .build();
+        client.send(request, HttpResponse.BodyHandlers.ofString());
+    }
+
+
     public void put_password(String userID, String psswd) throws IOException, InterruptedException {
         String json = "{\"userID\":\""+userID+"\", \"psswd\":\""+psswd+"\"}";
         request = HttpRequest.newBuilder()
