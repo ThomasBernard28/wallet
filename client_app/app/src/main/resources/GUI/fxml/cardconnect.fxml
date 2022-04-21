@@ -6,36 +6,68 @@
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.geometry.*?>
 
 <?import javafx.scene.text.Font?>
-<VBox alignment="CENTER" fillWidth="false" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity"
-      minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" spacing="15.0" xmlns="http://javafx.com/javafx/17"
-      xmlns:fx="http://javafx.com/fxml/1" fx:controller="wallet.GUI.controllers.HelloController">
-    <children>
-        <Label fx:id="wrong" contentDisplay="CENTER" text="Wrong password or ID" textFill="RED" visible="false"/>
-        <HBox alignment="CENTER" prefHeight="49.0" prefWidth="600.0">
-            <children>
-                <Label fx:id="idLabel" alignment="CENTER" contentDisplay="CENTER" prefHeight="16.0" prefWidth="106.0" text="ID :"/>
-                <TextField fx:id="id"/>
-            </children>
-        </HBox>
-        <HBox alignment="CENTER" prefHeight="53.0" prefWidth="600.0">
-            <children>
-                <Label fx:id="passwordLabel" prefHeight="16.0" prefWidth="106.0" text="Password :"/>
-                <PasswordField fx:id="password" prefHeight="24.0" prefWidth="169.0"/>
-            </children>
-        </HBox>
-        <Button fx:id="login" mnemonicParsing="false" onAction="#onLoginButtonClick" prefHeight="29.0" prefWidth="123.0"
-                text="Login">
+
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="wallet.GUI.controllers.CardConnectController">
+    <left>
+        <Button fx:id="back" mnemonicParsing="false" onAction="#onBackButtonClick" text="back" BorderPane.alignment="TOP_LEFT">
             <font>
-                <Font name="Montserrat SemiBold" size="17.0"/>
+                <Font name="Montserrat SemiBold" size="17.0" />
             </font>
+            <Insets left="10.0" top="10.0" />
+         <BorderPane.margin>
+            <Insets left="10.0" top="10.0" />
+         </BorderPane.margin>
         </Button>
-        <Button fx:id="register" mnemonicParsing="false" onMouseClicked="#onRegisterButtonClick" prefHeight="29.0"
-                prefWidth="121.0" text="Register">
-            <font>
-                <Font name="Montserrat SemiBold" size="17.0"/>
-            </font>
-        </Button>
-    </children>
-</VBox>
+    </left>
+    <center>
+        <VBox alignment="CENTER" fillWidth="false" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity"
+          minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" spacing="15.0" xmlns="http://javafx.com/javafx/17" >
+        <children>
+
+            <Label fx:id="wrong" contentDisplay="CENTER" text="Wrong pin" textFill="RED" visible="false"/>
+
+            <HBox alignment="CENTER" prefHeight="49.0" prefWidth="600.0">
+                <children>
+                    <Label fx:id="codeLabel" alignment="CENTER" contentDisplay="CENTER" prefHeight="16.0" prefWidth="106.0" text="code :"/>
+                    <TextField fx:id="code"/>
+                </children>
+            </HBox>
+
+            <VBox alignment="CENTER" prefHeight="53.0" prefWidth="600.0">
+                <children>
+                    <Label fx:id="pinLabel" prefHeight="16.0" prefWidth="106.0" text="pin :" />
+                    <GridPane hgap="50.0" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="354.0" prefWidth="411.0" vgap="50.0" StackPane.alignment="CENTER">
+                        <children> 
+                            <Button fx:id="button1" onAction="#onGridButtonClick" text="1" GridPane.columnIndex="0" GridPane.rowIndex="0" />
+                            <Button fx:id="button2" onAction="#onGridButtonClick" text="2" GridPane.columnIndex="1" GridPane.rowIndex="0" />
+                            <Button fx:id="button3" onAction="#onGridButtonClick" text="3" GridPane.columnIndex="2" GridPane.rowIndex="0" />
+                            <Button fx:id="button4" onAction="#onGridButtonClick" text="4" GridPane.columnIndex="0" GridPane.rowIndex="1" />
+                            <Button fx:id="button5" onAction="#onGridButtonClick" text="5" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                            <Button fx:id="button6" onAction="#onGridButtonClick" text="6" GridPane.columnIndex="2" GridPane.rowIndex="1" />
+                            <Button fx:id="button7" onAction="#onGridButtonClick" text="7" GridPane.columnIndex="0" GridPane.rowIndex="2" />
+                            <Button fx:id="button8" onAction="#onGridButtonClick" text="8" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+                            <Button fx:id="button9" onAction="#onGridButtonClick" text="9" GridPane.columnIndex="2" GridPane.rowIndex="2" />
+                            <Button fx:id="button0" onAction="#onGridButtonClick" text="0" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+                            <Button fx:id="buttonDel" onAction="#onGridButtonClick" text="&lt;" GridPane.columnIndex="2" GridPane.rowIndex="3" />
+                        </children>
+                    </GridPane>
+                </children>
+            </VBox>
+
+            <Button fx:id="login" mnemonicParsing="false" onAction="#onLoginButtonClick" prefHeight="29.0" prefWidth="123.0"
+                    text="Login">
+                <font>
+                    <Font name="Montserrat SemiBold" size="17.0"/>
+                </font>
+            </Button>
+
+        </children>
+        </VBox>
+    </center>
+</BorderPane>

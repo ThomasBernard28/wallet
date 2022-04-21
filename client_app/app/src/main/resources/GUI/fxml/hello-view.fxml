@@ -37,5 +37,11 @@
                 <Font name="Montserrat SemiBold" size="17.0"/>
             </font>
         </Button>
+        <Button fx:id="cardConnect" mnemonicParsing="false" onAction="#onCardConnectButtonClick" prefHeight="29.0"
+                prefWidth="121.0" text="Login with card.">
+            <font>
+                <Font name="Montserrat SemiBold" size="17.0"/>
+            </font>
+        </Button>
     </children>
 </VBox>

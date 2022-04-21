@@ -31,6 +31,8 @@ public class HelloController {
     private Label idLabel;
     @FXML
     private Label passwordLabel;
+    @FXML
+    private Button cardConnect;
 
     @FXML
     private void initialize() {
@@ -64,6 +66,16 @@ public class HelloController {
                 event -> wrong.setVisible(false)
         );
         visiblePause.play();
+    }
+
+    @FXML
+    private void onCardConnectButtonClick() throws IOException {
+        FXMLLoader fxmlLoader = new FXMLLoader(new File("build/resources/main/GUI/fxml/cardconnect.fxml").toURL());
+        Parent root = fxmlLoader.load();
+        Stage stage = (Stage) (register.getScene().getWindow());
+        Scene scene = new Scene(root, 320, 320);
+        stage.setScene(scene);
+        stage.show();
     }
 
     @FXML
