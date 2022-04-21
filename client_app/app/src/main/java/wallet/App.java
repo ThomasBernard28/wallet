@@ -35,7 +35,7 @@ public class App extends Application {
     @Override
     public void start(Stage stage) throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader();
-        Parent root = fxmlLoader.load(getFileFromResourceAsStream("GUI/fxml/hello-view.fxml")); 
+        Parent root = fxmlLoader.load(getFileFromResourceAsStream("GUI/fxml/forgottenpassword.fxml"));
         Scene scene = new Scene(root, 320, 240);
         this.stage = stage;
         stage.setTitle("Hello!");
