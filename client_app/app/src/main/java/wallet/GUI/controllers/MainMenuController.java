@@ -63,13 +63,6 @@ public class MainMenuController {
         leave.setText(App.currentLanguage.get("leave"));
 
         FXMLLoader fxmlLoader = new FXMLLoader(new File("build/resources/main/GUI/fxml/settingsbis.fxml").toURL());
-       /* if(true){
-            borderpane.setBackground(new Background(new BackgroundFill(Color.PINK, CornerRadii.EMPTY, Insets.EMPTY)));
-        }else{
-            borderpane.setBackground(new Background(new BackgroundFill(Color.BEIGE, CornerRadii.EMPTY, Insets.EMPTY)));
-
-        }
-        sidemenu.setStyle("");*/
         Timeline clock = new Timeline(new KeyFrame(Duration.ZERO, e -> {
             LocalTime currentTime = LocalTime.now();
             time.setText(currentTime.getHour() + ":" + currentTime.getMinute() + ":" + currentTime.getSecond());

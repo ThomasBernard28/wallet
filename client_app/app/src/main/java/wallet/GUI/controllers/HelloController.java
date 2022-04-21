@@ -31,6 +31,8 @@ public class HelloController {
     private Label idLabel;
     @FXML
     private Label passwordLabel;
+    @FXML
+    private Button settings;
 
     @FXML
     private void initialize() {
@@ -76,4 +78,5 @@ public class HelloController {
         stage.show();
 
     }
+
 }
