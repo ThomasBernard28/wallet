@@ -52,7 +52,7 @@ jobs:
         cd employee_app
         bash gradlew javadoc
         
-  release_fatjars:
+  release_fatjars_unix:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v2
@@ -66,23 +66,58 @@ jobs:
       run: |
         chmod +x client_app/gradlew
         chmod +x employee_app/gradlew
-    - name: Create fatjar with Gradle
+    - name: Create fatjar with Gradle for unix
       run: |
         cd client_app
         bash gradlew jar
         cd ..
-        mv client_app/app/build/libs/app.jar client_app/app/build/libs/client-app.jar
+        mv client_app/app/build/libs/app.jar client_app/app/build/libs/client-app-unix.jar
         cd employee_app
         bash gradlew jar
         cd ..
-        mv employee_app/app/build/libs/app.jar employee_app/app/build/libs/employee-app.jar
-    - name: Release fatjars
+        mv employee_app/app/build/libs/app.jar employee_app/app/build/libs/employee-app-unix.jar
+    - name: Release fatjars unix
       uses: "marvinpinto/action-automatic-releases@latest"
       with:
         repo_token: "${{ secrets.GITHUB_TOKEN }}"
-        automatic_release_tag: "frontend-jar"
+        automatic_release_tag: "frontend-jar-unix"
         prerelease: false
-        title: "Frontend fatjar"
+        title: "Frontend fatjar unix"
         files: |
-          client_app/app/build/libs/client-app.jar
-          employee_app/app/build/libs/employee-app.jar
+          client_app/app/build/libs/client-app-unix.jar
+          employee_app/app/build/libs/employee-app-unix.jar
+          
+  release_fatjars_windows:
+    runs-on: windows-latest
+    steps:
+    - uses: actions/checkout@v2
+    - name: Set up JDK 11
+      uses: actions/setup-java@v2
+      with:
+        java-version: '11'
+        distribution: 'adopt'
+        cache: gradle
+    - name: Grant execute permission for gradlew
+      run: |
+        chmod +x client_app/gradlew
+        chmod +x employee_app/gradlew
+    - name: Create fatjar with Gradle for windows
+      run: |
+        cd client_app
+        bash gradlew jar
+        cd ..
+        mv client_app/app/build/libs/app.jar client_app/app/build/libs/client-app-windows.jar
+        cd employee_app
+        bash gradlew jar
+        cd ..
+        mv employee_app/app/build/libs/app.jar employee_app/app/build/libs/employee-app-windows.jar
+    - name: Release fatjars windows
+      uses: "marvinpinto/action-automatic-releases@latest"
+      with:
+        repo_token: "${{ secrets.GITHUB_TOKEN }}"
+        automatic_release_tag: "frontend-jar-windows"
+        prerelease: false
+        title: "Frontend fatjar windows"
+        files: |
+          client_app/app/build/libs/client-app-windows.jar
+          employee_app/app/build/libs/employee-app-windows.jar
