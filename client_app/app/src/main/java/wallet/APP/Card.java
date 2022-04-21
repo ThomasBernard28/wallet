@@ -1,3 +1,7 @@
+/*
+ * Extension 1 : Godin Theo
+ */
+
 package wallet.APP;
 
 import wallet.API.JsonReader;

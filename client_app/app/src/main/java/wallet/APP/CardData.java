@@ -1,3 +1,7 @@
+/*
+ * Extension 1 : Godin Theo
+ */
+
 package wallet.APP;
 
 public class CardData {
@@ -5,6 +9,7 @@ public class CardData {
    private String cardNo;
    private String iban;
    private String type;
+   private int    pin;
 
    public void setCardNo(String cardNo) {
       this.cardNo = cardNo;
@@ -28,6 +33,22 @@ public class CardData {
 
    public String getType() {
       return type;
+   }
+
+   public void setPin(int pin) {
+      this.pin = pin;
+   }
+
+   public int getPin() {
+      return pin;
+   }
+
+   @Override
+   public String toString() {
+      return cardNo                + '\n' +
+             type                  + '\n' +
+             iban                  + '\n' +
+             Integer.toString(pin) + '\n';
    }
 
 }
