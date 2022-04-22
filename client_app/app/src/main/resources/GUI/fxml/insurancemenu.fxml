@@ -70,7 +70,7 @@
    <bottom>
       <StackPane accessibleRole="TEXT" prefHeight="120.0" prefWidth="200.0" BorderPane.alignment="CENTER">
          <children>
-            <Button minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefHeight="60.0" prefWidth="94.0" text="+" StackPane.alignment="BOTTOM_RIGHT">
+            <Button fx:id="newInsurance" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefHeight="60.0" prefWidth="94.0" text="+" StackPane.alignment="BOTTOM_RIGHT" onMouseClicked="#onNewInsuranceButtonClick">
                <font>
                   <Font size="20.0" />
                </font>

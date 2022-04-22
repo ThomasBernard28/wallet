@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="wallet.GUI.controllers.AddInsuranceMenuController">
+   <top>
+      <StackPane prefHeight="78.0" prefWidth="600.0" BorderPane.alignment="CENTER">
+         <children>
+            <Label text="Insurance Subscription">
+               <font>
+                  <Font size="24.0" />
+               </font>
+            </Label>
+            <Button fx:id="back" mnemonicParsing="false" prefHeight="34.0" prefWidth="65.0" text="Back" StackPane.alignment="TOP_LEFT" onMouseClicked="#onBackButtonClick">
+               <StackPane.margin>
+                  <Insets left="10.0" top="10.0" />
+               </StackPane.margin></Button>
+         </children>
+      </StackPane>
+   </top>
+   <center>
+      <VBox prefHeight="200.0" prefWidth="100.0" BorderPane.alignment="CENTER">
+         <children>
+            <HBox prefHeight="100.0" prefWidth="200.0">
+               <children>
+                  <Label fx:id="choiceLabel" text="Select an insurance type">
+                     <HBox.margin>
+                        <Insets left="60.0" top="40.0" />
+                     </HBox.margin>
+                  </Label>
+                  <ComboBox fx:id="box" prefHeight="24.0" prefWidth="209.0">
+                     <HBox.margin>
+                        <Insets left="100.0" top="38.0" />
+                     </HBox.margin>
+                  </ComboBox>
+               </children>
+               <VBox.margin>
+                  <Insets top="50.0" />
+               </VBox.margin>
+            </HBox>
+            <HBox prefHeight="100.0" prefWidth="200.0">
+               <children>
+                  <Button fx:id="subButton" mnemonicParsing="false" prefHeight="64.0" prefWidth="260.0" text="Subscribe">
+                     <HBox.margin>
+                        <Insets left="170.0" top="18.0" />
+                     </HBox.margin>
+                  </Button>
+               </children>
+               <VBox.margin>
+                  <Insets top="30.0" />
+               </VBox.margin>
+            </HBox>
+         </children></VBox>
+   </center>
+</BorderPane>

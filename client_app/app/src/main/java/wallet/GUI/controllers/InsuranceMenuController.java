@@ -22,7 +22,7 @@ public class InsuranceMenuController {
     @FXML
     GridPane grid;
     @FXML
-    Button addNewInsurance;
+    Button newInsurance;
     @FXML
     Button firstInsurance;
     @FXML
@@ -96,6 +96,16 @@ public class InsuranceMenuController {
     @FXML
     private void onBackButtonClick() throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(new File("build/resources/main/GUI/fxml/walletgrid.fxml").toURL());
+        Parent root = fxmlLoader.load();
+        Stage stage = (Stage) (back.getScene().getWindow());
+        Scene scene = new Scene(root, 320, 320);
+        stage.setScene(scene);
+        stage.show();
+    }
+
+    @FXML
+    private void onNewInsuranceButtonClick() throws IOException{
+        FXMLLoader fxmlLoader = new FXMLLoader(new File("build/resources/main/GUI/fxml/newInsuranceScene.fxml").toURL());
         Parent root = fxmlLoader.load();
         Stage stage = (Stage) (back.getScene().getWindow());
         Scene scene = new Scene(root, 320, 320);
