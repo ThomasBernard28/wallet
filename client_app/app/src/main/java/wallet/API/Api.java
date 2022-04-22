@@ -43,6 +43,15 @@ public class Api {
         return response.body();
     }
 
+    public void post_pensionSaving(String pensionSavingJson) throws Exception{
+        request = HttpRequest.newBuilder()
+                .uri(URI.create("http://sierra880.xyz:4545/api/v1/insurances"))
+                .header("Content-Type", "application/json")
+                .POST(HttpRequest.BodyPublishers.ofString(pensionSavingJson))
+                .build();
+        client.send(request, HttpResponse.BodyHandlers.ofString());
+    }
+
     public void post_wallet(String walletJson) throws Exception {
         request = HttpRequest.newBuilder()
             .uri(URI.create("http://sierra880.xyz:4545/api/v1/wallets"))

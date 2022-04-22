@@ -28,6 +28,10 @@ public class Insurance implements JsonReader {
         }
     }
 
+    public String write_data() {
+        return "{\"walletID\":\""+get_walletID()+"\", \"userID\":\""+get_userID()+"\", \"bic\":\""+get_bic()+"\", \"subDate\":\""+get_subDate()+"\", \"balance\":\""+0+"\", \"type\":\""+get_type()+"\"}";
+    }
+
     public String get_bic(){
         return data.getBic();
     }
@@ -53,11 +57,13 @@ public class Insurance implements JsonReader {
     }
 
     public LocalDate get_renewDate(){
-        return data.getRenewDate();
+        return data.getEndDate();
     }
 
     @Override
     public String toString(){
         return data.toString();
     }
+
+
 }

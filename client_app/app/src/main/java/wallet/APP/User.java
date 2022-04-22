@@ -114,23 +114,26 @@ public class User implements JsonReader {
         }
     }
 
-    public void set_insurances_List(String json){
-        try{
+    public void set_insurancesList(String json) {
+        try {
             insurancesList.clear();
             ArrayList<String> jsonList = JsonTools.splitJson(json);
-            for (String jL: jsonList) {
+            for (String jl : jsonList) {
                 Insurance insurance = new Insurance();
                 try {
-                    insurance.read_data(jL);
+                    insurance.read_data(jl);
                     insurancesList.add(insurance);
-                }catch(Exception e){
-
+                }
+                catch (Exception e) {
+                    e.printStackTrace();
                 }
             }
-        }catch (Exception e){
-
+        }
+        catch (Exception e) {
+            e.printStackTrace();
         }
     }
+
     public ArrayList get_insuranceList(){return insurancesList;}
 
     public ArrayList get_accountsList() {
@@ -215,6 +218,17 @@ public class User implements JsonReader {
         Account account = new Account(t);
         try {
             api.post_accountRequest(account.write_data());
+            return true;
+        }
+        catch (Exception e) {}
+        return false;
+    }
+
+    public boolean add_PensionSaving(String type) {
+        String t = "PEN30";
+        Insurance insurance = new Insurance(t);
+        try {
+            api.post_pensionSaving(insurance.write_data());
             return true;
         }
         catch (Exception e) {}

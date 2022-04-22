@@ -7,7 +7,7 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="wallet.GUI.controllers.InsuranceMenuController">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="wallet.GUI.controllers.InsuranceMenuController">
    <top>
       <StackPane prefHeight="47.0" prefWidth="200.0" BorderPane.alignment="CENTER">
          <children>
@@ -38,7 +38,7 @@
             <Insets bottom="15.0" left="50.0" right="50.0" top="15.0" />
          </padding>
          <children>
-            <Button fx:id="firstInsurance" alignment="CENTER" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefHeight="61.0" prefWidth="150.0" text="Insurance 1">
+            <Button fx:id="firstInsurance" alignment="CENTER" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefHeight="61.0" prefWidth="150.0" text="No Insurances">
                <GridPane.margin>
                   <Insets left="43.0" />
                </GridPane.margin>
@@ -54,37 +54,50 @@
             </Button>
             <StackPane prefHeight="150.0" prefWidth="200.0" GridPane.columnIndex="1">
                <children>
-                  <TextArea fx:id="insurance1" prefHeight="80.0" prefWidth="200.0" />
+                  <Label fx:id="insurance1" />
                </children></StackPane>
             <StackPane prefHeight="150.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="1">
                <children>
-                  <TextArea fx:id="insurance2" prefHeight="80.0" prefWidth="200.0" />
+                  <Label fx:id="insurance2" />
                </children></StackPane>
             <StackPane prefHeight="150.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="2">
                <children>
-                  <TextArea fx:id="insurance3" prefHeight="80.0" prefWidth="200.0" />
+                  <Label fx:id="insurance3" />
                </children></StackPane>
          </children>
       </GridPane>
    </center>
    <bottom>
-      <StackPane prefHeight="120.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+      <StackPane accessibleRole="TEXT" prefHeight="120.0" prefWidth="200.0" BorderPane.alignment="CENTER">
          <children>
-            <Button minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefHeight="60.0" prefWidth="94.0" text="+">
+            <Button minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefHeight="60.0" prefWidth="94.0" text="+" StackPane.alignment="BOTTOM_RIGHT">
                <font>
                   <Font size="20.0" />
                </font>
                <StackPane.margin>
-                  <Insets bottom="10.0" top="35.0" />
+                  <Insets bottom="15.0" right="80.0" />
                </StackPane.margin>
             </Button>
-            <Label text="Subscribe to a new insurance">
+            <Label text="Subscribe to a new insurance" StackPane.alignment="BOTTOM_RIGHT">
                <StackPane.margin>
-                  <Insets bottom="85.0" />
+                  <Insets bottom="85.0" right="20.0" />
                </StackPane.margin>
                <font>
                   <Font size="18.0" />
                </font>
+            </Label>
+            <Button mnemonicParsing="false" prefHeight="60.0" prefWidth="94.0" text="Button" StackPane.alignment="BOTTOM_LEFT">
+               <StackPane.margin>
+                  <Insets bottom="15.0" left="80.0" />
+               </StackPane.margin>
+            </Button>
+            <Label text="Show inactive insurances" StackPane.alignment="CENTER_LEFT">
+               <font>
+                  <Font size="18.0" />
+               </font>
+               <StackPane.margin>
+                  <Insets bottom="75.0" left="30.0" />
+               </StackPane.margin>
             </Label>
          </children>
       </StackPane>

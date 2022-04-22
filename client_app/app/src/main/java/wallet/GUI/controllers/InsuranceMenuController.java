@@ -6,10 +6,8 @@ import javafx.geometry.Pos;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
-import javafx.scene.control.TextArea;
+import javafx.scene.control.Label;
 import javafx.scene.layout.GridPane;
-import javafx.scene.layout.StackPane;
-import javafx.scene.text.TextFlow;
 import javafx.stage.Stage;
 import wallet.APP.Insurance;
 import wallet.App;
@@ -28,18 +26,18 @@ public class InsuranceMenuController {
     @FXML
     Button firstInsurance;
     @FXML
-    TextArea insurance1;
+    Label insurance1;
     @FXML
-    TextArea insurance2;
+    Label insurance2;
     @FXML
-    TextArea insurance3;
+    Label insurance3;
 
     private ArrayList<Insurance> insuranceList;
 
     @FXML
     private void initialize(){
         try{
-            App.currentUser.set_insurances_List(App.api.get_insurances(App.currentWallet.get_walletID()));
+            App.currentUser.set_insurancesList(App.api.get_insurances(App.currentWallet.get_walletID()));
             insuranceList = App.currentUser.get_insuranceList();
 
             int row = 0;
@@ -72,20 +70,14 @@ public class InsuranceMenuController {
             case 0 :
                 insurance1.setText("Pension Saving \n" + "Subscription date : " +
                         insurance.get_subDate() + "\n" + "Renew date : " + insurance.get_renewDate());
-                insurance1.setCursor(null);
-                insurance1.setEditable(false);
                 break;
             case 1 :
                 insurance2.setText("Pension Saving \n" + "Subscription date : " +
                         insurance.get_subDate() + "\n" + "Renew date : " + insurance.get_renewDate());
-                insurance2.setCursor(null);
-                insurance2.setEditable(false);
                 break;
             case 2 :
                 insurance3.setText("Pension Saving \n" + "Subscription date : " +
                         insurance.get_subDate() + "\n" + "Renew date : " + insurance.get_renewDate());
-                insurance3.setCursor(null);
-                insurance3.setEditable(false);
                 break;
             default:
                 throw new IllegalStateException("The row number is incorrect");
