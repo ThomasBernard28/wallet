@@ -13,10 +13,10 @@
          <children>
             <Label text="Insurances Menu">
                <font>
-                  <Font name="Al Bayan Plain" size="18.0" />
+                  <Font size="26.0" />
                </font>
             </Label>
-            <Button fx:id="back" mnemonicParsing="false" onMouseClicked="#onBackButtonClick" text="Back" StackPane.alignment="TOP_LEFT">
+            <Button fx:id="back" mnemonicParsing="false" onMouseClicked="#onBackButtonClick" prefHeight="35.0" prefWidth="61.0" text="Back" StackPane.alignment="TOP_LEFT">
                <StackPane.margin>
                   <Insets left="10.0" top="10.0" />
                </StackPane.margin>
@@ -38,7 +38,7 @@
             <Insets bottom="15.0" left="50.0" right="50.0" top="15.0" />
          </padding>
          <children>
-            <Button alignment="CENTER" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefHeight="70.0" prefWidth="150.0" text="Insurance 1">
+            <Button fx:id="firstInsurance" alignment="CENTER" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefHeight="61.0" prefWidth="150.0" text="Insurance 1">
                <GridPane.margin>
                   <Insets left="43.0" />
                </GridPane.margin>
@@ -52,29 +52,38 @@
                   <Font size="16.0" />
                </font>
             </Button>
-            <StackPane prefHeight="150.0" prefWidth="200.0" GridPane.columnIndex="1" />
-            <StackPane prefHeight="150.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="1" />
-            <StackPane prefHeight="150.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+            <StackPane prefHeight="150.0" prefWidth="200.0" GridPane.columnIndex="1">
+               <children>
+                  <TextArea fx:id="insurance1" prefHeight="80.0" prefWidth="200.0" />
+               </children></StackPane>
+            <StackPane prefHeight="150.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="1">
+               <children>
+                  <TextArea fx:id="insurance2" prefHeight="80.0" prefWidth="200.0" />
+               </children></StackPane>
+            <StackPane prefHeight="150.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="2">
+               <children>
+                  <TextArea fx:id="insurance3" prefHeight="80.0" prefWidth="200.0" />
+               </children></StackPane>
          </children>
       </GridPane>
    </center>
    <bottom>
-      <StackPane prefHeight="80.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+      <StackPane prefHeight="120.0" prefWidth="200.0" BorderPane.alignment="CENTER">
          <children>
-            <Button minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" text="+">
+            <Button minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefHeight="60.0" prefWidth="94.0" text="+">
                <font>
-                  <Font size="18.0" />
+                  <Font size="20.0" />
                </font>
                <StackPane.margin>
-                  <Insets top="35.0" />
+                  <Insets bottom="10.0" top="35.0" />
                </StackPane.margin>
             </Button>
             <Label text="Subscribe to a new insurance">
                <StackPane.margin>
-                  <Insets bottom="40.0" />
+                  <Insets bottom="85.0" />
                </StackPane.margin>
                <font>
-                  <Font size="14.0" />
+                  <Font size="18.0" />
                </font>
             </Label>
          </children>
