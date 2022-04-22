@@ -14,7 +14,7 @@
                   <Font size="24.0" />
                </font>
             </Label>
-            <Button fx:id="back" mnemonicParsing="false" prefHeight="34.0" prefWidth="65.0" text="Back" StackPane.alignment="TOP_LEFT" onMouseClicked="#onBackButtonClick">
+            <Button fx:id="back" mnemonicParsing="false" onMouseClicked="#onBackButtonClick" prefHeight="34.0" prefWidth="65.0" text="Back" StackPane.alignment="TOP_LEFT">
                <StackPane.margin>
                   <Insets left="10.0" top="10.0" />
                </StackPane.margin></Button>
@@ -53,6 +53,18 @@
                   <Insets top="30.0" />
                </VBox.margin>
             </HBox>
-         </children></VBox>
+         </children>
+         <BorderPane.margin>
+            <Insets left="475.0" top="200.0" />
+         </BorderPane.margin></VBox>
    </center>
+   <left>
+      <StackPane prefHeight="150.0" prefWidth="200.0" BorderPane.alignment="CENTER" />
+   </left>
+   <right>
+      <StackPane prefHeight="150.0" prefWidth="200.0" BorderPane.alignment="CENTER" />
+   </right>
+   <bottom>
+      <StackPane prefHeight="150.0" prefWidth="200.0" BorderPane.alignment="CENTER" />
+   </bottom>
 </BorderPane>
