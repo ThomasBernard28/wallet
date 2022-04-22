@@ -6,6 +6,7 @@ import wallet.API.JsonReader;
 import wallet.APP.InsuranceData;
 
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 
 public class Insurance implements JsonReader {
 
@@ -25,6 +26,7 @@ public class Insurance implements JsonReader {
             data = mapper.readValue(json, InsuranceData.class);
         }
         catch (Exception e){
+            e.printStackTrace();
             System.out.println("failed to read insurance data");//debug
         }
     }
@@ -53,11 +55,11 @@ public class Insurance implements JsonReader {
         return data.getType();
     }
 
-    public LocalDate get_subDate(){
+    public String get_subDate(){
         return data.getSubDate();
     }
 
-    public LocalDate get_renewDate(){
+    public String get_renewDate(){
         return data.getEndDate();
     }
 

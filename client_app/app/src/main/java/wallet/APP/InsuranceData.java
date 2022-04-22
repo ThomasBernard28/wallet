@@ -1,6 +1,7 @@
 package wallet.APP;
 
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 
 public class InsuranceData {
 
@@ -9,8 +10,8 @@ public class InsuranceData {
     private int       walletID;
     private String    bic;
     private String    type;
-    private LocalDate subDate;
-    private LocalDate endDate;
+    private String subDate;
+    private String endDate;
     private int       activity;
 
     public void setUserID(String userID) {
@@ -52,19 +53,19 @@ public class InsuranceData {
         return type;
     }
 
-    public void setSubDate(LocalDate subDate) {
+    public void setSubDate(String subDate) {
         this.subDate = subDate;
     }
 
-    public LocalDate getSubDate() {
+    public String getSubDate() {
         return subDate;
     }
 
-    public void setEndDate(LocalDate endDate) {
+    public void setEndDate(String endDate) {
         this.endDate = endDate;
     }
 
-    public LocalDate getEndDate() {
+    public String getEndDate() {
         return endDate;
     }
 

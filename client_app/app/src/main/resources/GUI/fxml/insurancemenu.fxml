@@ -86,7 +86,7 @@
                   <Font size="18.0" />
                </font>
             </Label>
-            <Button mnemonicParsing="false" prefHeight="60.0" prefWidth="94.0" text="Button" StackPane.alignment="BOTTOM_LEFT">
+            <Button mnemonicParsing="false" prefHeight="60.0" prefWidth="94.0" text="Show" StackPane.alignment="BOTTOM_LEFT">
                <StackPane.margin>
                   <Insets bottom="15.0" left="80.0" />
                </StackPane.margin>
