@@ -24,7 +24,7 @@ import wallet.App;
 
 public class AddProductMenuController {
     @FXML
-     private Button back;
+    private Button back;
     @FXML
     private ComboBox box;
     @FXML
@@ -38,10 +38,10 @@ public class AddProductMenuController {
         // set comboBox values
         String types[] = {"Checking account", "Saving account"};
         box.setItems(FXCollections.observableArrayList(types));
-        if (App.dark){
-            borderPane.setBackground(new Background( new BackgroundFill(Color.GREY, CornerRadii.EMPTY, Insets.EMPTY)));
-        }else{
-            borderPane.setBackground(new Background( new BackgroundFill(Color.WHITE, CornerRadii.EMPTY, Insets.EMPTY)));
+        if (App.dark) {
+            borderPane.setBackground(new Background(new BackgroundFill(Color.GREY, CornerRadii.EMPTY, Insets.EMPTY)));
+        } else {
+            borderPane.setBackground(new Background(new BackgroundFill(Color.WHITE, CornerRadii.EMPTY, Insets.EMPTY)));
         }
     }
 
@@ -51,16 +51,13 @@ public class AddProductMenuController {
             Alert a = new Alert(AlertType.WARNING);
             a.setContentText("Please select an account type.");
             a.show();
-        }
-
-        else {
+        } else {
             boolean requested = App.currentUser.add_account((String) box.getValue());
             if (requested) {
                 Alert a = new Alert(AlertType.INFORMATION);
                 a.setContentText("The creation of your account will be verified and confirmed soon. Please be patient.");
                 a.show();
-            }
-            else {
+            } else {
                 Alert a = new Alert(AlertType.ERROR);
                 a.setContentText("Your account has not been created.");
                 a.show();

@@ -52,13 +52,13 @@ public class ChangePasswordController {
         back.setText(App.currentLanguage.get("back"));
         changepassword.setText(App.currentLanguage.get("changePassword"));
         match.setText(App.currentLanguage.get("pwMissmatch"));
-        oldPasswordLabel.setText(App.currentLanguage.get("oldPassword")+" :");
-        newPasswordLabel.setText(App.currentLanguage.get("newPassword")+" :");
-        confirmPasswordLabel.setText(App.currentLanguage.get("confirmPassword")+" :");
-        if (App.dark){
-            borderPane.setBackground(new Background( new BackgroundFill(Color.GREY, CornerRadii.EMPTY, Insets.EMPTY)));
-        }else{
-            borderPane.setBackground(new Background( new BackgroundFill(Color.WHITE, CornerRadii.EMPTY, Insets.EMPTY)));
+        oldPasswordLabel.setText(App.currentLanguage.get("oldPassword") + " :");
+        newPasswordLabel.setText(App.currentLanguage.get("newPassword") + " :");
+        confirmPasswordLabel.setText(App.currentLanguage.get("confirmPassword") + " :");
+        if (App.dark) {
+            borderPane.setBackground(new Background(new BackgroundFill(Color.GREY, CornerRadii.EMPTY, Insets.EMPTY)));
+        } else {
+            borderPane.setBackground(new Background(new BackgroundFill(Color.WHITE, CornerRadii.EMPTY, Insets.EMPTY)));
         }
     }
 
@@ -75,12 +75,12 @@ public class ChangePasswordController {
     @FXML
     private void onChangePasswordButtonClick() throws Exception {
         if (newPassword.getText().equals(confirmPassword.getText()) && oldPassword.getText().equals(App.currentUser.get_password())) {
-            App.currentUser.change_password(newPassword.getText()); 
+            App.currentUser.change_password(newPassword.getText());
             Alert a = new Alert(AlertType.INFORMATION);
             a.setContentText(App.currentLanguage.get("changePasswordMessage"));
             a.show();
             onBackButtonClick();
-        } 
+        }
 
         // if passwords aren't matching : 
         else {

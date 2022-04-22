@@ -12,14 +12,13 @@
 <SplitPane dividerPositions="0.4013377926421405" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity"
            minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17"
            xmlns:fx="http://javafx.com/fxml/1" fx:controller="wallet.GUI.controllers.CoownerController"
-           fx:id="splitPane">
+           fx:id="splitPane"
+           stylesheets="@../css/general-style.css">
     <items>
         <VBox prefHeight="200.0" prefWidth="100.0">
             <children>
                 <Button fx:id="back" mnemonicParsing="false" onMouseClicked="#onBackButtonClick" text="back">
-                    <font>
-                        <Font name="Montserrat SemiBold" size="17.0"/>
-                    </font>
+
                     <VBox.margin>
                         <Insets left="10.0" top="10.0"/>
                     </VBox.margin>
@@ -33,15 +32,13 @@
             <children>
                 <Label fx:id="addCoOwnerLabel" prefHeight="16.0" prefWidth="253.0" text="Add a new co-owner">
                     <font>
-                        <Font name="Montserrat Regular" size="21.0"/>
+                        <Font size="21.0"/>
                     </font>
                 </Label>
                 <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
                     <children>
                         <Label fx:id="firstnameLabel" alignment="CENTER" contentDisplay="CENTER" text="First Name :">
-                            <font>
-                                <Font name="Montserrat Regular" size="16.0"/>
-                            </font>
+
                             <HBox.margin>
                                 <Insets/>
                             </HBox.margin>
@@ -52,9 +49,7 @@
                 <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
                     <children>
                         <Label fx:id="lastnameLabel" alignment="CENTER" contentDisplay="CENTER" text="Last Name :">
-                            <font>
-                                <Font name="Montserrat Regular" size="16.0"/>
-                            </font>
+
                         </Label>
                         <TextField fx:id="lastname"/>
                     </children>
@@ -63,18 +58,14 @@
                     <children>
                         <Label fx:id="natIDLabel" alignment="CENTER" contentDisplay="CENTER" prefHeight="21.0"
                                prefWidth="225.0" text="National register number:">
-                            <font>
-                                <Font name="Montserrat Regular" size="16.0"/>
-                            </font>
+
                         </Label>
                         <TextField fx:id="natregnumb" prefHeight="24.0" prefWidth="104.0"/>
                     </children>
                 </HBox>
                 <Button fx:id="add" onAction="#onAddButtonClick" contentDisplay="CENTER" mnemonicParsing="false"
                         text="add">
-                    <font>
-                        <Font name="Montserrat SemiBold" size="17.0"/>
-                    </font>
+
                 </Button>
             </children>
         </VBox>

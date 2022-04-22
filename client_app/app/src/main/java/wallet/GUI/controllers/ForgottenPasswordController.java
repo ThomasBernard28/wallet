@@ -58,7 +58,6 @@ public class ForgottenPasswordController {
     private Button reset;
 
 
-
     @FXML
     private void onBackButtonClick() throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(new File("build/resources/main/GUI/fxml/hello-view.fxml").toURL());

@@ -26,7 +26,6 @@ public class ProductHistoryController {
     GridPane grid;
     @FXML
     private StackPane stackPane;
-
     ArrayList<History> historyList = new ArrayList();
 
     @FXML

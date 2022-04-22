@@ -11,7 +11,7 @@
             prefHeight="400.0" prefWidth="600.0"
             xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1"
             fx:controller="wallet.GUI.controllers.MainMenuController"
-            stylesheets="@../../GUI/css/mainmenustyle.css"
+            stylesheets="@../css/general-style.css"
 >
 
     <left>
@@ -20,33 +20,18 @@
             <children>
                 <Button fx:id="wallets" maxWidth="1.7976931348623157E308" mnemonicParsing="false"
                         onAction="#onWalletButtonClick" text="My wallets" VBox.vgrow="ALWAYS">
-                    <font>
-                        <Font name="Montserrat SemiBold" size="17.0"/>
-                    </font>
                 </Button>
                 <Button fx:id="account" maxWidth="1.7976931348623157E308" mnemonicParsing="false"
                         onMouseClicked="#onAccountButtonClick" text="My profile">
-                    <font>
-                        <Font name="Montserrat SemiBold" size="17.0"/>
-                    </font>
                 </Button>
                 <Button fx:id="settings" maxWidth="1.7976931348623157E308" mnemonicParsing="false"
                         onAction="#onSettingsButtonClick" prefHeight="24.0" prefWidth="142.0" text="Settings">
-                    <font>
-                        <Font name="Montserrat SemiBold" size="17.0"/>
-                    </font>
                 </Button>
                 <Button fx:id="signout" maxWidth="1.7976931348623157E308" mnemonicParsing="false"
                         onMouseClicked="#onSignOutButtonClick" prefHeight="24.0" prefWidth="210.0" text="Sign out">
-                    <font>
-                        <Font name="Montserrat SemiBold" size="17.0"/>
-                    </font>
                 </Button>
                 <Button fx:id="leave" maxWidth="1.7976931348623157E308" mnemonicParsing="false"
                         onMouseClicked="#onLeaveButtonCLick" text="Leave">
-                    <font>
-                        <Font name="Montserrat SemiBold" size="17.0"/>
-                    </font>
                 </Button>
             </children>
             <BorderPane.margin>
@@ -60,9 +45,6 @@
     <top>
         <Button fx:id="sidebutton" mnemonicParsing="false" onMouseClicked="#onSideMenuButtonClick" text="&gt;"
                 BorderPane.alignment="TOP_LEFT">
-            <font>
-                <Font name="Montserrat SemiBold" size="17.0"/>
-            </font>
             <BorderPane.margin>
                 <Insets left="10.0" top="10.0"/>
             </BorderPane.margin>

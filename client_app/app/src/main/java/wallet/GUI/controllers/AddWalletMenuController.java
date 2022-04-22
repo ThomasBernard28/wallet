@@ -41,7 +41,7 @@ public class AddWalletMenuController {
         // set language
         back.setText(App.currentLanguage.get("back"));
         add.setText(App.currentLanguage.get("addWallet"));
-        selectInstitution.setText(App.currentLanguage.get("selectInstitution")+" : ");
+        selectInstitution.setText(App.currentLanguage.get("selectInstitution") + " : ");
 
         // set comboBox values (banks in which the user has no wallet yet)
         ArrayList<String> names = new ArrayList();
@@ -58,10 +58,10 @@ public class AddWalletMenuController {
             }
         }
         box.setItems(FXCollections.observableArrayList(names));
-         if (App.dark){
-            borderPane.setBackground(new Background( new BackgroundFill(Color.GREY, CornerRadii.EMPTY, Insets.EMPTY)));
-        }else{
-            borderPane.setBackground(new Background( new BackgroundFill(Color.WHITE, CornerRadii.EMPTY, Insets.EMPTY)));
+        if (App.dark) {
+            borderPane.setBackground(new Background(new BackgroundFill(Color.GREY, CornerRadii.EMPTY, Insets.EMPTY)));
+        } else {
+            borderPane.setBackground(new Background(new BackgroundFill(Color.WHITE, CornerRadii.EMPTY, Insets.EMPTY)));
         }
     }
 

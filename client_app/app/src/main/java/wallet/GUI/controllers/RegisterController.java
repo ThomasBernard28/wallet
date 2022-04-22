@@ -57,21 +57,21 @@ public class RegisterController {
     private BorderPane borderPane;
 
 
-    @FXML 
+    @FXML
     private void initialize() {
         // set language
         wrong.setText(App.currentLanguage.get("pwMissmatch"));
         back.setText(App.currentLanguage.get("back"));
         register.setText(App.currentLanguage.get("register"));
-        firstNameLabel.setText(App.currentLanguage.get("firstName")+" :");
-        lastNameLabel.setText(App.currentLanguage.get("lastName")+" :");
-        nationalIdLabel.setText(App.currentLanguage.get("nationalID")+" :");
-        passwordLabel.setText(App.currentLanguage.get("password")+" :");
-        confirmPasswordLabel.setText(App.currentLanguage.get("confirmPassword")+" :");
-        if (App.dark){
-            borderPane.setBackground(new Background( new BackgroundFill(Color.GREY, CornerRadii.EMPTY, Insets.EMPTY)));
-        }else{
-            borderPane.setBackground(new Background( new BackgroundFill(Color.WHITE, CornerRadii.EMPTY, Insets.EMPTY)));
+        firstNameLabel.setText(App.currentLanguage.get("firstName") + " :");
+        lastNameLabel.setText(App.currentLanguage.get("lastName") + " :");
+        nationalIdLabel.setText(App.currentLanguage.get("nationalID") + " :");
+        passwordLabel.setText(App.currentLanguage.get("password") + " :");
+        confirmPasswordLabel.setText(App.currentLanguage.get("confirmPassword") + " :");
+        if (App.dark) {
+            borderPane.setBackground(new Background(new BackgroundFill(Color.GREY, CornerRadii.EMPTY, Insets.EMPTY)));
+        } else {
+            borderPane.setBackground(new Background(new BackgroundFill(Color.WHITE, CornerRadii.EMPTY, Insets.EMPTY)));
         }
     }
 
@@ -105,13 +105,12 @@ public class RegisterController {
             try {
                 App.api.post_user(App.currentUser.write_data());
                 Alert a = new Alert(AlertType.INFORMATION);
-                a.setContentText(App.currentLanguage.get("registerMessage")+App.currentUser.get_userID());
+                a.setContentText(App.currentLanguage.get("registerMessage") + App.currentUser.get_userID());
                 a.show();
                 onBackButtonClicked();
+            } catch (Exception e) {
             }
-            catch (Exception e) {
-            }
-        // the passwords aren't matching
+            // the passwords aren't matching
         } else {
             wrong.setVisible(true);
             PauseTransition visiblePause = new PauseTransition(Duration.seconds(2));

@@ -10,51 +10,37 @@
 
 <BorderPane prefHeight="494.0" prefWidth="547.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1"
             fx:controller="wallet.GUI.controllers.AccountController"
-            fx:id="borderPane">
+            fx:id="borderPane"
+            stylesheets="@../css/general-style.css">
     <center>
         <VBox alignment="CENTER" spacing="42.0" BorderPane.alignment="CENTER">
             <children>
                 <HBox alignment="CENTER">
                     <children>
                         <Label fx:id="firstNameLabel" contentDisplay="CENTER" text="First and second name :">
-                            <font>
-                                <Font name="Montserrat Regular" size="17.0"/>
-                            </font>
+
                         </Label>
                         <Label fx:id="firstName" contentDisplay="CENTER" text="name">
-                            <font>
-                                <Font name="Montserrat Regular" size="17.0"/>
-                            </font>
                         </Label>
                     </children>
                 </HBox>
                 <HBox alignment="CENTER">
                     <children>
                         <Label fx:id="lastNameLabel" contentDisplay="CENTER" text="First and second name :">
-                            <font>
-                                <Font name="Montserrat Regular" size="17.0"/>
-                            </font>
                         </Label>
                         <Label fx:id="lastName" contentDisplay="CENTER" text="name">
-                            <font>
-                                <Font name="Montserrat Regular" size="17.0"/>
-                            </font>
                         </Label>
                     </children>
                 </HBox>
                 <HBox alignment="CENTER">
                     <children>
                         <Label fx:id="natIDLabel" contentDisplay="CENTER" text="National register number :">
-                            <font>
-                                <Font name="Montserrat Regular" size="17.0"/>
-                            </font>
+
                         </Label>
                         <Label fx:id="number" alignment="CENTER" contentDisplay="CENTER"
                                maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308"
                                text="number">
-                            <font>
-                                <Font name="Montserrat Regular" size="17.0"/>
-                            </font>
+
                         </Label>
                     </children>
                 </HBox>
@@ -67,9 +53,6 @@
     <top>
         <Button mnemonicParsing="false" fx:id="back" text="back" onMouseClicked="#onBackButtonClick"
                 BorderPane.alignment="TOP_LEFT">
-            <font>
-                <Font name="Montserrat SemiBold" size="17.0"/>
-            </font>
             <BorderPane.margin>
                 <Insets bottom="20.0" left="10.0" top="10.0"/>
 
@@ -79,9 +62,6 @@
     <bottom>
         <Button mnemonicParsing="false" fx:id="password" onMouseClicked="#onPasswordButtonClick" text="Change password"
                 BorderPane.alignment="CENTER">
-            <font>
-                <Font name="Montserrat SemiBold" size="17.0"/>
-            </font>
             <BorderPane.margin>
                 <Insets bottom="10.0" top="10.0"/>
             </BorderPane.margin>

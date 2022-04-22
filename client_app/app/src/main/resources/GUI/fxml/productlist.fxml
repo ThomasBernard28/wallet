@@ -8,7 +8,7 @@
 <BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0"
             prefWidth="600.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1"
             fx:controller="wallet.GUI.controllers.ProductListController"
-            fx:id="borderPane">
+            fx:id="borderPane" stylesheets="@../css/general-style.css">
     <center>
         <GridPane fx:id="grid" hgap="15.0" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="358.0"
                   prefWidth="319.0" vgap="15.0" BorderPane.alignment="CENTER">
@@ -28,9 +28,7 @@
     <left>
         <Button fx:id="back" mnemonicParsing="false" onMouseClicked="#onBackButtonClick" text="back"
                 BorderPane.alignment="TOP_LEFT">
-            <font>
-                <Font name="Montserrat SemiBold" size="17.0"/>
-            </font>
+
             <Insets left="10.0" top="10.0"/>
             <BorderPane.margin>
                 <Insets left="10.0" top="10.0"/>
@@ -40,9 +38,6 @@
     <right>
         <Button fx:id="plus" mnemonicParsing="false" onMouseClicked="#onPlusButtonClick" text="+"
                 BorderPane.alignment="TOP_RIGHT">
-            <font>
-                <Font name="Montserrat SemiBold" size="17.0"/>
-            </font>
             <BorderPane.margin>
                 <Insets right="10.0" top="10.0"/>
             </BorderPane.margin>

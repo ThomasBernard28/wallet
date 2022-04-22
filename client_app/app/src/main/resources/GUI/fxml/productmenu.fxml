@@ -11,14 +11,11 @@
 <BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0"
             prefWidth="600.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1"
             fx:controller="wallet.GUI.controllers.ProductMenuController"
-            fx:id="borderPane">
+            fx:id="borderPane" stylesheets="@../css/general-style.css">
     <top>
         <Button fx:id="back" mnemonicParsing="false" onMouseClicked="#onBackButtonClick" text="back"
                 BorderPane.alignment="TOP_LEFT">
 
-            <font>
-                <Font name="Montserrat SemiBold" size="17.0"/>
-            </font>
             <BorderPane.margin>
                 <Insets left="10.0" top="10.0"/>
             </BorderPane.margin>
@@ -67,25 +64,14 @@
             <children>
                 <Button fx:id="transaction" onMouseClicked="#onTransactionButtonClick" mnemonicParsing="false"
                         text="Transaction">
-                    <font>
-                        <Font name="Montserrat SemiBold" size="17.0"/>
-                    </font>
+
                 </Button>
                 <Button fx:id="history" onMouseClicked="#onHistoryButtonClick" mnemonicParsing="false" text="History">
-                    <font>
-                        <Font name="Montserrat SemiBold" size="17.0"/>
-                    </font>
+
                 </Button>
-                <Button fx:id="coowner" onMouseClicked="#onCoownerButtonClick" mnemonicParsing="false"
-                        text="Co-owners">
-                    <font>
-                        <Font name="Montserrat SemiBold" size="17.0"/>
-                    </font>
+                <Button fx:id="coowner" onMouseClicked="#onCoownerButtonClick" mnemonicParsing="false">
                 </Button>
                 <Button fx:id="delete" onMouseClicked="#onDeleteButtonClick" mnemonicParsing="false" text="Delete">
-                    <font>
-                        <Font name="Montserrat SemiBold" size="17.0"/>
-                    </font>
                 </Button>
             </children>
             <opaqueInsets>

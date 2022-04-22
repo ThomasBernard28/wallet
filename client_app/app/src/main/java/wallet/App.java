@@ -33,11 +33,13 @@ public class App extends Application {
     public static Map<String, String> currentLanguage;
     public static Stage               stage;
     public static boolean dark;
+    public static boolean loged;
 
 
     @Override
     public void start(Stage stage) throws IOException {
         dark= false;
+        loged = false;
         FXMLLoader fxmlLoader = new FXMLLoader();
         Parent root = fxmlLoader.load(getFileFromResourceAsStream("GUI/fxml/settings.fxml"));
         Scene scene = new Scene(root, 320, 240);

@@ -32,14 +32,11 @@ public class SettingController {
     Button back;
     @FXML
     ComboBox language;
-    @FXML
-    CheckBox sound;
+
     @FXML
     CheckBox theme;
     @FXML
     Label languageLabel;
-    @FXML
-    Label soundLabel;
     @FXML
     Label darkThemeLabel;
 
@@ -47,25 +44,24 @@ public class SettingController {
     private void initialize() {
         // set language
         back.setText(App.currentLanguage.get("back"));
-        languageLabel.setText(App.currentLanguage.get("language")+" :");
-        soundLabel.setText(App.currentLanguage.get("sound")+" :");
-        darkThemeLabel.setText(App.currentLanguage.get("darkTheme")+" : ");
+        languageLabel.setText(App.currentLanguage.get("language") + " :");
+        darkThemeLabel.setText(App.currentLanguage.get("darkTheme") + " : ");
         language.setPromptText(App.currentLanguage.get("selectLanguage"));
 
         String[] languages = {"EN", "FR"}; // to do : check for languages json 
         language.setItems(FXCollections.observableArrayList(languages));
-        if (App.dark){
-            borderPane.setBackground(new Background( new BackgroundFill(Color.GREY, CornerRadii.EMPTY, Insets.EMPTY)));
-        }else{
-            borderPane.setBackground(new Background( new BackgroundFill(Color.WHITE, CornerRadii.EMPTY, Insets.EMPTY)));
+        if (App.dark) {
+            borderPane.setBackground(new Background(new BackgroundFill(Color.GREY, CornerRadii.EMPTY, Insets.EMPTY)));
+        } else {
+            borderPane.setBackground(new Background(new BackgroundFill(Color.WHITE, CornerRadii.EMPTY, Insets.EMPTY)));
         }
     }
 
     @FXML
     private void OnThemeCheckBoxChecked() {
-        if (App.dark){
+        if (App.dark) {
             App.dark = false;
-        }else {
+        } else {
             App.dark = true;
         }
         initialize();
@@ -79,14 +75,22 @@ public class SettingController {
 
     @FXML
     private void onBackButtonCLick() throws IOException {
-        FXMLLoader fxmlLoader = new FXMLLoader(new File("build/resources/main/GUI/fxml/mainmenu.fxml").toURL());
-        Parent root = fxmlLoader.load();
-        Stage stage = (Stage) (back.getScene().getWindow());
-        Scene scene = new Scene(root, 320, 320);
-        stage.setScene(scene);
-        stage.show();
+        if (App.loged) {
+            FXMLLoader fxmlLoader = new FXMLLoader(new File("build/resources/main/GUI/fxml/mainmenu.fxml").toURL());
+            Parent root = fxmlLoader.load();
+            Stage stage = (Stage) (back.getScene().getWindow());
+            Scene scene = new Scene(root, 320, 320);
+            stage.setScene(scene);
+            stage.show();
+        } else {
+            FXMLLoader fxmlLoader = new FXMLLoader(new File("build/resources/main/GUI/fxml/hello-view.fxml").toURL());
+            Parent root = fxmlLoader.load();
+            Stage stage = (Stage) (back.getScene().getWindow());
+            Scene scene = new Scene(root, 320, 320);
+            stage.setScene(scene);
+            stage.show();
+        }
     }
-
 
 
 }

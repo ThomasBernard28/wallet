@@ -7,7 +7,8 @@
 
 <BorderPane xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1"
             fx:controller="wallet.GUI.controllers.RegisterController"
-            fx:id="borderPane">
+            fx:id="borderPane"
+            stylesheets="@../css/general-style.css">
     <center>
         <StackPane>
             <children>
@@ -52,9 +53,6 @@
     <bottom>
         <Button fx:id="register" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false"
                 onMouseClicked="#onRegisterClicked" text="Register" BorderPane.alignment="CENTER">
-            <font>
-                <Font name="Montserrat SemiBold" size="17.0"/>
-            </font>
             <BorderPane.margin>
                 <Insets bottom="50.0"/>
             </BorderPane.margin>
@@ -63,9 +61,6 @@
     <top>
         <Button fx:id="back" alignment="TOP_LEFT" mnemonicParsing="false" onAction="#onBackButtonClicked" text="back"
                 BorderPane.alignment="TOP_LEFT">
-            <font>
-                <Font name="Montserrat SemiBold" size="17.0"/>
-            </font>
             <Insets left="10.0" top="10.0"/>
             <BorderPane.margin>
                 <Insets left="10.0" top="10.0"/>

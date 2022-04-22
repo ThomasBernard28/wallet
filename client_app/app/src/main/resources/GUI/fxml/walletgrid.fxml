@@ -7,13 +7,13 @@
 
 <StackPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0"
            prefWidth="600.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1"
-           fx:controller="wallet.GUI.controllers.WalletgridController">
+           fx:controller="wallet.GUI.controllers.WalletgridController"
+           stylesheets="@../css/general-style.css"
+           fx:id="stackPane">
     <children>
         <Button fx:id="back" mnemonicParsing="false" onAction="#onBackButtonCLick" text="back"
                 StackPane.alignment="TOP_LEFT">
-            <font>
-                <Font name="Montserrat SemiBold" size="17.0"/>
-            </font>
+
             <StackPane.margin>
                 <Insets left="10.0" top="10.0"/>
             </StackPane.margin>
@@ -32,9 +32,6 @@
             <children>
                 <Button fx:id="plus" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308"
                         mnemonicParsing="false" onAction="#onPlusButtonClick" text="+">
-                    <font>
-                        <Font name="Montserrat SemiBold" size="17.0"/>
-                    </font>
                 </Button>
             </children>
         </GridPane>

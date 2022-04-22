@@ -40,22 +40,22 @@ public class AccountController {
     @FXML
     private void initialize() {
         // set language
-        firstNameLabel.setText(App.currentLanguage.get("firstName")+" : ");
-        lastNameLabel.setText(App.currentLanguage.get("lastName")+" : ");
-        natIDLabel.setText(App.currentLanguage.get("nationalID")+" : ");
+        firstNameLabel.setText(App.currentLanguage.get("firstName") + " : ");
+        lastNameLabel.setText(App.currentLanguage.get("lastName") + " : ");
+        natIDLabel.setText(App.currentLanguage.get("nationalID") + " : ");
         back.setText(App.currentLanguage.get("back"));
         password.setText(App.currentLanguage.get("changePassword"));
 
         // set values
         firstName.setText(App.currentUser.get_firstName());
-        lastName.setText(App.currentUser.get_lastName()); 
+        lastName.setText(App.currentUser.get_lastName());
         number.setText(App.currentUser.get_natID());
-        if (App.dark){
-            borderPane.setBackground(new Background( new BackgroundFill(Color.GREY, CornerRadii.EMPTY, Insets.EMPTY)));
-        }else{
-            borderPane.setBackground(new Background( new BackgroundFill(Color.WHITE, CornerRadii.EMPTY, Insets.EMPTY)));
+        if (App.dark) {
+            borderPane.setBackground(new Background(new BackgroundFill(Color.GREY, CornerRadii.EMPTY, Insets.EMPTY)));
+        } else {
+            borderPane.setBackground(new Background(new BackgroundFill(Color.WHITE, CornerRadii.EMPTY, Insets.EMPTY)));
         }
-    }   
+    }
 
     @FXML
     private void onBackButtonClick() throws IOException {

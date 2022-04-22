@@ -8,13 +8,11 @@
 <BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0"
             prefWidth="600.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1"
             fx:controller="wallet.GUI.controllers.PerformTransactionController"
-            fx:id="borderPane">
+            fx:id="borderPane" stylesheets="@../css/general-style.css">
     <top>
         <Button fx:id="back" mnemonicParsing="false" onMouseClicked="#onBackButtonClick" text="back"
                 BorderPane.alignment="TOP_LEFT">
-            <font>
-                <Font name="Montserrat SemiBold" size="17.0"/>
-            </font>
+
             <Insets left="10.0" top="10.0"/>
             <BorderPane.margin>
                 <Insets left="10.0" top="10.0"/>
@@ -24,9 +22,7 @@
     <bottom>
         <Button fx:id="confirm" onMouseClicked="#onConfirmButtonClick" alignment="CENTER" mnemonicParsing="false"
                 text="Confirm" BorderPane.alignment="CENTER">
-            <font>
-                <Font name="Montserrat SemiBold" size="17.0"/>
-            </font>
+
             <BorderPane.margin>
                 <Insets bottom="5.0"/>
             </BorderPane.margin>
@@ -46,9 +42,7 @@
                                     </font>
                                 </Label>
                                 <TextField fx:id="receiverName">
-                                    <font>
-                                        <Font size="16.0"/>
-                                    </font>
+
                                 </TextField>
                             </children>
                         </HBox>
@@ -60,9 +54,7 @@
                                     </font>
                                 </Label>
                                 <TextField fx:id="iban">
-                                    <font>
-                                        <Font size="16.0"/>
-                                    </font>
+
                                 </TextField>
                             </children>
                         </HBox>
@@ -71,22 +63,14 @@
                 <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
                     <children>
                         <Label fx:id="amountLabel" maxWidth="1.7976931348623157E308" text="Amount :">
-                            <font>
-                                <Font size="16.0"/>
-                            </font>
+
                         </Label>
                         <TextField fx:id="amount" prefHeight="24.0" prefWidth="115.0"/>
                         <Label maxWidth="1.7976931348623157E308" prefHeight="20.0" prefWidth="15.0" text="€">
-                            <font>
-                                <Font size="16.0"/>
-                            </font>
                         </Label>
                     </children>
                 </HBox>
                 <Label fx:id="communicationLabel" maxWidth="1.7976931348623157E308" text="Communication :">
-                    <font>
-                        <Font size="16.0"/>
-                    </font>
                 </Label>
                 <TextArea fx:id="communication" prefHeight="108.0" prefWidth="585.0"/>
             </children>

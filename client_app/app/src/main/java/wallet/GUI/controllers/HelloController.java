@@ -1,5 +1,11 @@
 package wallet.GUI.controllers;
 
+import javafx.geometry.Insets;
+import javafx.scene.layout.Background;
+import javafx.scene.layout.BackgroundFill;
+import javafx.scene.layout.BorderPane;
+import javafx.scene.layout.CornerRadii;
+import javafx.scene.paint.Color;
 import wallet.App;
 
 import javafx.animation.PauseTransition;
@@ -35,12 +41,20 @@ public class HelloController {
     private Button settings;
 
     @FXML
+    private BorderPane borderPane;
+
+    @FXML
     private void initialize() {
         // set language
         login.setText(App.currentLanguage.get("login"));
         register.setText(App.currentLanguage.get("register"));
         idLabel.setText(App.currentLanguage.get("id")+" :");
         passwordLabel.setText(App.currentLanguage.get("password")+" :");
+        if (App.dark){
+            borderPane.setBackground(new Background( new BackgroundFill(Color.GREY, CornerRadii.EMPTY, Insets.EMPTY)));
+        }else{
+            borderPane.setBackground(new Background( new BackgroundFill(Color.WHITE, CornerRadii.EMPTY, Insets.EMPTY)));
+        }
     }
 
     @FXML
@@ -53,6 +67,7 @@ public class HelloController {
             if (App.currentUser.get_password().equals(password.getText())) {
                 FXMLLoader fxmlLoader = new FXMLLoader(new File("build/resources/main/GUI/fxml/mainmenu.fxml").toURL());
                 Parent root = fxmlLoader.load();
+                App.loged = true;
                 Stage stage = (Stage) (login.getScene().getWindow());
                 Scene scene = new Scene(root, 320, 320);
                 stage.setScene(scene);
@@ -77,6 +92,16 @@ public class HelloController {
         stage.setScene(scene);
         stage.show();
 
+    }
+
+    @FXML
+    private void onSettingsButtonClick() throws IOException{
+        FXMLLoader fxmlLoader = new FXMLLoader(new File("build/resources/main/GUI/fxml/settings.fxml").toURL());
+        Parent root = fxmlLoader.load();
+        Stage stage = (Stage) (register.getScene().getWindow());
+        Scene scene = new Scene(root, 320, 320);
+        stage.setScene(scene);
+        stage.show();
     }
 
 }

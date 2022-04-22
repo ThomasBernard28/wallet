@@ -56,14 +56,14 @@ public class PerformTransactionController {
         // set language
         back.setText(App.currentLanguage.get("back"));
         confirm.setText(App.currentLanguage.get("confirm"));
-        receiverLabel.setText(App.currentLanguage.get("receiver")+" : ");
-        nameLabel.setText(App.currentLanguage.get("firstName")+", "+App.currentLanguage.get("lastName")+" : ");
-        amountLabel.setText(App.currentLanguage.get("amount")+" : ");
-        communicationLabel.setText(App.currentLanguage.get("communication")+" : ");
-        if (App.dark){
-            borderPane.setBackground(new Background( new BackgroundFill(Color.GREY, CornerRadii.EMPTY, Insets.EMPTY)));
-        }else{
-            borderPane.setBackground(new Background( new BackgroundFill(Color.WHITE, CornerRadii.EMPTY, Insets.EMPTY)));
+        receiverLabel.setText(App.currentLanguage.get("receiver") + " : ");
+        nameLabel.setText(App.currentLanguage.get("firstName") + ", " + App.currentLanguage.get("lastName") + " : ");
+        amountLabel.setText(App.currentLanguage.get("amount") + " : ");
+        communicationLabel.setText(App.currentLanguage.get("communication") + " : ");
+        if (App.dark) {
+            borderPane.setBackground(new Background(new BackgroundFill(Color.GREY, CornerRadii.EMPTY, Insets.EMPTY)));
+        } else {
+            borderPane.setBackground(new Background(new BackgroundFill(Color.WHITE, CornerRadii.EMPTY, Insets.EMPTY)));
         }
 
     }
@@ -76,8 +76,7 @@ public class PerformTransactionController {
             Alert a = new Alert(AlertType.WARNING);
             a.setContentText(App.currentLanguage.get("transactionWarning1"));
             a.show();
-        }
-        else if (amount.getText().equals("") || Float.valueOf(amount.getText()).floatValue() > App.currentAccount.get_avgBalance()) {
+        } else if (amount.getText().equals("") || Float.valueOf(amount.getText()).floatValue() > App.currentAccount.get_avgBalance()) {
             cancel = true;
             Alert a = new Alert(AlertType.WARNING);
             a.setContentText(App.currentLanguage.get("transactionWarning2"));
@@ -86,23 +85,23 @@ public class PerformTransactionController {
         // to do : date time control 
         if (!cancel) {
             Transaction transaction = new Transaction(App.currentAccount.get_iban(),
-                                                      iban.getText(),
-                                                      "SEPA",
-                                                      App.currentAccount.get_localCurr(),
-                                                      Float.valueOf(amount.getText()).floatValue(),
-                                                      LocalDateTime.now().minusMinutes(122),
-                                                      communication.getText());
+                    iban.getText(),
+                    "SEPA",
+                    App.currentAccount.get_localCurr(),
+                    Float.valueOf(amount.getText()).floatValue(),
+                    LocalDateTime.now().minusMinutes(122),
+                    communication.getText());
             App.currentUser.perform_transaction(transaction);
             onBackButtonClick();
         }
     }
-        
+
     @FXML
     private void onBackButtonClick() throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(new File("build/resources/main/GUI/fxml/productmenu.fxml").toURL());
         Parent root = fxmlLoader.load();
-        Stage stage= (Stage)(back.getScene().getWindow());
-        Scene scene = new Scene(root,320,320);
+        Stage stage = (Stage) (back.getScene().getWindow());
+        Scene scene = new Scene(root, 320, 320);
         stage.setScene(scene);
         stage.show();
     }

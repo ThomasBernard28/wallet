@@ -33,10 +33,10 @@ public class ProductListController {
 
     @FXML
     private void initialize() {
-        if (App.dark){
-            borderPane.setBackground(new Background( new BackgroundFill(Color.GREY, CornerRadii.EMPTY, Insets.EMPTY)));
-        }else{
-            borderPane.setBackground(new Background( new BackgroundFill(Color.WHITE, CornerRadii.EMPTY, Insets.EMPTY)));
+        if (App.dark) {
+            borderPane.setBackground(new Background(new BackgroundFill(Color.GREY, CornerRadii.EMPTY, Insets.EMPTY)));
+        } else {
+            borderPane.setBackground(new Background(new BackgroundFill(Color.WHITE, CornerRadii.EMPTY, Insets.EMPTY)));
         }
         try {
             App.currentUser.set_accountsList(App.api.get_products(App.currentWallet.get_walletID()));
@@ -44,7 +44,7 @@ public class ProductListController {
             int row = 0;
             for (Account a : accountsList) {
                 Button button = new Button();
-                switch(a.get_type()) {
+                switch (a.get_type()) {
                     case "CA":
                         button.setText("Checking account");
                         break;
@@ -52,11 +52,13 @@ public class ProductListController {
                 button.setOnAction(event -> {
                     try {
                         switchToProduct(a);
-                    } catch (IOException e) {}
+                    } catch (IOException e) {
+                    }
                 });
                 grid.add(button, 0, row++);
             }
-        } catch (Exception e) {}
+        } catch (Exception e) {
+        }
     }
 
     private void switchToProduct(Account a) throws IOException {
@@ -90,7 +92,7 @@ public class ProductListController {
     }
 
     @FXML
-    private void onPlusButtonClick() throws IOException{
+    private void onPlusButtonClick() throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(new File("build/resources/main/GUI/fxml/addproductmenu.fxml").toURL());
         Parent root = fxmlLoader.load();
         Stage stage = (Stage) (back.getScene().getWindow());

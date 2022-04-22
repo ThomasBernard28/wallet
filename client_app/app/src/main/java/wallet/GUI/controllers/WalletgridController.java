@@ -27,7 +27,7 @@ public class WalletgridController {
     @FXML
     Button wallet;
     @FXML
-    private BorderPane borderPane;
+    private StackPane stackPane;
 
     int a = 1;
     int ligne = 0;
@@ -42,9 +42,9 @@ public class WalletgridController {
         // set language
         back.setText(App.currentLanguage.get("back"));
         if (App.dark){
-            borderPane.setBackground(new Background( new BackgroundFill(Color.GREY, CornerRadii.EMPTY, Insets.EMPTY)));
+            stackPane.setBackground(new Background( new BackgroundFill(Color.GREY, CornerRadii.EMPTY, Insets.EMPTY)));
         }else{
-            borderPane.setBackground(new Background( new BackgroundFill(Color.WHITE, CornerRadii.EMPTY, Insets.EMPTY)));
+            stackPane.setBackground(new Background( new BackgroundFill(Color.WHITE, CornerRadii.EMPTY, Insets.EMPTY)));
         }
         // set values
         try {

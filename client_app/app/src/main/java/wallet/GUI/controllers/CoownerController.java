@@ -53,10 +53,10 @@ public class CoownerController {
         natIDLabel.setText(App.currentLanguage.get("nationalID") + " : ");
         addCoOwnerLabel.setText(App.currentLanguage.get("addCoOwner") + " : ");
         add.setText(App.currentLanguage.get("add"));
-        if (App.dark){
-            splitPane.setBackground(new Background( new BackgroundFill(Color.GREY, CornerRadii.EMPTY, Insets.EMPTY)));
-        }else{
-            splitPane.setBackground(new Background( new BackgroundFill(Color.WHITE, CornerRadii.EMPTY, Insets.EMPTY)));
+        if (App.dark) {
+            splitPane.setBackground(new Background(new BackgroundFill(Color.GREY, CornerRadii.EMPTY, Insets.EMPTY)));
+        } else {
+            splitPane.setBackground(new Background(new BackgroundFill(Color.WHITE, CornerRadii.EMPTY, Insets.EMPTY)));
         }
 
         try {
