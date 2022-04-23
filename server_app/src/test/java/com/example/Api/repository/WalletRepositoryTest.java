@@ -1,21 +1,11 @@
 package com.example.Api.repository;
 
-import com.example.Api.language.Language;
 import com.example.Api.language.LanguageRepository;
-import com.example.Api.user.User;
 import com.example.Api.user.UserRepository;
-import com.example.Api.wallet.Wallet;
 import com.example.Api.wallet.WalletRepository;
-import org.apache.tomcat.jni.Local;
 import org.junit.jupiter.api.AfterEach;
-import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
-
-import java.time.LocalDate;
-
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertTrue;
 
 @DataJpaTest
 public class WalletRepositoryTest {
@@ -31,7 +21,7 @@ public class WalletRepositoryTest {
 
     @AfterEach
     void tearDown(){underTest.deleteAll();}
-
+    /*
     @Test
     void existByWalletID(){
         Language language = new Language("FR");
@@ -63,4 +53,6 @@ public class WalletRepositoryTest {
         Wallet res = underTest.findWalletByWalletID(1L).get();
         assertTrue(res.getWalletID().equals(1L));
     }
+
+     */
 }
