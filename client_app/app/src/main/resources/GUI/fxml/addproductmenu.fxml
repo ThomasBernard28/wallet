@@ -7,6 +7,7 @@
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.text.Font?>
 
 
 <BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0"
@@ -17,9 +18,8 @@
     <center>
         <HBox alignment="CENTER" prefHeight="306.0" prefWidth="600.0" spacing="50.0" BorderPane.alignment="CENTER">
             <children>
-                <Label alignment="CENTER" contentDisplay="CENTER" maxWidth="1.7976931348623157E308" prefHeight="16.0"
-                       prefWidth="213.0" text="Select a product"/>
-                <ComboBox fx:id="box" prefHeight="24.0" prefWidth="209.0"/>
+                <Label fx:id="selectLabel" alignment="CENTER" contentDisplay="CENTER" maxWidth="1.7976931348623157E308" prefHeight="16.0" prefWidth="213.0" text="Select a product" />
+                <ComboBox fx:id="box" prefHeight="24.0" prefWidth="209.0" />
             </children>
         </HBox>
     </center>
@@ -45,8 +45,6 @@
                     </StackPane.margin>
 
                 </Button>
-
-                <Label text="N27"/>
             </children>
         </StackPane>
     </top>

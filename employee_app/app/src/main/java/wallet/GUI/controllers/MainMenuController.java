@@ -37,6 +37,8 @@ public class MainMenuController {
     @FXML
     Button accounts;
     @FXML
+    Button requests;
+    @FXML
     Button settings;
     @FXML
     Button signout;
@@ -89,6 +91,16 @@ public class MainMenuController {
 
     @FXML
     private void onSettingsButtonClick() throws IOException {
+    }
+
+    @FXML
+    private void onRequestsButtonClick() throws IOException {
+        FXMLLoader fxmlLoader = new FXMLLoader(new File("build/resources/main/GUI/fxml/requestmenu.fxml").toURL());
+        Parent root = fxmlLoader.load();
+        Stage stage = (Stage) (leave.getScene().getWindow());
+        Scene scene = new Scene(root, 320, 320);
+        stage.setScene(scene);
+        stage.show();
     }
 
     @FXML

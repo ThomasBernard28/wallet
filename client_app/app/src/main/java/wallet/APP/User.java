@@ -217,16 +217,7 @@ public class User implements JsonReader {
     }
 
     public boolean add_account(String type) {  // needs to be reworked (account enum)
-        String t = "";
-        switch(type) {
-            case "Checking account":
-                t = "CA";
-                break;
-            case "Saving account":
-                t = "SA";
-                break;
-        }
-        Account account = new Account(t);
+        Account account = new Account(type);
         try {
             api.post_accountRequest(account.write_data());
             return true;
