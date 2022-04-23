@@ -21,8 +21,8 @@ public class Account {
     @Column(
             name = "iban",
             updatable = false,
-            nullable = false,
-            columnDefinition = "CHAR(16)"
+            columnDefinition = "CHAR(16)",
+            nullable = false
     )
     private String iban;
 
@@ -47,9 +47,9 @@ public class Account {
 
     @Column(
             name = "type",
-            nullable = false,
             updatable = false,
-            columnDefinition = "CHAR(2)"
+            columnDefinition = "CHAR(2)",
+            nullable = false
     )
     private String type;
 
@@ -62,15 +62,15 @@ public class Account {
     @Column(
             name = "localCurr",
             updatable = false,
-            nullable = false,
-            columnDefinition = "CHAR(3)"
+            columnDefinition = "CHAR(3)",
+            nullable = false
     )
     private String localCurr;
 
     @Column(
             name = "activity",
-            nullable = false,
-            columnDefinition = "Integer(1) default '1' "
+            columnDefinition = "Integer(1) default '1' ",
+            nullable = false
     )
     private Integer activity;
 

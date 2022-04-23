@@ -42,6 +42,25 @@ public class BankRepositoryTest {
 
     @Test
     void shouldFindAllBanks(){
+        Language language = new Language("FR");
+        languageRepository.save(language);
 
+        Bank bank = new Bank(
+                "test",
+                "psswd",
+                "testName",
+                language
+        );
+        underTest.save(bank);
+
+        Bank bank2 = new Bank(
+                "test2",
+                "psswd",
+                "testName",
+                language
+        );
+        underTest.save(bank2);
+
+        assertTrue(underTest.findAll().size() == 2 && underTest.findAll().get(0) != underTest.findAll().get(1));
     }
 }

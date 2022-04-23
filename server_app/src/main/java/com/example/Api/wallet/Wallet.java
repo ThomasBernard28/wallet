@@ -45,8 +45,9 @@ public class Wallet{
     )
     @Column(
             name = "walletID",
-            nullable = false,
-            updatable = false
+            updatable = false,
+            columnDefinition = "BIGINT(255)",
+            nullable = false
     )
     private Long walletID;
 
@@ -54,33 +55,34 @@ public class Wallet{
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(
             name = "userID",
-            nullable = false,
             referencedColumnName = "userID",
             foreignKey = @ForeignKey(
                     name = "WALLETS_USERS_userID_fk"
-            )
+            ),
+            nullable = false
     )
     private User user;
 
     @Column(
             name = "bic",
-            nullable = false,
             updatable = false,
-            columnDefinition = "CHAR(8)"
+            columnDefinition = "CHAR(8)",
+            nullable = false
     )
     private String bic;
 
     @Column(
             name = "openingDate",
-            nullable = false,
-            updatable = false
+            updatable = false,
+            columnDefinition = "DATE",
+            nullable = false
     )
     private LocalDate openingDate;
 
     @Column(
             name = "activity",
-            nullable = false,
-            columnDefinition = "Integer(1) default '1'"
+            columnDefinition = "Integer(1) default '1'",
+            nullable = false
     )
     private Integer activity;
 

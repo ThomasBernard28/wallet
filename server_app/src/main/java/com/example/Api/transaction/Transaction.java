@@ -54,16 +54,16 @@ public class Transaction {
 
     @Column(
             name = "operType",
-            nullable = false,
-            updatable = false
+            updatable = false,
+            nullable = false
     )
     private String operType;
 
     @Column(
             name = "currency",
             updatable = false,
-            nullable = false,
-            columnDefinition = "CHAR(3)"
+            columnDefinition = "CHAR(3)",
+            nullable = false
     )
     private String currency;
 
@@ -83,22 +83,22 @@ public class Transaction {
 
     @Column(
             name = "weekend",
-            nullable = false,
-            columnDefinition = "Integer(1) default '0'"
+            columnDefinition = "Integer(1) default '0'",
+            nullable = false
     )
     private Integer weekend;
 
     @Column(
             name = "status",
-            nullable = false,
-            columnDefinition = "Integer(1) default '0'"
+            columnDefinition = "Integer(1) default '0'",
+            nullable = false
     )
     private Integer status;
 
     @Column(
             name = "comments",
-            nullable = false,
-            columnDefinition = "VARCHAR(255) default ''"
+            columnDefinition = "VARCHAR(255) default ''",
+            nullable = false
     )
     private String comments;
 

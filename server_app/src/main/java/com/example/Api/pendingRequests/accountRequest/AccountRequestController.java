@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Map;
 
 /**
  * Account Request Controller that catches HTTP requests
@@ -36,10 +37,10 @@ public class AccountRequestController {
     /**
      * Method that catches a PUT request in order to validate a request so
      * the scheduler can create the Account
-     * @param accRequestID The id of the request that has to be validated
+     * @param json Data sent by the client
      */
-    @PutMapping(path = "validate/{accRequestID}")
-    public void validateRequest(@PathVariable("accRequestID") Long accRequestID){
-        accountRequestService.validateAccountRequest(accRequestID);
+    @PutMapping
+    public void validateRequest(@RequestBody Map<String, String> json){
+        accountRequestService.validateAccountRequest(Long.parseLong(json.get("accRequestID")));
     }
 }

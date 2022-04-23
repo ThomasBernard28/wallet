@@ -42,7 +42,7 @@ public class WalletService {
         if(!user.isPresent()){
             throw new ApiNotFoundException("The user : "+ userID +" doesn't exist");
         }
-        return walletRepository.findWalletByUserEquals(user.get());
+        return walletRepository.findWalletByUserEquals(user.get().getUserID());
     }
 
     public Wallet getWalletByUserAndBic(String bic, String userID){
@@ -60,7 +60,7 @@ public class WalletService {
         if(!user.isPresent()){
             throw new ApiNotFoundException("The user : "+ userID +" doesn't exist");
         }
-        return walletRepository.findWalletByUserEqualsAll(user.get());
+        return walletRepository.findWalletByUserEqualsAll(user.get().getUserID());
     }
 
     public Optional<Wallet> getWalletByWalletID(Long walletID){

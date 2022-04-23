@@ -126,7 +126,7 @@ public class UserService {
                 "user with id " + userID + "doesn't exist"
         ));
         //We need to check if the language is supported by the application
-        Optional<Language> optionalLanguage = languageRepository.findLanguageByLanguage(language);
+        Optional<Language> optionalLanguage = languageRepository.findByLanguage(language);
 
         if(!optionalLanguage.isPresent()){
             //if not we throw an exception saying that the language wasn't found.

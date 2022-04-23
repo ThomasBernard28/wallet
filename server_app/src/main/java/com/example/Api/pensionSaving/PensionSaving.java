@@ -35,23 +35,23 @@ public class PensionSaving {
 
     @Column(
             name = "walletID",
-            nullable = false,
-            updatable = false
+            updatable = false,
+            nullable = false
     )
     private Long walletID;
 
     @Column(
             name = "bic",
-            nullable = false,
             updatable = false,
-            columnDefinition = "CHAR(8)"
+            columnDefinition = "CHAR(8)",
+            nullable = false
     )
     private String bic;
 
     @Column(
             name = "userID",
-            nullable = false,
-            updatable = false
+            updatable = false,
+            nullable = false
     )
     private String userID;
 
@@ -69,8 +69,8 @@ public class PensionSaving {
 
     @Column(
           name = "type",
-          nullable = false,
-          columnDefinition = "CHAR(5)"
+          columnDefinition = "CHAR(5)",
+            nullable = false
     )
     private String type;
 
@@ -88,8 +88,8 @@ public class PensionSaving {
 
     @Column(
             name = "activity",
-            nullable = false,
-            columnDefinition = "Integer(1) default '1'"
+            columnDefinition = "Integer(1) default '1'",
+            nullable = false
     )
     private Integer activity;
 

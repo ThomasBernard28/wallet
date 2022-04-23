@@ -36,6 +36,6 @@ public class LanguageService {
      * @return The language we want
      */
     public Language getLanguage(String language){
-        return languageRepository.findByLanguage(language);
+        return languageRepository.findByLanguage(language).get();
     }
 }

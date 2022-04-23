@@ -32,27 +32,27 @@ public class Balance{
     )
     @Column(
             name = "balanceID",
-            nullable = false,
-            updatable = false
+            updatable = false,
+            nullable = false
     )
     private Long balanceID;
 
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(
             name = "iban",
-            nullable = false,
             referencedColumnName = "iban",
             foreignKey = @ForeignKey(
                     name = "CASH_BALANCES_ACCOUTNS_iban_fk"
-            )
+            ),
+            nullable = false
     )
     private Account iban;
 
     @Column(
             name = "currency",
-            nullable = false,
             updatable = false,
-            columnDefinition = "CHAR(3)"
+            columnDefinition = "CHAR(3)",
+            nullable = false
     )
     private String currency;
 

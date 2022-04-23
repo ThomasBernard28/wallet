@@ -18,9 +18,5 @@ public interface LanguageRepository extends JpaRepository<Language, String> {
      * @return The language
      */
     @Query("SELECT s FROM LANGUAGES s WHERE s.language = ?1")
-    Language findByLanguage(String language);
-
-
-    @Query("SELECT s FROM LANGUAGES s WHERE s.language = ?1")
-    Optional<Language> findLanguageByLanguage(String language);
+    Optional<Language> findByLanguage(String language);
 }

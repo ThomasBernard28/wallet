@@ -31,8 +31,8 @@ public class PenBalance {
     )
     @Column(
             name = "penBalanceID",
-            nullable = false,
-            updatable = false
+            updatable = false,
+            nullable = false
     )
     private Long insBalanceID;
 
@@ -55,9 +55,9 @@ public class PenBalance {
 
     @Column(
             name = "currency",
-            nullable = false,
             updatable = false,
-            columnDefinition = "CHAR(3) default 'EUR'"
+            columnDefinition = "CHAR(3) default 'EUR'",
+            nullable = false
     )
     private String currency;
 

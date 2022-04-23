@@ -7,9 +7,17 @@ import org.springframework.stereotype.Repository;
 import java.util.List;
 import java.util.Optional;
 
+/**
+ * Bank Repository
+ */
 @Repository
 public interface BankRepository extends JpaRepository<Bank, String> {
 
+    /**
+     * Query to
+     * @param bic
+     * @return
+     */
     @Query("SELECT s FROM INSTITUTIONS s WHERE s.bic = ?1")
     Optional<Bank> findBankByBic(String bic);
 

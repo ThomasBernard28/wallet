@@ -14,19 +14,19 @@ import java.util.Optional;
 @Transactional
 public interface WalletRepository  extends JpaRepository<Wallet, Long> {
 
-    @Query("SELECT s FROM WALLETS s WHERE s.walletID = ?1")
+    @Query(value = "SELECT * FROM WALLETS WHERE walletID = ?1", nativeQuery = true)
     Optional<Wallet> findWalletByWalletID(Long walletID);
 
-    @Query("SELECT s FROM WALLETS s WHERE s.user.userID = ?1 and s.bic = ?2 AND s.activity = 1")
+    @Query(value = "SELECT * FROM WALLETS  WHERE userID = ?1 and bic = ?2 AND activity = 1", nativeQuery = true)
     Optional<Wallet> findWalletByUserAndBic(String userID, String bic);
 
-    @Query("SELECT s FROM WALLETS s WHERE s.user=?1 AND s.activity = 1")
-    List<Wallet> findWalletByUserEquals(User user);
+    @Query(value = "SELECT * FROM WALLETS WHERE userID=?1 AND activity = 1", nativeQuery = true)
+    List<Wallet> findWalletByUserEquals(String userID);
 
-    @Query("SELECT s FROM WALLETS s WHERE s.user=?1")
-    List<Wallet> findWalletByUserEqualsAll(User user);
+    @Query(value = "SELECT * FROM WALLETS  WHERE userID=?1", nativeQuery = true)
+    List<Wallet> findWalletByUserEqualsAll(String userID);
 
     @Modifying
-    @Query("DELETE FROM WALLETS s WHERE s.walletID = ?1")
+    @Query(value = "DELETE FROM WALLETS  WHERE walletID = ?1", nativeQuery = true)
     void deleteById(Long walletID);
 }

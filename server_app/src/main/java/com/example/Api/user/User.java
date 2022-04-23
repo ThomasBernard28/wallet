@@ -36,36 +36,40 @@ public class User {
     @Id
     @Column(
             name = "userID",
-            nullable = false,
-            updatable = false
+            updatable = false,
+            columnDefinition = "VARCHAR(255)",
+            nullable = false
     )
     private String userID;
 
     @Column(
             name = "natID",
-            nullable = false,
             updatable = false,
-            columnDefinition = "CHAR(11)"
+            columnDefinition = "CHAR(11)",
+            nullable = false
     )
     private String natID;
 
     @Column(
             name = "psswd",
+            columnDefinition = "VARCHAR(255)",
             nullable = false
     )
     private String psswd;
 
     @Column(
             name = "lastName",
-            nullable = false,
-            updatable = false
+            updatable = false,
+            columnDefinition = "VARCHAR(255)",
+            nullable = false
     )
     private String lastName;
 
     @Column(
             name = "firstName",
-            nullable = false,
-            updatable = false
+            updatable = false,
+            columnDefinition = "VARCHAR(255)",
+            nullable = false
     )
     private String firstName;
 

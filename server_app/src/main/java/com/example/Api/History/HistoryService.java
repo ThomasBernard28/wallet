@@ -68,6 +68,11 @@ public class HistoryService {
         }
     }
 
+    /**
+     * Method to get all the history of a cash balance byt its ID
+     * @param balanceIdViewer The id of the cash balance
+     * @return A List representing the history of the cash balance
+     */
     public List<History> getAllByViewer(Long balanceIdViewer){
         Optional<Balance> balanceOptional = balanceRepository.findByBalanceID(balanceIdViewer);
 
@@ -183,6 +188,11 @@ public class HistoryService {
         System.out.println("sencond part sent");
     }
 
+    /**
+     * Method to save the sender part of the transaction as a history
+     * @param transaction The transaction
+     * @param balanceIDViewer The balance ID of the sender
+     */
     public void saveSenderHistory(Transaction transaction, Balance balanceIDViewer){
 
         //Because the balance has already been updated in the TransactionService
@@ -193,10 +203,13 @@ public class HistoryService {
         historyRepository.insertHistory(transaction.getTrxID(), balanceIDViewer.getBalanceID(), amount,transaction.getDateTime(), nextBalance,
                 prevBalance, transaction.getIbanReceiver(),  balanceIDViewer.getIban().getIban(), transaction.getComments());
 
-        //System.out.println(history + "sender");
-        //historyRepository.save(history);
     }
 
+    /**
+     * Method to save the receiver part of the transaction as a hsitory
+     * @param transaction The transaction
+     * @param balanceIDViewer The balance ID of the receiver
+     */
     public void saveReceiverHistory(Transaction transaction, Balance balanceIDViewer){
 
         //Because the balance has already been updated in the TransactionService
@@ -207,11 +220,13 @@ public class HistoryService {
         historyRepository.insertHistory(transaction.getTrxID(), balanceIDViewer.getBalanceID(), amount,transaction.getDateTime(), nextBalance,
                 prevBalance, transaction.getIbanReceiver(),  balanceIDViewer.getIban().getIban(), transaction.getComments());
 
-        //System.out.println(history + "receiver");
-        //historyRepository.save(history);
-
     }
 
+    /**
+     * Method to an insurance history
+     * @param transaction The transaction
+     * @param balanceIDViewer The balance ID of the sender
+     */
     public void saveInsuranceHistory(Transaction transaction, Balance balanceIDViewer){
         Float prevBalance = balanceIDViewer.getBalance() - transaction.getAmount();
         Float amount  = transaction.getAmount();

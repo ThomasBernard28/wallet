@@ -43,9 +43,4 @@ public class UserRepositoryTest {
         assertTrue(underTest.findUserByUserID("userID").isPresent());
     }
 
-    @Test
-    void shouldNotFindByUserID(){
-        assertTrue(underTest.findUserByUserID("testID").isEmpty());
-    }
-
 }

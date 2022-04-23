@@ -24,24 +24,24 @@ public class InsuranceInfo {
     @Id
     @Column(
             name = "insType",
-            nullable = false,
             updatable = false,
-            columnDefinition = "CHAR(5)"
+            columnDefinition = "CHAR(5)",
+            nullable = false
     )
     private String insType;
 
     @Column(
             name = "insName",
-            nullable = false,
-            updatable = false
+            updatable = false,
+            nullable = false
     )
     private String insName;
 
     //duration until renew in month
     @Column(
             name = "duration",
-            nullable = false,
-            columnDefinition = "Integer(2)"
+            columnDefinition = "Integer(2)",
+            nullable = false
     )
     private Integer duration;
 

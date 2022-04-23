@@ -22,9 +22,9 @@ public class Language {
     @Id
     @Column(
             name = "language",
-            nullable = false,
             updatable = false,
-            columnDefinition = "CHAR(2)"
+            columnDefinition = "CHAR(2)",
+            nullable = false
     )
     private String language;
 }

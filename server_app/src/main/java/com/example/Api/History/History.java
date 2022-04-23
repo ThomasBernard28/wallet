@@ -12,6 +12,9 @@ import java.time.LocalDateTime;
 @NoArgsConstructor
 @ToString
 
+/**
+ * History entity class. Defines the entity in which the history of transactions is stored
+ */
 @Entity(name = "TRX_HISTORY")
 @Table(name = "TRX_HISTORY")
 public class History {
@@ -20,22 +23,22 @@ public class History {
     @Id
     @Column(
             name = "trxID",
-            nullable = false,
-            updatable = false
+            updatable = false,
+            nullable = false
     )
     private Long trxID;
 
     @Column(
             name = "balanceIdViewer",
-            nullable = false,
-            updatable = false
+            updatable = false,
+            nullable = false
     )
     private Long balanceIdViewer;
 
     @Column(
             name = "ibanSender",
-            updatable = false,
-            columnDefinition = "CHAR(16)"
+            columnDefinition = "CHAR(16)",
+            updatable = false
     )
     private String ibanSender;
 
@@ -82,9 +85,9 @@ public class History {
 
     @Column(
             name = "comments",
-            nullable = false,
             updatable = false,
-            columnDefinition = "VARCHAR(255) default ''"
+            columnDefinition = "VARCHAR(255) default ''",
+            nullable = false
     )
     private String comments;
 

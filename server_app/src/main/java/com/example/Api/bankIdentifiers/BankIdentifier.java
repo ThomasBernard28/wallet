@@ -11,7 +11,10 @@ import javax.persistence.*;
 @NoArgsConstructor
 @ToString
 
-
+/**
+ * Bank Identifier Entity, contains all the informations about the bank
+ * The parameters to create an iban as the bank code and the latest iban generated
+ */
 @Entity(name = "BANK_IDENTiFIER")
 @Table(name = "BANK_IDENTIFIER")
 public class BankIdentifier {
@@ -19,9 +22,9 @@ public class BankIdentifier {
     @Id
     @Column(
             name = "identifier",
-            nullable = false,
             updatable = false,
-            columnDefinition = "Integer(3)"
+            columnDefinition = "Integer(3)",
+            nullable = false
     )
     private Integer identifier;
 
@@ -37,16 +40,16 @@ public class BankIdentifier {
 
     @Column(
             name = "prefix",
-            nullable = false,
             updatable = false,
-            columnDefinition = "CHAR(4)"
+            columnDefinition = "CHAR(4)",
+            nullable = false
     )
     private String prefix;
 
     @Column(
             name = "lastIban",
-            nullable = false,
-            columnDefinition = "Integer(9)"
+            columnDefinition = "Integer(9)",
+            nullable = false
     )
     private Integer lastIban;
 

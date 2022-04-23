@@ -11,10 +11,14 @@ import javax.persistence.*;
 @NoArgsConstructor
 @ToString
 
+/**
+ * CoOwner Entity class
+ */
 @Entity(name = "CO_OWNER")
 @Table(name = "CO_OWNER")
 public class CoOwner {
 
+    //defines a composite primary key
     @EmbeddedId
     private CoOwnerID coOwnerID;
 

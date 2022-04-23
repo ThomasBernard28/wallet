@@ -12,28 +12,31 @@ import java.io.Serializable;
 @NoArgsConstructor
 @ToString
 
+/**
+ * The CoOwner composite Primary key class
+ */
 @Embeddable
 public class CoOwnerID implements Serializable {
 
     @Column(
             name = "walletID_coOwner",
-            nullable = false,
-            updatable = false
+            updatable = false,
+            nullable = false
     )
     private Long walletID;
 
     @Column(
             name = "ibanOwner",
-            nullable = false,
             updatable = false,
-            columnDefinition = "CHAR(16)"
+            columnDefinition = "CHAR(16)",
+            nullable = false
     )
     private String ibanOwner;
 
     @Column(
             name = "userID_coOwner",
-            nullable = false,
-            updatable = false
+            updatable = false,
+            nullable = false
     )
     private String userID_coOwner;
 }

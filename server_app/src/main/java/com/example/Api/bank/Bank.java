@@ -1,6 +1,5 @@
 package com.example.Api.bank;
 
-import com.example.Api.client.Client;
 import com.example.Api.language.Language;
 import lombok.*;
 
@@ -12,6 +11,9 @@ import javax.persistence.*;
 @NoArgsConstructor
 @ToString
 
+/**
+ * Bank Entity class
+ */
 @Entity(name = "INSTITUTIONS")
 @Table(name = "INSTITUTIONS")
 public class Bank {
@@ -19,9 +21,9 @@ public class Bank {
     @Id
     @Column(
             name = "bic",
-            nullable = false,
             updatable = false,
-            columnDefinition = "CHAR(8)"
+            columnDefinition = "CHAR(8)",
+            nullable = false
     )
     private String bic;
 
@@ -33,8 +35,8 @@ public class Bank {
 
     @Column(
             name = "name",
-            nullable = false,
-            updatable = false
+            updatable = false,
+            nullable = false
     )
     private String name;
 
