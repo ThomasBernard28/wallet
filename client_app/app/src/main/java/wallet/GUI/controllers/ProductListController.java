@@ -29,6 +29,9 @@ public class ProductListController {
 
     @FXML
     private void initialize() {
+        // set language
+        back.setText(App.currentLanguage.get("back"));
+
         try {
             App.currentUser.set_accountsList(App.api.get_products(App.currentWallet.get_walletID()));
             accountsList = App.currentUser.get_accountsList();
@@ -37,7 +40,7 @@ public class ProductListController {
                 Button button = new Button();
                 switch(a.get_type()) {
                     case "CA":
-                        button.setText("Checking account");
+                        button.setText(App.currentLanguage.get("checkingAccount"));
                         break;
                 }
                 button.setOnAction(event -> {

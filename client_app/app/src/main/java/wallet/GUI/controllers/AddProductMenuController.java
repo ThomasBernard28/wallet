@@ -6,6 +6,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
+import javafx.scene.control.Label;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
 import javafx.stage.Stage;
@@ -23,11 +24,18 @@ public class AddProductMenuController {
     ComboBox box;
     @FXML
     Button subscribe;
+    @FXML
+    Label selectLabel;
 
     @FXML
     private void initialize() {
+        // set language
+        back.setText(App.currentLanguage.get("back"));
+        subscribe.setText(App.currentLanguage.get("subscribe"));
+        selectLabel.setText(App.currentLanguage.get("selectProduct"));
+
         // set comboBox values
-        String types[] = {"Checking account", "Saving account"};
+        String types[] = {App.currentLanguage.get("checkingAccount")};
         box.setItems(FXCollections.observableArrayList(types));
     }
 
@@ -35,7 +43,7 @@ public class AddProductMenuController {
     private void onSubscribeButtonClick() throws IOException {
         if (box.getValue() == null) {
             Alert a = new Alert(AlertType.WARNING);
-            a.setContentText("Please select an account type.");
+            a.setContentText(App.currentLanguage.get("addProductWarning1"));
             a.show();
         }
 
@@ -43,7 +51,7 @@ public class AddProductMenuController {
             boolean requested = App.currentUser.add_account((String) box.getValue());
             if (requested) {
                 Alert a = new Alert(AlertType.INFORMATION);
-                a.setContentText("The creation of your account will be verified and confirmed soon. Please be patient.");
+                a.setContentText(App.currentLanguage.get("addProductMessage1"));
                 a.show();
             }
             else {
