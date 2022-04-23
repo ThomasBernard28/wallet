@@ -20,6 +20,10 @@ public class AccountRequest implements JsonReader {
         catch(Exception e) {}
    }
 
+   public int get_accRequestID() {
+      return data.getAccRequestID();
+   }
+
    @Override
    public String toString() {
       return data.toString();

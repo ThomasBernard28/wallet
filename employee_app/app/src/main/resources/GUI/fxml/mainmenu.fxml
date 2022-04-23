@@ -14,6 +14,7 @@
             <children>
                 <Button fx:id="clients" onAction="#onClientsButtonClick" maxWidth="1.7976931348623157E308" mnemonicParsing="false" text="Clients" />
                 <Button fx:id="accounts" onAction="#onAccountsButtonClick" maxWidth="1.7976931348623157E308" mnemonicParsing="false" text="Products" />
+                <Button fx:id="requests" onAction="#onRequestsButtonClick" maxWidth="1.7976931348623157E308" mnemonicParsing="false" text="Requests" />
                 <Button fx:id="settings" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#onSettingsButtonClick" prefHeight="24.0" prefWidth="142.0" text="Settings" />
                 <Button fx:id="signout" onAction="#onSignOutButtonClick" maxWidth="1.7976931348623157E308" mnemonicParsing="false" prefHeight="24.0" prefWidth="210.0" text="Sign out" />
                 <Button fx:id="leave" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onMouseClicked="#onLeaveButtonCLick" text="Leave" />
