@@ -32,7 +32,7 @@ public class TrxScheduler extends AbstractScheduler{
     @Scheduled(initialDelay = 5, fixedRate = days, timeUnit = TimeUnit.SECONDS)
     public void processAllTrx(){
         // No transaction will be processed on week ends
-        if (isWeekend(LocalDateTime.now())){
+        if (!isWeekend(LocalDateTime.now())){
             log.info("[SCHEDULED TASK] The process will start back on monday");
         }
         else{
@@ -53,7 +53,7 @@ public class TrxScheduler extends AbstractScheduler{
      */
     @Scheduled(initialDelay = 10, fixedRate = minutes, timeUnit = TimeUnit.SECONDS)
     public void processAllRequest(){
-        if (isWeekend(LocalDateTime.now())){
+        if (!isWeekend(LocalDateTime.now())){
             log.info("[SCHEDULED TASK] The request will start to be processed back on monday");
         }
         else{
