@@ -1,0 +1,18 @@
+\documentclass[../rapport.tex]{subfiles}
+
+\begin{document}
+Durant la phase d'implémentation du projet, il était essentiel de configurer un outil de CD/CI afin de détecter tous problème lors de chaque commit.
+Étant plusieurs à travailler sur le projet, une erreur pouvait vite arriver et ne pas être détectée à temps, compromettant le travail futur des autres développeurs. 
+
+Nous avons décidé d'utiliser Github actions qui s'intègre parfaitement avec notre repository hébergé sur le même site.
+Lors de chaque commit sur les branches contenant les applications frontend et backend, Github actions va faire un build avec Gradle, effectuer les tests et build la javadoc. 
+
+Pour les applications frontend, Github actions va également générer 2 fatjars, un pour UNIX et un pour Windows.
+Une fois générés, ils sont automatiquement ajouté dans une release afin d'être facilement téléchargés.
+
+Pour l'application backend (l'API), un fatjar est également créé.
+Celui ci est automatiquement envoyé avec la commande scp sur un serveur personnel et l'API est redémarrée.
+
+Ces opérations prennent environ 3 minutes pour être réalisées.
+Une fois terminées, nous recevons une notification sur un serveur Discord qui nous permet de savoir si tout s'est bien passé ou si il y a eu des erreurs.
+\end{document}
