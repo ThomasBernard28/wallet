@@ -37,11 +37,15 @@ public class Api {
         return response.body();     // return the json
     } 
 
-    public void put_addAccount(String requestID) throws Exception {
+    public void put_addAccount(int requestID) throws Exception {
+        String json = "{\"accRequestID\":"+Integer.toString(requestID)+"}";
+        System.out.println(json); // debug
         request = HttpRequest.newBuilder()
-            .uri(URI.create("http://sierra880.xyz:4545/api/v1/accRequest/validate/"+requestID))
+            .uri(URI.create("http://sierra880.xyz:4545/api/v1/accRequest"))
             .header("Content-Type", "application/json")
+            .PUT(HttpRequest.BodyPublishers.ofString(json))
             .build();
+        System.out.println(request); // debug
         client.send(request, HttpResponse.BodyHandlers.ofString());
     }
 

@@ -48,26 +48,15 @@ public class RequestMenuController {
           });
          hbox.getChildren().add(accept);
 
-         // refuse request button
-         Button refuse = new Button("Refuse");
-         refuse.setOnAction(event -> {
-              try {
-                  refuseRequest(ar);
-              } catch (IOException e) {}
-          });
-         hbox.getChildren().add(refuse);
-
          // add the hbox to the list of requests
          list.getChildren().add(hbox);
       }
    }
 
    private void acceptRequest(AccountRequest ar) throws IOException {
-      System.out.println("accept");
-   }
-
-   private void refuseRequest(AccountRequest ar) throws IOException {
-      System.out.println("refuse");
+      try {
+         App.api.put_addAccount(ar.get_accRequestID());
+      } catch (Exception e) {}
    }
 
    @FXML
