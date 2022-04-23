@@ -14,13 +14,17 @@ import java.util.Optional;
 public interface BankRepository extends JpaRepository<Bank, String> {
 
     /**
-     * Query to
-     * @param bic
-     * @return
+     * Query to get a bank by its bic
+     * @param bic The bic of the bank
+     * @return an Optional containing the potential bank
      */
     @Query("SELECT s FROM INSTITUTIONS s WHERE s.bic = ?1")
     Optional<Bank> findBankByBic(String bic);
 
+    /**
+     * Query to get all banks
+     * @return A List containing all banks
+     */
     @Query("SELECT s FROM INSTITUTIONS s")
     List<Bank> findAll();
 }

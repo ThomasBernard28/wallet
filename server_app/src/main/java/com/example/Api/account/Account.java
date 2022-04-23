@@ -13,6 +13,9 @@ import javax.persistence.*;
 @NoArgsConstructor
 @ToString
 
+/**
+ * Account entity class
+ */
 @Table(name = "ACCOUNTS")
 @Entity(name = "ACCOUNTS")
 public class Account {

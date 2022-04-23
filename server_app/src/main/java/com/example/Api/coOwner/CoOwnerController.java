@@ -39,7 +39,7 @@ public class CoOwnerController {
         Long walletID = Long.parseLong(json.get("walletID_coOwner"));
 
         //Create a wallet instance calling the wallet service
-        Wallet wallet = walletService.getWalletByWalletID(walletID).get();
+        Wallet wallet = walletService.getWalletByWalletID(walletID);
 
         //calling coOwner service to register the co owner
         coOwnerService.registerCoOwner(wallet.getWalletID(), json.get("ibanOwner"), json.get(""), json.get("bicOwner"), json.get("userIDOwner"));

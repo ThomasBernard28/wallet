@@ -11,6 +11,9 @@ import javax.persistence.*;
 @NoArgsConstructor
 @ToString
 
+/**
+ * Cash balances entity
+ */
 @Entity(name = "CASH_BALANCES")
 @Table(
         name = "CASH_BALANCES",
