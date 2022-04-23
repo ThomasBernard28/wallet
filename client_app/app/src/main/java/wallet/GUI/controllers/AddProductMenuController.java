@@ -48,7 +48,12 @@ public class AddProductMenuController {
         }
 
         else {
-            boolean requested = App.currentUser.add_account((String) box.getValue());
+            String type = "";
+            String selected = (String) box.getValue();
+            if (selected.equals(App.currentLanguage.get("checkingAccount"))) {
+                type = "CA";
+            }
+            boolean requested = App.currentUser.add_account(type);
             if (requested) {
                 Alert a = new Alert(AlertType.INFORMATION);
                 a.setContentText(App.currentLanguage.get("addProductMessage1"));
