@@ -122,6 +122,75 @@
 			\centering\includegraphics[scale=0.3]{ressources/finalDb.jpg}
 			\caption{Diagramme d'entité-relation de la base de données.}
 		\end{figure}
-	
+
+\newpage
+
+\subsection{API}
+
+\paragraph{Choix du framework }
+Lors de l'implémentation de l'API nous avons eu 2 choix qui se sont offerts à nous : Faire l'API à partir de rien ou bien utiliser un framework.
+Suite à la présentation du framework Spring par Jeremy Dubrulle nous avons décidés d'opter pour celui-ci car il nous permettait de nous familiariser avec
+le concept d'API ainsi qu'avec son fonctionnement en enlevant quelque peu ce côté obscur que ce concept peut avoir.
+
+\medskip
+
+Spring porpose de nombreuses dependances notamment Spring Data Jpa dont nous avons parlé dans la section liée à la BDD, mais également Lombok dont nous nous sommes servis afin d'auto générer
+les getter, setter et constructeurs de classes. 
+
+\paragraph{Architecture d'implémentation de Spring}
+
+Une API réalisée avec le framework Spring possède une architecture spécifique sous la forme de 3 couches qui communiquent les unes avec les autres :
+
+\medskip
+\begin{enumerate}
+	\item\textbf{Les Controllers : } Il s'agit de la couche qui se charge de la communication avec le côté client. En effet celle-ci définit les URI vers lesquels les requêtes doivent être
+		envoyées. Cette couche se charge également de renvoyer les données du côté client. C'est une couche de communication entre le client et le serveur. Le controller permet de définir
+		des méthodes qui interprêtent les requêtes reçues et appellent les méthodes adéquates dans la couche suivante.
+	\item\textbf{Les Services : } Il s'agit de la couche logique de l'API celle qui traite les informations, qu'elles proviennent des controllers ou bien des repositories qui envoient les données
+		provenant de la BDD. Les services effectuent les actions demandées par les controllers et renvoie les données ou des erreurs dans le cas où une requête serait inadéquate ou que son contenu 
+		serait introuvable.
+	\item\textbf{Les Repositories : } Il s'agit de la couche qui se charge de la communication avce la BDD. Un Repository est une interface qui implémente des méthods qui incarnent elles-mêmes
+		des requêtes en direction de la BDD. Les requêtes leurs sont spécifiées à l'aide du \@Query qui les précède. Les repositories se content d'exécuter les requêtes mais ne vérifient pas qu'il
+		s'agisse du contenu souhaité car c'est le rôle des services. Les seules erreurs que les repositories renvoient sont des erreurs liées à la BDD (mauavaise requête, non respect de contraintes).
+\end{enumerate}
+
+\paragraph{Gestion des entités}
+Le framework Spring utilise des classes de typoe Entity afin de définir les tables représentées dans la BDD chaque table est représentée par une classe de type Entity. Au sein de ces classes sont
+définies les différents colonnes ainsi que leurs types et les contraintes qui leurs sont apppliquées. Cet outil permet de faciler l'accès aux données ainsi que la communication entre les données
+d'entités différentes.
+
+\bigskip
+
+\paragraph{Gestion des transactions/requêtes} 
+Notre application permet d'effectuer des transactions entre deux comptes bancaires, de simuler un dépôt bancaire ou bien encore de financer une assurance (pas implémenté côté client pour cette
+dernière) et ce que ce soit de manière immédiate ou bien planifiée dans le temps. Nous avons opté pour un Scheduler qui va contrôler tous les jours la BDD pour savoir s'il faut effectuer des 
+transactions. Pour celà nous nous servons de la classe \textit{TrxScheduler}.
+
+\medskip
+
+Cette classe est une nouvelle fois utilisée pour gérer les requêtes de souscriptions aux produits financiers stockées dans la table \textit{ACCOUNT\_REQUEST} accessible depuis l'application
+des institutions. Les institutions peuvent valider ces requêtes une fois validée le \textit{validator} est mis à jour dans la table et le scheduler peut exécuter la création du produit financier.
+
+
+\bigskip
+
+\subsection{Manquements et problèmes du serveur}
+Suite à la refonte de la répartition des tâches et à la réduction du nombres d'étudiants travaillant sur le serveur de 2 à 1, certaines fonctionnalités sont absentes du serveur.
+
+\medskip
+
+	\begin{enumerate}
+		\item\textbf{Système de notifications :} Le système de notifications n'est malheureusement pas présent et pas géré. Toutefois pour ce qui est de la création de produit
+			financier. Il existe un système de demande de création implémenté et fonctionnant de manière asynchrone entre l'application client et l'application institution.
+		\item\textbf{Sécurité : } Le serveur ainsi que les requêtes sont en protocole HTTP au lieu de HTTPS. Ugo devait se charger d'implémenter Spring Security afin de sécuriser nos requêtes
+			et notre API malheureusement cette fonctionnalité manque à l'appel.
+		\item\textbf{Tests unitaires : } Ugo avait également pour tâche d'effectuer les tests unitaires de l'API, la tâche a finalement été réattribuée vers Thomas mais trop tard pour faire 
+			face au problème de communication entre les DATA JPA et l'instance en mémoire de BDD H2 servant aux tests. Afin d'effectuer les tests il aurait fallu changer totalement de framework
+			ce qui était impossible à ce stade du projet.
+		\item\textbf{Création des portfeuilles : } La création des portfeuilles n'est pas soumise à une approbation de l'institution, il s'agirait d'un fonctionnalité simple d'ajout mais coûteuse
+			en temps car elle implique de gérer autrements certaines tables de la BDD.
+	\end{enumerate}
+
+\newpage
 \end{document}
 
