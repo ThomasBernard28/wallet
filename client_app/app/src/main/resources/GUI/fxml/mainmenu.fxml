@@ -54,14 +54,8 @@
         <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0" BorderPane.alignment="CENTER">
             <children>
                 <Label fx:id="time" alignment="CENTER" contentDisplay="CENTER" text="Label">
-                    <font>
-                        <Font name="Comic Neue Bold Italic" size="95.0"/>
-                    </font>
                 </Label>
                 <Label fx:id="date" text="Label" textFill="#466380">
-                    <font>
-                        <Font name="Comic Neue Bold Italic" size="93.0"/>
-                    </font>
                 </Label>
             </children>
         </VBox>

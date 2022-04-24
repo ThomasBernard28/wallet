@@ -9,7 +9,18 @@
 
 
 .label{
-    -fx-font-family: Monserat SemiBold;
+    -fx-font-family: Monserat ;
     -fx-font-size: 17px ;
+
+}
+
+#time{
+    -fx-font-family: Comic Neue Bold Italic;
+    -fx-font-size: 95px;
+
+}
+#date{
+    -fx-font-family: Comic Neue Bold Italic;
+    -fx-font-size: 95px;
 
 }

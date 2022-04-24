@@ -10,36 +10,39 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane stylesheets="@../css/general-style.css" xmlns="http://javafx.com/javafx/17"
-            xmlns:fx="http://javafx.com/fxml/1" fx:controller="wallet.GUI.controllers.HelloController"
-            fx:id="borderPane"
->
+<BorderPane fx:id="borderPane" stylesheets="@../css/general-style.css" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="wallet.GUI.controllers.HelloController">
     <center>
-        <VBox alignment="CENTER" fillWidth="false" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity"
-              minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" spacing="30.0">
+        <VBox alignment="CENTER" fillWidth="false" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" spacing="30.0">
             <children>
-                <Label fx:id="wrong" contentDisplay="CENTER" text="Wrong password or ID" textFill="RED"
-                       visible="false"/>
+                <Label fx:id="wrong" contentDisplay="CENTER" text="Wrong password or ID" textFill="RED" visible="false" />
                 <HBox alignment="CENTER" prefHeight="49.0" prefWidth="600.0">
                     <children>
-                        <Label fx:id="idLabel" alignment="CENTER" contentDisplay="CENTER" prefHeight="16.0"
-                               prefWidth="106.0" text="ID :"/>
-                        <TextField fx:id="id"/>
+                        <Label fx:id="idLabel" alignment="CENTER" contentDisplay="CENTER" prefHeight="16.0" prefWidth="106.0" text="ID :">
+                     <font>
+                        <Font name="Montserrat Regular" size="17.0" />
+                     </font></Label>
+                        <TextField fx:id="id" />
                     </children>
                 </HBox>
                 <HBox alignment="CENTER" prefHeight="53.0" prefWidth="600.0">
                     <children>
-                        <Label fx:id="passwordLabel" prefHeight="16.0" prefWidth="106.0" text="Password :"/>
-                        <PasswordField fx:id="password" prefHeight="24.0" prefWidth="169.0"/>
+                        <Label fx:id="passwordLabel" text="Password :">
+                     <font>
+                        <Font size="17.0" />
+                     </font></Label>
+                        <PasswordField fx:id="password" prefHeight="24.0" prefWidth="169.0" />
                     </children>
                 </HBox>
-                <Button fx:id="login" mnemonicParsing="false" onAction="#onLoginButtonClick" prefHeight="29.0"
-                        prefWidth="123.0" text="Login">
+                <Button fx:id="login" mnemonicParsing="false" onAction="#onLoginButtonClick" prefWidth="170.0" text="Login">
+                    <font>
+                        <Font name="Monserat SemiBold" size="17.0" />
+                    </font>
 
                 </Button>
-                <Button fx:id="register" mnemonicParsing="false" onMouseClicked="#onRegisterButtonClick"
-                        prefHeight="29.0" prefWidth="121.0" text="Register">
-
+                <Button fx:id="register" mnemonicParsing="false" onMouseClicked="#onRegisterButtonClick" prefHeight="33.0" prefWidth="170.0" text="Creer un compte">
+                    <font>
+                        <Font name="Monserat SemiBold" size="17.0" />
+                    </font>
                 </Button>
             </children>
         </VBox>
@@ -47,11 +50,12 @@
     <top>
     </top>
     <top>
-        <Button fx:id="settings" onAction="#onSettingsButtonClick" alignment="CENTER" contentDisplay="CENTER"
-                mnemonicParsing="false" text="Settings"
-                BorderPane.alignment="CENTER_RIGHT">
+        <Button fx:id="settings" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#onSettingsButtonClick" text="Settings" BorderPane.alignment="CENTER_RIGHT">
+            <font>
+                <Font name="Monserat SemiBold" size="17.0" />
+            </font>
             <BorderPane.margin>
-                <Insets right="10.0" top="10.0"/>
+                <Insets right="10.0" top="10.0" />
             </BorderPane.margin>
         </Button>
     </top>

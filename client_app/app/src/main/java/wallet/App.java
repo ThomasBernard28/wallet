@@ -41,7 +41,7 @@ public class App extends Application {
         dark= false;
         loged = false;
         FXMLLoader fxmlLoader = new FXMLLoader();
-        Parent root = fxmlLoader.load(getFileFromResourceAsStream("GUI/fxml/settings.fxml"));
+        Parent root = fxmlLoader.load(getFileFromResourceAsStream("GUI/fxml/hello-view.fxml"));
         Scene scene = new Scene(root, 320, 240);
         this.stage = stage;
         stage.setTitle("Hello!");

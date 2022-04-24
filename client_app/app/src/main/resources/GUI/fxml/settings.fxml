@@ -12,7 +12,9 @@
         <Button fx:id="back" mnemonicParsing="false" onMouseClicked="#onBackButtonCLick" text="back"
                 BorderPane.alignment="TOP_LEFT">
             <Insets left="10.0" top="10.0"/>
-
+            <font>
+                <Font name="Monserat SemiBold" size="17.0"/>
+            </font>
             <BorderPane.margin>
                 <Insets left="10.0" top="10.0"/>
             </BorderPane.margin>
