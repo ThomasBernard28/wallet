@@ -1,0 +1,127 @@
+\documentclass[../rapport.tex]{subfiles}
+\graphicspath{{\subfix{ressources/}}}
+
+
+\begin{document}
+\subsection{Base de données}
+	
+	\paragraph{Choix du système de gestion de base de données :}
+		Lors de la création et de l'implémentation de la base de données il a fallu dans un
+		premier temps établir le système de base de données qui serait utilisé. 
+		Il a été décidé au sein du groupe que ce serait MariaDB qui serait utilisé suite
+		à notre expérience avce ce dernier lors du cours de Base de données I au premier
+		quadrimestre.
+	
+	\bigskip 
+	
+	\paragraph{Stratégie d'implémentation : }
+		La stratégie choisie quant à l'implémentation de la base de données a été de se baser
+		sur le diagramme construit lors de la phase de modélisation au premier quadrimestre.
+		Le but était de construire table par table la base de données tout en testant à chaque
+		fois les relations entre celles-ci afin de répérer d'éventuels omissions qui auraient été
+		commises lors de la rédaction du rapport de modélisation.
+
+		\medskip
+
+		C'est pourquoi, notre base de données a subit une légère refonte au cours de cette phase
+		d'implémentation, afin de s'adapter au mieux à l'usage que nous allions en faire. Un 
+		nouveau diagramme d'entité relation a été réalisé afin de voir plus clairement les 
+		modifications effectuées.
+
+		\medskip
+		
+		Par la suite nous avons conservé cette base de données comme modèle pour utiliser le 
+		Data Acces Layer : Spring Data JPA. Qui permet d'établir la communication entre la
+		base de données MariaDB et l'API en auto générant cette base de donnée sur base de 
+		classes de type @Entity créées dans le code de l'API.
+		
+	\bigskip
+
+	\paragraph{Data Acces Layer : }
+	Pour le Data Access Layer nous avons décidé de nous servir de celui proposé par le framework
+	Spring utlisé pour l'implémentation de l'API : Spring Data JPA.
+
+	\medskip
+
+	Data JPA nous a permis de générer une seconde base de données de manière automatisée au 
+	travers de classes de type \@Entity. Ces classes permettent de gérer de manière orientée
+	objet les différentes entités présentes dans la base de données mais également de les 
+	mettre en relation en définissant des foreign key.
+
+	\medskip
+
+	Data JPA met également à disposition un jeu d'interfaces appelés repositories qui 
+	définissent des méthodes de type \"requêtes\" afin d'établir une connexion aisée avec 
+	la base de données.
+
+	\medskip
+
+	L'utilisation de ce Data Acces Layer nous a permis de simplifier l'implémentation de
+	la base de données ainsi que sa mise en relation avec l'API. Cela nous a également 
+	apportés quelques notions de bases du principe d'API qui nous semblaient encore floues.
+	Toutefois, bien que ce framework nous ai été utile au départ il a été sources de problèmes
+	lors de la suite de l'implémentation de l'API.
+
+	\bigskip
+
+	\paragraph{Problèmes rencontrés avec le Data Acces Layer :}
+	Nous avons rencontrés 3 problèmes majeurs avec DATA JPA au cours de l'implémentation.
+	
+	\medskip
+
+	\begin{enumerate}
+		\item\textbf{Foreign Key :} Des problèmes ont été rencontrés avec les définitions des
+			foreign keys. En effet celles ci sont définies via des instances d'objets 
+			correspondants aux entités vers lesquelles elles font référence. Cela a engendré 
+			des problèmes de cast au niveau des types de données insérés/récupérés dans la BDD.
+			Pour faire face à ces problèmes nous avons décidé d'implémnter directement dans la
+			BDD les foreign key posant problème. Ce qui explique toutes les foreign key ne soient
+			pas représentées dans Spring.
+		\medskip
+		\item\textbf{Composite Primary Key :} Des problèmes avec des composites primary key 
+			ont été rencontré lorsqu'un des membres de cette primary key était une foreign key 
+			d'une autre table. En guise de résolution nous avons procédé comme au point précédent.
+		\medskip
+		\item\textbf{Test unitaires :} Le membre du groupe en charge des tests unitaires n'ayant
+			pas fait les test unitaires liés à l'API c'est le membre du groupe en charge de l'API
+			et de la BDD qui a du reprendre la tâche. 
+			La base de données et l'API étant déjà presque terminées il était trop tard pour 
+			pouvoir trouver une solution à ce problème. 
+			En effet, c'est le framework DATA JPA qui s'occupe de la génération de la BDD ainsi 
+			que des reqûetes qui sont liées à cette génération. Pour le testing de la BDD, une 
+			nouvelle BDD en mémoire (Base de données H2) doit être utilisée afin de tester DATA
+			JPA, or nous avons du faire face à un problème de communication entre les 2 modules 
+			du framework sans pouvoir y trouver de solution. Ce qui explique la presque absence 
+			de tests unitaires pour cette partie. Toutefois, comme expliqué dans la stratégie 
+			d'implémentation la base de données a été testée au fur et à mesure de son 
+			implémentation.
+	\end{enumerate}
+
+	\bigskip
+
+	\paragraph{Points forts de la base de données :}
+	La base de données a été pensée de manière à faciler l'ajout des différentes extensions.
+	Bien que la seule extension présente dans la BDD soit celle des assurances.
+	\medskip
+
+	En effet, grâce à la table \textbf{CASH\_BALANCES} l'ajout de l'extension permettant de gérer
+	des comptes multi-devises est facilité car les comptes admettent déjà des mutliples balances
+	permettant ainsi au compte de posséder plusieurs devises.
+
+	\medskip
+
+	Pour ce qui de l'extension concernant la gestion des fraudes une table contenant l'historique
+	des transactions \textbf{TRX\_HISTORY} a déjà été mise en place afin de permettre de controller
+	les virements par leur date, l'envoyeur et le réceptionneur. 
+	
+	
+	\newpage
+	\subsection{Diagramme d'entité relation}
+	
+		\begin{figure}[h]
+			\centering\includegraphics[scale=0.3]{ressources/finalDb.jpg}
+			\caption{Diagramme d'entité-relation de la base de données.}
+		\end{figure}
+	
+\end{document}
+
