@@ -1,8 +1,10 @@
 \documentclass[../rapport.tex]{subfiles}
 
 \begin{document}
+
 Le code de l'application client est divisé en 3 packages : APP, API et GUI.
-En plus de ces packages, il existe la classe App qui est la classe principale de l'application. 
+En plus de ces packages, il existe la classe App qui est la classe principale de l'application, une classe giveMoney utilisée par une tache gradle et une enumeration mais celle-ci n'a pas été utilisée.
+Par rapport à la phase de modélisation, peu de choses ont été changée dans l'implémentation. Certaines classes ont été ajoutées mais elles suivent le mêmes schéma que les classes modélisées.
 
 \subsection{Le package APP}
 Ce package contient les objets de l'application. Ces objets doivent pouvoir lire des jsons venant de l'api et inversement ils doivent être capable
@@ -13,11 +15,6 @@ chaque donnée d'un json à l'attribut correspondant de la classe Data gràce à
 Certaine classes possèdent une méthode write\_data qui effectue le travail inverse : elle retourne un json contenant les données de la classe Data.
 Par rapport à la phase de modélisation, peu de choses ont été changée dans l'implémentation. Certaines classes ont été ajoutée mais elles suivent le même schéma que 
 les autres classes modélisées.
-
-\begin{enumerate}
-\item Account -> compte de paiment
-\item User -> l'utilisateur
-\end{enumerate}
 
 \subsection{Le package API}
 La classe Api de ce package contient toutes les méthodes permettant d'effectuer les requêtes à l'api nécessaires au fonctionnement de l'application client.
@@ -30,20 +27,27 @@ Le package GUI contient les controllers où sont définies les méthodes de l'in
 Dans tous les controllers se trouve une méthode initialize utilisée pour placer les données reçues de l'api dans l'interface graphique et à changer l'interface
 selon la langue courante choisie par l'uitilisateur.
 
-\subsection{Gestion des langues}
-Par rapport à la phase de modélisation, peu de choses ont été changée dans l'implémentation. Certaines classes ont été ajoutée 
+\subsubsection{Gestion des langues}
 Le language par defaut de l'application est l'anglais mais il peut être changé par un utilisateur. Dans les paramètres de l'application, 
 l'utilisateur peut choisir la langue qu'il souhaite utiliser. Son choix est alors enregistré dans la base de données et lorsqu'il se reconnectera,
 le language choisi sera automatiquement utilisé. De plus, le dernier language utilisé est affiché lorsque l'application est lancée même si l'utilisateur 
 ne s'est pas encore authentifié.
 
 \subsection{Fonctionnalités non-implémentées ou à améliorer}
-Suite à un retard au niveau de l'implementation, certaines fonctionnalités ne sont pas complètes ou non implémentées.
+Suite à un retard au niveau de l'implementation, certaines fonctionnalités ne sont pas complètes ou non implémentées.\\
 La gestion des languages permet à l'utilisateur d'ajouter ses propres langues en ajoutant un fichier json dans les ressources de l'application. Cependant, ce nouveau
-languages n'est pas disponible via le GUI. En ajoutant les les propositions de languages en fonction des fichiers présents dans les ressources. 
-Lors de la réalisation d'un virement, il était demander d'ajouter une étape de vérification pendant laquelle l'utilisateur doit entrer un pin afin de confirmer la transaction.
-Celà n'a pas été implémenté. L'écran de connexion aurait pu être réutilisé en ajoutant une méthode de vérification de pin.
-L'exportation et importations des données n'est pas implémentée, toutes les données sont accessibles mais aucune méthode ne permet de créer le fichier csv.
-Les comptes d'épargne ne sont pas disponibles dans l'application. 
+languages n'est pas disponible via le GUI. En ajoutant les les propositions de languages en fonction des fichiers présents dans les ressources.\\ 
+Lors de la réalisation d'un virement, il était demandé d'ajouter une étape de vérification pendant laquelle l'utilisateur doit entrer un pin afin de confirmer la transaction.
+Cela n'a pas été implémenté. L'écran de connexion aurait pu être réutilisé en ajoutant une méthode de vérification de pin, ce pin aurait été enregister dans le données du compte.\\
+L'exportation et importation des données ne sont pas implémentées, toutes les données sont accessibles mais aucune méthode ne permet de créer le fichier csv.\\
+Les comptes d'épargne ne sont pas disponibles dans l'application.\\ 
+Le code des comptes de paiement prend en compte la date à laquelle un virement doit être effectué mais aucun élèment du GUI ne permet à l'utilisateur de sélectionner une date. Cette fonctionnalité est donc inutilisable. \\
+Au niveau des portefeuilles, l'utilsateur peut ouvrir un portefeuille pour une institutuion dont il n'est pas client. Une vérification auraient du être effectuée par exemple en ayant les institutions dans lesquelles l'utilisateur est client enregistrée dans la base de données. Ou bien en ayant une requête permettant de savoir si l'utilisateur est client de l'insitution dans laquelle il tente d'ouvrir un portefeuille.\\
+L'utilisateur a la possibilité de supprimer un compte. Mais il n'existe aucun élement graphique permettant de le réactiver, de supprimer un portefeuille et de réactiver un portefeuille. Ces fonctionnalités sont donc inutilisables. Une scène affichant les portefeuilles et comptes désactivés ainsi qu'un bouton de réactivation corrigerait ce problème.\\
+Dans le package API, il n'existe aucune méthode permettant de vérifier le status d'une réponse de l'api. Cela serait un très bon ajout afin de tester par exemple si l'api est actuellement fonctionnelle, ou les données correctement reçues et adapter le comportement de l'application en fonction. 
+
+\subsection{Tache Gradle}
+Une tache gradle a été implémentée pour l'application client. Il s'agit de la tache giveMoney. Cette tache permet de simuler un cash deposit. Cette tache peut être utilisée via la commande ./gradlew giveMoney $--$args"iban amount"
+
 \newpage
 \end{document}

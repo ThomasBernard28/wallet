@@ -2,4 +2,18 @@
 
 \begin{document}
 
+L'application employé a exactement la même structure que l'application client.
+
+\subsection{Le package APP}
+Le packge APP contient donc les objects nécessaires au fonctionnement de l'application. On y trouve la classe Account représentant un compte de paiement émis par l'institution, la classe AccountRequest représentant une demande de création de compte, la classe Client représentant un client de l'institution et la classe Employee représentant l'utilisateur (un employé de l'institution).
+Comme pour les classes de l'application client, chaque classe est associée à une classe data afin de pouvoir lire les données reçues de l'api.
+
+\subsection{Le package API}
+Le package est exactement similaire à celui de l'application client.
+Seul les requêtes sont différentes. Comme pour l'application client, aucune méthode ne permet de vérifier le status des requêtes.
+
+\subsection{Le packge GUI}
+Suite a un manque de coordination, beacoup de controllers sont manquants pour l'application employé. Seul le menu de connexion, le menu principal et le menu de gestion des demandes de compte sont fonctionnels. Les controllers des menus de gestions des clients et des comptes émis par l'institution ne sont pas présents. Ces fonctionnalités sont donc inutilisables. Pour ces deux menus, il était prévu de remplir des tableview avec les données des comptes et clients. Ainsi que des boutons permettant de supprimer ou ajouter un client et désactiver et réactiver des comptes.
+
+\newpage
 \end{document}
