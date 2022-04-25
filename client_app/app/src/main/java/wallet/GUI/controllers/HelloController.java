@@ -44,7 +44,7 @@ public class HelloController {
     private BorderPane borderPane;
 
     @FXML
-    public void initialize() {
+    private void initialize() {
         // set language
         login.setText(App.currentLanguage.get("login"));
         register.setText(App.currentLanguage.get("register"));
