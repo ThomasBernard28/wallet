@@ -56,6 +56,7 @@ public class RequestMenuController {
    private void acceptRequest(AccountRequest ar) throws IOException {
       try {
          App.api.put_addAccount(ar.get_accRequestID());
+         initialize();
       } catch (Exception e) {}
    }
 
