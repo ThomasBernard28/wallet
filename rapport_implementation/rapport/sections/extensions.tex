@@ -1,0 +1,92 @@
+\documentclass[../rapport.tex]{subfiles}
+\graphicspath{{\subfix{ressources/}}}
+
+
+\begin{document}
+
+	\subsection{Extension 5 BERANRD Thomas : Gestion des Assurances}
+		
+		\paragraph{Statut global de l'extension}
+			Suite au manque de temps rencontré par notre groupe, l'extension n'est pas
+			fonctionnelle, certaines scènes et controllers de GUI ont été implémentés du côté
+			du frontend mais ce n'est pas complet. Le jar du frontend lié à l'extension n'est
+			pas la denrière version du frontend mais celà ne pose pas de problème par rapport
+			à l'extension.
+
+			\medskip
+
+			C'est du côté du backend que l'extension a été la plus implémentée. En effet,
+			comme je travaillais sur le backend il m'a été plus facile d'implémenter 
+			une partie de mon extension.
+
+		\subsubsection{Frontend}
+			
+			\paragraph{Interface graphique}
+			Au niveau de l'interface graphique les scènes permettant de visualiser la 
+			liste des assurances a été implémentée ainsi que celle en permettant l'ajout.
+			
+			\medskip
+
+			Les scènes ne chargent malheureusement pas le contenu correctement et ne sont donc
+			pas fonctionnelles car j'ai préféré me focaliser sur la partie backend qui me 
+			semblait plus importante afin de pouvoir par après gérer la partie frontend.
+			
+			\medskip
+
+			La scène des assurances est accessible depuis la liste des produits via le bouton
+			situé au bas de la scène.
+
+		
+		\subsubsection{Backend}
+
+			\paragraph{Base de donnée et API :}
+			Seule une partie de l'etension a été implémentée. En effet, j'ai préféré me focaliser
+			sur un type d'assurance afin d'en développer un maximum de fonctionnalités, plutôt
+			que de faire tous les types mais sans fonctionnalité.
+
+			\medskip
+
+			Toutefois, la structure actuelle de la BDD permet l'ajout facile de nouveaux types
+			d'assurances. On retrouve une table générale \textit{INSURANCES} pouvant contenir
+			tous les types d'assurances et puis une table plus spécifique pour les autres types
+			d'assurances. Dans notre cas c'est la table \textit{PENSION\_SAVINGS} qui correspond
+			à une épargne pension. Celle-ci est fonctionnelle d'un point de vue backend.
+			On peut la créer, y ajouter de l'argent à épargner, le pourcentage de retour 
+			est calculé en fonction du montant ajouté et des plafonds sont implémentés.
+
+			\medskip
+
+			Les transactions fonctionnent de la même manière que pour celles entre comptes
+			bancaires. Il y une table \textit{PENSION\_BALANCES} qui ressemble à la table
+			\textit{CASH\_BALANCES} et qui correspond au sol de l'épargne pension. 
+			
+			\medskip
+
+			De plus, toute transacton depuis un compte vers l'assurance est également répertoriée
+			dans l'historique des transactions du compte afin de garder une trace sur les 
+			transactions effectuées.
+
+			\medskip
+
+			Finalement, il manque la fonctionnalité permettant de rétribuer le souscripteur 
+			de l'assurance au bout de l'année car celle-ci n'a pas eu le temps d'être implémentée
+			mais pourrait être ajoutée facilement grâce au Scheduler déjà implémenté.
+
+
+			\bigskip
+
+			\paragraph{Conclusion : } Pour cette extension il manque principalement de types
+			d'assurances variés ainsi que d'une réelle implémentation au niveau du frontend.
+			Bien que les requêtes HTTP soit fonctionnelles, leur interprétation par le côté 
+			client n'est quant à elle pas fonctionnelle.
+
+			\medskip
+
+			Il manque également la partie institution de l'extension qui était quant à elle
+			minime et se concentrait plutôt sur une gestion des devis qui pourrait être
+			implémentée facilement grâce à la table \textit{INSURANCE\_INFOS} contenant les
+			diverses informations des assurances en fonction de leur type.
+			
+
+			\newpage
+\end{document}
