@@ -8,9 +8,9 @@ En plus de ces packages, il existe la classe App qui est la classe principale de
 Ce package contient les objets de l'application. Ces objets doivent pouvoir lire des jsons venant de l'api et inversement ils doivent être capable
 d'écrire leurs données sous forme d'un json. Dans ce but, il existe une classe Data pour chaque objet de l'application. Cette classe permet de stocker 
 les données de l'objet et d'y accéder via les différentes méthodes get et set. 
-Afin de remplir les classes Data avec des données reçues de l'api, chaque classe d'objet posède une méthode read_data capable d'associer
+Afin de remplir les classes Data avec des données reçues de l'api, chaque classe d'objet posède une méthode read\_data capable d'associer
 chaque donnée d'un json à l'attribut correspondant de la classe Data gràce à la librairie Jackson.  
-Certaine classes possèdent une méthode write_data qui effectue le travail inverse : elle retourne un json contenant les données de la classe Data.
+Certaine classes possèdent une méthode write\_data qui effectue le travail inverse : elle retourne un json contenant les données de la classe Data.
 Par rapport à la phase de modélisation, peu de choses ont été changée dans l'implémentation. Certaines classes ont été ajoutée mais elles suivent le même schéma que 
 les autres classes modélisées.
 
