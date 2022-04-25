@@ -18,7 +18,9 @@ import java.util.ArrayList;
 
 import wallet.App;
 import wallet.APP.History;
-
+/**
+ * Controller containing the methods used for producthistory.fxml
+ */
 public class ProductHistoryController {
     @FXML
     Button back;
@@ -30,6 +32,9 @@ public class ProductHistoryController {
 
     @FXML
     private void initialize() throws IOException {
+        /**
+         * Automatically executed at the launch of the scene (producthistory.fxml)
+         * */
         // set language
         back.setText(App.currentLanguage.get("back"));
 
@@ -63,6 +68,10 @@ public class ProductHistoryController {
 
     @FXML
     private void onBackButtonClick() throws IOException {
+        /***
+         * Methode used when the back button is pressed
+         * it changes the scene to productmenu.fxml
+         */
         FXMLLoader fxmlLoader = new FXMLLoader(new File("build/resources/main/GUI/fxml/productmenu.fxml").toURL());
         Parent root = fxmlLoader.load();
         Stage stage = (Stage) (back.getScene().getWindow());

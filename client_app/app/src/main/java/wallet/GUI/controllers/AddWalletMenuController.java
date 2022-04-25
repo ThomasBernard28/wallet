@@ -23,7 +23,9 @@ import java.util.ArrayList;
 import wallet.App;
 import wallet.APP.Bank;
 import wallet.APP.Wallet;
-
+/**
+ * Controller containing the methods used for account.fxml
+ */
 public class AddWalletMenuController {
     @FXML
     private Button back;
@@ -38,6 +40,9 @@ public class AddWalletMenuController {
 
     @FXML
     private void initialize() {
+        /**
+         * Automatically executed at the launch of the scene (addwalletmenu.fxml)
+         * */
         // set language
         back.setText(App.currentLanguage.get("back"));
         add.setText(App.currentLanguage.get("addWallet"));
@@ -58,6 +63,8 @@ public class AddWalletMenuController {
             }
         }
         box.setItems(FXCollections.observableArrayList(names));
+
+        //changes the background
         if (App.dark) {
             borderPane.setBackground(new Background(new BackgroundFill(Color.GREY, CornerRadii.EMPTY, Insets.EMPTY)));
         } else {
@@ -67,12 +74,20 @@ public class AddWalletMenuController {
 
     @FXML
     private void onAddButtonClick() throws IOException {
+        /***
+         * Methode used when the add button is pressed
+         * adds a wallet to the user
+         */
         App.currentUser.add_wallet(App.get_bankBic((String) box.getValue()));
         onBackButtonClick();
     }
 
     @FXML
     private void onBackButtonClick() throws IOException {
+        /***
+         * Methode used when the password button is pressed
+         * it changes the scene to walletgrid.fxml
+         */
         FXMLLoader fxmlLoader = new FXMLLoader(new File("build/resources/main/GUI/fxml/walletgrid.fxml").toURL());
         Parent root = fxmlLoader.load();
         Stage stage = (Stage) (back.getScene().getWindow());

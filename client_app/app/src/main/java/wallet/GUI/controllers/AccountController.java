@@ -17,7 +17,7 @@ import java.io.IOException;
 import wallet.App;
 
 /**
- * R
+ * Controller containing the methods used for account.fxml
  */
 public class AccountController {
     @FXML
@@ -42,6 +42,9 @@ public class AccountController {
 
     @FXML
     private void initialize() {
+        /**
+         * Automatically executed at the launch of the scene (account.fxml)
+         * */
         // set language
         firstNameLabel.setText(App.currentLanguage.get("firstName") + " : ");
         lastNameLabel.setText(App.currentLanguage.get("lastName") + " : ");
@@ -64,6 +67,11 @@ public class AccountController {
 
     @FXML
     private void onBackButtonClick() throws IOException {
+        /***
+         * Methode used when the back button is pressed
+         * it changes the scene to mainmenu.fxml
+         */
+
         FXMLLoader fxmlLoader = new FXMLLoader(new File("build/resources/main/GUI/fxml/mainmenu.fxml").toURL());
         Parent root = fxmlLoader.load();
         Stage stage = (Stage) (back.getScene().getWindow());
@@ -74,6 +82,10 @@ public class AccountController {
 
     @FXML
     private void onPasswordButtonClick() throws IOException {
+        /***
+         * Methode used when the password button is pressed
+         * it changes the scene to changepassword.fxml
+         */
         FXMLLoader fxmlLoader = new FXMLLoader(new File("build/resources/main/GUI/fxml/changepassword.fxml").toURL());
         Parent root = fxmlLoader.load();
         Stage stage = (Stage) (password.getScene().getWindow());

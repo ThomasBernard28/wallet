@@ -29,7 +29,9 @@ import java.io.File;
 
 import jdk.jshell.execution.StreamingExecutionControl;
 import wallet.App;
-
+/**
+ * Controller containing the methods used for mainmenu.fxml
+ */
 public class MainMenuController {
     @FXML
     BorderPane borderpane;
@@ -56,7 +58,11 @@ public class MainMenuController {
     int a;
 
     @FXML
-    private void initialize() throws MalformedURLException {
+    private void initialize() throws MalformedURLException { /***
+     /**
+     * Automatically executed at the launch of the scene (mainmenu.fxml)
+     * */
+
         // set language text :
         wallets.setText(App.currentLanguage.get("myWallets"));
         account.setText(App.currentLanguage.get("myProfile"));
@@ -89,7 +95,10 @@ public class MainMenuController {
 
     @FXML
     private void onSettingsButtonClick() throws IOException {
-
+    /***
+    * Methode used when the settings button is pressed
+    * it changes the scene to settings.fxml
+    */
         FXMLLoader fxmlLoader = new FXMLLoader(new File("build/resources/main/GUI/fxml/settings.fxml").toURL());
         Parent root = fxmlLoader.load();
         Stage stage = (Stage) (wallets.getScene().getWindow());
@@ -101,6 +110,10 @@ public class MainMenuController {
 
     @FXML
     private void onSignOutButtonClick() throws IOException {
+        /***
+         * Methode used when the sign out button is pressed
+         * it changes the scene to hello-view.fxml and signs the user out
+         */
         App.disconnect();
         App.loged=false;
         FXMLLoader fxmlLoader = new FXMLLoader(new File("build/resources/main/GUI/fxml/hello-view.fxml").toURL());
@@ -113,6 +126,10 @@ public class MainMenuController {
 
     @FXML
     private void onSideMenuButtonClick() {
+        /***
+         * Methode used when the side menu button is pressed
+         * makes the side menu appear or disappear
+         */
         TranslateTransition menuTranslation = new TranslateTransition(Duration.millis(500), sidemenu);
         menuTranslation.setFromX(-200);
         menuTranslation.setToX(0);
@@ -132,12 +149,20 @@ public class MainMenuController {
 
     @FXML
     private void onLeaveButtonCLick() {
+        /***
+         * Methode used when the leave button is pressed
+         * closes the app
+         */
         Stage stage = (Stage) (leave.getScene().getWindow());
         stage.close();
     }
 
     @FXML
     private void onWalletButtonClick() throws IOException {
+        /***
+         * Methode used when the wallet button is pressed
+         * it changes the scene to walletgrid.fxml
+         */
         FXMLLoader fxmlLoader = new FXMLLoader(new File("build/resources/main/GUI/fxml/walletgrid.fxml").toURL());
         Parent root = fxmlLoader.load();
         Stage stage = (Stage) (wallets.getScene().getWindow());
@@ -148,6 +173,10 @@ public class MainMenuController {
 
     @FXML
     private void onAccountButtonClick() throws IOException {
+        /***
+         * Methode used when the account button is pressed
+         * it changes the scene to account.fxml
+         */
         FXMLLoader fxmlLoader = new FXMLLoader(new File("build/resources/main/GUI/fxml/account.fxml").toURL());
         Parent root = fxmlLoader.load();
         Stage stage = (Stage) (account.getScene().getWindow());

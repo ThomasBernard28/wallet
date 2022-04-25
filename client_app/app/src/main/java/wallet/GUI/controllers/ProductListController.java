@@ -18,7 +18,9 @@ import java.util.ArrayList;
 import wallet.App;
 import wallet.API.Api;
 import wallet.APP.Account;
-
+/**
+ * Controller containing the methods used for productlist.fxml
+ * */
 public class ProductListController {
     @FXML
     Button back;
@@ -33,6 +35,9 @@ public class ProductListController {
 
     @FXML
     private void initialize() {
+        /**
+         * Automatically executed at the launch of the scene (productlistcontroller.fxml)
+         * */
         if (App.dark) {
             borderPane.setBackground(new Background(new BackgroundFill(Color.GREY, CornerRadii.EMPTY, Insets.EMPTY)));
         } else {
@@ -65,6 +70,10 @@ public class ProductListController {
     }
 
     private void switchToProduct(Account a) throws IOException {
+        /***
+         * Methode used when the switch button is pressed
+         * it changes the scene to productmenu.fxml
+         */
         App.currentAccount = a;
         FXMLLoader fxmlLoader = new FXMLLoader(new File("build/resources/main/GUI/fxml/productmenu.fxml").toURL());
         Parent root = fxmlLoader.load();
@@ -76,6 +85,10 @@ public class ProductListController {
 
     @FXML
     private void onBackButtonClick() throws IOException {
+        /***
+         * Methode used when the back button is pressed
+         * it changes the scene to walletgrid.fxml
+         */
         FXMLLoader fxmlLoader = new FXMLLoader(new File("build/resources/main/GUI/fxml/walletgrid.fxml").toURL());
         Parent root = fxmlLoader.load();
         Stage stage = (Stage) (back.getScene().getWindow());
@@ -86,6 +99,10 @@ public class ProductListController {
 
     @FXML
     private void onProductButtonClick() throws IOException {
+        /***
+         * Methode used when the product button is pressed
+         * it changes the scene to productmenu.fxml
+         */
         FXMLLoader fxmlLoader = new FXMLLoader(new File("build/resources/main/GUI/fxml/productmenu.fxml").toURL());
         Parent root = fxmlLoader.load();
         Stage stage = (Stage) (back.getScene().getWindow());
@@ -96,6 +113,10 @@ public class ProductListController {
 
     @FXML
     private void onPlusButtonClick() throws IOException {
+        /***
+         * Methode used when the plus button is pressed
+         * it changes the scene to addproductmenu.fxml
+         */
         FXMLLoader fxmlLoader = new FXMLLoader(new File("build/resources/main/GUI/fxml/addproductmenu.fxml").toURL());
         Parent root = fxmlLoader.load();
         Stage stage = (Stage) (back.getScene().getWindow());

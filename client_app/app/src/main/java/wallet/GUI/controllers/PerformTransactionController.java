@@ -24,6 +24,9 @@ import java.time.LocalDateTime;
 
 import wallet.App;
 import wallet.APP.Transaction;
+/**
+ * Controller containing the methods used for performtransaction.fxml
+ */
 
 public class PerformTransactionController {
     @FXML
@@ -70,6 +73,10 @@ public class PerformTransactionController {
 
     @FXML
     private void onConfirmButtonClick() throws IOException {
+        /***
+         * Methode used when the confirm button is pressed
+         * makes the transaction
+         */
         boolean cancel = false;
         if (iban.getText().equals("")) {
             cancel = true;
@@ -98,6 +105,10 @@ public class PerformTransactionController {
 
     @FXML
     private void onBackButtonClick() throws IOException {
+        /***
+         * Methode used when the back button is pressed
+         * it changes the scene to productmenu.fxml
+         */
         FXMLLoader fxmlLoader = new FXMLLoader(new File("build/resources/main/GUI/fxml/productmenu.fxml").toURL());
         Parent root = fxmlLoader.load();
         Stage stage = (Stage) (back.getScene().getWindow());

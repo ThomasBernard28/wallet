@@ -16,6 +16,9 @@ import wallet.App;
 import java.io.File;
 import java.io.IOException;
 
+/**
+ * Controller containing the methods used for forgottenpassword.fxml
+ */
 public class ForgottenPasswordController {
 
     @FXML
@@ -60,6 +63,10 @@ public class ForgottenPasswordController {
 
     @FXML
     private void onBackButtonClick() throws IOException {
+        /***
+         * Methode used when the back button is pressed
+         * it changes the scene to hello-view.fxml
+         */
         FXMLLoader fxmlLoader = new FXMLLoader(new File("build/resources/main/GUI/fxml/hello-view.fxml").toURL());
         Parent root = fxmlLoader.load();
         Stage stage = (Stage) (back.getScene().getWindow());
@@ -70,6 +77,10 @@ public class ForgottenPasswordController {
 
     @FXML
     private void onResetButtonClick() throws IOException {
+        /***
+         * Methode used when the back button is pressed
+         * resets the users password
+         */
 
         // if an entry is empty
         if (natidTF.getText().equals("") || fnameTF.getText().equals("") || lnameTF.getText().equals("")) {
@@ -85,6 +96,7 @@ public class ForgottenPasswordController {
         }
         // everything is ok and the passwords are matching
         //Method to change password
+
         // the passwords aren't matching
         if (!passwordPF.getText().equals(passwordbisPF)) {
             wrong.setVisible(true);

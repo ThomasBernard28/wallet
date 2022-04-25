@@ -23,7 +23,9 @@ import java.io.File;
 import java.io.IOException;
 
 import wallet.App;
-
+/**
+ * Controller containing the methods used for changepassword.fxml
+ */
 public class ChangePasswordController {
     @FXML
     private Button back;
@@ -48,6 +50,9 @@ public class ChangePasswordController {
 
     @FXML
     private void initialize() {
+        /**
+         * Automatically executed at the launch of the scene (changepassword.fxml)
+         * */
         // set language
         back.setText(App.currentLanguage.get("back"));
         changepassword.setText(App.currentLanguage.get("changePassword"));
@@ -55,6 +60,8 @@ public class ChangePasswordController {
         oldPasswordLabel.setText(App.currentLanguage.get("oldPassword") + " :");
         newPasswordLabel.setText(App.currentLanguage.get("newPassword") + " :");
         confirmPasswordLabel.setText(App.currentLanguage.get("confirmPassword") + " :");
+
+        //change background theme
         if (App.dark) {
             borderPane.setBackground(new Background(new BackgroundFill(Color.GREY, CornerRadii.EMPTY, Insets.EMPTY)));
         } else {
@@ -64,6 +71,11 @@ public class ChangePasswordController {
 
     @FXML
     private void onBackButtonClick() throws IOException {
+        /***
+         * Methode used when the back button is pressed
+         * it changes the scene to account.fxml
+         */
+
         FXMLLoader fxmlLoader = new FXMLLoader(new File("build/resources/main/GUI/fxml/account.fxml").toURL());
         Parent root = fxmlLoader.load();
         Stage stage = (Stage) (back.getScene().getWindow());
@@ -74,6 +86,11 @@ public class ChangePasswordController {
 
     @FXML
     private void onChangePasswordButtonClick() throws Exception {
+        /***
+         * Methode used when the change password button is pressed
+         * it the user's password
+         */
+
         if (newPassword.getText().equals(confirmPassword.getText()) && oldPassword.getText().equals(App.currentUser.get_password())) {
             App.currentUser.change_password(newPassword.getText());
             Alert a = new Alert(AlertType.INFORMATION);

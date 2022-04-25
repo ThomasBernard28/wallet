@@ -19,6 +19,9 @@ import java.io.IOException;
 
 import wallet.App;
 
+/***
+ * Controller containing the methods used for productmennu.fxml
+ */
 public class ProductMenuController {
     @FXML
     private Button back;

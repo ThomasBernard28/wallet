@@ -45,6 +45,10 @@ public class HelloController {
 
     @FXML
     private void initialize() {
+        /**
+         * Automatically executed at the launch of the scene (hello-view.fxml)
+         * */
+
         // set language
         login.setText(App.currentLanguage.get("login"));
         register.setText(App.currentLanguage.get("register"));
@@ -59,6 +63,10 @@ public class HelloController {
 
     @FXML
     private void onLoginButtonClick() throws IOException {
+        /***
+         * Methode used when the log in button is pressed
+         * logs the user in
+         */
         boolean connected;
 
         connected = App.connect(id.getText());
@@ -85,6 +93,10 @@ public class HelloController {
 
     @FXML
     private void onRegisterButtonClick() throws IOException {
+        /***
+         * Methode used when the register button is pressed
+         * registers a new user in the database
+         */
         FXMLLoader fxmlLoader = new FXMLLoader(new File("build/resources/main/GUI/fxml/register.fxml").toURL());
         Parent root = fxmlLoader.load();
         Stage stage = (Stage) (register.getScene().getWindow());
@@ -96,6 +108,10 @@ public class HelloController {
 
     @FXML
     private void onSettingsButtonClick() throws IOException{
+        /***
+         * Methode used when the setting button is pressed
+         * it changes the scene to settings.fxml
+         */
         FXMLLoader fxmlLoader = new FXMLLoader(new File("build/resources/main/GUI/fxml/settings.fxml").toURL());
         Parent root = fxmlLoader.load();
         Stage stage = (Stage) (register.getScene().getWindow());

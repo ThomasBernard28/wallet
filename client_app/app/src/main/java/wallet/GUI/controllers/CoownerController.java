@@ -17,6 +17,9 @@ import java.util.ArrayList;
 
 import wallet.App;
 import wallet.APP.CoOwner;
+/**
+ * Controller containing the methods used for co-owner.fxml
+ */
 
 public class CoownerController {
     @FXML
@@ -46,6 +49,9 @@ public class CoownerController {
 
     @FXML
     private void initialize() {
+        /**
+         * Automatically executed at the launch of the scene (co-owner.fxml)
+         * */
         // set language
         back.setText(App.currentLanguage.get("back"));
         firstnameLabel.setText(App.currentLanguage.get("firstName") + " : ");
@@ -53,11 +59,6 @@ public class CoownerController {
         natIDLabel.setText(App.currentLanguage.get("nationalID") + " : ");
         addCoOwnerLabel.setText(App.currentLanguage.get("addCoOwner") + " : ");
         add.setText(App.currentLanguage.get("add"));
-        if (App.dark) {
-            splitPane.setBackground(new Background(new BackgroundFill(Color.GREY, CornerRadii.EMPTY, Insets.EMPTY)));
-        } else {
-            splitPane.setBackground(new Background(new BackgroundFill(Color.WHITE, CornerRadii.EMPTY, Insets.EMPTY)));
-        }
 
         try {
             App.currentUser.set_coOwnersList(App.api.get_coOwners(App.currentAccount.get_iban()));
@@ -68,10 +69,21 @@ public class CoownerController {
             Label l = new Label(co.get_coOwnerID());
             vbox.getChildren().add(l);
         }
+
+        // change background theme
+        if (App.dark) {
+            splitPane.setBackground(new Background(new BackgroundFill(Color.GREY, CornerRadii.EMPTY, Insets.EMPTY)));
+        } else {
+            splitPane.setBackground(new Background(new BackgroundFill(Color.WHITE, CornerRadii.EMPTY, Insets.EMPTY)));
+        }
     }
 
     @FXML
     private void onAddButtonClick() throws IOException {
+        /***
+         * Methode used when the add button is pressed
+         * adds a co-owner to the user's product
+         */
         try {
             App.api.post_coOwner(App.currentWallet.get_walletID(), App.currentAccount.get_iban(), firstname.getText() + lastname.getText() + natregnumb.getText(), App.currentWallet.get_bic(), App.currentUser.get_userID());
             Alert a = new Alert(AlertType.INFORMATION);
@@ -87,6 +99,10 @@ public class CoownerController {
 
     @FXML
     private void onBackButtonClick() throws IOException {
+        /***
+         * Methode used when the back button is pressed
+         * it changes the scene to productmenu.fxml
+         */
         FXMLLoader fxmlLoader = new FXMLLoader(new File("build/resources/main/GUI/fxml/productmenu.fxml").toURL());
         Parent root = fxmlLoader.load();
         Stage stage = (Stage) (back.getScene().getWindow());

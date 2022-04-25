@@ -23,7 +23,9 @@ import java.io.File;
 import java.io.IOException;
 
 import wallet.App;
-
+/**
+ * Controller containing the methods used for addproductmenu.fxml
+ */
 public class AddProductMenuController {
     @FXML
     private Button back;
@@ -38,6 +40,9 @@ public class AddProductMenuController {
 
     @FXML
     private void initialize() {
+        /**
+         * Automatically executed at the launch of the scene (addprodutmenu.fxml)
+         * */
         // set language
         back.setText(App.currentLanguage.get("back"));
         subscribe.setText(App.currentLanguage.get("subscribe"));
@@ -46,6 +51,8 @@ public class AddProductMenuController {
         // set comboBox values
         String types[] = {App.currentLanguage.get("checkingAccount")};
         box.setItems(FXCollections.observableArrayList(types));
+
+        //change background theme
         if (App.dark) {
             borderPane.setBackground(new Background(new BackgroundFill(Color.GREY, CornerRadii.EMPTY, Insets.EMPTY)));
         } else {
@@ -55,6 +62,10 @@ public class AddProductMenuController {
 
     @FXML
     private void onSubscribeButtonClick() throws IOException {
+        /***
+         * Methode used when the subscribe button is pressed
+         * adds a product to the user's wallet
+         */
         if (box.getValue() == null) {
             Alert a = new Alert(AlertType.WARNING);
             a.setContentText(App.currentLanguage.get("addProductWarning1"));
@@ -83,6 +94,10 @@ public class AddProductMenuController {
 
     @FXML
     private void onBackButtonClick() throws IOException {
+        /***
+         * Methode used when the back button is pressed
+         * it changes the scene to productlist.fxml
+         */
         FXMLLoader fxmlLoader = new FXMLLoader(new File("build/resources/main/GUI/fxml/productlist.fxml").toURL());
         Parent root = fxmlLoader.load();
         Stage stage = (Stage) (back.getScene().getWindow());
