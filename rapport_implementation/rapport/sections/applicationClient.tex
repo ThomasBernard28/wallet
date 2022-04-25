@@ -1,0 +1,49 @@
+\documentclass[../rapport.tex]{subfiles}
+
+\begin{document}
+Le code de l'application client est divisé en 3 packages : APP, API et GUI.
+En plus de ces packages, il existe la classe App qui est la classe principale de l'application. 
+
+\subsection{Le package APP}
+Ce package contient les objets de l'application. Ces objets doivent pouvoir lire des jsons venant de l'api et inversement ils doivent être capable
+d'écrire leurs données sous forme d'un json. Dans ce but, il existe une classe "*Data" pour chaque objet de l'application. Cette classe permet de stocker 
+les données de l'objet et d'y accéder via les différentes méthodes get et set. 
+Afin de remplir les classes *Data avec des données reçues de l'api, chaque classe d'objet posède une méthode read_data capable d'associer
+chaque donnée d'un json à l'attribut correspondant de la classe Data gràce à la librairie Jackson.  
+Certaine classes possèdent une méthode write_data qui effectue le travail inverse : elle retourne un json contenant les données de la classe Data.
+Par rapport à la phase de modélisation, peu de choses ont été changée dans l'implémentation. Certaines classes ont été ajoutée mais elles suivent le même schéma que 
+les autres classes modélisées.
+
+\begin{enumerate}
+\item Account -> compte de paiment
+\item User -> l'utilisateur
+\end{enumerate}
+
+\subsection{Le package API}
+La classe Api de ce package contient toutes les méthodes permettant d'effectuer les requêtes à l'api nécessaires au fonctionnement de l'application client.
+Le package HttpClient est utilisé pour envoyer les requêtes de type GET POST et PUT.
+La classe JsonReader est une interface implémentée par les classes capables de lire un json
+La class JsonTools possède la méthode splitJson permettant de séparer plusieurs json contenu dans une seule chaine de caractère.
+
+\subsection{Le package GUI}
+Le package GUI contient les controllers où sont définies les méthodes de l'interface graphique. 
+Dans tous les controllers se trouve une méthode initialize utilisée pour placer les données reçues de l'api dans l'interface graphique et à changer l'interface
+selon la langue courante choisie par l'uitilisateur.
+
+\subsection{Gestion des langues}
+Par rapport à la phase de modélisation, peu de choses ont été changée dans l'implémentation. Certaines classes ont été ajoutée 
+Le language par defaut de l'application est l'anglais mais il peut être changé par un utilisateur. Dans les paramètres de l'application, 
+l'utilisateur peut choisir la langue qu'il souhaite utiliser. Son choix est alors enregistré dans la base de données et lorsqu'il se reconnectera,
+le language choisi sera automatiquement utilisé. De plus, le dernier language utilisé est affiché lorsque l'application est lancée même si l'utilisateur 
+ne s'est pas encore authentifié.
+
+\subsection{Fonctionnalités non-implémentées ou à améliorer}
+Suite à un retard au niveau de l'implementation, certaines fonctionnalités ne sont pas complètes ou non implémentées.
+La gestion des languages permet à l'utilisateur d'ajouter ses propres langues en ajoutant un fichier json dans les ressources de l'application. Cependant, ce nouveau
+languages n'est pas disponible via le GUI. En ajoutant les les propositions de languages en fonction des fichiers présents dans les ressources. 
+Lors de la réalisation d'un virement, il était demander d'ajouter une étape de vérification pendant laquelle l'utilisateur doit entrer un pin afin de confirmer la transaction.
+Celà n'a pas été implémenté. L'écran de connexion aurait pu être réutilisé en ajoutant une méthode de vérification de pin.
+L'exportation et importations des données n'est pas implémentée, toutes les données sont accessibles mais aucune méthode ne permet de créer le fichier csv.
+Les comptes d'épargne ne sont pas disponibles dans l'application. 
+\newpage
+\end{document}
