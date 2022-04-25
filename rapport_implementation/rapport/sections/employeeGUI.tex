@@ -1,0 +1,37 @@
+\documentclass[../rapport.tex]{subfiles}
+
+\begin{document}
+
+\subsection{Design et inspiration:}
+    
+L'idée derrière l'interface graphique de l'application 2 était la même que pour l'application 1 avec un petit changement qui est le fait 
+qu'on a voulu implémenter des fonctionnalités qui se déclencheraient avec un click gauche.
+
+
+\subsection{Outils:}
+
+    Ayant décidé de faire les différentes scènes en fxml et de gérer les interactions avec des contrôleurs, nous avons beaucoup utilisé 
+    SceneBuilder qui a grandement facilité la création des différents fichiers fxml. Le fait de pouvoir visualiser directement à quoi ressemblait
+    une scène sans avoir besoin de compiler et d'exécuter le fichier mais aussi le fait d'avoir une interdace facile d'utilisation qui nous 
+    permettait de facilement ajouter des éléments aux scènes nous a vraiment aidés. Le seul problème que nous avons eu avec SceneBuilder est que
+    le rendu qu'il affiche ne correspondait pas toujours à ce qu'on avait une fois la scène affichée sur nos écrans.
+
+
+\subsection{Différences avec les schémas:}
+
+    Les différences avec le modèle fournist au premier quadrimestre sont le fait qu'on a ajouté des scènes mais ceux décrivent déjà schématiser 
+    ont été gardés et sont identiques hormis quelques modifications de l'apparence.
+
+
+\subsection{Manques à corriger:}
+
+    Comme décrit au point précédent, le plus gros problème qu'on a eu avec l'application 2 était l'implémentation de click gauche qui
+    ferais apparaitre un sous-menu. Nous avons d'abord essayé de créer les sous-menus et de les afficher en récupérant les coordonnées de 
+    l'endroit où se trouvait la souris au moment du click et d'y faire apparaitre le sous-menu. Malheureusement on n'arrivait pas à 
+    soit faire apparaitre le menu au bon endroit, soit le faire disparaitre une fois un autre click effectuer donc on se retrouvait 
+    avec un écran rempli de sous-menus. La solution qu'on a trouvé bien trop tard pour l'implémenter fu l'utilisation de la classe
+    ContextMenu qui étaient une class spécialement dédié à la création de sous-menus. Mais pour cause notre mauvaise gestion de temps
+    nous n'avons pu explorer cette piste plus en profondeur ce qui rend le GUI de l'application 2 incomplète.
+
+    \newpage
+\end{document}
