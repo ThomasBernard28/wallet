@@ -5,14 +5,16 @@
 <?import javafx.scene.layout.VBox?>
 
 
-<VBox alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" spacing="30.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1">
-   <children>
-      <Button mnemonicParsing="false" prefHeight="30.0" prefWidth="120.0" text="Delete client" />
-      <Button mnemonicParsing="false" prefHeight="30.0" prefWidth="120.0" text="Product detail" />
-      <Button mnemonicParsing="false" prefHeight="30.0" prefWidth="120.0" text="add product" />
-      <Button mnemonicParsing="false" prefHeight="30.0" prefWidth="120.0" text="delete product" />
-   </children>
-   <padding>
-      <Insets bottom="15.0" left="15.0" right="15.0" top="15.0" />
-   </padding>
+<VBox alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity"
+      spacing="30.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1"
+      stylesheets="@../css/general-style.css">
+    <children>
+        <Button mnemonicParsing="false" prefHeight="30.0" prefWidth="120.0" text="Delete client"/>
+        <Button mnemonicParsing="false" prefHeight="30.0" prefWidth="120.0" text="Product detail"/>
+        <Button mnemonicParsing="false" prefHeight="30.0" prefWidth="120.0" text="add product"/>
+        <Button mnemonicParsing="false" prefHeight="30.0" prefWidth="120.0" text="delete product"/>
+    </children>
+    <padding>
+        <Insets bottom="15.0" left="15.0" right="15.0" top="15.0"/>
+    </padding>
 </VBox>

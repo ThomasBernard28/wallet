@@ -102,6 +102,7 @@ public class MainMenuController {
     @FXML
     private void onSignOutButtonClick() throws IOException {
         App.disconnect();
+        App.loged=false;
         FXMLLoader fxmlLoader = new FXMLLoader(new File("build/resources/main/GUI/fxml/hello-view.fxml").toURL());
         Parent root = fxmlLoader.load();
         Stage stage = (Stage) (wallets.getScene().getWindow());

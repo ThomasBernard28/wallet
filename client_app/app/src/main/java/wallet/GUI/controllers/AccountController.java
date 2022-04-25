@@ -16,6 +16,9 @@ import java.io.IOException;
 
 import wallet.App;
 
+/**
+ * R
+ */
 public class AccountController {
     @FXML
     private Button back;
@@ -50,6 +53,8 @@ public class AccountController {
         firstName.setText(App.currentUser.get_firstName());
         lastName.setText(App.currentUser.get_lastName());
         number.setText(App.currentUser.get_natID());
+
+        //change background theme
         if (App.dark) {
             borderPane.setBackground(new Background(new BackgroundFill(Color.GREY, CornerRadii.EMPTY, Insets.EMPTY)));
         } else {

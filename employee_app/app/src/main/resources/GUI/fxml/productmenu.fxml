@@ -8,40 +8,45 @@
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.HBox?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0"
+            prefWidth="600.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1"
+            stylesheets="@../css/general-style.css">
     <top>
         <AnchorPane BorderPane.alignment="CENTER">
             <children>
-                <HBox alignment="CENTER" layoutX="-2.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="100.0" prefWidth="600.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="-2.0">
+                <HBox alignment="CENTER" layoutX="-2.0" maxHeight="1.7976931348623157E308"
+                      maxWidth="1.7976931348623157E308" prefHeight="100.0" prefWidth="600.0"
+                      AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="-2.0">
                     <children>
                         <Button alignment="CENTER" mnemonicParsing="false" text="Add product" HBox.hgrow="ALWAYS">
                             <HBox.margin>
-                                <Insets right="150.0" />
+                                <Insets right="150.0"/>
                             </HBox.margin>
                         </Button>
-                        <Button mnemonicParsing="false" text="Delete product" />
+                        <Button mnemonicParsing="false" text="Delete product"/>
                     </children>
                     <opaqueInsets>
-                        <Insets />
+                        <Insets/>
                     </opaqueInsets>
                 </HBox>
-                <Button mnemonicParsing="false" text="back" />
+                <Button mnemonicParsing="false" text="back"/>
             </children>
         </AnchorPane>
     </top>
     <center>
-        <TableView maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="200.0" prefWidth="200.0">
+        <TableView maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="200.0"
+                   prefWidth="200.0">
             <columns>
-                <TableColumn prefWidth="75.0" text="ID" />
-                <TableColumn prefWidth="75.0" text="Type" />
-                <TableColumn prefWidth="75.0" text="Creation date" />
-                <TableColumn prefWidth="75.0" text="Co-owner" />
+                <TableColumn prefWidth="75.0" text="ID"/>
+                <TableColumn prefWidth="75.0" text="Type"/>
+                <TableColumn prefWidth="75.0" text="Creation date"/>
+                <TableColumn prefWidth="75.0" text="Co-owner"/>
             </columns>
             <BorderPane.margin>
-                <Insets />
+                <Insets/>
             </BorderPane.margin>
             <columnResizePolicy>
-                <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
+                <TableView fx:constant="CONSTRAINED_RESIZE_POLICY"/>
             </columnResizePolicy>
         </TableView>
     </center>

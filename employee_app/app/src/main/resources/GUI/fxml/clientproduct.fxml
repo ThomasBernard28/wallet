@@ -10,79 +10,81 @@
 <?import javafx.scene.text.Font?>
 
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1">
-   <top>
-      <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0" BorderPane.alignment="CENTER">
-         <children>
-            <Label alignment="CENTER" contentDisplay="CENTER" text="Client's informations">
-               <font>
-                  <Font size="30.0" />
-               </font>
-            </Label>
-            <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
-               <children>
-                  <Label alignment="CENTER" contentDisplay="CENTER" text="Search product :">
-                     <font>
-                        <Font size="14.0" />
-                     </font>
-                  </Label>
-                  <TextField prefHeight="24.0" prefWidth="133.0" />
-                  <Button mnemonicParsing="false" text="Search">
-                     <HBox.margin>
-                        <Insets left="15.0" />
-                     </HBox.margin>
-                  </Button>
-                  <Button mnemonicParsing="false" text="Add product">
-                     <HBox.margin>
-                        <Insets left="20.0" right="15.0" />
-                     </HBox.margin>
-                  </Button>
-                  <Button mnemonicParsing="false" text="Remove product" />
-               </children>
-               <opaqueInsets>
-                  <Insets />
-               </opaqueInsets>
-               <VBox.margin>
-                  <Insets />
-               </VBox.margin>
-            </HBox>
-         </children>
-      </VBox>
-   </top>
-   <center>
-      <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0" BorderPane.alignment="CENTER">
-         <children>
-            <Label text="Product">
-               <font>
-                  <Font size="20.0" />
-               </font>
-            </Label>
-            <Label text="Product">
-               <font>
-                  <Font size="20.0" />
-               </font>
-            </Label>
-            <Label text="Product">
-               <font>
-                  <Font size="20.0" />
-               </font>
-            </Label>
-            <Label text="Product">
-               <font>
-                  <Font size="20.0" />
-               </font>
-            </Label>
-            <Label text="Product">
-               <font>
-                  <Font size="20.0" />
-               </font>
-            </Label>
-            <Label text="...">
-               <font>
-                  <Font size="20.0" />
-               </font>
-            </Label>
-         </children>
-      </VBox>
-   </center>
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0"
+            prefWidth="600.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1"
+            stylesheets="@../css/general-style.css">
+    <top>
+        <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0" BorderPane.alignment="CENTER">
+            <children>
+                <Label alignment="CENTER" contentDisplay="CENTER" text="Client's informations">
+                    <font>
+                        <Font size="30.0"/>
+                    </font>
+                </Label>
+                <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
+                    <children>
+                        <Label alignment="CENTER" contentDisplay="CENTER" text="Search product :">
+                            <font>
+                                <Font size="14.0"/>
+                            </font>
+                        </Label>
+                        <TextField prefHeight="24.0" prefWidth="133.0"/>
+                        <Button mnemonicParsing="false" text="Search">
+                            <HBox.margin>
+                                <Insets left="15.0"/>
+                            </HBox.margin>
+                        </Button>
+                        <Button mnemonicParsing="false" text="Add product">
+                            <HBox.margin>
+                                <Insets left="20.0" right="15.0"/>
+                            </HBox.margin>
+                        </Button>
+                        <Button mnemonicParsing="false" text="Remove product"/>
+                    </children>
+                    <opaqueInsets>
+                        <Insets/>
+                    </opaqueInsets>
+                    <VBox.margin>
+                        <Insets/>
+                    </VBox.margin>
+                </HBox>
+            </children>
+        </VBox>
+    </top>
+    <center>
+        <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0" BorderPane.alignment="CENTER">
+            <children>
+                <Label text="Product">
+                    <font>
+                        <Font size="20.0"/>
+                    </font>
+                </Label>
+                <Label text="Product">
+                    <font>
+                        <Font size="20.0"/>
+                    </font>
+                </Label>
+                <Label text="Product">
+                    <font>
+                        <Font size="20.0"/>
+                    </font>
+                </Label>
+                <Label text="Product">
+                    <font>
+                        <Font size="20.0"/>
+                    </font>
+                </Label>
+                <Label text="Product">
+                    <font>
+                        <Font size="20.0"/>
+                    </font>
+                </Label>
+                <Label text="...">
+                    <font>
+                        <Font size="20.0"/>
+                    </font>
+                </Label>
+            </children>
+        </VBox>
+    </center>
 </BorderPane>

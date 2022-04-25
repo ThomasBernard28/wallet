@@ -5,27 +5,28 @@
 <?import javafx.scene.text.Font?>
 
 
-<VBox alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1">
-   <children>
-      <Label text="Type :">
-         <font>
-            <Font size="33.0" />
-         </font>
-      </Label>
-      <Label text="Balance :">
-         <font>
-            <Font size="33.0" />
-         </font>
-      </Label>
-      <Label text="Creation Date :">
-         <font>
-            <Font size="33.0" />
-         </font>
-      </Label>
-      <Label text="Co-owner :">
-         <font>
-            <Font size="33.0" />
-         </font>
-      </Label>
-   </children>
+<VBox alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity"
+      xmlns="http://javafx.com/javafx/17" stylesheets="@../css/general-style.css">
+    <children>
+        <Label text="Type :">
+            <font>
+                <Font size="33.0"/>
+            </font>
+        </Label>
+        <Label text="Balance :">
+            <font>
+                <Font size="33.0"/>
+            </font>
+        </Label>
+        <Label text="Creation Date :">
+            <font>
+                <Font size="33.0"/>
+            </font>
+        </Label>
+        <Label text="Co-owner :">
+            <font>
+                <Font size="33.0"/>
+            </font>
+        </Label>
+    </children>
 </VBox>

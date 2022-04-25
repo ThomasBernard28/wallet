@@ -7,26 +7,29 @@
 <?import javafx.scene.text.Font?>
 
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1">
-   <top>
-      <Label text="Transactions for this user are :" BorderPane.alignment="CENTER">
-         <font>
-            <Font size="30.0" />
-         </font>
-      </Label>
-   </top>
-   <center>
-      <CheckBox alignment="CENTER" contentDisplay="RIGHT" mnemonicParsing="false" text="Allowed" BorderPane.alignment="CENTER">
-         <graphic>
-            <CheckBox mnemonicParsing="false" text="Not allowed">
-               <padding>
-                  <Insets left="50.0" />
-               </padding>
-            </CheckBox>
-         </graphic>
-         <padding>
-            <Insets right="5.0" />
-         </padding>
-      </CheckBox>
-   </center>
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0"
+            prefWidth="600.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1"
+            stylesheets="@../css/general-style.css">
+    <top>
+        <Label text="Transactions for this user are :" BorderPane.alignment="CENTER">
+            <font>
+                <Font size="30.0"/>
+            </font>
+        </Label>
+    </top>
+    <center>
+        <CheckBox alignment="CENTER" contentDisplay="RIGHT" mnemonicParsing="false" text="Allowed"
+                  BorderPane.alignment="CENTER">
+            <graphic>
+                <CheckBox mnemonicParsing="false" text="Not allowed">
+                    <padding>
+                        <Insets left="50.0"/>
+                    </padding>
+                </CheckBox>
+            </graphic>
+            <padding>
+                <Insets right="5.0"/>
+            </padding>
+        </CheckBox>
+    </center>
 </BorderPane>
