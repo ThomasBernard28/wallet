@@ -41,6 +41,7 @@ public class User implements JsonReader {
     /* 
      * read the given json file and save the data in the 
      * data instance of the current user 
+     * @param json : the object's data as a Json
      */
     @Override
     public void read_data(String json) {
@@ -76,6 +77,11 @@ public class User implements JsonReader {
 
     /*
      */
+    /*
+     * Split the given json into mutliple json and 
+     * create a wallet instance with the jsons' data
+     * Every created wallet is inserted in an arraylist
+     */
     public void set_walletsList(String json) {
         try {
             walletsList.clear();
@@ -99,6 +105,9 @@ public class User implements JsonReader {
     }
 
     /*
+     * Split the given json into mutliple json and 
+     * create an account instance with the jsons' data
+     * Every created account is inserted in an arraylist
      */
     public void set_accountsList(String json) {
         try {
@@ -123,6 +132,9 @@ public class User implements JsonReader {
     }
 
     /*
+     * Split the given json into mutliple json and 
+     * create an history  instance with the jsons' data
+     * Every created history is inserted in an arraylist
      */
     public void set_historyList(String json) {
         try {
@@ -146,6 +158,11 @@ public class User implements JsonReader {
         return historyList;
     }
 
+    /*
+     * Split the given json into mutliple json and 
+     * create a co-owner instance with the jsons' data
+     * Every created co-owner is inserted in an arraylist
+     */
     public void set_coOwnersList(String json) {
         try {
             coOwnersList.clear();
@@ -209,6 +226,9 @@ public class User implements JsonReader {
         }
     }
 
+    /*
+     * @param transaction : Transaction object to be posted to the api
+     */
     public void perform_transaction(Transaction transaction) {
         try {
             api.post_transaction(transaction.write_data());

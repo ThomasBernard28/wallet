@@ -10,6 +10,11 @@ public class History implements JsonReader {
    
    HistoryData data = new HistoryData();
 
+    /* 
+     * read the given json file and save the data in the 
+     * data instance of the current user 
+     * @param json : the object's data as a Json
+     */
    @Override
    public void read_data(String json) {
         try {

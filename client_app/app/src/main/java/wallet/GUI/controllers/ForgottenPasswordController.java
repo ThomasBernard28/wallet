@@ -84,7 +84,7 @@ public class ForgottenPasswordController {
             a.show();
         }
         // everything is ok and the passwords are matching
-        //Methode pour changer le mdp
+        //Method to change password
         // the passwords aren't matching
         if (!passwordPF.getText().equals(passwordbisPF)) {
             wrong.setVisible(true);
